@@ -1,0 +1,63 @@
+@import '../../../../../scss/vars';
+
+.thank-you-page-component {
+
+  .tag-success {
+    margin: 30px 0;
+  }
+
+  .title-thank-you-top {
+    font-family: $headline;
+    color: $GREEN;
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 5px;
+  }
+
+  .tag-success {
+    width: 40px;
+    height: 30px;
+  }
+
+  .widgets-wrapper {
+    margin-bottom: -110px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .combos-section {
+    background: #f3f3f3;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    margin-bottom: 15px;
+  }
+
+  .title-thank-you {
+    color: #272727;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+    margin: 40px auto 0;
+
+    &:before {
+      content: '';
+      width: 65px;
+      height: 4px;
+      background: #E73B3B;
+      position: absolute;
+      top: -10px;
+      right: 0;
+      left: 0;
+      margin: auto;
+      border-radius: 4px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .widgets-wrapper {
+      flex-direction: column;
+    }
+  }
+}

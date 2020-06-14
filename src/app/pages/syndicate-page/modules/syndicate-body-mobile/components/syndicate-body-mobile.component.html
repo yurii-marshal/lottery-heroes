@@ -1,0 +1,64 @@
+<div class="row syndicate-body-mobile">
+  <div class="col-xs-12">
+    <div class="row syndicate-controller-wrapper flex-items-xs-middle">
+      <div class="col-xs-12 text-xs-center">
+        <div class="share-title">
+          {{'SyndicateBodyMobileComponent.TEXT_MAIN_HEADER' | translate}}
+        </div>
+        <div class="shares-controller display-flex flex-items-xs-center">
+          <button class="control-button left"
+                  [disabled]="sharesAmount <= 1"
+                  (click)="removeShareEvent.emit({
+                    lotteryId: syndicateModel?.lotteryId,
+                    sharesAmount: sharesStep,
+                    sharesBeforeClick: sharesAmount})">-
+          </button>
+
+          <input class="text-xs-center" type="text" disabled="disabled" value="{{sharesAmount}}">
+
+          <button class="control-button right"
+                  [disabled]="sharesAmount === syndicateModel.numSharesAvailable"
+                  (click)="addShareEvent.emit({
+                  lotteryId: syndicateModel?.lotteryId,
+                  sharesAmount: sharesStep,
+                  sharesBeforeClick: sharesAmount})">+
+          </button>
+        </div>
+        <div class="progressbar-wrapper">
+          <div class="progressbar">
+            <div class="progressbar-body" [ngStyle]="{'width': progressbarWidth}"></div>
+          </div>
+          <div class="bar-counter">
+            {{syndicateModel?.numShares}} {{'SyndicateBodyMobileComponent.TEXT_SHARES' | translate}} / {{syndicateModel?.numSharesAvailable}} {{'SyndicateBodyMobileComponent.TEXT_LEFT' | translate}}
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-5 text-xs-right">
+            <img class="syndicate-icon" src="assets/images/syndicates/shares.png" alt="syndicates">
+          </div>
+          <div class="col-xs-7">
+            <div class="lines-summary">
+              {{syndicateModel?.numLines}} {{'SyndicateBodyMobileComponent.TEXT_LINES' | translate}}
+               <span (click)="viewLinesEvent.emit({lotteryName: syndicateModel?.lotteryName, lines: syndicateModel?.lines})"
+                     class="link">{{'SyndicateBodyMobileComponent.TEXT_VIEW' | translate}}</span>
+            </div>
+            <div class="lines-shares">
+              {{syndicateModel?.numShares}} {{'SyndicateBodyMobileComponent.TEXT_SHARES' | translate}}
+            </div>
+            <div class="price-per-share">
+              {{syndicateModel?.sharePrice | currency:syndicateModel?.currencyId :'symbol':'1.2-2'}} {{'SyndicateBodyMobileComponent.TEXT_PER_SHARE' | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-syndicate-total-mobile-container
+  [syndicateModel]="syndicateModel"
+></app-syndicate-total-mobile-container>
+<div class="row">
+  <div class="col-xs-12" [innerHTML]="'SyndicateBodyMobileComponent.TEMPLATE_INCREASE_ODDS' | translate: {param: syndicateModel?.lotteryName}"></div>
+</div>

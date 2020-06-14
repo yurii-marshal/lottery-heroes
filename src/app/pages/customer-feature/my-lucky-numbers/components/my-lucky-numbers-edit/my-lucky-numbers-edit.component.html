@@ -1,0 +1,22 @@
+<div class="row my-lucky-numbers-edit-component">
+  <div class="editable-data">
+
+    <!--- Lines --->
+    <ng-container *ngIf="editLuckyNumbers.length !== 0">
+      <p>{{'MyLuckyNumbersEditComponent.TEXT_LUCKY_NUMS' | translate}}</p>
+
+      <ng-container *ngFor="let group of editLuckyNumbers; let i = index;">
+        <app-my-lucky-numbers-line [group]="group" [index]="i"></app-my-lucky-numbers-line>
+      </ng-container>
+    </ng-container>
+
+    <!--- New line --->
+    <div *ngFor="let group of editNewLuckyNumbers; let i = index;">
+      <app-new-empty-line [group]="group" [index]="i"></app-new-empty-line>
+    </div>
+
+    <button class="link" id="add-new-line" (click)="addNewEmptyGroup()">
+      {{'MyLuckyNumbersEditComponent.BUTTON_ADD_LINE' | translate}} +
+    </button>
+  </div>
+</div>

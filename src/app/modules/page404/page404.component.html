@@ -1,0 +1,37 @@
+<!-- DON'T CHANGE "page-404-component" css class name, it's used for determining 404 HTTP status code -->
+<div class="container page-404-component">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{'Page404Component.Great! You found this page' | translate}}</h1>
+      <h2>{{'Page404Component.But you were probably looking for a different one.' | translate}}</h2>
+      <img src="assets/images/page-404/404_c.png">
+      <p>{{'Page404Component.Perhaps one of these links will be helpful for you:' | translate}}</p>
+    </div>
+  </div>
+  <div class="row flex-items-xs-center lists">
+    <ul class="col-xs">
+      <li><a routerLink="/lotteries" itemprop='significantLink'
+             title="{{'Page404Component.REF_VIEW_LOTTERIES' | translate}}">
+        {{'Page404Component.REF_VIEW_LOTTERIES' | translate}}
+      </a></li>
+      <li><a routerLink="/lotteries/results" itemprop='significantLink'
+             title="{{'Page404Component.REF_LOTTERY_RES' | translate}}">
+        {{'Page404Component.REF_LOTTERY_RES' | translate}}
+      </a></li>
+      <li><a routerLink="/about/contact">
+        {{'Page404Component.REF_CONTACT_US' | translate}}
+      </a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>{{'Page404Component.Wait! We don’t want to you leave empty handed' | translate}}</p>
+      <div class="fact">
+        <span class="title">
+          {{'Page404Component.TEXT_LOTTO_FACT' | translate}}
+        </span>
+        <p>{{'Page404Component.70%-80% of the Powerball winners used an Autopick' | translate}}</p>
+      </div>
+    </div>
+  </div>
+</div>

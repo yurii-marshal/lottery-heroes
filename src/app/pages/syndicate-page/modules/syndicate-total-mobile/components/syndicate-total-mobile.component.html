@@ -1,0 +1,17 @@
+<div class="syndicate-total-mobile-component">
+  <div class="row total-wrapper">
+    <div class="col-xs-12 display-flex flex-items-xs-middle flex-items-xs-center">
+      <div class="display-flex flex-items-xs-middle flex-items-xs-between total">
+         {{'SyndicateTotalMobileComponent.TEXT_TOTAL' | translate}}<span>{{totalSyndicatePrice | currency:syndicateModel?.currencyId :'symbol':'1.2-2'}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 display-flex flex-items-xs-center">
+      <button class="bt green"
+              (click)="addToCartEvent.emit({templateId: syndicateModel.templateId, lotteryId: syndicateModel.lotteryId, sharesAmount: sharesAmount})">
+        {{'SyndicateTotalMobileComponent.TEXT_JOIN' | translate}}
+      </button>
+    </div>
+  </div>
+</div>

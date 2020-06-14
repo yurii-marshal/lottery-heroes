@@ -1,0 +1,12 @@
+<div class="mobile-language-switcher-component">
+    <div class="lang-item bt clear"
+         *ngFor="let item of translateLangItems"
+         (click)="onLanguageItemClicked(item['key'])">
+        <div class="icon">
+            {{item['emojiIcon']}}
+        </div>
+        <div class="name">
+            {{item['name']}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="same-line-box display-flex direction-column flex-items-xs-between">
+  <div class="logo-wrapper text-xs-center">
+    <img [src]="lottery?.logo" alt="{{lottery?.name}}" title="{{lottery?.name}}" class="logo">
+  </div>
+  <div class="title">
+    {{lottery?.name}} {{'BuySameLineBoxComponent.TEXT_NEXT_DRAW' | translate}}
+  </div>
+  <div class="content">
+    <ng-container *ngIf="upcomingDraw?.jackpot; else noJackpot">
+      <div class="jackpot" [innerHtml]="upcomingDraw.jackpot | jackpotFormat:upcomingDraw.currency_id"></div>
+    </ng-container>
+    <ng-template #noJackpot>
+      <span class="jackpot" [innerHtml]="upcomingDraw?.min_jackpot | jackpotFormat:upcomingDraw?.currency_id:'Million':'K':true">
+      </span>
+      <span class="no-jackpot">*</span>
+      <div class="no-jackpot-remark text-xs-center" *ngIf="!upcomingDraw?.jackpot">
+        {{'BuySameLineBoxComponent.TEXT_JACKPOT_EXPECT' | translate}}
+      </div>
+    </ng-template>
+  </div>
+  <div class="sub-content">
+    <button class="bt green navigation-btn" (click)="redirectToCart.emit()">
+      {{'BuySameLineBoxComponent.TEXT_USE_AGAIN' | translate}}
+    </button>
+    <div class="sub-content-text">
+      {{'BuySameLineBoxComponent.TEXT_ONLY' | translate}} {{upcomingDrawLinePrice * lines?.length | currency:upcomingDraw?.currency_id:'symbol':'1.2-2'}}
+    </div>
+  </div>
+</div>

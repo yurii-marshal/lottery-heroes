@@ -1,0 +1,28 @@
+<div class="container about-wrapper-component">
+  <div class="about-title" *ngIf="!isVisibleContent || (device$| async) === 'desktop'">
+    <div class="row">
+      <div class="col-md-9 offset-md-3 hidden-sm-down">
+        <h1 itemprop="name" class="aw-header">{{headline}}</h1>
+      </div>
+      <div class="col-md-9 offset-md-3 hidden-md-up">
+        {{'AboutMenuComponent.TEXT_ABOUT_US' | translate}}
+      </div>
+    </div>
+  </div>
+  <div class="row hidden-md-up" *ngIf="isVisibleContent || (device$| async) === 'desktop'">
+    <div class="col-xs-12">
+      <div class="link display-flex" routerLink="/about" (click)="hideContent()">
+        <span class="arrow biglotteryowin-left-open"></span>
+        {{'AboutMenuComponent.TEXT_BACK' | translate}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3" *ngIf="!isVisibleContent || (device$| async) === 'desktop'">
+      <app-about-menu (aboutClickEvent)="showContent()"></app-about-menu>
+    </div>
+    <div class="col-md-9" *ngIf="isVisibleContent || (device$| async) === 'desktop'">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

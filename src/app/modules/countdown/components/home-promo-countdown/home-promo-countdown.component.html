@@ -1,0 +1,37 @@
+<div class="time-left text-xs-center home-promo-countdown-component">
+  <span class="biglotteryowin-hourglass" *ngIf="showIcon"></span>
+  <div *ngIf="colonFormat; else noColonTpl">
+    <span class="days" *ngIf="showDays">
+                    <span>{{days}}</span>
+                    <span>{{daysWord}}</span>
+                  </span>
+    <ng-container *ngIf="seconds">
+      <span class="hours">{{hours < 10 ? '0' + hours : hours}}:</span><span
+      class="minutes">{{ minutes < 10 ? '0' + minutes : minutes}}:<span
+      class="seconds text-xs-left">{{seconds < 10 ? '0' + seconds : seconds}}</span>
+      </span>
+    </ng-container>
+  </div>
+
+  <ng-template #noColonTpl>
+    <ng-container *ngIf="days > 0">
+      <span class="hours">
+        {{days}} {{daysWord}}
+        {{hours > 0 ? (options.padHours && hours < 10 ? '0' + hours : hours) : ''}} {{hours > 0 ? hoursWord : ''}}
+      </span>
+    </ng-container>
+
+    <ng-container *ngIf="days === 0 && hours < 24 && hours >= 1">
+      <span class="hours">{{options.padHours && hours < 10 ? '0' + hours : hours}} {{hoursWord}}</span>
+      <span class="minutes">{{minutes > 0 ? (options.padMinutes && minutes < 10 ? '0' + minutes : minutes) : ''}} {{minutes > 0 ? minutesWord : ''}}
+    </span>
+    </ng-container>
+
+    <ng-container *ngIf="days === 0 && hours < 1">
+      <span class="hours">{{options.padMinutes && minutes < 10 ? '0' + minutes : minutes}} {{minutesWord}}</span>
+      <span class="minutes">{{options.padMinutes && seconds < 10 ? '0' + seconds : seconds}} {{secondsWord}}</span>
+    </ng-container>
+  </ng-template>
+</div>
+
+

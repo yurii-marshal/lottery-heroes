@@ -1,0 +1,23 @@
+<div role="dialog" class="modal notification-multiples-lines-component">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" (click)="close.emit()">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-xs-center" *ngIf="nonFreeLines.length < lottery.rules.min_lines"
+           [innerHTML]="'NotificationMultiplesLinesComponent.TEMPLATE_ADD_MORE_LINES' | translate: {params: {name: lottery.name, min_lines: lottery.rules.num_lines_multiple_of}}">
+        </p>
+        <p class="text-xs-center"
+           [innerHTML]="'NotificationMultiplesLinesComponent.TEMPLATE_ADD_MULTIPLE_LINES' | translate: {params: {name: lottery.name, num_lines_multiple_of: lottery.rules.num_lines_multiple_of}}"
+           *ngIf="(nonFreeLines.length % lottery.rules.num_lines_multiple_of) !== 0"></p>
+        <div class="row form-row">
+          <button class="col-xs-3 bt green" (click)="close.emit()">
+            {{'NotificationMultiplesLinesComponent.BUTTON_OK' | translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="close.emit()"></div>
+</div>

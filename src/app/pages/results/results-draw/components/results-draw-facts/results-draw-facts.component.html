@@ -1,0 +1,29 @@
+<div class="row results-draw-facts-component">
+  <div class="col-xs-12">
+    <h2 class="title-fan-facts">
+      {{'ResultsDrawFactsComponent.TEXT_MAIN_HEADER' | translate}}
+    </h2>
+  </div>
+  <div class="col-xs-12" *ngFor="let main of draw.winning_main_numbers">
+    <div class="row">
+      <div class="col-md-1 col-sm-2 col-xs-2 no-gutter display-flex flex-items-xs-right flex-items-xs-middle">
+        <div class="number main display-flex flex-items-xs-middle flex-items-xs-center">{{main}}</div>
+      </div>
+      <div class="col-md-11 col-sm-10 col-xs-10 display-flex flex-items-xs-middle">
+        <p class="fact" *ngIf="draw.number_facts[main]">{{draw.number_facts[main]}}</p>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="draw">
+    <div class="col-xs-12" *ngFor="let extra of draw.winning_extra_numbers">
+      <div class="row">
+        <div class="col-md-1 col-sm-2 col-xs-2 no-gutter display-flex flex-items-xs-right flex-items-xs-middle">
+          <div class="number extra display-flex flex-items-xs-middle flex-items-xs-center">{{extra}}</div>
+        </div>
+        <div class="col-md-11 col-sm-10 col-xs-10 display-flex flex-items-xs-middle">
+          <p class="fact" *ngIf="draw.number_facts[extra]">{{draw.number_facts[extra]}}</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

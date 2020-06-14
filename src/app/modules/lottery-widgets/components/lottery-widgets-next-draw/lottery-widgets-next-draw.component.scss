@@ -1,0 +1,95 @@
+@import '../../../../../scss/vars';
+
+.lottery-widgets-next-draw-component {
+  &.border {
+    border: 2px solid $GRAY-LIGHTER;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  &.aside {
+    margin-top: 5px;
+    margin-bottom: 20px;
+
+    .title-next-draw {
+      margin: 1.4rem 0;
+      font-size: 1rem;
+    }
+
+    .jackpot {
+      font-size: 48px;
+      line-height: 44px;
+
+      .str-mil {
+        font-size: 48px;
+      }
+    }
+
+    .bt.green {
+      margin: 1rem 0 0.5rem;
+    }
+
+    .time-left {
+      margin-bottom: 0.8rem;
+    }
+
+    .confetti {
+      display: none;
+    }
+  }
+
+  .title-next-draw {
+    color: $primary;
+    font-family: $headline;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .jackpot {
+    color: $GREEN;
+    font-family: $headline;
+    font-size: 70px;
+    font-weight: normal;
+    line-height: 60px;
+    position: relative;
+
+    .str-mil {
+      font-size: 50px;
+      line-height: 52px;
+      position: relative;
+    }
+  }
+
+  .bt.green {
+    width: 200px;
+    height: 45px;
+    font-size: 1.2rem;
+    margin: 1.2rem 0 .7rem;
+  }
+
+  .time-left {
+    color: $primary;
+    font-family: $headline;
+    font-weight: normal;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .rotate {
+    transform: rotateY(180deg);
+  }
+
+  .confetti {
+    width: 94px;
+    height: 150px;
+  }
+
+  .no-jackpot-remark {
+    font-size: $small;
+    line-height: 15px;
+    font-weight: bold;
+    color: $BLUE;
+    margin: 5px 0;
+  }
+}

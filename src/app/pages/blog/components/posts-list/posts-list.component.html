@@ -1,0 +1,30 @@
+<section class="posts-list">
+  <article class="artricle"
+           *ngFor="let post of posts">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <img src="{{host + post.image}}" title="{{post.title}}" alt="{{post.title}}">
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <!--<h2>-->
+          <!--<a [routerLink]="['/biglotteryowinzone', post.slug]" title="{{post.title}}">{{post.title}}</a>-->
+        <!--</h2>-->
+        <div class="post-date">{{post.date | date:'dd/MM/yyyy'}}</div>
+        <div class="excerpt" [innerHtml]="post.shortContent"></div>
+
+        <div class="row">
+          <div class="col-xs-12 display-flex flex-items-xs-middle flex-items-xs-between">
+            <!--<a class="read-more"-->
+               <!--[routerLink]="['/biglotteryowinzone', post.slug]">{{'PostsListComponent.REF_READ_MORE' | translate}}</a>-->
+            <app-social-container
+              direction="horizontal"
+              [textEnabled]="false"
+              [platforms]="['twitter','facebook','googlePlus','pinterest']"
+              [properties]="{title: post.title, description: post.shortContent, img: post.image, url: post.slug}">
+            </app-social-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>

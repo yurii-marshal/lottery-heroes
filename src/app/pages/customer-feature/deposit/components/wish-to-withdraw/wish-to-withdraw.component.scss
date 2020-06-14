@@ -1,0 +1,103 @@
+@import '../../../../../../scss/vars';
+
+.wish-to-withdraw-component {
+  max-width: 480px;
+  margin: 0;
+
+  .modal-header {
+    padding: 15px 15px 0.25rem;
+  }
+
+  .modal-body {
+    padding-top: 1rem;
+  }
+
+  .cur {
+    padding-left: 3px;
+  }
+
+  p {
+    color: $primary;
+  }
+
+  .input-wr {
+    input {
+      background: #fff;
+    }
+    textarea {
+      border: 0;
+      outline: none;
+      width: 100%;
+      min-height: 83px;
+      border-radius: 2px;
+      padding: 5px 12px;
+      box-shadow: 1px 1px 0 $GRAY-LIGHTER inset, -1px 1px 0 $GRAY-LIGHTER inset, 1px -1px 0 $GRAY-LIGHTER inset, -1px -1px 0 $GRAY-LIGHTER inset;
+
+      &:focus {
+        box-shadow: 1px 1px 0 #50A4DF inset, -1px 1px 0 #50A4DF inset, 1px -1px 0 #50A4DF inset, -1px -1px 0 #50A4DF inset;
+      }
+    }
+  }
+
+  .bt {
+    max-width: 295px;
+  }
+
+  .modal-body p + form {
+    margin-top: 15px;
+  }
+
+  .link {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 767px) {
+    .withdraw-amount {
+      font-size: 16px;
+    }
+    .bt {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .input-wr .icon-tooltip {
+      top: 23px;
+    }
+    .icon-tooltip:hover ~ .tooltip-container .tooltip-body {
+      right: 0;
+    }
+    .modal-dialog {
+      margin-top: 55px;
+    }
+  }
+
+  /* DESKTOP */
+
+  @media (min-width: 768px) {
+    .input-wr {
+      display: flex;
+      align-items: flex-start;
+
+      & + .input-wr {
+        margin-top: 10px;
+      }
+      label {
+        font-size: 16px;
+        max-width: 155px;
+        padding-top: 5px;
+      }
+    }
+    .link {
+      padding-left: 0;
+    }
+  }
+}
+
+
+
+

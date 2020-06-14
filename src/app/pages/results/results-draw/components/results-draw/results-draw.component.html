@@ -1,0 +1,78 @@
+<div class="container results-draw-component">
+  <div class="share-container">
+    <app-social-container
+        direction="vertical"
+        [expandable]="false"
+        [textEnabled]="false"
+        [platforms]="['twitter','facebook','googlePlus','pinterest']">
+    </app-social-container>
+  </div>
+
+  <app-results-draw-title-container></app-results-draw-title-container>
+  <div class="row">
+    <div class="col-md-9 col-sm-12">
+      <div class="row">
+        <div class="col-xs-12">
+          <app-results-draw-result-container></app-results-draw-result-container>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <app-results-draw-prizes-container></app-results-draw-prizes-container>
+        </div>
+      </div>
+      <div class="row widget-next-draw-field display-flex flex-items-xs-center hidden-md-up">
+        <div class="col-xs customized-col">
+          <app-lottery-widgets-next-draw-container></app-lottery-widgets-next-draw-container>
+        </div>
+      </div>
+      <div class="row widgets-statistic-filed display-flex flex-items-xs-center">
+        <div class="col-xs customized-col">
+          <app-lottery-widgets-statistics-container
+            [pageType]="'ResultPage'"
+            [lotteryId]="lotteryId$|async"
+          ></app-lottery-widgets-statistics-container>
+        </div>
+      </div>
+      <div class="row widgets-filed display-flex flex-items-md-between flex-items-xs-center">
+        <div class="col-md-6 col-sm-12 customized-col border">
+          <app-lottery-widgets-hot-numbers-container [lotteryId]="lotteryId$|async">
+          </app-lottery-widgets-hot-numbers-container>
+        </div>
+        <div class="col-md-6 col-sm-12 customized-col border">
+          <app-lottery-widgets-jackpot-changes-container [lotteryId]="lotteryId$|async">
+          </app-lottery-widgets-jackpot-changes-container>
+        </div>
+      </div>
+      <div class="row fan-facts-field" *ngIf="showDrawComponents.funFacts">
+        <div class="col-xs-12 customized-col border">
+          <app-results-draw-facts-container></app-results-draw-facts-container>
+        </div>
+      </div>
+      <div class="row fan-facts-field" *ngIf="showDrawComponents.description">
+        <div class="col-xs-12 customized-col border">
+          <app-results-draw-description-container></app-results-draw-description-container>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <app-results-draw-next-draw-container></app-results-draw-next-draw-container>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <app-lottery-widget-similar-container></app-lottery-widget-similar-container>
+        </div>
+      </div>
+    </div>
+
+    <!--- ASIDE WIDGETS --->
+    <div class="col-md-3 hidden-sm-down">
+      <app-results-aside></app-results-aside>
+    </div>
+  </div>
+</div>
+
+<app-lottery-widgets-conversion-lightbox-container
+  [lotteryId]="lotteryId$|async"
+></app-lottery-widgets-conversion-lightbox-container>

@@ -1,0 +1,166 @@
+<div class="container auth-container-component">
+  <div class="row">
+    <div class="col-xs">
+
+        <div class="modal-dialog"
+             [ngClass]="{'modal-dialog-desktop': (device === 'desktop')}">
+
+          <!--- SIGNUP --->
+          <div class="plain-modal"
+               [ngClass]="{
+                'sign-up': (device === 'desktop'),
+                'fade-in-left': (activeAuthComponent === 'signup'),
+                'fade-out-left': (activeAuthComponent === 'signin' || activeAuthComponent === 'forgot-password')
+                }" #signup *ngIf="isShowComponent('signup')">
+
+            <app-signup
+              [label]="'checkout'"
+              [btnSubmitText]="'Create Your Account'"
+              (successSignin)="onSuccessSignin()"
+              (showAnotherComponent)="showComponent($event)">
+            </app-signup>
+
+            <div class="modal-footer">
+              <p [appTranslate]="'AuthContainerComponent.TEMPLATE_GETTING_STARTED'"></p>
+            </div>
+          </div>
+
+
+          <!--- SIGNIN --->
+          <div class="plain-modal sign-in"
+               [ngClass]="{
+               'sign-in': (device === 'desktop'),
+               'fade-in-left': (activeAuthComponent === 'signin'),
+               'fade-out-left': (activeAuthComponent === 'forgot-password')
+               }"
+               #signin
+               *ngIf="isShowComponent('signin')">
+
+            <app-signin
+              (successSignin)="onSuccessSignin()"
+              (showAnotherComponent)="showComponent($event)"
+              (placeEmail)="placeEmail($event)"></app-signin>
+
+            <div class="modal-footer">
+              <p [appTranslate]="'AuthContainerComponent.TEMPLATE_NEED_HELP'"></p>
+            </div>
+          </div>
+
+          <!--- FORGOT PASSWORD --->
+          <div class="plain-modal"
+               [ngClass]="{
+               'forgot-password': (device === 'desktop'),
+                'fade-in-left': (activeAuthComponent === 'forgot-password')
+               }"
+               #fpassword
+               *ngIf="isShowComponent('forgot-password')">
+            <div class="modal-header">
+              <div class="back" (click)="showComponent('signin')"><img src="assets/images/svg/arrow-gray.svg"></div>
+              <div class="modal-title">
+                {{'AuthContainerComponent.TEXT_FORGOT_PASS' | translate}}
+              </div>
+            </div>
+
+            <div class="plain-modal-inner">
+              <app-forgot-password
+                (saveEmail)="onSaveEmail($event)"
+                (showAnotherComponent)="showComponent($event)"
+                [placeEmailValue]="savedEmail$"></app-forgot-password>
+            </div>
+
+            <div class="modal-footer">
+              <p [appTranslate]="'AuthContainerComponent.TEMPLATE_TRY_CHAT'"></p>
+            </div>
+          </div>
+
+
+          <!--- EMAIL SENT SUCCESSFULLY --->
+          <div class="plain-modal email-sent-success"
+               *ngIf="activeAuthComponent === 'email-sent-success'">
+            <div class="modal-header">
+              <div class="modal-title">
+                {{'AuthContainerComponent.TEXT_HELP' | translate}}
+              </div>
+            </div>
+
+            <div class="plain-modal-inner">
+              <app-email-sent-successfully
+                [emailForReset]="emailForReset"></app-email-sent-successfully>
+            </div>
+
+            <div class="modal-footer">
+              <p [appTranslate]="'AuthContainerComponent.TEMPLATE_MODAL_NEED_HELP'"></p>
+            </div>
+          </div>
+
+
+          <!--- REGISTER FROM BLOCKED COUNTRY --->
+          <div class="plain-modal"
+               [ngClass]="{'register-forbidden-country': (device === 'desktop')}"
+               #registerForbiddenCountry
+               *ngIf="isShowComponent('register-forbidden-country')">
+            <app-register-from-forbidden-country
+              (showAnotherComponent)="showComponent($event)"></app-register-from-forbidden-country>
+          </div>
+
+
+          <!--- LOGIN FROM BLOCKED COUNTRY --->
+          <div class="plain-modal"
+               [ngClass]="{'login-forbidden-country': (device === 'desktop')}"
+               #loginForbiddenCountry
+               *ngIf="isShowComponent('login-forbidden-country')">
+            <app-signin-from-forbidden-country
+              (showAnotherComponent)="showComponent($event)"></app-signin-from-forbidden-country>
+          </div>
+
+
+          <!--- USER STATUS SELF-EXCLUDED --->
+          <div class="plain-modal status-self-excluded" #statusSelfExcluded>
+            <ng-container *ngIf="activeAuthComponent === 'status-self-excluded'">
+              <div class="modal-header">
+                <div class="back" (click)="showComponent('signin')"><img src="assets/images/svg/arrow-gray.svg"></div>
+                <div class="modal-ico"><img src="assets/images/svg/lock_icon.svg"></div>
+                <div class="modal-title">
+                  {{'AuthContainerComponent.TEXT_HELP' | translate}}
+                </div>
+              </div>
+              <app-user-status-self-excluded
+                (showAnotherComponent)="showComponent($event)"></app-user-status-self-excluded>
+            </ng-container>
+          </div>
+
+
+          <!--- USER STATUS BLOCKED --->
+          <div class="plain-modal status-blocked" #statusBlocked>
+            <ng-container *ngIf="activeAuthComponent === 'status-blocked'">
+              <div class="modal-header">
+                <div class="back" (click)="showComponent('signin')"><img src="assets/images/svg/arrow-gray.svg"></div>
+                <div class="modal-ico"><img src="assets/images/svg/lock_icon.svg"></div>
+                <div class="modal-title">
+                  {{'AuthContainerComponent.TEXT_ACC_BLOCKED' | translate}}
+                </div>
+              </div>
+              <app-user-status-blocked
+                (showAnotherComponent)="showComponent($event)"></app-user-status-blocked>
+            </ng-container>
+          </div>
+
+          <!--- USER STATUS CLOSED --->
+          <div class="plain-modal status-closed" #statusClosed>
+            <ng-container *ngIf="activeAuthComponent === 'status-closed'">
+              <div class="modal-header">
+                <div class="back" (click)="showComponent('signin')"><img src="assets/images/svg/arrow-gray.svg"></div>
+                <div class="modal-ico"><img src="assets/images/svg/lock_icon.svg"></div>
+                <div class="modal-title">
+                  {{'AuthContainerComponent.TEXT_ACC_BLOCKED' | translate}}
+                </div>
+              </div>
+              <app-user-status-closed
+                (showAnotherComponent)="showComponent($event)"></app-user-status-closed>
+            </ng-container>
+          </div>
+
+        </div>
+    </div>
+  </div>
+</div>

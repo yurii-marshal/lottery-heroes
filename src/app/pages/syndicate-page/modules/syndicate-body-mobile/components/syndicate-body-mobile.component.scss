@@ -1,0 +1,99 @@
+@import '../../../../../../scss/vars';
+
+.syndicate-title {
+  color: $BLUE;
+  margin-top: 30px;
+  text-transform: uppercase;
+}
+
+.syndicate-icon {
+  margin-top: 5px;
+}
+
+.lines-summary {
+  font-size: 26px;
+  line-height: 26px;
+
+  span {
+    font-size: $small;
+  }
+}
+
+.lines-shares {
+  font-size: $BASIC;
+  color: $GRAY-LIGHT;
+  line-height: 19px;
+}
+
+.price-per-share {
+  font-size: $small;
+  color: $GRAY-LIGHT;
+}
+
+.share-title {
+  font-size: $BASIC;
+}
+
+.shares-controller {
+  margin: 15px 0;
+
+  input {
+    height: 70px;
+    width: 90px;
+    font-size: 32px;
+    color: #000;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    opacity: 1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &[disabled] {
+      background: #fff;
+    }
+  }
+
+  .control-button {
+    height: 70px;
+    width: 70px;
+    color: $GREEN;
+    font-size: 38px;
+    font-weight: bold;
+    background: #f4f4f4;
+    border: 1px solid $GRAY-LIGHTER;
+    padding: 0 0 5px 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:disabled {
+      color: $GRAY-LIGHT;
+    }
+  }
+}
+
+.progressbar-wrapper {
+  .progressbar {
+    height: 5px;
+    width: 180px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: $GRAY-LIGHT;
+    overflow: hidden;
+
+    .progressbar-body {
+      background: $BLUE;
+      height: 5px;
+      border-radius: 5px;
+      width: 50%;
+      transition: width .2s ease;
+    }
+  }
+  .bar-counter {
+    color: $GRAY-LIGHT;
+    font-size: $small;
+    margin: 5px 0 20px;
+  }
+}

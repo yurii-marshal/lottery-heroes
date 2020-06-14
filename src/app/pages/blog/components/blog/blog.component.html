@@ -1,0 +1,76 @@
+<div class="blog">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs">
+        <section class="search-row">
+          <div class="row">
+            <div class="col-xs text-xs-center">
+              <!--<h1>{{'BlogComponent.TEXT_BIGLOTTERYOWINONE' | translate}}</h1>-->
+              <!--<div class="display-flex navbar">-->
+                <!--<a [routerLink]="['/biglotteryowinzone']"-->
+                   <!--class="navbar-link"-->
+                   <!--routerLinkActive="active"-->
+                   <!--[routerLinkActiveOptions]="{exact: true}">-->
+                  <!--{{'BlogComponent.REF_ALL' | translate}}-->
+                <!--</a>-->
+                <!--<a [routerLink]="['/biglotteryowinzone/blog']"-->
+                   <!--class="navbar-link"-->
+                   <!--routerLinkActive="active"-->
+                   <!--[routerLinkActiveOptions]="{exact: true}">-->
+                  <!--{{'BlogComponent.REF_BLOG' | translate}}-->
+                <!--</a>-->
+                <!--<a [routerLink]="['/biglotteryowinzone/lottery-news']"-->
+                   <!--class="navbar-link"-->
+                   <!--routerLinkActive="active"-->
+                   <!--[routerLinkActiveOptions]="{exact: true}">-->
+                  <!--{{'BlogComponent.REF_NEWS' | translate}}-->
+                <!--</a>-->
+                <!--<a [routerLink]="['/biglotteryowinzone/lottery-winners-stories']"-->
+                   <!--class="navbar-link"-->
+                   <!--routerLinkActive="active"-->
+                   <!--[routerLinkActiveOptions]="{exact: true}">-->
+                  <!--{{'BlogComponent.REF_STORIES' | translate}}-->
+                <!--</a>-->
+              <!--</div>-->
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs">
+        <!--<img src="https://www.biglotteryowin.co.uk/biglotteryowinzone/wp-content/uploads/sites/2/2017/05/10_Best_Lotteries.jpg"-->
+             <!--alt="10 Best Lotteries" title="{{'BlogComponent.TITLE_10_BEST' | translate}}">-->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs">
+        <app-posts-list
+          [posts]="posts"
+          [host]="host"
+        ></app-posts-list>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs">
+        <app-blog-paginator
+          *ngIf="totalPages > 1"
+          [totalPages]="totalPages"
+          [activePage]="activePage"
+        ></app-blog-paginator>
+      </div>
+    </div>
+
+    <div class="share-container">
+      <app-social-container
+        direction="vertical"
+        [textEnabled]="false"
+        [platforms]="['twitter','facebook','googlePlus','pinterest']"
+      ></app-social-container>
+    </div>
+  </div>
+</div>

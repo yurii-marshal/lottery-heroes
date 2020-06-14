@@ -1,0 +1,24 @@
+<div class="lottery-news-component">
+  <h3 class="section-title">{{lottery?.name}}</h3>
+  <div *ngIf="!lotteryWordpressPosts || lotteryWordpressPosts.length === 0">
+    <p>
+      {{'LotteryNewsComponent.TEXT_COMING_SOON' | translate}}
+    </p>
+  </div>
+  <div *ngIf="lotteryWordpressPosts && lotteryWordpressPosts.length !== 0">
+    <div *ngFor="let post of lotteryWordpressPosts" class="row">
+      <div class="col-xs-12 col-lg-6 img-block">
+        <img class="post-img" [src]="post?.postImgLink$ | async">
+      </div>
+      <div class="col-xs-12 col-lg-6 content-block">
+        <h3 class="post-title">{{ post?.title.rendered }}</h3>
+        <p class="post-date">{{ post?.date | date: 'dd/MM/yy' }}</p>
+        <div class="post-content" [innerHTML]="post?.excerpt.rendered"></div>
+        <p class="more"><a [href]="post?.link">
+          {{'LotteryNewsComponent.TEXT_READ_MORE' | translate}}
+        </a></p>
+      </div>
+    </div>
+    <p class="more-stories" appTranslate="LotteryNewsComponent.TEMPLATE_MORE_NESW"></p>
+  </div>
+</div>

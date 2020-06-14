@@ -1,0 +1,12 @@
+<div class="row results-draw-title-component">
+  <div class="col-xs">
+    <h1 class="title-per-lottery display-flex flex-items-xs-middle flex-items-xs-left" itemprop="name">
+      <ng-container *ngIf="lottery.id === 'powerball' || lottery.id === 'euromillions' || lottery.id === 'euromillions-ie'; else regular">
+        {{lottery.name}} {{'ResultsDrawTitleComponent.TEXT_DRAW_RES' | translate}} - {{dateFormated}}
+      </ng-container>
+      <ng-template #regular>
+        {{lottery.name}}
+      </ng-template>
+    </h1>
+  </div>
+</div>

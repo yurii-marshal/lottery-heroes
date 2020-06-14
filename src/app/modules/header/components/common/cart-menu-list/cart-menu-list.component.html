@@ -1,0 +1,45 @@
+<div class="container-fluid cart-menu-list-component"
+     *ngIf="items && items.length > 0"
+     [ngClass]="{'scroll': items.length > 4}">
+  <div class="container-simple" [ngClass]="{'container-scrolable': items.length > 4}">
+    <ng-container *ngFor="let item of items; let index = index">
+      <ng-container [ngSwitch]="item.type">
+        <app-cart-menu-list-lottery-container
+          *ngSwitchCase="'lottery'"
+          [item]="item"
+          (deleteItemEvent)="deleteItemEvent.emit($event)"
+        ></app-cart-menu-list-lottery-container>
+        <app-cart-menu-list-combo-container
+          *ngSwitchCase="'combo'"
+          [item]="item"
+          (deleteItemEvent)="deleteItemEvent.emit($event)"
+        ></app-cart-menu-list-combo-container>
+        <app-cart-menu-list-syndicate-container
+          *ngSwitchCase="'syndicate'"
+          [item]="item"
+          (deleteItemEvent)="deleteItemEvent.emit($event)"
+        ></app-cart-menu-list-syndicate-container>
+      </ng-container>
+    </ng-container>
+    <div class="row">
+      <div class="col-xs display-flex flex-items-lg-between flex-items-xs-middle">
+        <div class="balance" *ngIf="balance">
+          {{'CartMenuListComponent.TEXT_MY_BALANCE' | translate}}: {{siteCurrencySymbol}}{{balance.customer_total|number:'1.2-2'}}
+        </div>
+        <div class="cart-total">
+          {{'CartMenuListComponent.TEXT_TOTAL' | translate}}: {{siteCurrencySymbol}}{{totalPrice|number:'1.2-2'}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs display-flex flex-items-xs-right flex-items-xs-middle">
+        <a class="bt green"
+           [routerLink]="['/cart']"
+           (click)="onTrackNavigationClicked('Go to checkout')">
+          {{'CartMenuListComponent.REF_CHECKOUT' | translate}}
+          <img src="assets/images/svg/arrow-white.svg" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

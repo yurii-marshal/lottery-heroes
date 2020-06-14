@@ -1,0 +1,13 @@
+<div class="app-offers-menu-list-mobile">
+	<ng-container *ngFor="let lotteryId of lotteryIds">
+		<app-offers-menu-list-item-container
+			[lotteryId]="lotteryId"
+		></app-offers-menu-list-item-container>
+	</ng-container>
+
+	<a class="col-sm display-flex flex-items-xs-middle flex-items-xs-between hidden-sm-up all-lotteries"
+		 [routerLink]="['/lotteries']" [queryParams]="{sort: 'offers'}"
+		 appCloseMobileMenu>
+		{{'OffersMenuListMobileComponent.REF_SEE_OFFERS' | translate}} <i class="biglotteryowin-right-open"></i>
+	</a>
+</div>

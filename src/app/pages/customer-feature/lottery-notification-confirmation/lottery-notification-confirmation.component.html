@@ -1,0 +1,17 @@
+<div class="container lottery-notification-confirmation-component" *ngIf="isShowContent">
+  <div class="row">
+    <div class="col-xs-12 col-md-9">
+      <h1 class="h1">
+        {{'LotteryNotificationConfirmationComponent.TEXT_HEADER' | translate}}
+      </h1>
+      <p [innerHTML]="'LotteryNotificationConfirmationComponent.TEMPLATE_NOTIFICATION' | translate: {param: lotteryName}"></p>
+      <p>
+        <a [routerLink]="['/' + (lotterySlug$ | async)]">{{lotteryName}}
+          {{'LotteryNotificationConfirmationComponent.TEXT_RESULTS' | translate}}</a>
+      </p>
+    </div>
+    <div class="col-xs-12 col-md-9 text-xs-center">
+      <img src="assets/images/lottery-notification/lottery-notification-img.png">
+    </div>
+  </div>
+</div>

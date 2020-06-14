@@ -1,0 +1,64 @@
+@import '../../../scss/vars';
+
+.steps-component {
+  .ticket-room-steps {
+    margin-top: -12px;
+    margin-bottom: 9px;
+    border: 2px solid $GRAY-LIGHTER;
+    border-radius: 100rem;
+    color: $primary;
+    font-family: $headline;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+
+    .step-number {
+      color: inherit;
+      span {
+        margin: 7px;
+        border: 2px solid $GRAY-LIGHTER;
+        border-radius: 100rem;
+        color: #b1b1b1;
+        font-family: $headline;
+        font-size: 1rem;
+        width: 1.9rem;
+        height: 1.9rem;
+      }
+    }
+    .step-number.active {
+      color: $GREEN;
+      span {
+        border-color: $GREEN;
+        color: $GREEN;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .ticket-room-steps {
+      margin-top: 0.5rem;
+
+      .step-number {
+        padding: 0 3px;
+        font-size: 11px;
+
+        span {
+          min-width: 20px;
+          width: 20px;
+          height: 20px;
+          font-size: 11px;
+          border-width: 1px;
+          margin: 4px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    padding: 0;
+
+    .ticket-room-steps {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+  }
+}

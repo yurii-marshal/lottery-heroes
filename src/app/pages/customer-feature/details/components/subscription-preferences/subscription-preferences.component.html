@@ -1,0 +1,59 @@
+<div class="container d-section responsible-gaming account-subscription-preferences-component">
+
+  <!--- Header --->
+  <div class="row flex-items-xs-top flex-items-xs-between header">
+    <div class="title hidden-md-up">
+      {{'SubscriptionPreferencesComponent.TEXT_SUBSCRIPTION_PREFERENCES' | translate}}
+    </div>
+    <div class="title hidden-sm-down">
+      {{'SubscriptionPreferencesComponent.TEXT_SUBSCRIPTION_PREFERENCES' | translate}}
+    </div>
+
+    <div class="action">
+      <label class="switch">
+        <input type="checkbox" [checked]="isShownSubscriptions"
+               (change)="isShownSubscriptions=!isShownSubscriptions">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+
+  <!--- [Non] Editable data --->
+  <div class="row">
+    <div class="editable-data" *ngIf="isShownSubscriptions">
+      <div class="input-wr">
+        <h5 class="sub-header">
+          {{'SubscriptionPreferencesComponent.TEXT_KEEP_INFORMED_ABOUT' | translate}}
+        </h5>
+        <div class="checker-container">
+          <div class="round">
+            <input disabled="disabled" type="checkbox" [attr.checked]="true" id="sp"/>
+            <label for="sp"></label>
+            <div class="label-desc">
+              {{'SubscriptionPreferencesComponent.TEXT_SPECIAL_PROMOTIONS' | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="input-wr">
+        <h5 class="sub-header">
+          {{'SubscriptionPreferencesComponent.TEXT_KEEP_INFORMED_BY' | translate}}
+        </h5>
+        <div class="checker-container">
+          <div class="round">
+            <input disabled="disabled" type="checkbox" [attr.checked]="true" id="email"/>
+            <label for="email"></label>
+            <div class="label-desc">
+              {{'SubscriptionPreferencesComponent.TEXT_EMAIL' | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--- Confirmation modal --->
+  <div role="dialog" *ngIf="false" class="modal">
+    <script>(function(t,e,s,o){var n,c,l;t.SMCX=t.SMCX||[],e.getElementById(o)||(n=e.getElementsByTagName(s),c=n[n.length-1],l=e.createElement(s),l.type="text/javascript",l.async=!0,l.id=o,l.src=["https:"===location.protocol?"https://":"http://","widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd40_2BjOGTgGy4uRb3U9EJnpljA3pmV72amgVAOElaxoG0.js"].join(""),c.parentNode.insertBefore(l,c))})(window,document,"script","smcx-sdk");</script>
+  </div>
+</div>

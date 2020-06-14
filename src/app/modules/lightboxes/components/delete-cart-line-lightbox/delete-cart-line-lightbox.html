@@ -1,0 +1,23 @@
+<div *ngIf="isShowlightbox" role="dialog" class="modal delete-cart-line-lightbox-component">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" (click)="closeLightbox()">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-xs-center">
+          {{'DeleteCartLineLightboxComponent.TEXT_REMOVE_LINE' | translate}}
+        </p>
+        <div class="row form-row">
+          <button class="col-xs-11 col-md-8 bt green cancel" (click)="clickBtn(getBtnByType('close'))">
+            {{'DeleteCartLineLightboxComponent.TEXT_DECLINE_REMOVE' | translate}}
+          </button>
+          <div class="col-xs-12 link remove" (click)="clickBtn(getBtnByType('confirm'))">
+            {{'DeleteCartLineLightboxComponent.TEXT_ACCEPT_REMOVE' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeLightbox()"></div>
+</div>

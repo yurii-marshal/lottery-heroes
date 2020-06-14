@@ -1,0 +1,40 @@
+<div role="dialog" class="modal lottery-widgets-conversion-lightbox-component"
+     *ngIf="isConversionLightBoxShown">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" (click)="closeConversionLightBox()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="lottery-wrapper">
+          <div class="lottery-logo">
+            <img src="{{lotteryLogo}}"
+                 alt="{{lotteryName}}"
+                 title="{{lotteryName}}">
+          </div>
+        </div>
+        <div class="container">
+          <div class="row flex-items-xs-center content">
+            <div class="col-xs-12 text-xs-center">
+              <h2>
+                {{'LotteryWidgetsConversionLightboxComponent.TEXT_PLAY_FROM_COUNTRY' | translate}}
+                <b>{{country}}!</b></h2>
+              <p>
+                {{'LotteryWidgetsConversionLightboxComponent.TEXT_SAFE_SIMPLE' | translate}}
+              </p>
+              <button class="bt green"
+                      [routerLink]="['/', lotterySlug]"
+                      (click)="goToPlay.emit(lotteryName)">
+                {{'LotteryWidgetsConversionLightboxComponent.BUTTON_READY_TO_PLAY' | translate}}
+              </button>
+              <button class="link" (click)="cancelConversionLightBox()">
+                {{'LotteryWidgetsConversionLightboxComponent.BUTTON_LATER' | translate}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeConversionLightBox()"></div>
+</div>

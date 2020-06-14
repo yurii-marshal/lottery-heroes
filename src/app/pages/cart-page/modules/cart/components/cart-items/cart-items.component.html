@@ -1,0 +1,153 @@
+<section class="container shopping-list cart-items-component" *ngIf="totalPriceWithDiscount">
+  <div class="table-body" *ngFor="let item of items; trackBy: trackByItemId; let index = index">
+    <ng-container [ngSwitch]="item.type">
+      <!-- COMBO -->
+      <app-cart-item-combo-container
+        *ngSwitchCase="'combo'"
+        [item]="item"
+        [expandedLines]="expandedLines"
+      ></app-cart-item-combo-container>
+
+      <!-- BUNDLE -->
+      <app-cart-item-bundle-container
+        *ngSwitchCase="'bundle'"
+        [item]="item"
+        [expandedLines]="expandedLines"
+      ></app-cart-item-bundle-container>
+
+      <!-- LOTTERY -->
+      <app-cart-item-lottery-container
+        *ngSwitchCase="'lottery'"
+        [item]="item"
+        [index]="index"
+        [expandedLines]="expandedLines"
+      ></app-cart-item-lottery-container>
+
+      <!-- SYNDICATE -->
+      <app-cart-item-syndicate-container
+        *ngSwitchCase="'syndicate'"
+        [item]="item"
+        [expandedLines]="expandedLines"
+      ></app-cart-item-syndicate-container>
+    </ng-container>
+  </div>
+
+  <app-cart-add-lottery-dropdown-container *ngIf="lotteryIdsNotInCart.length">
+  </app-cart-add-lottery-dropdown-container>
+
+  <div class="row summary"
+       [ngClass]="{'open' : breakdownIsOpen,
+                   'closed' : !breakdownIsOpen,
+                   'with-border' : !(lotteryIdsNotInCart.length)}">
+    <div class="col-md-7 display-flex flex-items-xs-top flex-items-xs-left hidden-sm-down">
+      <div class="special-offers display-flex flex-items-xs-left flex-items-xs-middle direction-row">
+        <img src="assets/images/cart-page/star-cart.svg" alt="Special Offers">
+        {{'CartItemsComponent.TEXT_SPECIAL_OFFERS' | translate}}
+      </div>
+    </div>
+    <div class="col-md-5 col-lg-4 gutter-xs-off gutter-sm-off breakdown-wr">
+      <div class="row">
+        <div
+          class="col-xs-12 col-sm-6 offset-sm-5 col-md-11 offset-md-1 display-flex flex-items-xs-middle flex-items-xs-between">
+          <span class="type">
+            {{'CartItemsComponent.TEXT_SUBTOTAL' | translate}}
+          </span>
+          <span class="val">
+            {{(totalPriceWithDiscount.customer_original_amount) | currency:siteCurrencyId:'symbol':'1.2-2'}}
+          </span>
+        </div>
+      </div>
+      <div class="row discount" *ngIf="totalPriceWithDiscount.customer_discount_amount">
+        <div
+          class="col-xs-12 col-sm-6 offset-sm-5 col-md-11 offset-md-1 display-flex flex-items-xs-middle flex-items-xs-between">
+          <span class="type">
+            {{'CartItemsComponent.TEXT_DISCOUNT' | translate}}
+          </span>
+          <span class="val">{{totalPriceWithDiscount.customer_discount_amount | currency:siteCurrencyId:'symbol':'1.2-2'}}</span>
+        </div>
+      </div>
+      <ng-container *ngIf="balance">
+        <div class="row" *ngIf="balance.customer_total > 0">
+          <div
+            class="col-xs-12 col-sm-6 offset-sm-5 col-md-11 offset-md-1 display-flex flex-items-xs-middle flex-items-xs-between">
+            <span class="type">
+              {{'CartItemsComponent.TEXT_FROM_BALANCE' | translate}}
+            </span>
+            <span class="val">
+              <ng-container *ngIf="((totalPriceWithDiscount.customer_total_amount - balance.customer_total) >= minimumDeposit) ||
+              (0 >= (totalPriceWithDiscount.customer_total_amount - balance.customer_total)); else balanceRemainder">
+                {{(balance.customer_total >= totalPriceWithDiscount.customer_total_amount
+                ? (totalPriceWithDiscount.customer_total_amount)
+                : (balance.customer_total)) | currency:siteCurrencyId:'symbol':'1.2-2'}}
+              </ng-container>
+              <ng-template #balanceRemainder>
+                <p class="balance-remainder">({{(totalPriceWithDiscount.customer_total_amount - minimumDeposit)
+                  | currency:siteCurrencyId:'symbol':'1.2-2'}})
+                </p>
+                <p class="balance-through">
+                  {{(balance.customer_total >= totalPriceWithDiscount.customer_total_amount
+                ? (totalPriceWithDiscount.customer_total_amount)
+                : (balance.customer_total)) | currency:siteCurrencyId:'symbol':'1.2-2'}}
+                </p>
+              </ng-template>
+            </span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="col-md-12 gutter-xs-off gutter-sm-off">
+      <div class="row total">
+        <div
+          class="col-md-5 col-lg-4 offset-md-7 gutter-xl-off gutter-lg-off gutter-md-off gutter-sm-off gutter-xs-off">
+          <div
+            class="col-xs-12 col-sm-6 offset-sm-5 col-md-11 offset-md-1 display-flex flex-items-xs-middle flex-items-xs-between md-total">
+            <div>
+              <span class="type">
+                {{'CartItemsComponent.TEXT_TOTAL' | translate}}
+              </span>
+              <ng-container *ngIf="balance; else breakdownMinimumCharge">
+                <span
+                  [ngClass]="{'breakdown-minimum-charge': !((totalPriceWithDiscount.customer_total_amount - balance.customer_total) >= minimumDeposit) || (0 >= (totalPriceWithDiscount.customer_total_amount - balance.customer_total))}"
+                  class="hidden-sm-up link breakdown"></span>
+              </ng-container>
+              <ng-template #breakdownMinimumCharge>
+                <span class="hidden-sm-up link breakdown"></span>
+              </ng-template>
+            </div>
+            <span class="val">
+              <ng-container *ngIf="balance; else unauthorizedUser">
+                <ng-container
+                  *ngIf="(totalPriceWithDiscount.customer_total_amount - balance.customer_total) >= 0.01; else isEnoughBalance">
+                  <ng-container *ngIf="((totalPriceWithDiscount.customer_total_amount - balance.customer_total) >= minimumDeposit) ||
+              (0 >= (totalPriceWithDiscount.customer_total_amount - balance.customer_total));
+                   else isMinimumDeposit">
+                    {{(totalPriceWithDiscount.customer_total_amount - balance.customer_total) | currency:siteCurrencyId:'symbol':'1.2-2'}}
+                  </ng-container>
+                  <ng-template #isMinimumDeposit>
+                    <p class="minimum-charge">
+                      {{'CartItemsComponent.TEXT_MIN_CHARGE' | translate}}
+                    </p>
+                    <span class="val">{{minimumDeposit | currency:siteCurrencyId:'symbol':'1.2-2'}}</span>
+                  </ng-template>
+                </ng-container>
+                <ng-template #isEnoughBalance>
+                  {{000 | currency:siteCurrencyId:'symbol':'1.2-2'}}
+                </ng-template>
+              </ng-container>
+              <ng-template #unauthorizedUser>
+                {{totalPriceWithDiscount.customer_total_amount | currency:siteCurrencyId:'symbol':'1.2-2'}}
+              </ng-template>
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 display-flex flex-items-xs-center">
+      <button class="bt green proceed" (click)="checkoutEvent.emit()" id="proceed-to-checkout">
+        {{'CartItemsComponent.BUTTON_SECURE_CHECKOUT' | translate}}
+      </button>
+    </div>
+  </div>
+</section>

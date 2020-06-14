@@ -1,0 +1,70 @@
+<app-about-wrapper headline="Top 5 Questions">
+  <div class="faq-component">
+    <div class="row hidden-md-up">
+      <div class="col-xs-12">
+        <h1 class="faq-title" itemprop="name">{{'FaqComponent.TEXT_MAIN_HEADER' | translate}}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 list-items">
+
+        <div itemscope itemtype="http://schema.org/Question" class="item">
+          <input type="checkbox" id="q1" name="item-checkbox" (change)="setHeight($event)">
+          <label class="item-title" for="q1"></label>
+          <h2 itemprop="name">{{'FaqComponent.TEXT_HEADER_1' | translate}}</h2>
+          <div class="item-wrapper">
+            <div itemprop="suggestedAnswer" itemscope itemtype="http://schema.org/Answer" class="item-body">
+              <p itemprop="text" [innerHTML]="'FaqComponent.TEXT_CONTENT_1' | translate"></p>
+            </div>
+          </div>
+        </div>
+
+        <div itemscope itemtype="http://schema.org/Question" class="item">
+          <input type="checkbox" id="q2" name="item-checkbox" (change)="setHeight($event)">
+          <label class="item-title" for="q2"></label>
+          <h2 itemprop="name">{{'FaqComponent.TEXT_HEADER_2' | translate}}</h2>
+          <div class="item-wrapper">
+            <div itemprop="suggestedAnswer" itemscope itemtype="http://schema.org/Answer" class="item-body">
+              <p itemprop="text" [innerHTML]="'FaqComponent.TEXT_CONTENT_2' | translate"></p>
+            </div>
+          </div>
+        </div>
+
+        <div itemscope itemtype="http://schema.org/Question" class="item">
+          <input type="checkbox" id="q3" name="item-checkbox" (change)="setHeight($event)">
+          <label class="item-title" for="q3"></label>
+          <h2 itemprop="name">{{'FaqComponent.TEXT_HEADER_3' | translate}}</h2>
+          <div class="item-wrapper">
+            <div itemprop="suggestedAnswer" itemscope itemtype="http://schema.org/Answer" class="item-body">
+              <p itemprop="text" [innerHTML]="'FaqComponent.TEXT_CONTENT_3' | translate"></p>
+            </div>
+          </div>
+        </div>
+
+        <div itemscope itemtype="http://schema.org/Question" class="item">
+          <input type="checkbox" id="q4" name="item-checkbox" (change)="setHeight($event)">
+          <label class="item-title" for="q4"></label>
+          <h2 itemprop="name">{{'FaqComponent.TEXT_HEADER_4' | translate}}</h2>
+          <div class="item-wrapper">
+            <div itemprop="suggestedAnswer" itemscope itemtype="http://schema.org/Answer" class="item-body">
+              <p itemprop="text" [innerHTML]="'FaqComponent.TEXT_CONTENT_4' | translate"></p>
+            </div>
+          </div>
+        </div>
+
+        <div itemscope itemtype="http://schema.org/Question" class="item">
+          <input type="checkbox" id="q5" name="item-checkbox" (change)="setHeight($event)">
+          <label class="item-title" for="q5"></label>
+          <h2 itemprop="name">{{'FaqComponent.TEXT_HEADER_5' | translate}}</h2>
+          <div class="item-wrapper">
+            <div itemprop="suggestedAnswer" itemscope itemtype="http://schema.org/Answer" class="item-body">
+              <p itemprop="text" [innerHTML]="'FaqComponent.TEXT_CONTENT_5' | translate"></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</app-about-wrapper>

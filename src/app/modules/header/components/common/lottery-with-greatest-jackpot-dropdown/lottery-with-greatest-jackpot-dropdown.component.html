@@ -1,0 +1,68 @@
+<div class="display-flex flex-items-xs-center direction-column lottery-with-greatest-jackpot-dropdown-component" *ngIf="lottery && upcomingDraw">
+
+  <!--- Ribbon --->
+  <div *ngIf="isShowRibbon" class="ribbon-wrapper small" [ngClass]="freeLineClass">
+    <p (click)="addToCartEvent([lottery.id, linesAmount])" class="ribbon-text">{{ribbonText}}</p>
+    <img src="assets/images/lottery-free-line/ribbon-small-shadow.svg" alt="{{ribbonText}}" class="ribbon">
+  </div>
+
+  <div class="lotteries-logo">
+    <img [src]="lottery.logo" alt="{{lottery.name}}" title="{{lottery.name}}" class="logo">
+  </div>
+  <div class="jackpot">
+    <ng-container *ngIf="upcomingDraw.jackpot; else noJackpot">
+      <span [innerHtml]="upcomingDraw.jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+    </ng-container>
+    <ng-template #noJackpot>
+      <span [innerHtml]="upcomingDraw.min_jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+      <span class="no-jackpot">*</span>
+      <div class="no-jackpot-remark text-xs-center">
+        {{'LotteryWithGreatestJackpotDropdownComponent.TEXT_JACKPOT_EXPECTED' | translate}}
+      </div>
+    </ng-template>
+  </div>
+
+  <button class="bt green"
+          (click)="addToCartEvent([lottery.id, linesAmount])">
+    <ng-container *ngIf="isfreeLine; else QuickPicksTpl">
+      <span class="quick-picks">{{lineToQualify}}
+        {{'LotteryWithGreatestJackpotDropdownComponent.TEXT_QUICK_PICKS' | translate}}
+      </span>
+      <span class="freeline">
+        +{{linesFree}} {linesFree, plural, =1 {Line} other {Lines}}
+        {{'LotteryWithGreatestJackpotDropdownComponent.TEXT_FREE' | translate}}
+        <span class="arrows biglotteryowin-right-open"></span>
+        <span class="arrows biglotteryowin-right-open"></span>
+      </span>
+    </ng-container>
+    <ng-template #QuickPicksTpl>
+      <span class="quick-picks">
+      {{'LotteryWithGreatestJackpotDropdownComponent.TEXT_FOUR_PICKS' | translate}}
+      </span>
+    </ng-template>
+    <ng-container *ngIf="isfreeLine; else defaultLines">
+				<span class="cost">
+					{{'LotteryWithGreatestJackpotDropdownComponent.TEXT_ONLY' | translate}}
+                  {{(lotteryLinePrice$ | async) * lineToQualify | currency:upcomingDraw.currency_id:'symbol':'1.2-2'}}
+				</span>
+    </ng-container>
+    <ng-template #defaultLines>
+				<span class="cost">
+					{{'LotteryWithGreatestJackpotDropdownComponent.TEXT_ONLY' | translate}}
+                  {{(lotteryLinePrice$ | async) * 4 | currency:upcomingDraw.currency_id:'symbol':'1.2-2'}}
+				</span>
+    </ng-template>
+  </button>
+
+  <a [routerLink]="['/', lotterySlug]"
+     class="display-flex hand-pick"
+     title="Hand Pick Numbers"
+     (click)="oTrackHandPickNumbersClicked.emit({ lotteryName: lottery.name, menuName: 'single lottery' })">
+    {{'LotteryWithGreatestJackpotDropdownComponent.REF_HAND_PICK_NUM' | translate}}
+    <span class="arrow biglotteryowin-right-open"></span>
+  </a>
+
+  <div class="timer">
+    <app-simple-countdown [date]="upcomingDraw.last_ticket_time"></app-simple-countdown>
+  </div>
+</div>

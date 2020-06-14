@@ -1,0 +1,31 @@
+<div class="add-cart-offers-component">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="title-offers text-xs-center">
+          <p class="cart-page-title">{{'AddToCartOffersComponent.no_active_picks' | translate}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="container">
+    <div class="list-of-offers-component">
+      <div class="swiper">
+        <div class="swiper-container-offers">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" *ngFor="let offersModel of addToCartOffersModelList">
+              <app-add-to-cart-offers-item
+                [addToCartOffersModel]="offersModel"
+                (addToCartEvent)="addToCartEvent.emit($event)"
+                (addToCartFromRibbonEvent)="addToCartFromRibbonEvent.emit($event)"
+                (addToCartSyndicateEvent)="addToCartSyndicateEvent.emit($event)"
+              ></app-add-to-cart-offers-item>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button swiper-button-prev hidden-md-up" (click)="onTrackSpin('Left')" ontouchstart=""></div>
+        <div class="swiper-button swiper-button-next hidden-md-up" (click)="onTrackSpin('Right')" ontouchstart=""></div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,163 @@
+<div class="container-custom lottery-info-component">
+  <div class="row">
+    <div class="col-xs">
+      <div class="tabs">
+        <input type="radio" name="{{'tabs' + device}}" id="{{'tab1' + device}}"
+               (click)="changeTabEvent.emit('About')" checked>
+        <input type="radio" name="{{'tabs' + device}}" id="{{'tab2' + device}}"
+               (click)="changeTabEvent.emit('Statistics')">
+        <input type="radio" name="{{'tabs' + device}}" id="{{'tab3' + device}}"
+               (click)="changeTabEvent.emit('News')">
+        <div class="row">
+          <div class="col-xs">
+            <label for="{{'tab1' + device}}" class="text-xs-center"
+                   title="{{'LotteryInfoComponent.TITLE_ABOUT_THE' | translate}} {{lottery?.name}}">
+              {{'LotteryInfoComponent.LABEL_ABOUT' | translate}}
+            </label>
+            <label for="{{'tab2' + device}}" class="text-xs-center"
+                   title="{{lottery?.name}} {{'LotteryInfoComponent.LABEL_STATISTICS' | translate}}">
+              {{'LotteryInfoComponent.LABEL_STATISTICS' | translate}}
+            </label>
+            <label for="{{'tab3' + device}}" class="text-xs-center"
+                   title="{{lottery?.name}} {{'LotteryInfoComponent.LABEL_NEWS' | translate}}">
+              {{'LotteryInfoComponent.LABEL_NEWS' | translate}}
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs" style="position:relative">
+            <div id="tab-content1" class="tab-content">
+              <div class="row">
+                <div class="col-sm-4 col-xs-5 display-flex flex-items-xs-middle flex-items-xs-center">
+                  <div class="lotteries-logo display-flex flex-items-xs-center flex-items-xs-middle">
+                    <img alt="{{lottery?.name}}" src="{{lottery?.logo}}" itemprop="image">
+                  </div>
+                </div>
+                <div class="col-sm-8 col-xs-7 text-xs-left">
+                  <div class="lottery-name">
+                    {{'LotteryInfoComponent.TEXT_LOTTERY_NAME' | translate}}: {{lottery?.name}}
+                  </div>
+                  <div class="country">
+                    {{'LotteryInfoComponent.TEXT_COUNTRY' | translate}}: {{lotteryCountryName}}
+                  </div>
+                  <div class="day-of-draws">
+                    {{'LotteryInfoComponent.TEXT_DRAW_TIME' | translate}}:
+                    <span *ngFor="let day of lottery?.draws_schedule; let last=last"
+                    >{{dayName[day.weekday]}}<span *ngIf="!last">, </span></span>
+                  </div>
+                  <div class="min-jackpot">
+                    {{'LotteryInfoComponent.TEXT_MIN_JACKPOT' | translate}}:
+                    {{upcomingDraw?.min_jackpot | jackpotRound |
+                    currency:upcomingDraw?.currency_id:'symbol':'1.0-0'}}
+                  </div>
+                  <div class="num-to-pick">
+                    {{'LotteryInfoComponent.TEXT_NUMBER_TO_PICK' | translate}}:
+                    <span>
+                                          {{lottery?.rules.main_numbers.picks}} {{' '}}
+                                          {{'LotteryInfoComponent.TEXT_OUT_OF' | translate}} {{' '}}
+                                          {{lottery?.rules.main_numbers.highest}}
+                                          <ng-container
+                                            *ngIf="lottery?.rules.extra_numbers && !lottery?.rules.extra_numbers.in_results_only">
+                                            + {{lottery?.rules.extra_numbers.picks}}
+                                            {{'LotteryInfoComponent.TEXT_EXTRA_OUT_OF' | translate}} {{' '}}
+                                            {{lottery?.rules.extra_numbers.highest}}
+                                          </ng-container>
+                                        </span>
+                  </div>
+                  <div class="odds-to-jackpot">
+                    {{'LotteryInfoComponent.TEXT_FIRST_PRIZE' | translate}}:
+                    <span>
+                                              {{'LotteryInfoComponent.TEXT_ONE_TO' | translate}} {{' '}}
+                                            {{lotteryJackpotOdds | numberFormat}}
+                                          </span>
+                    (<a class="link"
+                        [routerLink]="['/' + lotterySlug + '/results']"
+                        [attr.itemprop]="setItempropAttr()"
+                        title="{{'LotteryInfoComponent.TEXT_ALL_PRIZES' | translate}}">
+                    {{'LotteryInfoComponent.TEXT_ALL_PRIZES' | translate}}
+                  </a>)
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs">
+                  <div class="last-results-cover">
+                    <div class="last-result-date text-xs-center">
+                      {{lotteryLatestDraw?.date_local | date}} {{lottery?.name}} {{' '}}
+                      {{'LotteryInfoComponent.TEXT_RESULTS' | translate}}
+                    </div>
+                    <div class="winning-numbers display-flex flex-items-xs-center flex-items-xs-middle">
+                      <span
+                        class="number display-flex flex-items-xs-center flex-items-xs-middle"
+                        *ngFor="let mainNum of lotteryLatestDraw?.winning_main_numbers"
+                      >{{mainNum}}</span>
+                      <span class="number display-flex flex-items-xs-center flex-items-xs-middle ball"
+                            *ngFor="let extraNum of lotteryLatestDraw?.winning_extra_numbers"
+                      >{{extraNum}}</span>
+                      <span class="number display-flex flex-items-xs-center flex-items-xs-middle ball"
+                            *ngFor="let perTicket of lotteryLatestDraw?.winning_perticket_numbers"
+                      >{{perTicket}}</span>
+                    </div>
+                    <div class="text-xs-center">
+                      <a class="link"
+                         *ngIf="lotteryLatestDraw"
+                         [routerLink]="['/' + lotterySlug + '/results', lotteryLatestDraw.date_local]"
+                         title="Latest {{lottery?.name}} Results"
+                         [attr.itemprop]="setItempropAttr()">
+                        {{'LotteryInfoComponent.TEXT_SEE' | translate}} {{lottery?.name}} {{'LotteryInfoComponent.TEXT_PRIZE_BREAKDOWN' | translate}}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs">
+                  <!--- ABOUT CONTENT --->
+                  <app-lottery-widgets-about-container></app-lottery-widgets-about-container>
+                </div>
+              </div>
+            </div>
+            <div id="tab-content2" class="tab-content">
+              <div class="row widgets-statistic-filed display-flex flex-items-xs-center">
+                <div class="col-xs customized-col">
+                  <app-lottery-widgets-statistics-container
+                    *ngIf="lottery"
+                    [pageType]="'TicketPage'"
+                    [showCaption]="false"
+                    [lotteryId]="lottery.id"
+                  ></app-lottery-widgets-statistics-container>
+                </div>
+              </div>
+              <div class="row widgets-filed display-flex flex-items-md-between flex-items-xs-center">
+                <div class="col-md-6 col-sm-12 customized-col border hot-cold-numbers">
+                  <app-lottery-widgets-hot-numbers-container
+                    *ngIf="lottery"
+                    [lotteryId]="lottery.id">
+                  </app-lottery-widgets-hot-numbers-container>
+                </div>
+                <div class="col-md-6 col-sm-12 customized-col border chart">
+                  <app-lottery-widgets-jackpot-changes-container
+                    *ngIf="lottery"
+                    [lotteryId]="lottery.id">
+                  </app-lottery-widgets-jackpot-changes-container>
+                </div>
+                <div class="col-md-6 col-sm-12 customized-col odds">
+                  <app-lottery-widgets-odds-container
+                    *ngIf="lottery"
+                    [lotteryId]="lottery.id">
+                  </app-lottery-widgets-odds-container>
+                </div>
+                <div class="col-md-6 customized-col"></div>
+              </div>
+            </div>
+            <div id="tab-content3" class="tab-content">
+              <app-lottery-news [lottery]="lottery$|async"
+                                [lotteryWordpressPosts]="lotteryWordpressPosts$|async"
+              ></app-lottery-news>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

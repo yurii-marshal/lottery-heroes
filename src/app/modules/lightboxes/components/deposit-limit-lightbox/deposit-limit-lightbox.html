@@ -1,0 +1,73 @@
+<div *ngIf="isShowlightbox" role="dialog" class="modal app-deposit-limit-lightbox">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" (click)="closeLightbox()">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-xs-center title-text">
+          {{'DepositLimitLightboxComponent.TEXT_SET_MAX' | translate}}
+        </p>
+        <p class="text-xs-center">
+          {{'DepositLimitLightboxComponent.TEXT_TO_ACC' | translate}}
+        </p>
+
+        <form [formGroup]="depositLimitForm">
+          <div class="radio-container">
+            <span class="radio" *ngFor="let limit of depositLimitsConfig; let i = index;">
+              <input
+                formControlName="type"
+                type="radio"
+                id="{{limit.type}}"
+                value="{{limit.type}}"
+                [attr.checked]="i === 0 ? '' : null"
+                (change)="onChangeRadio(limit)">
+              <label for="{{limit.type}}">{{limit.type}}</label>
+            </span>
+          </div>
+
+            <div class="form-row">
+              <div class="input-wr"
+                   [ngClass]="{'has-error': (depositLimitForm.controls['amount'].touched &&
+                      depositLimitForm.controls['amount'].hasError('incorrect'))}">
+                <label class="amount-label" for="deposit-limit-amount">{{currencyId}}</label>
+                <input
+                  class="amount-input"
+                  (input)="onInput()"
+                  formControlName="amount"
+                  appNumbersOnly="deposit"
+                  type="number"
+                  id="deposit-limit-amount"
+                  placeholder="{{defaultLimitValue | currency:currencyId:'symbol':'1.0-0'}}">
+
+                <div class="icon-tooltip icon-error"
+                     *ngIf="depositLimitForm.controls['amount'].touched &&
+                      depositLimitForm.controls['amount'].hasError('incorrect')"><span>!</span></div>
+                <div class="tooltip-container error"
+                     *ngIf="depositLimitForm.controls['amount'].touched &&
+                      depositLimitForm.controls['amount'].hasError('incorrect')">
+                  <div class="tooltip-body">
+                    <p>
+                      {{'DepositLimitLightboxComponent.TEXT_PLAYING_LIMIT' | translate}}
+                      {{checkedLimit?.min_value | currency:currencyId:'symbol':'1.0-0'}}
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        </form>
+        <div *ngIf="isShowButtons" class="row flex-items-xs-center form-row">
+          <div class="display-flex form-row-inner btn-containrer">
+            <button *ngFor="let button of data.buttons"
+                    type="button" class="bt green"
+                    [ngClass]="{'bordered cancel': button?.type === 'cancel', 'save': button?.type === 'save'}"
+                    (click)="clickBtn(button)"
+                    [appTranslate]="button?.text"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeLightbox()"></div>
+</div>

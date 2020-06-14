@@ -1,0 +1,308 @@
+@import '../../../../../scss/vars';
+
+/* ACCOUNT sidebar */
+
+.sidebar-title {
+  font-size: 18px;
+  font-family: $headline;
+  color: $primary;
+  position: absolute;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.sidebar {
+  position: relative;
+  padding-top: 27px;
+
+  .balance-container {
+    color: $primary;
+    font-family: $CONTENT;
+    font-size: $small;
+  }
+}
+
+.balance {
+  font-size: $BASIC;
+
+  > span {
+    white-space: nowrap;
+  }
+
+  span:first-child {
+    padding-right: 0;
+  }
+
+  .total {
+    color: $GREEN;
+    font-family: $CONTENT;
+    font-size: 18px;
+    padding-left: 0;
+    text-align: right;
+  }
+}
+
+.account-action-list {
+  margin: 0;
+  padding: 0;
+
+  li {
+    color: $primary;
+    font-family: $CONTENT;
+    line-height: 36px;
+    position: relative;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.activeLink span,
+    span {
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        display: block;
+        left: 10px;
+        bottom: 5px;
+        background: #E51E12;
+        transition: all .2s ease;
+      }
+
+      &:hover::after {
+        width: 25%;
+      }
+    }
+
+    &.activeLink span::after {
+      width: 25%;
+    }
+
+    span {
+      position: relative;
+      cursor: pointer;
+      display: block;
+    }
+  }
+}
+
+.biglotteryowin-heart {
+  font-size: 13px;
+  color: #E51E12;
+}
+
+@keyframes fade-in-up-account {
+  from {
+    transform: translateX(20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+  .account-action-list {
+    li {
+      line-height: 55px;
+      border-top: 1px solid #DEDEDE;
+      padding: 0 0.9375rem 0 75px;
+      font-size: $BASIC;
+      font-family: $headline;
+      color: $primary;
+      background-repeat: no-repeat;
+      background-size: 30px 30px;
+      background-position: 20px 50%;
+
+      &.icon-details {
+        background-image: url("/assets/images/my-account/personal-details.svg");
+      }
+
+      &.icon-games {
+        background-image: url("/assets/images/my-account/my-games.svg");
+      }
+
+      &.icon-transaction {
+        background-image: url("/assets/images/my-account/my-transactions.svg");
+      }
+
+      &.icon-withdraw {
+        background-image: url("/assets/images/my-account/deposit-withdraw.svg");
+      }
+
+      &.icon-lucky {
+        background-image: url("/assets/images/my-account/my-lucky-numbers.svg");
+      }
+
+      &.icon-logout {
+        background-image: url("/assets/images/my-account/logout.svg");
+
+        span {
+          text-decoration: underline;
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 1rem;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 12px;
+        height: 12px;
+        background: url('/assets/images/svg/arrow-gray.svg') no-repeat;
+        transform: rotate(-90deg);
+      }
+
+      &.activeLink::after {
+        transform: rotate(0deg);
+      }
+
+      &.activeLink {
+        background-color: #f2f2f2;
+
+        span {
+          color: $primary;
+        }
+      }
+
+      &:hover,
+      &:active {
+        background-color: #f2f2f2;
+        box-shadow: 4px 0 0 $RED inset;
+      }
+
+      &:hover span::after,
+      &.activeLink span::after {
+        display: none;
+      }
+
+      span {
+        display: inline-block;
+
+        &:hover,
+        &:active {
+          background-color: #e3eaef;
+        }
+      }
+    }
+  }
+
+  .balance-wr {
+    order: -1;
+    padding: 0 10px;
+
+    .total {
+      font-size: $BASIC;
+      padding-left: 10px;
+    }
+  }
+
+  .sidebar {
+    padding: 0;
+    padding-top: 27px;
+    overflow-x: hidden;
+
+    &.hidden-bar {
+      height: 0;
+    }
+  }
+
+  .sidebar-list {
+    padding-top: 0;
+  }
+
+  .sidebar-title {
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .balance,
+  .points {
+    text-align: center;
+  }
+
+  .balance {
+    font-size: $BASIC;
+  }
+
+  .points {
+    margin-bottom: 1.875rem;
+  }
+
+  .title {
+    line-height: 23px;
+  }
+
+  .balance-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+
+    .link {
+      align-self: flex-end;
+      line-height: 28px;
+      outline: none;
+    }
+  }
+
+  .details-view-container {
+    z-indeX: 1;
+    background: #fff;
+    min-height: 100vh;
+    position: static;
+    margin-top: -47px;
+    transition: all .3ms ease 0s;
+    animation: fade-in-up-account .5s ease;
+
+    .details-view {
+      background: #fff;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .balance-wr {
+    padding: 0 0 0 10px;
+  }
+
+  .balance {
+    font-size: $small;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .balance {
+    font-size: $BASIC;
+  }
+}
+
+/* DESKTOP */
+
+@media (min-width: 768px) {
+  .account-action-list {
+    li {
+      font-size: $BASIC;
+
+      span {
+        padding: 0 10px;
+      }
+    }
+  }
+
+  .balance-container {
+    margin: 0.7rem 0 1rem;
+    background: #F9F9F9;
+    max-width: 193px;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+}
+

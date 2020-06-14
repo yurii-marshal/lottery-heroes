@@ -1,0 +1,73 @@
+<div class="thank-you-page-component">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 display-flex direction-column flex-items-xs-middle flex-items-xs-center text-xs-center">
+        <div class="tag-success">
+          <img src="assets/images/svg/checkmark.svg">
+        </div>
+        <h1 class="title-thank-you-top" itemprop="name">
+          <ng-container *ngIf="isSyndicate">
+            {{customer?.first_name}}, {{'ThankYouPageComponent.TEXT_TRANSACTION_COMPLETE' | translate}}.
+          </ng-container>
+          <ng-container *ngIf="!isSyndicate && isMoreThanOneBet">
+            {{customer?.first_name}}, {{'ThankYouPageComponent.TEXT_BETS_PLACED' | translate}}.
+          </ng-container>
+          <ng-container *ngIf="!isSyndicate && !isMoreThanOneBet">
+            {{customer?.first_name}}, {{'ThankYouPageComponent.TEXT_BET_PLACED' | translate}}.
+          </ng-container>
+        </h1>
+        <!--<p class="post-title" itemprop="description">-->
+          <!--{{'ThankYouPageComponent.TEXT_EMAIL_SENT_MSG' | translate}}-->
+        <!--</p>-->
+      </div>
+    </div>
+    <!--<div class="row">-->
+      <!--<div class="col-xs-12 display-flex flex-items-xs-center widgets-wrapper">-->
+      <!--<div class="col-xs-12 col-md-8 offset-md-2 widgets-wrapper">-->
+        <!--<app-list-of-options-container></app-list-of-options-container>-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+  <div class="container-fluid combos-section">
+    <div class="row">
+      <div class="col-xs-12 display-flex flex-items-xs-middle flex-items-xs-center direction-column">
+        <h2 class="title-thank-you text-xs-center">{{'ThankYouPageComponent.TEXT_EXPLORE_OFFERS' | translate}}</h2>
+        <p class="text-xs-center">
+          {{'ThankYouPageComponent.TEXT_EXPLORE_OFFERS_DESCRIPTION' | translate}}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <app-list-combos-container [combosList]="combosList"></app-list-combos-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <!--<app-list-bundles-container [bundlesList]="bundlesList"></app-list-bundles-container>-->
+      </div>
+    </div>
+  </div>
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-xs-12 display-flex flex-items-xs-middle flex-items-xs-center">-->
+        <!--<h2 class="title-thank-you text-xs-center">{{'ThankYouPageComponent.TEXT_WATS_NEXT' | translate}}</h2>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+      <!--<div class="col-xs-12">-->
+        <!--<app-whats-next-container></app-whats-next-container>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+      <!--<div class="col-xs-12 display-flex flex-items-xs-middle flex-items-xs-center">-->
+        <!--<div class="title-thank-you text-xs-center">{{'ThankYouPageComponent.TEXT_BE_FRIENDS' | translate}}</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+      <!--<div class="col-xs-12">-->
+        <!--<app-follow-us-container></app-follow-us-container>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+</div>

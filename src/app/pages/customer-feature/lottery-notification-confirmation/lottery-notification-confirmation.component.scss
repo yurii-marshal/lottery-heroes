@@ -1,0 +1,20 @@
+@import '../../../../scss/_vars';
+
+.lottery-notification-confirmation-component {
+  h1 {
+    color: $GREEN;
+    padding-top: 10px;
+    padding-bottom: 15px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    h1 {
+      padding-top: 20px;
+      padding-bottom: 0px;
+    }
+  }
+}

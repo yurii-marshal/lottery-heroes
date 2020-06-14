@@ -1,0 +1,42 @@
+<div class="check-your-numbers-component">
+  <h2 class="title">
+    {{'CheckYourNumbersComponent.TEXT_MAIN_HEADER' | translate}}
+  </h2>
+  <p>
+    {{'CheckYourNumbersComponent.TEXT_CHECK_DETAILS' | translate}}
+  </p>
+
+  <div class="display-flex direction-column">
+    <!--- DESKTOP --->
+    <div class="hidden-sm-down">
+      <ng-select #changeDesktop
+								 class="ng-select"
+								 [placeholder]="'Select Lottery'"
+								 [noFilter]="'Infinity'"
+								 [options]="optionsList">
+      </ng-select>
+      <a class="bt bordered green"
+         (click)="onTrackCheckNumber(changeDesktop.value)"
+         (click)="goToRoute.emit(changeDesktop.value)">
+        {{'CheckYourNumbersComponent.REF_CHECK_NUMS' | translate}}
+      </a>
+    </div>
+
+    <!--- MOBILE --->
+    <div class="hidden-sm-up">
+      <select #changeMobile>
+        <option value="" selected>
+          {{'CheckYourNumbersComponent.TEXT_SELECT_LOTTERY' | translate}}
+        </option>
+        <option *ngFor="let lotteryId of lotteryIds" value="{{lotteriesMap[lotteryId].id}}">
+          {{lotteriesMap[lotteryId].name}}
+        </option>
+      </select>
+      <a class="bt bordered green"
+         (click)="onTrackCheckNumber(changeMobile.value)"
+         (click)="goToRoute.emit(changeMobile.value)">
+        {{'CheckYourNumbersComponent.REF_CHECK_NUMS' | translate}}
+      </a>
+    </div>
+  </div>
+</div>

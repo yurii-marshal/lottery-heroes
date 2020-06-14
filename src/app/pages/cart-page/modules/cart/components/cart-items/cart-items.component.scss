@@ -1,0 +1,173 @@
+@import '../../../../../../../scss/vars';
+
+.cart-items-component {
+  .summary {
+    color: $primary;
+    font-size: $BASIC;
+    margin: 5px 0;
+    background: #fff;
+    position: relative;
+
+    &.with-border {
+      border-top: 1px solid $GRAY-LIGHTER;
+      padding-top: 5px;
+    }
+
+    .type {
+      text-transform: capitalize;
+      margin-bottom: 5px;
+    }
+
+    .val {
+      font-family: "Montserrat", sans-serif;
+      margin-bottom: 5px;
+    }
+
+    .total {
+      margin-bottom: 5px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      .val {
+        color: $GREEN;
+        font-size: $LARGE;
+      }
+    }
+
+    .discount {
+      .val {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  .bt.proceed {
+    margin-top: 15px;
+    min-height: 48px; // height
+    max-width: 19.125rem;
+    width: 100%;
+    letter-spacing: 0.5px;
+    font-size: $MEDIUM;
+    box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3), 0 2px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  .special-offers {
+    font-size: $small;
+    text-transform: capitalize;
+    padding: 2px;
+
+    img {
+      margin: 2px 10px 2px 2px;
+      width: 17px;
+      height: 17px;
+    }
+  }
+
+  .balance-remainder {
+    display: inline;
+    margin-right: 3px;
+    color: #929292;
+    font-size: 14px;
+  }
+
+  .balance-through {
+    display: inline;
+    text-decoration: line-through;
+  }
+
+  .minimum-charge {
+    display: inline;
+    font-size: 14px;
+    color: #929292;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .table-body {
+      margin: 0 -15px 0;
+    }
+
+    .summary {
+      font-size: $small;
+      margin: 0;
+
+      &.with-border {
+        margin-left: -15px;
+        margin-right: -15px;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .breakdown-wr {
+        transition: all .3s ease;
+        overflow: hidden;
+      }
+
+      &.closed .breakdown-wr {
+        max-height: 0;
+      }
+
+      &.open {
+
+        .breakdown-wr {
+          max-height: 75px;
+          margin: 7px 0 5px;
+        }
+      }
+
+      .breakdown {
+        padding-left: 5px;
+        font-size: $small;
+      }
+
+      .total {
+        margin-top: -2px;
+
+        .type {
+          font-size: $BASIC;
+        }
+      }
+    }
+
+    .no-padding-mobile {
+      padding: 0;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    .total {
+      > div {
+        padding-left: 2px;
+      }
+    }
+  }
+
+  @media (min-width: 1120px) and (max-width: 1200px) {
+    .md-total {
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .minimum-charge {
+      display: inline;
+      font-size: 10px;
+      color: #929292;
+    }
+    .summary {
+      .breakdown-minimum-charge {
+        padding-left: 5px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  @keyframes breakdown-animation {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 122px;
+    }
+  }
+}

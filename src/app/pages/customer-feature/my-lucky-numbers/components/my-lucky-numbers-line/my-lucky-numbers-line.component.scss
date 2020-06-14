@@ -1,0 +1,39 @@
+@import '../../../../../../scss/_vars';
+
+.my-lucky-numbers-line-component {
+  margin-bottom: 1rem;
+
+  .number {
+    width: 25px;
+    height: 25px;
+    margin: 1px;
+    border: 1px solid $GRAY-LIGHT;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.8rem;
+    color: #000;
+    text-align: center;
+    padding: 0;
+
+    &:focus {
+      border-color: $GREEN;
+      outline: none;
+    }
+  }
+
+  .clear {
+    svg {
+      height: 22px;
+      width: auto;
+    }
+  }
+
+  .number {
+    border-radius: 4px;
+  }
+
+  .save-error {
+    color: $RED;
+    font-size: 11px;
+    margin: 0px;
+  }
+}

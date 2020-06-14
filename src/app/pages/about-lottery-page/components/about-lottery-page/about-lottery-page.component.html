@@ -1,0 +1,38 @@
+<div class="container about-lottery-container">
+  <div class="row">
+    <div class="col-xs" [innerHTML]="cms?.upper_html | safe: 'html'"></div>
+  </div>
+  <div class="row">
+    <div class="col-xs">
+      <div class="widget-wrapper">
+        <div class="row widgets-statistic-filed display-flex flex-items-xs-center">
+          <div class="col-xs customized-col">
+            <app-lottery-widgets-statistics-container
+              [pageType]="'TicketPage'"
+              [lotteryId]="lotteryId"
+              [showCaption]="false"
+            ></app-lottery-widgets-statistics-container>
+          </div>
+        </div>
+        <div class="row widgets-filed display-flex flex-items-md-between flex-items-xs-center">
+          <div class="col-md-6 col-sm-12 customized-col border hot-cold-numbers">
+            <app-lottery-widgets-hot-numbers-container [lotteryId]="lotteryId">
+            </app-lottery-widgets-hot-numbers-container>
+          </div>
+          <div class="col-md-6 col-sm-12 customized-col border chart">
+            <app-lottery-widgets-jackpot-changes-container [lotteryId]="lotteryId">
+            </app-lottery-widgets-jackpot-changes-container>
+          </div>
+          <div class="col-md-6 col-sm-12 customized-col odds">
+            <app-lottery-widgets-odds-container [lotteryId]="lotteryId">
+            </app-lottery-widgets-odds-container>
+          </div>
+          <div class="col-md-6 customized-col"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs" [innerHTML]="cms?.bottom_html | safe: 'html'"></div>
+  </div>
+</div>

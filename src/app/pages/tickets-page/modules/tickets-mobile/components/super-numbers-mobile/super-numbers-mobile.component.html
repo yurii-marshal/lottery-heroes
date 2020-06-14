@@ -1,0 +1,16 @@
+<div class="container super-numbers-mobile-component">
+  <div class="row">
+    <div class="col-xs display-flex flex-items-xs-bottom flex-items-xs-center">
+      <div class="display-flex flex-items-xs-between super-numbers-container">
+        <button class="link" (click)="clickPerTicketNumbersEvent.emit()">
+          {{'TicketMobileComponent.BUTTON_MY_TICKET_NAME' | translate}} {{rules.perticket_numbers.name}}
+        </button>
+        <div class="display-flex numbers-list">
+          <span class="display-flex flex-items-xs-center flex-items-xs-middle number"
+                *ngFor="let num of perTicketNumbers">{{num}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

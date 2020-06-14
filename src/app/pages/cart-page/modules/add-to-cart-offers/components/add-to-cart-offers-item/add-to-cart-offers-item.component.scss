@@ -1,0 +1,259 @@
+@import '../../../../../../../scss/vars';
+
+.add-to-cart-offers-item {
+  .name {
+    font-size: 19px;
+    font-family: $headline;
+    color: $primary;
+    text-decoration: none;
+    padding-left: 1rem;
+  }
+
+  .lotteries-logo {
+    position: relative;
+    width: 60px;
+    height: 69px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .syndicate-icon {
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  .logo-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .jackpot {
+    font-family: $headline;
+    font-weight: bold;
+    color: $primary;
+    padding-left: 1rem;
+  }
+
+  .no-jackpot-remark, .no-jackpot {
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    line-height: 15px;
+    color: $BLUE;
+    font-weight: bold;
+  }
+
+  .no-jackpot {
+    position: relative;
+    top: -4px;
+    left: -4px;
+  }
+
+  .no-jackpot-remark {
+    margin-bottom: 4px;
+    padding-left: 1rem;
+  }
+
+  .bt {
+    height: 35px;
+    line-height: 35px;
+    width: 110px; // width
+    padding-right: 22px;
+    font-size: $small;
+    text-transform: none;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &::after {
+      content: '';
+      height: 6px;
+      width: 15px;
+      background: url('/assets/images/svg/arrow-white.svg') no-repeat 50% 50%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 4px;
+      margin: auto;
+      transform: rotate(-90deg);
+    }
+  }
+
+  .bottom {
+    margin: auto;
+    left: 15px;
+    right: 15px;
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #f1f1f1;
+  }
+
+  .timer {
+    line-height: 35px;
+    color: #BDBDBD;
+    font-family: $headline;
+  }
+
+  .time {
+    text-align: center;
+  }
+
+  .ribbon-wrapper {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    overflow: hidden;
+    width: 65px;
+    z-index: 1;
+
+    .ribbon-text {
+      cursor: pointer;
+      color: #fff;
+      font-family: $CONTENT;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 61px;
+      margin: 0;
+      text-align: center;
+      transform: rotate(45deg);
+      position: absolute;
+      left: 10px;
+      top: 12px;
+    }
+  }
+
+  .freeLine,
+  .syndicate-description {
+    color: $primary;
+    font-size: $small;
+    font-family: $headline;
+    padding-left: 1rem;
+  }
+
+  .freeLine {
+    .green {
+      color: $GREEN;
+      text-transform: uppercase;
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    min-height: 160px;
+
+    .name {
+      font-size: 15px;
+    }
+    .jackpot {
+      font-size: $MEDIUM;
+    }
+    .timer {
+      font-size: $small;
+      width: 70%;
+      padding-left: 0;
+    }
+    .logo-bg {
+      width: 100%;
+    }
+    .no-jackpot-remark, .no-jackpot {
+      font-weight: normal;
+    }
+    .freeLine {
+      font-size: 13px;
+    }
+    .gift {
+      width: 18px;
+      margin-left: 2px;
+      margin-top: -4px;
+    }
+    .bt {
+      width: 140px;
+      padding-right: 12px;
+    }
+  }
+
+  @media (min-width: 376px) and (max-width: 414px) {
+    .lotteries-logo {
+      width: 80px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .timer {
+      padding-left: 0;
+      font-size: 13px;
+      width: 75%;
+    }
+
+    .bottom {
+      left: 10px;
+      right: 10px;
+    }
+
+    .bt {
+      font-size: 11px;
+      width: 105px;
+
+      &::after {
+        width: 10px;
+        height: 5px;
+      }
+    }
+
+    .lotteries-logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .no-jackpot-remark {
+      margin-top: 0;
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    min-height: 190px;
+
+    .name {
+      font-size: 16px;
+    }
+    .jackpot {
+      font-size: 23px;
+      margin-top: -5px;
+    }
+    .timer {
+      font-size: $BASIC;
+    }
+    .logo-bg {
+      max-width: 4.625rem;
+    }
+    .freeLine {
+      padding-left: 18px;
+    }
+    .gift {
+      width: 20px;
+      margin-left: 5px;
+      margin-top: -7px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .lotteries-logo {
+      width: 80px;
+    }
+  }
+}

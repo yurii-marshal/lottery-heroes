@@ -1,0 +1,40 @@
+<div class="row faq-cms-component" *ngIf="isShown">
+  <div class="col-xs-12 list-title">
+    <h2 class="title text-xs-center" [innerHTML]="cms.faq_title"></h2>
+  </div>
+  <div class="col-xs-12 list-items">
+    <div itemscope itemtype="http://schema.org/Question" class="item"
+         *ngIf="!!cms.faq_question_1 && !!cms.faq_answer_1">
+      <input type="checkbox" id="q1" name="item-checkbox" (change)="setHeight($event)">
+      <label class="item-title" for="q1"></label>
+      <h2 itemprop="name" [innerHTML]="cms.faq_question_1"></h2>
+      <div class="item-wrapper">
+        <div itemprop="suggestedAnswer" itemscope itemtype="http://schema.org/Answer" class="item-body">
+          <p itemprop="text" [innerHTML]="cms.faq_answer_1"></p>
+        </div>
+      </div>
+    </div>
+    <div itemscope itemtype="http://schema.org/Question" class="item"
+         *ngIf="!!cms.faq_question_2 && !!cms.faq_answer_2">
+      <input type="checkbox" id="q2" name="item-checkbox" (change)="setHeight($event)">
+      <label class="item-title" for="q2"></label>
+      <h2 itemprop="name" [innerHTML]="cms.faq_question_2"></h2>
+      <div class="item-wrapper">
+        <div itemprop="suggestedAnswer" itemscope itemtype="http://schema.org/Answer" class="item-body">
+          <p itemprop="text" [innerHTML]="cms.faq_answer_2"></p>
+        </div>
+      </div>
+    </div>
+    <div itemscope itemtype="http://schema.org/Question" class="item"
+         *ngIf="!!cms.faq_question_3 && !!cms.faq_answer_3">
+      <input type="checkbox" id="q3" name="item-checkbox" (change)="setHeight($event)">
+      <label class="item-title" for="q3"></label>
+      <h2 itemprop="name" [innerHTML]="cms.faq_question_3"></h2>
+      <div class="item-wrapper">
+        <div itemprop="suggestedAnswer" itemscope itemtype="http://schema.org/Answer" class="item-body">
+          <p itemprop="text" [innerHTML]="cms.faq_answer_3"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

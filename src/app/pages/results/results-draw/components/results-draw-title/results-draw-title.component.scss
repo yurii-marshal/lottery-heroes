@@ -1,0 +1,26 @@
+@import '../../../../../../scss/vars';
+
+.results-draw-title-component {
+  .title-per-lottery {
+    @include primary-title;
+  }
+
+  .draw-date {
+    font-family: $headline;
+    color: #9f9f9f;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: normal;
+    margin: 0 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .draw-date {
+      font-size: 1rem;
+    }
+    .title-per-lottery {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
+}

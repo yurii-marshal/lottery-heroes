@@ -1,0 +1,62 @@
+@import '../../../../../../scss/_vars';
+
+.my-lucky-numbers-saved-component {
+  .container {
+    max-width: 480px;
+    margin: 0;
+  }
+
+  .line {
+    & + .line {
+      margin-top: 1rem;
+    }
+
+    .number {
+      width: 25px;
+      height: 25px;
+      margin: 1px;
+      border: 1px solid $GRAY-LIGHT;
+      font-family: "Open Sans", sans-serif;
+      font-size: 0.8rem;
+      color: #000;
+      text-align: center;
+      border-radius: 50%;
+
+      &:focus {
+        border-color: $GREEN;
+        outline: none;
+      }
+    }
+  }
+
+  .heart {
+    background-color: $RED;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 10px 1px;
+    position: relative;
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .heart:before,
+  .heart:after {
+    content: "";
+    background-color: $RED;
+    border-radius: 50%;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+  }
+
+  .heart:before {
+    top: -4px;
+    left: 0;
+  }
+
+  .heart:after {
+    left: 4px;
+    top: 0;
+  }
+}

@@ -1,0 +1,15 @@
+@import '../../../../../../scss/vars';
+
+.results-menu-list-mobile-component {
+  .all-results {
+    color: $primary;
+    font-size: 1rem;
+    text-transform: capitalize;
+    padding-top: 0.5rem;
+    padding-bottom: 0.3rem;
+
+    i {
+      font-size: 20px;
+    }
+  }
+}

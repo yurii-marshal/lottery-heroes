@@ -1,0 +1,17 @@
+<app-main-bundle-container [bundle]="mainBundle"></app-main-bundle-container>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="title-combos text-xs-center">{{'BundlesPageComponent.TEXT_MOST_POPULAR_BUNDLES' | translate}}</h2>
+    </div>
+  </div>
+</div>
+<app-top-bundles-container [bundlesList]="topBundles"></app-top-bundles-container>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="title-combos text-xs-center">{{'BundlesPageComponent.TEXT_MORE_BUNDLES' | translate}}</h2>
+    </div>
+  </div>
+</div>
+<app-list-bundles-container [bundlesList]="otherBundles"></app-list-bundles-container>

@@ -1,0 +1,39 @@
+<div class="better-odds-offer-box display-flex direction-column flex-items-xs-between">
+  <div class="title-wrapper">
+    <div class="title">
+      {{'BetterOddsOfferBoxComponent.TEXT_TITLE' | translate}}
+    </div>
+    <div class="text-xs-center" [innerHTML]="'BetterOddsOfferBoxComponent.TEMPLATE_TRY' | translate: {param: betterOddsLottery?.lottery.name}"></div>
+  </div>
+  <div class="content">
+    <ng-container *ngIf="betterOddsLotteryUpcomingDraw?.jackpot; else noJackpot">
+    <span class="font-size-18"
+          [innerHtml]="betterOddsLotteryUpcomingDraw.jackpot | jackpotFormat:betterOddsLotteryUpcomingDraw.currency_id"></span>
+    </ng-container>
+    <ng-template #noJackpot>
+    <span class="font-size-18"
+          [innerHtml]="betterOddsLotteryUpcomingDraw?.min_jackpot |
+      jackpotFormat:betterOddsLotteryUpcomingDraw?.currency_id:'Million':'K':true">
+    </span>
+      <span class="no-jackpot">*</span>
+      <div class="no-jackpot-remark text-sm-left" *ngIf="!betterOddsLotteryUpcomingDraw?.jackpot">
+        {{'BetterOddsOfferBoxComponent.TEXT_JACKPOT_EXPECT' | translate}}
+      </div>
+    </ng-template>
+    <div class="odds-to-win">
+      <span *ngIf="betterOddsLottery">1/{{betterOddsLottery.betterOdd}}</span> {{'BetterOddsOfferBoxComponent.TEXT_ONE_TO_N_ODDS' | translate}}*
+    </div>
+    <div class="font-size-18">
+      {{'BetterOddsOfferBoxComponent.TEXT_ONLY' | translate}} {{ betterOddsLotteryLinePrice * 2 | currency:betterOddsLotteryUpcomingDraw?.currency_id:'symbol':'1.2-2' }}
+    </div>
+    <img class="logo" src="assets/images/lottery-logos/{{betterOddsLottery?.lottery.id}}.svg" alt="{{altName}}">
+  </div>
+  <div class="sub-content text-xs-center">
+    <button class="bt green navigation-btn" (click)="redirectToCart.emit()">
+      {{'BetterOddsOfferBoxComponent.TEXT_TAKE_ODDS' | translate}}
+    </button>
+    <div class="sub-content-text text-xs-left">
+      * {{lottery?.name}} {{'BetterOddsOfferBoxComponent.TEXT_ODDS' | translate}} <span *ngIf="lottery">1/{{currentLotteryOdd}}</span>
+    </div>
+  </div>
+</div>

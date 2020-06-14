@@ -1,0 +1,45 @@
+/*Any manipulation with constants in a whole project
+can be done with a Ctrl+Shift+R (Win, macOS) combination
+in JetBrains redactors*/
+
+//COLOURS CONST
+$YELLOW: #dded00; /* primary yellow */
+$BLUE: #02a3e1; /* primary blue */
+$BLUE-LIGHT: #6DBDFA; /* blue button hover mode */
+$RED: #ff3439; /* primary red */
+$RED-LIGHT: #ff442c; /*header menu*/
+$GREEN: #25A836; /* primary green */
+$GREEN-LIGHT: #3AD74F; /*green button hover mode*/
+$primary: #0a0332; /* primary fonts and icons colour */
+$GRAY-LIGHT: #ababab; /* countdowns etc.. */
+$GRAY-LIGHTER: #c2c2c2; /* borders etc.. */
+$purple: #b03caf; /* ribbon, free lines */
+
+//FONTS CONST
+$headline: 'Poppins', 'Roboto', sans-serif;
+$CONTENT: 'Poppins', 'Roboto', sans-serif;
+
+//FONT SIZES CONST
+$LARGE: 20px;
+$MEDIUM: 18px;
+$UIBASIC: 16px;
+$BASIC: 14px;
+$XBASIC: 13px;
+$small: 12px;
+
+//MIXINS
+@mixin primary-title {
+  font-family: $headline;
+  font-size: $LARGE;
+  color: $primary;
+  font-weight: normal;
+  text-transform: capitalize;
+  border-bottom: 1px solid $GRAY-LIGHTER;
+  margin: 0.2rem 0;
+  padding: 0.3rem 0;
+  position: relative;
+
+  @media screen and (max-width: 768px) {
+    font-size: $MEDIUM;
+  }
+}

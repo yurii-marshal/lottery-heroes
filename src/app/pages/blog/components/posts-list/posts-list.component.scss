@@ -1,0 +1,60 @@
+@import '../../../../../scss/vars';
+
+.posts-list {
+  margin-top: 5px;
+
+  .artricle {
+    border-bottom: 1px solid #c8c8c8;
+    padding-bottom: 15px;
+    margin: 0 0 15px 0 !important;
+  }
+
+  img {
+    width: 100%;
+    max-width: 485px;
+  }
+
+  h2 {
+    font-family: $CONTENT;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 300;
+    margin: 0 0 5px 0;
+
+    a {
+      color: #262626;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .post-date {
+    color: #7f7f7f;
+  }
+
+  .excerpt {
+    margin:10px 0 25px;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .read-more {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    h2 {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+  }
+
+}

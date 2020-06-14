@@ -1,0 +1,392 @@
+@import '../../../../../../../scss/vars';
+
+.tickets-aside-desktop-component {
+  height: 100%;
+
+  .aside-body {
+    width: 242px;
+    opacity: 0;
+
+    &.active {
+      animation: fade-in-up .4s ease forwards .35s; // delay should equal to the last ticket fading in (400ms for now)
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      transform: translateY(20%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+
+  .aside-summary {
+    background: #f4f4f4;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 3px 3px -2px rgba(0, 0, 0, 0.35);
+    min-height: 310px;
+    border: 1px solid #cfcfcf;
+    border-bottom: 1px solid #8e8e8e;
+
+    .gutter {
+      padding: 0 8px 13px;
+    }
+  }
+
+  .aside-title {
+    font-family: $headline;
+    font-size: 1rem;
+    color: #4a4a4a;
+    background: #c4c4c4;
+    text-transform: capitalize;
+    height: 39px;
+    padding: 0 10px;
+  }
+
+  .aside-logo {
+    padding: 1.25rem 0 0;
+    // IE11
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 60%;
+      height: 60%;
+    }
+  }
+
+  .aside-jackpot {
+    font-family: $headline;
+    font-weight: bold;
+    color: $GREEN;
+    font-size: 1.9rem;
+    padding: 0.5rem 0 0.9rem;
+  }
+
+  .aside-total {
+    padding: 10px 0 10px;
+
+    .price {
+      color: $GREEN;
+    }
+
+    .old-price {
+      font-size: $small;
+      line-height: 15px;
+      text-decoration: line-through;
+    }
+  }
+
+  .bt.green {
+    width: 100%;
+    min-height: 4.0625rem; // height
+    font-size: 1.4rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.6), 0 2px 1px rgba(0, 0, 0, 0.2);
+    text-transform: none;
+
+    img {
+      height: 10px;
+    }
+  }
+
+  .aside-body.fixed {
+    position: fixed;
+    top: 70px;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .aside-body.bottom {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .ribbon-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    overflow: hidden;
+    width: 151px;
+
+    .ribbon {
+      position: relative;
+      z-index: 1;
+      margin: -7px -7px 0 0;
+    }
+
+    .ribbon-stars {
+      position: absolute;
+      z-index: 3;
+      left: 75px;
+      top: 22px;
+      transform: rotate(45deg);
+    }
+
+    .star.left,
+    .star.right {
+      width: 23px;
+    }
+
+    .star.left {
+      transform: rotate(-30deg);
+    }
+
+    .star.right {
+      transform: rotate(30deg);
+    }
+
+    @keyframes star-left {
+      0% {
+        transform: scale(1) rotate(-30deg);
+      }
+      25% {
+        transform: scale(1.2) rotate(-37deg);
+      }
+      35% {
+        transform: scale(1.3) rotate(-37deg);
+      }
+      50% {
+        transform: scale(0.9) rotate(-30deg);
+      }
+      65% {
+        transform: scale(1) rotate(-30deg);
+      }
+    }
+
+    @keyframes star-middle {
+      0% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.2);
+      }
+      35% {
+        transform: scale(1.3);
+      }
+      50% {
+        transform: scale(0.9);
+      }
+      65% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes star-right {
+      0% {
+        transform: scale(1) rotate(30deg);
+      }
+      25% {
+        transform: scale(1.2) rotate(37deg);
+      }
+      35% {
+        transform: scale(1.3) rotate(37deg);
+      }
+      50% {
+        transform: scale(0.9) rotate(30deg);
+      }
+      65% {
+        transform: scale(1) rotate(30deg);
+      }
+    }
+
+    .ribbon-glow {
+      cursor: pointer;
+      position: absolute;
+      z-index: 9;
+      top: 29px;
+      left: -10px;
+      height: 44px;
+      width: 135%;
+      overflow: hidden;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(44.1deg);
+    }
+
+    .ribbon-glow:after {
+      cursor: pointer;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      opacity: 0;
+      background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 26%, rgba(255, 255, 255, 0.76) 44%, rgba(0, 150, 255, 0) 61%, rgba(0, 150, 255, 0) 100%);
+      background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 26%, rgba(255, 255, 255, 0.76) 44%, rgba(0, 150, 255, 0) 61%, rgba(0, 150, 255, 0) 100%);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 26%, rgba(255, 255, 255, 0.76) 44%, rgba(0, 150, 255, 0) 61%, rgba(0, 150, 255, 0) 100%);
+    }
+
+    .ribbon-text {
+      color: #fff;
+      font-family: $headline;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 138px;
+      margin: 0;
+      text-align: center;
+      transform: rotate(45deg) translate3d(0, 0, 0);
+      position: absolute;
+      z-index: 4;
+      left: 24px;
+      top: 49px;
+
+      span {
+        font-weight: normal;
+      }
+    }
+  }
+
+  .ribbon-wrapper.active {
+    .star.left {
+      animation: star-left 1.2s ease .1s forwards;
+    }
+    .star.middle {
+      animation: star-middle 1.2s ease .2s forwards;
+    }
+    .star.right {
+      animation: star-right 1.2s ease .3s forwards;
+    }
+    .ribbon-glow:after {
+      cursor: pointer;
+      opacity: 1;
+      left: 100%;
+      transition-property: left, opacity;
+      transition-duration: 1.5s, 0.15s;
+      transition-timing-function: ease;
+    }
+  }
+
+  .no-jackpot-remark {
+    font-family: "Open Sans", sans-serif;
+    font-size: $small;
+    line-height: 15px;
+    font-weight: bold;
+    color: $BLUE;
+  }
+
+  .no-jackpot {
+    font-family: "Open Sans", sans-serif;
+    font-size: $small;
+    color: $BLUE;
+    position: absolute;
+  }
+
+  //SUBSCRIPTIONS
+
+  input[type=radio],
+  input[type=checkbox] {
+    display: none;
+  }
+
+  .aside-subscription,
+  .aside-unsubscription {
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-bottom: 0;
+    padding: 0 8px 0;
+    font-size: $BASIC;
+    user-select: none;
+  }
+
+  .aside-subscription {
+    position: relative;
+    padding-bottom: 5px;
+    background: #c8ebcc;
+
+    .subscriptions-description {
+      //position: absolute;
+      margin-left: 25px;
+      bottom: 0;
+      left: 32px;
+      font-size: $small;
+      color: #929292;
+      padding-bottom: 6px;
+
+      .discount-percent {
+        font-weight: bold;
+        color: $GREEN;
+      }
+    }
+  }
+
+  .aside-unsubscription {
+    border-bottom: 1px solid $GRAY-LIGHTER;
+  }
+
+  .aside-custom-radio {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid $GRAY-LIGHT;
+    cursor: pointer;
+    margin: 10px 10px 10px 0; // 15px 10px 15px 0
+  }
+
+  .aside-tooltip-holder {
+    position: relative;
+    cursor: pointer;
+
+    &:hover .aside-tooltip {
+      display: block;
+    }
+  }
+
+  .aside-tooltip {
+    display: none;
+    position: absolute;
+    right: -3px;
+    bottom: 130%;
+    padding: 8px;
+    font-size: $small;
+    background: #f6f6ff;
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px #9e9da2, 0 0 10px rgba(0, 0, 0, .3);
+    width: 200px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      right: 7px;
+      top: 100%;
+      border-top: 10px solid #9e9da2;
+      border-right: 9px solid transparent;
+      border-left: 9px solid transparent;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      top: 100%;
+      border-top: 9px solid #f6f6ff;
+      border-right: 8px solid transparent;
+      border-left: 8px solid transparent;
+    }
+  }
+
+  #subscribe:checked ~ .aside-subscription {
+    .aside-custom-radio {
+      background: #fff url("/assets/images/svg/checkmark.svg") no-repeat 1px 2px;
+      background-size: 10px;
+    }
+  }
+
+  #unsubscribe:checked ~ .aside-unsubscription {
+    background: #c8ebcc;
+
+    .aside-custom-radio {
+      background: $GREEN;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import '../../../../../../scss/vars';
+
+.syndicate-header-mobile-component {
+  background: $GRAY-LIGHTER;
+
+  .row {
+    min-height: 36px;
+  }
+
+  .header-body {
+    width: 100%;
+    max-width: 320px;
+
+    .logo {
+      height: 100%;
+      max-width: 65px;
+      padding: 0.5rem 0.5rem 0.5rem 0;
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+    .jackpot {
+      color: $GREEN;
+      font-size: $BASIC;
+      font-family: $CONTENT;
+    }
+
+    .lottery-name {
+      @extend .jackpot;
+    }
+
+    .countdown {
+      font-family: $headline;
+      color: $primary;
+      font-size: $small;
+    }
+  }
+  .right {
+    padding: 10px 0 0 0;
+  }
+
+  .no-jackpot-remark {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    color: $BLUE;
+    margin: 5px 0;
+  }
+
+  .no-jackpot {
+    font-family: "Open Sans", sans-serif;
+    color: $BLUE;
+    font-size: $small;
+    font-weight: bold;
+    position: absolute;
+  }
+}
+
+

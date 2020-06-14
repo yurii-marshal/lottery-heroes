@@ -1,0 +1,18 @@
+<section id="account-tickets" class="account-games-component"
+         [ngStyle]="(isOpenOutlet) ? {'display': 'block'} : {'display': 'none'}">
+
+  <div class="row hidden-md-up">
+    <div class="col-xs-4">
+      <div class="link back" (click)="onBackToMenu()" [routerLink]="['/myaccount']">
+        <span class="arrow biglotteryowin-left-open"></span>
+        <span>{{'LinesComponent.TEXT_BACK' | translate}}</span>
+      </div>
+    </div>
+    <h1 class="col-xs-8">{{'LinesComponent.TEXT_MY_GAMES' | translate}}</h1>
+  </div>
+
+  <app-mygames-table *ngIf='isShowTable' [lines]="gamelines$ | async"></app-mygames-table>
+  <div class="empty-block" *ngIf='isEmptyParagraph'>
+    <p [appTranslate]="'LinesComponent.TEMPLATE_LOTTERIES_LIST'"></p>
+  </div>
+</section>

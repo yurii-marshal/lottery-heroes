@@ -1,0 +1,43 @@
+@import '../../../../../../scss/vars';
+
+.results-lottery-component {
+  position: relative;
+
+  .widgets-statistic-filed {
+    padding: 0 10px;
+
+    .customized-col {
+      margin: 5px 0;
+    }
+  }
+
+  .widgets-filed {
+    padding: 0 18px;
+
+    .customized-col {
+      margin: 7px -7px;
+    }
+  }
+
+  .border {
+    border: 2px solid $GRAY-LIGHTER;
+    border-radius: 6px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .widgets-statistic-filed,
+    .widgets-filed {
+      padding: 0 15px;
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    .share-container {
+      position: absolute;
+      left: -11%;
+    }
+  }
+}
+

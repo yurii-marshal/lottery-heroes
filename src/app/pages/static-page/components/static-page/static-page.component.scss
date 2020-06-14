@@ -1,0 +1,137 @@
+@import '../../../../../scss/vars';
+
+:host {
+  .title {
+    @include primary-title;
+  }
+
+  p {
+    color: $primary;
+    font-family: $CONTENT;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  dt {
+    font-weight: normal;
+    display: inline;
+  }
+
+  dd {
+    display: inline;
+  }
+
+  .row > div > p:first-child {
+    margin-top: 10px;
+  }
+
+  ul {
+    @extend p;
+    counter-reset: custom-counter;
+    padding-left: 1rem;
+
+    > * {
+      padding: 0 0 0 1rem;
+      position: relative;
+      margin: 0;
+      &:before {
+        content: counter(custom-counter, disc);
+        counter-increment: custom-counter;
+        font-family: cursive;
+        color: #4190c8;
+        font-size: 1.2rem;
+        width: 1rem;
+        text-align: left;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+
+  .sub-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: $BASIC;
+  }
+
+  .last_update {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  ol {
+    padding-left: 20px;
+
+    > li + li {
+      margin-top: 1rem;
+    }
+
+    > li > .reset {
+      margin-left: -17px;
+    }
+
+    .reset {
+      padding-left: 0;
+
+      li {
+        margin: 1rem 0;
+        position: relative;
+        padding: 0 0 0 45px;
+
+        &::before {
+          position: absolute;
+          left: 0;
+        }
+      }
+    }
+  }
+
+  .reset {
+    counter-reset: item;
+    list-style-type: none;
+  }
+
+  a {
+    word-break: break-all;
+  }
+
+  h3 {
+    font-size: $BASIC;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    p {
+      font-size: $small;
+      margin-bottom: 0.5rem;
+    }
+
+    dl, li {
+      font-size: $small;
+    }
+
+    ul {
+      > * {
+        &:before {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .sub-title {
+      font-size: $small;
+    }
+
+    h3 {
+      font-size: $small;
+    }
+  }
+
+  /* IE11 */
+  @media all and (-ms-high-contrast: none) {
+    *::-ms-backdrop, ol > li > .reset {
+      margin-left: -22px;
+    }
+  }
+}

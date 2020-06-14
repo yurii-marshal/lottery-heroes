@@ -1,0 +1,416 @@
+@import '../../../../../scss/vars';
+
+.how-to-play-component {
+  overflow-wrap: break-word;
+
+  .title {
+    font-size: $MEDIUM;
+    padding: 10px 0;
+    margin: 20px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+
+    &.main {
+      font-size: $LARGE;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      margin: auto;
+      height: 5px;
+      width: 60px;
+      border-radius: 5px;
+      background: $RED-LIGHT;
+    }
+  }
+
+  .post-title {
+    font-size: $MEDIUM;
+  }
+
+  .bt {
+    width: 325px;
+    min-height: 50px; // height
+    font-size: 21px;
+    margin: 40px 0;
+    box-shadow: 0 3px 0 #467f30;
+    display: inline-flex;
+  }
+
+  .link {
+    text-decoration: underline;
+  }
+
+  .section {
+    border-bottom: 1px solid $GRAY-LIGHTER;
+    padding: 40px 0;
+  }
+
+  .section.instruction {
+
+    .first-step {
+      img {
+        height: 205px;
+        width: 196px;
+      }
+    }
+    .second-step {
+      img {
+        height: 260px;
+        width: 284px;
+      }
+    }
+    .third-step {
+      img {
+        height: 237px;
+        width: 440px;
+      }
+    }
+
+    .lottery-logo {
+      img {
+        width: 130px;
+        height: auto;
+      }
+    }
+  }
+
+  .img-thumbnail {
+    min-height: 130px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .info-thumbnail {
+    min-height: 72px;
+  }
+
+  .step {
+    height: 60px;
+    width: 60px;
+    border-radius: 60px;
+    font-size: 67px;
+    color: #fff;
+    font-weight: bold;
+    background: $RED-LIGHT;
+    padding-top: 15px;
+    margin-right: 20px;
+    overflow: hidden;
+  }
+
+  .step-descr {
+    padding-left: 80px;
+  }
+
+  .prev-lottery, .next-lottery {
+    img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+
+  .prev-lottery {
+    margin-left: 54px;
+  }
+
+  .next-lottery {
+    margin-right: 54px;
+  }
+
+  .title-breadcrumbs {
+    margin-top: 30px;
+  }
+
+  .breadcrumbs {
+    padding: 15px 30px;
+    margin-top: 10px;
+    border: 1px solid $GRAY-LIGHTER;
+    border-radius: 8px;
+    overflow: hidden;
+
+    a {
+      margin-right: 15px;
+    }
+  }
+
+  //FAQ
+
+  .item {
+    position: relative;
+  }
+
+  .item input[type=checkbox][name=item-checkbox] {
+    display: none;
+  }
+
+  .item-title {
+    z-index: 1;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(100% - 57px);
+    top: 0;
+    margin: 0;
+  }
+
+  h2 {
+    padding: 1rem 0;
+    border-bottom: 1px solid $GRAY-LIGHTER;
+    color: $primary;
+    font-family: $CONTENT;
+    font-weight: bold;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background: url('/assets/images/svg/arrow-gray.svg') no-repeat 50%;
+      transition: all .2s ease;
+    }
+
+    &:hover {
+      color: $BLUE;
+    }
+  }
+
+  .item:last-child .item-body {
+    border-bottom: 1px solid $GRAY-LIGHTER;
+  }
+
+  .item-wrapper {
+    display: flex;
+    max-height: 0;
+    transition: max-height .5s ease;
+    overflow: hidden;
+    align-items: flex-end;
+  }
+
+  .item-body {
+    border-bottom: 1px solid $GRAY-LIGHTER;
+
+    p {
+      color: $primary;
+    }
+  }
+
+  input:checked {
+    ~ .item-wrapper {
+      // max-height set via JS for each item because of arrow animation:
+      // arrow starts to animate with appropriate height at the same time
+    }
+
+    ~ h2 {
+      color: $BLUE;
+
+      &::after {
+        transform: rotate(-180deg)
+      }
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .intro {
+      font-size: 15px;
+      line-height: 18px;
+    }
+
+    h2 {
+      padding-left: 15px;
+      padding-right: 35px;
+      font-size: 15px;
+
+      &::after {
+        width: 30px;
+        height: 30px;
+        right: 15px;
+        border: 1px solid $GRAY-LIGHT;
+        border-radius: 100px;
+        background-size: 50%;
+      }
+    }
+
+    .item-body {
+      font-size: 15px;
+      padding: 1rem;
+
+      p {
+        line-height: 20px;
+        padding-left: 1rem;
+      }
+    }
+
+    .item-title {
+      bottom: calc(100% - 65px);
+    }
+
+    .section.instruction {
+
+      .first-step {
+        img {
+          height: 334px;
+          width: 320px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 384px) {
+    .bt {
+      width: 100%;
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    .search {
+      form {
+        max-width: 335px;
+      }
+    }
+
+    .intro {
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    .list-items {
+      padding-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: $BASIC;
+
+      &::after {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    .item-body {
+      padding: 1rem 0 1rem 1.875rem;
+
+      p {
+        line-height: 30px;
+        padding-right: 0.5rem;
+      }
+    }
+
+    .video {
+      iframe {
+        width: 500px;
+        height: 300px;
+      }
+    }
+  }
+  //FAQ
+
+  @media (max-width: 767px) {
+    .title {
+      span {
+        font-weight: normal;
+      }
+    }
+
+    .video {
+      iframe {
+        width: 100%;
+        height: 250px;
+      }
+    }
+
+    .bt {
+      box-shadow: none;
+    }
+
+    .section {
+      border: none;
+    }
+
+    .title-small {
+      flex-direction: column;
+      border-top: 1px solid $GRAY-LIGHTER;
+    }
+
+    .step {
+      margin: -30px 0 40px;
+      box-shadow: 0 0 0 20px #fff;
+    }
+
+    .step-descr {
+      font-size: $MEDIUM;
+      padding: 0;
+    }
+
+    .thumbnail {
+      margin: 20px 15%;
+      padding: 10px 15px;
+      border: 1px solid $GRAY-LIGHT;
+      box-shadow: 0 0 9px rgba(0, 0, 0, 0.2);
+    }
+
+    .explanation-wrapper {
+      padding: 0;
+    }
+
+    .explanation {
+      p {
+        &:first-child {
+          border-top: 1px solid $GRAY-LIGHTER;
+          padding-top: 40px;
+        }
+
+        &:last-child {
+          border-bottom: 1px solid $GRAY-LIGHTER;
+          padding-bottom: 40px;
+        }
+      }
+    }
+
+    .prev-lottery, .next-lottery {
+      margin: 0;
+
+      img {
+        height: 70px;
+        width: 70px;
+      }
+    }
+
+    .prev-lottery {
+      margin-top: 20px;
+    }
+
+    .breadcrumbs {
+      background: #fcfcfc;
+      border-radius: 0;
+      border: none;
+      border-top: 1px solid $GRAY-LIGHT;
+      padding: 0;
+      margin: 0 -15px -2rem;
+
+      a {
+        padding: 20px 0;
+        display: block;
+        border-bottom: 1px solid $GRAY-LIGHTER;
+
+        &:last-child {
+          border: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+@import '../../../../../../../scss/vars';
+
+.follow-us {
+  .follow-text {
+    color: #676767;
+    font-size: $BASIC;
+  }
+
+  .bt-follow {
+    padding: 0;
+    margin: 20px auto;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    min-height: 45px; // height
+    font-size: $small;
+    font-weight: bold;
+    overflow: hidden;
+    box-shadow: inset -1px 1px 1px -1px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    background: -webkit-linear-gradient(-90deg, #5e96d3 0, #424f92 100%);
+    background: -moz-linear-gradient(180deg, #5e96d3 0, #424f92 100%);
+    background: linear-gradient(180deg, #5e96d3 0, #424f92 100%);
+    text-decoration: none;
+
+    :hover, :active {
+      text-decoration: none;
+    }
+
+    .bt-follow-icon {
+      min-height: 45px; // height
+      padding: 0 6px;
+      box-shadow: inset 0px 0px 1px -1px rgba(0, 0, 0, 0.4),
+      inset -1px 1px 1px -1px rgba(0, 0, 0, 0.4),
+      inset 0px 1px 1px rgba(255, 255, 255, 0.4);
+      background: -webkit-linear-gradient(-90deg, #5899d5 0, #3d579d 100%);
+      background: -moz-linear-gradient(180deg, #5899d5 0, #3d579d 100%);
+      background: linear-gradient(180deg, #5899d5 0, #3d579d 100%);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+
+      img {
+        height: 28px;
+        width: 28px;
+      }
+    }
+
+    .bt-follow-text {
+      padding: 0 15px;
+      text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.4);
+    }
+  }
+}

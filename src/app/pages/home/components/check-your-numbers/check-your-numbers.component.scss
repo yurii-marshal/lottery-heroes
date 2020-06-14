@@ -1,0 +1,64 @@
+@import '../../../../../scss/vars';
+
+.check-your-numbers-component {
+    height: 100%;
+    background: #fff url('/assets/images/home/check_numbers_balls.png') no-repeat;
+    background-position: 50% 85%;
+    min-height: 470px;
+
+  .title {
+    color: $primary;
+    font-size: $LARGE;
+    font-family: $headline;
+    margin-bottom: 0;
+    font-weight: normal;
+
+    + p {
+      margin: 0.5rem 0 1.625rem;
+    }
+  }
+
+  select {
+    width: 100%;
+    max-width: 20rem;
+    margin: 0 auto;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: #fff url('/assets/images/svg/arrow-gray.svg') no-repeat;
+    background-position: calc(100% - 7px) 50%;
+    background-size: 12px 12px;
+    display: flex;
+  }
+
+  .ng-select {
+    display: flex;
+    flex-direction: column;
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+
+  .error {
+    width: 100%;
+    max-width: 20rem;
+    margin: 0.5rem auto 0;
+    color: $RED;
+    font-size: $small;
+  }
+
+  .bt {
+    min-height: 52px; // height
+    line-height: 52px;
+    width: 100%;
+    max-width: 13.625rem;
+    margin: 22px auto 0;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .title {
+      font-size: $BASIC;
+      margin-top: 1.5rem;
+    }
+  }
+}

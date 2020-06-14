@@ -1,0 +1,317 @@
+@import '../../../../../scss/vars';
+
+.lottery-widgets-before-cutoff-component {
+  .blackout {
+    background: rgba(255, 255, 255, 0.75);
+  }
+
+  .modal-dialog {
+    max-width: 849px;
+  }
+
+  .modal-content {
+    position: relative;
+    overflow-y: scroll;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 135px;
+      bottom: 75px;
+      width: 50px;
+      height: 50px;
+      display: block;
+      transform: rotate(45deg);
+      background: url('/assets/images/lottery-cutoff/triangle-blue.svg') no-repeat;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 135px;
+      bottom: 80px;
+      width: 40px;
+      height: 40px;
+      display: block;
+      transform: rotate(-198deg);
+      background: url('/assets/images/lottery-cutoff/triangle-light-blue.svg') no-repeat;
+    }
+  }
+
+  .container {
+    max-width: 670px;
+    padding-top: 35px;
+    padding-bottom: 25px;
+  }
+
+  .lottery-logo {
+    max-width: 175px;
+    max-height: 170px;
+  }
+
+  .description {
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: $BASIC;
+      margin-top: -8px;
+    }
+  }
+
+  .lottery-jackpot {
+    color: $GREEN;
+    font-weight: bold;
+    font-size: 58px;
+    margin-top: -8px;
+  }
+
+  .bt {
+    max-width: 233px;
+    height: 121px;
+    background: linear-gradient(180deg, rgb(36, 168, 55) 46%, rgb(29, 146, 51) 100%);
+    box-shadow: 0px 2px 2.73px 0.27px rgba(140, 140, 140, 0.66);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+
+    &:active {
+      background: linear-gradient(180deg, rgb(33, 158, 48) 46%, rgb(27, 135, 45) 100%);
+      box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.35);
+    }
+
+    .quick-picks {
+      display: block;
+      font-size: 24px;
+    }
+
+    .freeline {
+      display: block;
+      color: #fdc700;
+      font-size: $BASIC;
+    }
+
+    .arrows {
+      display: inline-flex;
+      width: 7px;
+      margin-left: -1px;
+
+      + .arrows {
+        margin-left: -5px;
+      }
+    }
+
+    .cost.yellow {
+      color: $YELLOW;
+    }
+  }
+
+  .flipped-timer {
+    margin-top: 11px;
+
+    p {
+      font-size: $BASIC;
+      margin-bottom: 10px;
+      max-width: 415px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .timer {
+      max-width: 415px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .link-wrapper {
+    margin-top: 34px;
+
+    .link {
+      font-size: $BASIC;
+    }
+
+    .arrows {
+      width: 7px;
+      margin-left: -3px;
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  .no-jackpot-remark,
+  .no-jackpot {
+    font-family: $CONTENT;
+    font-size: $small;
+    color: $BLUE;
+    font-weight: normal;
+    margin-top: -18px;
+  }
+
+  .no-jackpot {
+    position: relative;
+    top: -22px;
+    left: -14px;
+    font-size: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .modal-dialog {
+      margin-top: 30px;
+    }
+
+    .modal-content {
+      background: #fff url('/assets/images/lottery-cutoff/box-top.svg') no-repeat 97% 71%;
+      background-size: 200% 200%;
+
+      &::after {
+        width: 40px;
+        height: 40px;
+        right: 6%;
+      }
+
+      &::before {
+        width: 30px;
+        height: 40px;
+        left: 9%;
+        bottom: 135px;
+        transform: rotate(-140deg);
+      }
+    }
+
+    .container {
+      padding-top: 10px;
+      padding-bottom: 17px;
+    }
+
+    .description {
+      margin-top: 10px;
+
+      h2 {
+        font-size: 18px;
+      }
+    }
+
+    .lottery-logo {
+      order: -1;
+      max-width: 130px;
+      max-height: 130px;
+    }
+
+    .lottery-jackpot {
+      font-size: 42px;
+      line-height: 42px;
+    }
+
+    .bt {
+      font-size: $BASIC;
+      height: 85px;
+      max-width: 165px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 8px;
+
+      .quick-picks {
+        font-size: 18px;
+      }
+
+      .freeline {
+        font-size: $small;
+      }
+
+      .arrows {
+        width: 5px;
+      }
+    }
+
+    .link-wrapper {
+      margin-top: 15px;
+      padding-left: 35px;
+    }
+  }
+
+  /* Scroll */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: #DADADA;
+  }
+
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: #DADADA;
+  }
+
+  @media (min-width: 320px) and (max-width: 360px) {
+    .modal-content {
+      padding-left: 7px;
+    }
+  }
+
+  @media (min-width: 568px) and (max-width: 667px) {
+    .modal-dialog {
+      margin-top: 0
+    }
+
+    .modal-content {
+      height: 300px;
+      background-position: 74% 62%;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 736px) {
+    .modal-dialog {
+      margin-top: 0
+    }
+
+    .modal-content {
+      height: 358px;
+    }
+  }
+
+  @media (min-width: 736px) and (max-width: 767px) {
+    .modal-dialog {
+      margin-top: 0
+    }
+
+    .modal-content {
+      height: 398px;
+      background-position: 80% 59%;
+    }
+  }
+
+  @media(max-width: 375px) {
+    .modal-content {
+      &::before {
+        bottom: 95px;
+      }
+    }
+  }
+
+  @media(min-width: 768px) {
+    .modal-content {
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-image: url('/assets/images/lottery-cutoff/box-top.svg'),
+                        url('/assets/images/lottery-cutoff/box-bottom.svg');
+      background-position: 49px -4px, -6px 34px;
+    }
+
+    .bt {
+      margin-top: 12px;
+    }
+  }
+
+  @media(min-width: 768px) and (max-width: 992px) {
+    .modal-content {
+      background-position: 51px -44px, -41px -130px;
+      background-size: 97% 96%, 200% 200%;
+    }
+  }
+}

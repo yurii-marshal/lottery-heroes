@@ -1,0 +1,41 @@
+<div class="offer-5-1-lottery-box display-flex direction-column flex-items-xs-between">
+  <div class="logo-wrapper text-xs-center">
+    <img [src]="lottery?.logo" alt="{{lottery?.name}}" title="{{lottery?.name}}" class="logo">
+  </div>
+  <div class="title" [innerHTML]="'Offer51LotteryBoxComponent.TEMPLATE_NEXT_DRAW' | translate: {param: lottery?.name}"></div>
+  <div class="content">
+    <ng-container *ngIf="upcomingDraw?.jackpot; else noJackpot">
+      <div class="jackpot" [innerHtml]="upcomingDraw.jackpot | jackpotFormat:upcomingDraw.currency_id"></div>
+    </ng-container>
+    <ng-template #noJackpot>
+      <span class="jackpot" [innerHtml]="upcomingDraw?.min_jackpot | jackpotFormat:upcomingDraw?.currency_id:'Million':'K':true">
+      </span>
+      <span class="no-jackpot">*</span>
+      <div class="no-jackpot-remark text-xs-center" *ngIf="!upcomingDraw?.jackpot">
+        {{'Offer51LotteryBoxComponent.TEXT_JACKPOT_EXPECT' | translate}}
+      </div>
+    </ng-template>
+    <div class="offer">
+      5 {{'Offer51LotteryBoxComponent.TEXT_LINES' | translate}} <span class="color-green">+ <b>
+      1 {{'Offer51LotteryBoxComponent.TEXT_FREE' | translate}}
+    </b></span>
+    </div>
+  </div>
+  <div class="sub-content">
+    <button class="bt green navigation-btn" (click)="navigateToCart(freeLineOffer?.details.lines_to_qualify)">
+      5+1 {{'Offer51LotteryBoxComponent.TEXT_PLEASE' | translate}}
+    </button>
+    <div class="sub-content-text">
+      {{'Offer51LotteryBoxComponent.TEXT_ONLY' | translate}} {{(upcomingDrawLinePrice * freeLineOffer?.details.lines_to_qualify) | currency:upcomingDraw?.currency_id:'symbol':'1.2-2'}}
+    </div>
+  </div>
+  <!--- Ribbon --->
+  <div class="ribbon-wrapper">
+    <div class="ribbon-text">
+      <div>
+        +1 {{'Offer51LotteryBoxComponent.TEXT_FREE' | translate}}
+      </div>
+    </div>
+    <img src="assets/images/lottery-free-line/ribbon-small-shadow.svg" alt="ribbon" class="ribbon">
+  </div>
+</div>

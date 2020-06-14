@@ -1,0 +1,79 @@
+@import '../../../../../../scss/vars';
+
+.results-menu-list-item-component {
+  .lotteries-logo {
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .bt.green {
+    width: 100px;
+    height: 30px;
+    font-size: 0.8rem;
+    img {
+      height: 5px;
+    }
+  }
+
+  .lotteries-logo {
+    width: 50px;
+    height: 44px;
+  }
+
+  .indents {
+    padding: 20px 0;
+    margin: 0 20px;
+  }
+
+  .results-date {
+    color: $primary;
+    font-family: $CONTENT;
+    font-size: 0.9rem;
+    position: absolute;
+    left: 0;
+    top: 100%;
+  }
+
+  .results-info {
+    position: relative;
+  }
+
+  .results-line {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 226px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+
+    span {
+      height: 29px;
+      width: 29px;
+      -webkit-border-radius: 29px;
+      -moz-border-radius: 29px;
+      border-radius: 50%;
+      border: 1px solid #b8b8b8;
+      color: $primary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      font-family: $headline;
+      font-size: $small;
+      margin-right: 0.2rem;
+    }
+    span.ball {
+      background: $BLUE;
+      color: #fff;
+      border-color: $BLUE;
+    }
+  }
+}
+

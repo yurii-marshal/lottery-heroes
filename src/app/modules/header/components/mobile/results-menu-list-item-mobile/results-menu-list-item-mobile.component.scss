@@ -1,0 +1,42 @@
+@import '../../../../../../scss/vars';
+
+.single-draw {
+  margin: 0.7rem 0;
+}
+
+.lottery-results-name {
+  color: $RED-LIGHT;
+  font-family: $headline;
+  font-size: 1rem;
+  text-transform: capitalize;
+  margin-bottom: 0.1rem;
+}
+
+.draw-line {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+}
+
+.number {
+  width: 27px;
+  height: 27px;
+  border-radius: 100rem;
+  font-family: $headline;
+  font-size: 0.9rem;
+  font-weight: normal;
+  &.main {
+    margin-right: 0.2rem;
+    color: $primary;
+    background: #fff;
+  }
+  &.extra {
+    margin-left: 0.2rem;
+    color: #fff;
+    background: $BLUE;
+  }
+  .draw-line {
+    margin-bottom: 0.7rem;
+    text-decoration: none;
+  }
+}

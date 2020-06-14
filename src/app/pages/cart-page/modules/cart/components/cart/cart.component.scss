@@ -1,0 +1,8 @@
+@import '../../../../../../../scss/vars';
+
+.cart-component {
+  .table-title {
+    @include primary-title;
+    border-bottom: 0;
+  }
+}

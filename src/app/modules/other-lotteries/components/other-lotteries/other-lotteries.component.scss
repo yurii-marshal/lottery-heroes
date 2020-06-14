@@ -1,0 +1,60 @@
+@import '../../../../../scss/vars';
+
+.other-lotteries-navigation {
+  .title {
+    color: #626262;
+    font-family: $headline;
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+
+  .content-box {
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .title {
+      font-weight: bold;
+      font-size: $BASIC;
+      height: 60px;
+      margin: 0;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .content-box {
+      border-top: 2px solid #ECECEC;
+      flex-direction: column;
+
+      .nav-section {
+        background-color: #FCFBFC;
+        height: 60px;
+        border-bottom: 1.5px solid #ECECEC;
+        text-align: center;
+        justify-content: center;
+
+        a {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .content-box {
+      border: 1px solid #ECECEC;
+      padding: 2rem 15px;
+      justify-content: space-around;
+    }
+  }
+
+}

@@ -1,0 +1,22 @@
+@import '../../../../scss/vars';
+
+.title-combos {
+  color: #272727;
+  font-weight: bold;
+  font-size: 18px;
+  position: relative;
+  margin: 40px auto 0;
+
+  &::before {
+    content: '';
+    width: 65px;
+    height: 4px;
+    background: $RED-LIGHT;
+    position: absolute;
+    top: -10px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 4px;
+  }
+}

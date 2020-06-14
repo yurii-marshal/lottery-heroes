@@ -1,0 +1,59 @@
+<div *ngIf="oddsData" class="lottery-widgets-odds-component">
+  <div class="row">
+    <div class="col-xs">
+      <h3 class="title-odds">{{lottery.name}} {{'LotteryWidgetsOddsComponent.TEXT_ODDS' | translate}}:</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs">
+      <div class="row">
+        <div class="col-xs title-table text-xs-center">{{'LotteryWidgetsOddsComponent.TEXT_MATCH' | translate}}</div>
+        <div class="col-xs title-table text-xs-center">{{'LotteryWidgetsOddsComponent.TEXT_ODDS' | translate}}</div>
+      </div>
+    </div>
+    <div class="col-xs-12 display-flex flex-items-xs-middle flex-items-xs-between odds-line"
+         *ngFor="let item of oddsData">
+      <div class="chance-line display-flex flex-items-xs-middle">
+
+        <ng-container *ngIf="item['m']">
+          <div class="number main" *ngFor="let main of 1|rangeTo:item['m']"></div>
+        </ng-container>
+        <ng-container *ngIf="item['m'] && item['x'] || item['m'] && item['t']">
+          <div class="spacer">+</div>
+        </ng-container>
+
+        <ng-container *ngIf="item['x']">
+          <div class="number extra" *ngFor="let extra of 1|rangeTo:item['x']"></div>
+        </ng-container>
+        <ng-container *ngIf="item['t']">
+          <div class="number extra" *ngFor="let perTicket of 1|rangeTo:item['t']"></div>
+        </ng-container>
+
+        <ng-container *ngIf="item['assoc']">
+
+          <ng-container *ngFor="let itemassoc of item['assoc']">
+            <span class="spacer or"> or </span>
+
+            <ng-container *ngIf="itemassoc['m']">
+              <div class="number main" *ngFor="let main of 1|rangeTo:itemassoc['m']"></div>
+            </ng-container>
+            <ng-container *ngIf="itemassoc['m'] && itemassoc['x'] || itemassoc['m'] && itemassoc['t']">
+              <div class="spacer">+</div>
+            </ng-container>
+
+            <ng-container *ngIf="itemassoc['x']">
+              <div class="number extra" *ngFor="let extra of 1|rangeTo:itemassoc['x']"></div>
+            </ng-container>
+            <ng-container *ngIf="itemassoc['t']">
+              <div class="number extra" *ngFor="let perTicket of 1|rangeTo:itemassoc['t']"></div>
+            </ng-container>
+
+          </ng-container>
+        </ng-container>
+
+      </div>
+      <div class="chance">{{'LotteryWidgetsOddsComponent.TEXT_ONE_IN' | translate}}{{item.val | numberFormat}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+@import '../../../../../scss/vars';
+
+.protection-component {
+  .title {
+    color: $primary;
+    font-size: $LARGE;
+    font-family: $headline;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .img {
+    min-height: 80px;
+    display: block;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .title {
+      font-size: 16px;
+    }
+    .cols {
+      flex-direction: column;
+      min-height: 300px;
+    }
+    .col {
+      &:first-child {
+        order: 2;
+        border-top: 1px solid #bbbbbb;
+        padding-top: 1.5rem;
+        min-height: 150px;
+      }
+      &:last-child {
+        padding-bottom: 1.5rem;
+        min-height: 150px;
+      }
+    }
+    p {
+      font-size: 0.8rem;
+    }
+    .link {
+      font-size: 0.8rem;
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    .title {
+      font-size: $LARGE;
+    }
+    .col {
+      padding: 1rem 0 0.5rem;
+
+      &:first-child {
+        padding-right: 3.25rem;
+        border-right: 1px solid #bbbbbb;
+      }
+      &:last-child {
+        padding-left: 3.25rem;
+      }
+    }
+    .commission {
+      .img {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding-bottom: 19px;
+      }
+    }
+  }
+}

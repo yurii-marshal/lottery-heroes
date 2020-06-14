@@ -1,0 +1,128 @@
+<div class="syndicate-item col-xs"
+     [ngClass]="{'animated': item.animate}">
+  <div class="row flex-items-xs-middle item-summary">
+    <div class="col-xs-9 col-md-4">
+      <div class="row display-flex flex-items-xs-middle flex-items-xs-between">
+        <div class="lottery-logo" (click)="toggleLines()">
+          <img src="/assets/images/lottery-logos/{{lottery?.id}}.svg" alt="{{altName}}">
+          <div class="syndicate-icon">
+            <img src="/assets/images/syndicates/syndicate_icon.svg" alt="">
+          </div>
+        </div>
+        <div class="col-xs-8 col-sm-9">
+          <a [routerLink]="['/', lotterySlug]" class="lottery-name">{{lottery?.name}}</a>
+          <div class="description hidden-md-up">
+            {{syndicateTemplate?.numLines}} Lines / {{syndicateTemplate?.numShares}} Shares
+          </div>
+          <div class="input-wr display-flex flex-items-xs-middle direction-row hidden-md-up">
+            <ng-container *ngIf="item?.numShares > 1; else disabledDecriesMobile">
+              <button class="bt lines-decries" (click)="removeShare.emit(item?.templateId)">-</button>
+            </ng-container>
+            <ng-template #disabledDecriesMobile>
+              <button class="bt lines-decries disabled">-</button>
+            </ng-template>
+            <input class="input text-xs-center"
+                   #inputShareNumberMobile
+                   type="number"
+                   value="{{item?.numShares}}"
+                   (input)="onInputMaxCheck(inputShareNumberMobile.valueAsNumber)"
+                   (blur)="setShares.emit({ templateId: item?.templateId, numShares: inputShareNumberMobile.valueAsNumber })">
+            <button class="bt lines-increase"
+                    [disabled]="item?.numShares >= syndicateTemplate?.numSharesAvailable"
+                    (click)="addShare.emit(item.templateId)">+</button>
+          </div>
+          <div class="description hidden-sm-down">
+            <div class="num-lines">
+              {{syndicateTemplate?.numLines}} Lines
+            </div>
+            <div class="num-shares">
+              {{syndicateTemplate?.numShares}} Shares
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 hidden-sm-down">
+      <div *ngIf="upcomingDraw">
+        <div class="jackpot-val">
+          <ng-container *ngIf="upcomingDraw.jackpot; else noJackpot">
+            <span [innerHtml]="upcomingDraw.jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+          </ng-container>
+          <ng-template #noJackpot>
+            <span [innerHtml]="upcomingDraw.min_jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+            <span class="no-jackpot">*</span>
+            <div class="no-jackpot-remark">Jackpot is expected to rise</div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 text-xs-center display-flex flex-items-xs-middle flex-items-xs-center hidden-sm-down">
+      <span class="lines-title">Shares:</span>
+      <input class="text-xs-center"
+             #inputShareNumber
+             type="number"
+             value="{{item?.numShares}}"
+             (input)="onInputMaxCheck(inputShareNumber.valueAsNumber)"
+             (blur)="setShares.emit({ templateId: item?.templateId, numShares: inputShareNumber.valueAsNumber })">
+      <div class="buttons-wrapper display-flex flex-items-xs-middle direction-column">
+        <button class="bt lines-increase biglotteryowin-up-dir"
+                [disabled]="item?.numShares >= syndicateTemplate?.numSharesAvailable"
+                (click)="addShare.emit(item.templateId)"
+        ></button>
+        <ng-container *ngIf="item?.numShares > 1; else disabledDecries">
+          <button class="bt lines-decries biglotteryowin-down-dir" (click)="removeShare.emit(item?.templateId)"></button>
+        </ng-container>
+        <ng-template #disabledDecries>
+          <button class="bt lines-decries disabled"><i class="biglotteryowin-down-dir"></i></button>
+        </ng-template>
+      </div>
+    </div>
+    <div class="col-xs-2 col-md-1 text-xs-right" *ngIf="itemPrice">
+      <div class="price">
+        {{itemPrice.priceWithDiscount | currency:currencyId:'symbol':'1.2-2'}}
+        <div *ngIf="itemPrice.discount > 0" class="old text-xs-right hidden-md-up">
+          {{itemPrice.price|currency:currencyId:'symbol':'1.2-2'}}
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 line-toggle-wrapper display-flex flex-items-xs-middle flex-items-xs-right">
+      <button class="bt clear hidden-sm-down" (click)="deleteItemEvent.emit(item)"><i class="biglotteryowin-trash"></i></button>
+      <button class="bt line-toggle hidden-md-up" #buttonLineToggleMobile (click)="toggleLines()"><i
+        class="biglotteryowin-down-open"></i></button>
+    </div>
+    <button class="bt clear hidden-md-up" (click)="deleteItemEvent.emit(item)"><i class="biglotteryowin-trash"></i></button>
+    <button class="bt line-toggle hidden-sm-down" #buttonLineToggle (click)="toggleLines()"><i
+      class="biglotteryowin-down-open"></i></button>
+  </div>
+  <div class="row">
+    <div class="lines-list-wrapper display-flex flex-items-xs-bottom" #linesListWrapper>
+      <div class="lines-list">
+        <div class="col-xs-12 lines-list-body">
+          <div class="row">
+            <div class="col-xs-12 col-md-6 display-flex flex-items-xs-middle direction-column">
+              <div class="lines">
+                <div class="line display-flex flex-items-xs-middle direction-row"
+                     *ngFor="let line of syndicateTemplate?.lines; let index = index;">
+                  <div class="line-index">
+                    Line {{index + 1}}
+                  </div>
+                  <div class="flex-items-xs-middle flex-items-xs-between main-numbers">
+                    <span class="number main" *ngFor="let num of line.mainNumbers">{{num | number:'2.0-0'}}</span>
+                    <span class="number extra" *ngFor="let num of line.extraNumbers">{{num | number:'2.0-0'}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 display-flex flex-items-xs-center flex-items-xs-middle hidden-sm-down">
+              <button class="bt hide" (click)="toggleLines()">
+                <i class="biglotteryowin-up-open"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="super-numbers-component">
+  <div class="row">
+    <div class="col-xs-12 display-flex flex-items-xs-middle flex-items-md-between flex-items-lg-left">
+      <p>Pick {{rules.perticket_numbers.picks}} {{rules.perticket_numbers.name}}</p>
+      <div class="display-flex numbers-list">
+        <span class="display-flex flex-items-xs-center flex-items-xs-middle number perticket-number"
+              [ngClass]="{picked: isPicked(num)}"
+              (click)="togglePerTicketNumbers.emit({rules: rules, value: num})"
+              *ngFor="let num of rules.perticket_numbers.lowest|rangeTo:rules.perticket_numbers.highest">
+          {{num}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

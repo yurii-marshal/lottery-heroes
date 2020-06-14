@@ -1,0 +1,19 @@
+.notification-multiples-lines-component {
+  .modal-body {
+    min-height: 100%;
+  }
+
+  p {
+    margin: .6rem 0 .875rem;
+  }
+
+  .form-row {
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .modal-dialog {
+      margin: 135px auto 30px;
+    }
+  }
+}

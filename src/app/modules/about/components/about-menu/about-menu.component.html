@@ -1,0 +1,42 @@
+<div class="about-menu-wrapper display-flex direction-column hidden-sm-down">
+  <div class="about-menu display-flex direction-column">
+    <!--<a routerLink="/about/about-us" routerLinkActive="active"-->
+       <!--[routerLinkActiveOptions]="{exact: true}" class="about-menu-item text-xs-left">-->
+      <!--{{'AboutMenuComponent.TEXT_ABOUT_US' | translate}}-->
+    <!--</a>-->
+    <a *ngIf="showMenuItem.safeAndSecure" routerLink="/about/safe-and-secure" routerLinkActive="active"
+       class="about-menu-item text-xs-left">
+      {{'AboutMenuComponent.REF_SAFE_SECURE' | translate}}
+    </a>
+    <a routerLink="/about/faq" routerLinkActive="active" class="about-menu-item text-xs-left">
+      {{'AboutMenuComponent.REF_FAQ' | translate}}
+    </a>
+
+    <!--<button-->
+      <!--*ngIf="!(isLogged$ | async)"-->
+      <!--(click)="onWinBtnClicked()"-->
+      <!--class="bt green about-cta"-->
+      <!--title="{{'AboutMenuComponent.TITLE_JOIN_BIGLOTTERYOWIN' | translate}}">-->
+      <!--{{'AboutMenuComponent.BUTTON_JOIN_AND_WIN' | translate}}-->
+      <!--<i class="biglotteryowin-right-open" title="{{'AboutMenuComponent.TITLE_JOIN_BIGLOTTERYOWIN' | translate}}"></i>-->
+    <!--</button>-->
+  </div>
+</div>
+
+<div class="about-menu display-flex direction-column hidden-md-up">
+  <!--<a routerLink="/about/about-us" class="about-menu-item text-xs-left">-->
+    <!--<img class="hidden-md-up" src="assets/images/about-us/about-us-icon.svg" alt="About Us">-->
+    <!--{{'AboutMenuComponent.TEXT_ABOUT_US' | translate}}-->
+    <!--<i class="biglotteryowin-right-open hidden-md-up"></i>-->
+  <!--</a>-->
+  <a *ngIf="showMenuItem.safeAndSecure" routerLink="/about/safe-and-secure" class="about-menu-item text-xs-left">
+    <img class="hidden-md-up" src="assets/images/about-us/sas-icon.svg" alt="Safe & Secure">
+    {{'AboutMenuComponent.REF_SAFE_SECURE' | translate}}
+    <i class="biglotteryowin-right-open hidden-md-up"></i>
+  </a>
+  <a routerLink="/about/faq" class="about-menu-item text-xs-left">
+    <img class="hidden-md-up" src="assets/images/about-us/faq-icon.svg" alt="FAQ">
+    {{'AboutMenuComponent.REF_FAQ' | translate}}
+    <i class="biglotteryowin-right-open hidden-md-up"></i>
+  </a>
+</div>

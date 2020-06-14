@@ -1,0 +1,57 @@
+<div class="lottery-widgets-seo-description-component">
+  <ng-container *ngIf="lottery">
+    <ng-container [ngSwitch]="lottery.id">
+      <ng-container *ngSwitchCase="'powerball'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.powerball'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'powerball-au'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.powerball-au'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'lotto-pl'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.lotto-pl'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'lotto-ie'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.lotto-ie'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'superenalotto'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.superenalotto'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'megamillions'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.megamillions'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="lottery.id === 'euromillions' || lottery.id === 'euromillions-ie' ? lottery.id : ''">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.euromillions'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'eurojackpot'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.eurojackpot'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'oz-lotto-au'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.oz-lotto-au'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'bonoloto'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.bonoloto'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'el-gordo-primitiva'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.el-gordo-primitiva'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'la-primitiva'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.la-primitiva'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'lotto-fr'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.lotto-fr'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'thunderball'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.thunderball'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'lotto-uk'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.lotto-uk'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'megasena'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.megasena'"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'lotto-6aus49'">
+        <div [appTranslate]="'LotteryWidgetsSeoDescriptionComponent.lotto-6aus49'"></div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>

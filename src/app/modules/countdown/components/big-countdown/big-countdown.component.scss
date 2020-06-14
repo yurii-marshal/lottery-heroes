@@ -1,0 +1,33 @@
+@import '../../../../../scss/vars';
+
+.big-countdown-component {
+  color: #515151;
+  font-family: $headline;
+
+  font-size: 1.6rem;
+  padding: 20px 0;
+
+  .days {
+    font-weight: normal;
+  }
+
+  i {
+    font-size: 1.5rem;
+    margin: 0 -9px;
+  }
+
+  .minutes {
+    position: relative;
+
+    .seconds {
+      display: inline-block;
+      min-width: 37px;
+    }
+  }
+
+  .biglotteryowin-hourglass {
+    &::before {
+      width: 20px;
+    }
+  }
+}

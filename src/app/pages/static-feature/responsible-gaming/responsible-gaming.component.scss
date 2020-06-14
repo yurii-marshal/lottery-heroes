@@ -1,0 +1,36 @@
+@import "../../../../scss/vars";
+
+.responsible-gaming-component {
+  .title {
+    @include primary-title;
+  }
+
+  p:first-child {
+    padding-top: 1rem;
+  }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .red {
+    color: $RED;
+    font-size: 1rem;
+  }
+
+  .yellow {
+    color: #BF8E00;
+    font-size: 1rem;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    p, li {
+      font-size: $small;
+    }
+  }
+}

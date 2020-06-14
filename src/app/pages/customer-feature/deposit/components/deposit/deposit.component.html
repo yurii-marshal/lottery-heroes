@@ -1,0 +1,103 @@
+<section id="account-withdrawal" class="deposit-component">
+
+  <div class="row hidden-md-up">
+    <div class="col-xs-4">
+      <div class="link back" (click)="onBackToMenu()" [routerLink]="['/myaccount']">
+        <svg viewBox="0 0 46.01 27.74">
+          <title>{{'DepositComponent.TEXT_BACK' | translate}}</title>
+          <path d="M12.36,7.11L30.54,25.23A4.81,4.81,0,0,1,23.72,32L5.54,13.91A4.81,4.81,0,0,1,12.36,7.11Z"
+                transform="translate(-4.13 -5.7)"/>
+          <path
+            d="M48.73,7.11a4.8,4.8,0,0,1,0,6.8L30.54,32a4.81,4.81,0,0,1-6.82-6.8L41.91,7.11A4.83,4.83,0,0,1,48.73,7.11Z"
+            transform="translate(-4.13 -5.7)"/>
+        </svg>
+        <span></span>
+      </div>
+    </div>
+    <h1 class="col-xs-8">{{'DepositComponent.TEXT_DEPOSIT' | translate}}</h1>
+  </div>
+
+  <div class="container d-section deposit-details" *ngIf="isShowDeposit">
+    <div class="row flex-items-xs-top header">
+      <div class="col-xs title">{{'DepositComponent.TEXT_ADD_FUNDS' | translate}}
+        <p class="title-note">({{'DepositComponent.TEXT_MIN_AMOUNT' | translate}}
+          {{minimumDeposit|currency:currencyId:'symbol':'1.2-2'}})</p>
+      </div>
+    </div>
+    <app-response-deposit [responseComponent]="responseComponent"></app-response-deposit>
+
+    <div class="row">
+      <form class="col-xs-12" [formGroup]="depositForm" (ngSubmit)="onSubmit()">
+        <div class="row flex-items-xs-middle choose-package form-row">
+          <div class="col-xs input-wr custom_input
+        {{ isErrorField('deposit') ? 'has-error' : '' }}
+        {{ (depositForm.controls['deposit'].invalid && depositForm.controls['deposit'].touched) ? 'has-error' : '' }}">
+            <input
+              formControlName="deposit"
+              appNumbersOnly="deposit"
+              (input)="onInputDeposit()"
+              type="number"
+              placeholder="{{0.00|currency:currencyId:'symbol':'1.2-2'}}">
+
+            <div class="icon-tooltip icon-error" *ngIf="isErrorField('deposit')"><span>!</span></div>
+            <div class="tooltip-container error" *ngIf="isErrorField('deposit')">
+              <div class="tooltip-body">
+                <p>{{ errorObj.deposit.message }}</p>
+              </div>
+            </div>
+
+            <div class="icon-tooltip icon-error"
+                 *ngIf="depositForm.controls['deposit'].touched && depositForm.controls['deposit'].hasError('minValue')">
+              <span>!</span></div>
+            <div class="tooltip-container error"
+                 *ngIf="depositForm.controls['deposit'].touched && depositForm.controls['deposit'].hasError('minValue')">
+              <div class="tooltip-body">
+                <p>{{ 'ERRORS.minimum_deposit' | translate: {minValue:
+                  minimumDeposit|currency:currencyId:'symbol':'1.2-2'} }}</p>
+              </div>
+            </div>
+
+            <div class="icon-tooltip icon-error"
+                 *ngIf="depositForm.controls['deposit'].touched && depositForm.controls['deposit'].hasError('overLimit')">
+              <span>!</span></div>
+            <div class="tooltip-container error"
+                 *ngIf="depositForm.controls['deposit'].touched && depositForm.controls['deposit'].hasError('overLimit')">
+              <div class="tooltip-body">
+                <p>{{ 'ERRORS.daily_limit' | translate }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row form-group flex-items-xs-middle flex-items-lg-right deposit-wr">
+          <button type="submit" class="col-xs-12 col-md bt green deposit">
+            {{'DepositComponent.TEXT_DEPOSIT' | translate}}
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!--<iframe *ngIf="paymentPageUrl"-->
+      <!--[src]="paymentPageUrl"-->
+      <!--width="420"-->
+      <!--height="550">-->
+    <!--</iframe>-->
+    <!--<div class="norton" *ngIf="isShowIframe">-->
+      <!--<div><img src="assets/images/svg/norton.svg"></div>-->
+    <!--</div>-->
+  </div>
+
+  <div *ngIf="!isShowDeposit" style="position: relative">
+    <div *ngIf="isIframeLoading"
+         style="position: absolute; width: 420px; height: 550px; display: flex; justify-content: center; align-items: center" id="ap-spinner">
+      <img style="width: 50px;" src="./../assets/images/loader/gif-load.gif" alt="gif"/>
+    </div>
+    <div id="form-container"></div>
+    <div id="frame-container"></div>
+  </div>
+
+  <app-cashier
+    [action]="'deposit'"
+    *ngIf="isShowWiropaySystem"></app-cashier>
+  <app-wish-to-withdraw></app-wish-to-withdraw>
+
+</section>

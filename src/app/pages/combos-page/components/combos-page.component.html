@@ -1,0 +1,17 @@
+<app-main-combo-container [combo]="mainCombo"></app-main-combo-container>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="title-combos text-xs-center">{{'CombosPageComponent.TEXT_MOST_POPULAR_COMBOS' | translate}}</h2>
+    </div>
+  </div>
+</div>
+<app-top-combos-container [combosList]="topCombos"></app-top-combos-container>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="title-combos text-xs-center">{{'CombosPageComponent.TEXT_MORE_COMBOS' | translate}}</h2>
+    </div>
+  </div>
+</div>
+<app-list-combos-container [combosList]="otherCombos"></app-list-combos-container>

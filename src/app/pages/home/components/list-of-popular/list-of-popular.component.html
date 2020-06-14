@@ -1,0 +1,26 @@
+<div class="list-of-popular-component" #listOfPopular>
+  <div class="swiper">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"
+             *ngFor="let lotteryId of lotteryIds; let index = index">
+          <app-list-of-popular-item-container
+            [position]="index + 1"
+            [lotteryId]="lotteryId"
+          ></app-list-of-popular-item-container>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button swiper-button-prev" (click)="onTrackSpin('Left')"></div>
+    <div class="swiper-button swiper-button-next" (click)="onTrackSpin('Right')"></div>
+  </div>
+
+  <div class="display-flex flex-items-xs-center all">
+      <a class="link"
+         [routerLink]="['/lotteries']"
+         title="{{'ListOfPopularComponent.REF_SEE_LOTTERIES' | translate}}"
+         (click)="onTrackListClicked()">
+        {{'ListOfPopularComponent.REF_SEE_LOTTERIES' | translate}}
+      </a>
+  </div>
+</div>

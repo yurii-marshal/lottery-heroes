@@ -1,0 +1,39 @@
+@import '../../../../scss/vars';
+
+.bo-session-container {
+  z-index: 10000;
+  background: #00f003;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.container {
+  height: 30px;
+  background: #00f003;
+  font-size: 12px;
+  padding-top: 4px;
+  position: relative;
+}
+
+p {
+  margin: 0;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+@media (max-width: 560px) {
+  .container {
+    height: 46px;
+  }
+}
+
+@media (max-width: 306px) {
+  .container {
+    height: 65px;
+  }
+}

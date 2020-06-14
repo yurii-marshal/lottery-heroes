@@ -1,0 +1,141 @@
+@import '../../../../../../scss/vars';
+
+.winning-results {
+  padding-top: 10px;
+
+  .winning-status {
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+
+  .winning-amount {
+    color: $GREEN;
+    font-size: 45px;
+    line-height: 54px;
+  }
+
+  .last-result-date {
+    margin: 0.5rem auto;
+  }
+
+  .see-lines {
+    border: 0;
+    background: none;
+    color: $primary;
+    margin: 0.5rem auto 0;
+    font-size: $BASIC;
+
+    .biglotteryowin-down-open {
+      font-size: $small;
+      display: inline-block;
+      height: 19px;
+      position: relative;
+      top: 2px;
+      transition: transform 0.2s ease-in-out 0s;
+    }
+  }
+
+  .number {
+    border-radius: 50%;
+    border: 2px solid #c6c6c6;
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    margin-right: 13px;
+
+    &.main {
+      background: #fff;
+    }
+
+    &.extra {
+      background: $BLUE;
+      border-color: $BLUE;
+      color: #fff;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .customer-lines {
+    margin: 0 auto;
+    max-width: 550px;
+
+    .customer-lines-list {
+      display: none;
+    }
+
+    &.open {
+      .biglotteryowin-down-open {
+        transform: rotateZ(180deg);
+        vertical-align: top;
+      }
+
+      .customer-lines-list {
+        display: inline-flex;
+        min-width: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 767px) {
+    margin-top: 30px;
+
+    .winning-status {
+      font-size: 19px;
+    }
+
+    .settled-numbers {
+      margin-top: 12px;
+
+      &.large {
+        flex-direction: column;
+
+        .extra-group {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .number {
+      width: 52px;
+      height: 52px;
+      font-size: 20px;
+      margin-right: 7px;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .winning-status {
+      font-size: $BASIC;
+    }
+
+    .number {
+      border-width: 1px;
+      width: 45px;
+      height: 45px;
+      font-size: $BASIC;
+      margin-right: 5px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .number {
+      width: 38px;
+      height: 38px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .settled-numbers {
+      margin-top: 2px;
+      min-height: 80px;
+      overflow: hidden;
+    }
+  }
+}

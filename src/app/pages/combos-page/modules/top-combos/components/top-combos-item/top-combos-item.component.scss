@@ -1,0 +1,347 @@
+@import '../../../../../../../scss/vars';
+
+:host {
+  /* Scroll */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: #DADADA;
+  }
+
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: #DADADA;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .text {
+    color: #5c5c5c;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .jackpot {
+    color: #5c5c5c;
+    font-size: 35px;
+    line-height: 34px;
+  }
+
+  .combo-info {
+    color: $BLUE;
+    margin-top: 5px;
+    font-size: 0;
+
+    .combo-info-item {
+      padding: 0 5px;
+    }
+
+    .combo-info-item:not(:first-child):not(:last-child) {
+      border-left: 1px solid $BLUE;
+    }
+  }
+
+  .bt {
+    min-height: 46px; // height
+    width: 100%;
+    max-width: 257px;
+    font-size: 18px;
+    margin: 11px auto;
+  }
+
+  .prices {
+    p {
+      font-size: $BASIC;
+      color: #5c5c5c;
+    }
+
+    .former-price {
+      text-decoration: line-through;
+      color: #929292;
+    }
+  }
+
+  .lotteries-list {
+    max-height: 315px;
+    overflow-x: hidden;
+
+    &.scrollable {
+      margin-bottom: 8px;
+    }
+
+    .container {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .jackpot {
+      color: $primary;
+    }
+
+    .total-combo-price {
+      display: none;
+    }
+
+    .arrow {
+      display: none
+    }
+  }
+
+  .tooltip-holder {
+    position: relative;
+
+    .biglotteryowin-question {
+      cursor: pointer;
+
+      &:before {
+        margin: 0;
+      }
+    }
+
+    .tooltip {
+      z-index: 10000;
+      display: none;
+      position: absolute;
+      right: -45px;
+      bottom: 27px;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+      width: 245px;
+      color: $primary;
+      max-height: 315px;
+      overflow: hidden;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .tooltip-header {
+      background: #f2f2f2;
+      position: relative;
+      height: 84px;
+      margin-bottom: 10px;
+
+      p {
+        color: $primary;
+        font-size: 20px;
+      }
+
+      .close {
+        font-size: 26px;
+        line-height: 16px;
+        height: 18px;
+        color: #bebcbd;
+        background: transparent;
+        position: absolute;
+        top: 13px;
+        right: 14px;
+        font-family: $CONTENT;
+        padding: 0;
+        border: 0;
+        z-index: 99;
+        transition: all .1s ease;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+
+    .blackout {
+      z-index: 9999;
+      display: none;
+      background: rgba(0, 0, 0, 0.75);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      animation: fade-in-blackout .5s ease;
+    }
+
+    .open {
+      .blackout {
+        display: block;
+      }
+    }
+
+    .combo-action {
+      position: absolute;
+      bottom: 10px;
+      left: 15px;
+      right: 15px;
+
+      .bt {
+        max-width: 90%;
+      }
+    }
+
+    .tooltip-holder {
+      .tooltip {
+        position: fixed;
+        width: 85%;
+        right: 15px;
+        left: 15px;
+        margin: 0 auto;
+        top: 40px;
+        max-height: 515px;
+        height: 100%;
+      }
+
+      .open {
+        .tooltip {
+          display: block;
+          animation: fade-in-tooltip .5s ease;
+        }
+      }
+    }
+
+    .lotteries-list {
+      max-height: 310px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+    }
+
+    .text {
+      font-size: 21px;
+    }
+
+    .jackpot {
+      font-size: 42px;
+      line-height: 44px;
+    }
+
+    .combo-info {
+      font-size: $BASIC;
+    }
+
+    .bt {
+      font-size: 21px;
+      min-height: 54px; // height
+    }
+
+    .prices {
+      p {
+        font-size: 18px;
+      }
+
+      .former-price {
+        font-size: $small;
+      }
+    }
+  }
+
+  @media (max-width: 320px) {
+    .tooltip-holder {
+      .tooltip {
+        max-height: 465px;
+      }
+    }
+
+    .lotteries-list {
+      max-height: 260px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .tooltip-holder {
+      display: inline-block;
+      font-size: $small;
+
+      &::before,
+      &::after {
+        display: none;
+        z-index: 10000;
+        content: '';
+        position: absolute;
+      }
+
+      &::before {
+        right: 1px;
+        top: -6px;
+        border-top: 10px solid #DDDDDD;
+        border-right: 9px solid transparent;
+        border-left: 9px solid transparent;
+      }
+
+      &::after {
+        right: 2px;
+        top: -6px;
+        border-top: 9px solid #fff;
+        border-right: 8px solid transparent;
+        border-left: 8px solid transparent;
+      }
+
+      &:hover {
+        &::before,
+        &::after,
+        .tooltip {
+          display: block;
+        }
+      }
+
+      .tooltip {
+        padding: 8px 0 0;
+      }
+    }
+
+    .lotteries-list {
+      max-height: 232px;
+
+      .item + .item {
+        margin-top: 10px;
+      }
+    }
+
+    .combo-info {
+      .combo-info-item {
+        font-size: $small;
+      }
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    .jackpot {
+      font-size: 31px;
+    }
+  }
+
+  @keyframes fade-in-blackout {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-tooltip {
+    from {
+      transform: translateY(5%);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+}

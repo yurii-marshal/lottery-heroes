@@ -1,0 +1,18 @@
+@import '../../../../../../../scss/vars';
+
+.cart-empty-component {
+  p {
+    padding: 35px 0 0;
+    color: $primary;
+    text-align: center;
+  }
+
+  a {
+    display: block;
+  }
+
+  .cart-page-empty {
+    padding: 35px 0 0;
+    text-align: center;
+  }
+}

@@ -1,0 +1,157 @@
+@import '../../../../../scss/vars';
+
+.lotteries-component {
+  .top {
+    color: $primary;
+  }
+
+  .title-lotteries {
+    @include primary-title;
+    border-bottom: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .title-section {
+    border-bottom: 1px solid #ECECEC;
+    margin: 0.2rem 0;
+    padding: 0.3rem 0;
+  }
+
+  .card-item-list {
+    margin-top: 30px;
+    max-width: 255px;
+  }
+
+  .sort-by {
+    display: flex;
+
+    > span:first-child {
+      font-size: $small;
+      line-height: 27px;
+      padding: 0 10px 0 0;
+    }
+  }
+
+  .sort-type {
+    width: 33.333%;
+    position: relative;
+    height: 27px;
+    color: $primary;
+    transition: box-shadow 100ms ease-in-out, color 300ms ease-in-out;
+    font-size: $small;
+    line-height: 25px;
+    font-family: $CONTENT;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    text-align: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    border: 1px solid $GRAY-LIGHTER;
+    border-right: 0;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+
+    &.active {
+      background: #E9E8ED;
+      box-shadow: 1px 0 5px #CFD0CF inset;
+    }
+
+    &.disable {
+      pointer-events: none;
+      color: #ccc;
+    }
+
+    &:first-child {
+      border-radius: 3px 0 0 3px;
+    }
+
+    &:last-child {
+      border-radius: 0 3px 3px 0;
+      border-right: 1px solid $GRAY-LIGHTER;
+    }
+  }
+
+  .description {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-family: $CONTENT;
+    font-size: $BASIC;
+    color: $primary;
+  }
+
+  .lottery-list {
+    margin: 0;
+    overflow: visible !important; // preventing cutting borders
+  }
+
+  .lottery-list > * {
+    width: 100%;
+    display: inline-block;
+    box-sizing: content-box;
+  }
+
+  .lottery-list-pseudo > *:nth-of-type(3n+1) {
+    float: left;
+    padding-right: 10px;
+  }
+  .lottery-list-pseudo > *:nth-of-type(3n+2) {
+    clear: both;
+  }
+  .lottery-list-pseudo > *:nth-of-type(3n+3) {
+    float: right;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .title-section {
+      flex-direction: column;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border: none;
+    }
+
+    .sort-type-list {
+      width: 13.375rem;
+    }
+
+    .sort-by {
+      width: 100%;
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    .sort-type-list {
+      width: 265px;
+    }
+
+    .lottery-list > * {
+      max-width: 21.2rem;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .top {
+      position: relative;
+    }
+
+    .sort-by {
+      justify-content: flex-end;
+    }
+
+    .lottery-list > * {
+      max-width: 18.9rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .lottery-list > * {
+      max-width: 20.4rem;
+    }
+  }
+}

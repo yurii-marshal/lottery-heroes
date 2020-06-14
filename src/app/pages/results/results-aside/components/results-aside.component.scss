@@ -1,0 +1,27 @@
+@import '../../../../../scss/vars';
+
+.widgets-aside-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0 15px;
+
+  .widget-body {
+    min-height: 282px;
+
+    &.fixed {
+      position: fixed;
+      top: 70px;
+      width: 227px;
+      transform: translate3d(0, 0, 0);
+    }
+
+    &.bottom {
+      position: absolute;
+      bottom: 0;
+      width: 227px;
+    }
+  }
+}

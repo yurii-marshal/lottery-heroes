@@ -1,0 +1,12 @@
+<div class="col-sm display-flex flex-items-xs-between flex-items-xs-middle combos-item-mobile"
+     appCloseMobileMenu
+     (click)="addToCart.emit(bundle)">
+  <span class="lottery-name">{{bundle.name}}</span>
+  <span class="display-flex text-xs-right flex-items-xs-middle">
+    <span class="jackpot"
+          [innerHtml]="bundle.jackpotTotal | jackpotFormat:bundle.currencyId">
+    </span>
+    <i class="biglotteryowin-right-open"></i>
+  </span>
+</div>
+

@@ -1,0 +1,20 @@
+<div class="col-xs-12 single-draw results-menu-list-item-mobile">
+  <div class="lottery-results-name">
+    {{lottery.name}}
+  </div>
+  <a class="display-flex flex-items-xs-between draw-line"
+     [routerLink]="['/' + lotterySlug, 'results']"
+     appCloseMobileMenu>
+    <div class="lottery-results-draw display-flex flex-items-xs-middle flex-items-xs-left">
+  <span class="number main display-flex flex-items-xs-center flex-items-xs-middle"
+        *ngFor="let main of latestDraw.winning_main_numbers">
+    {{main}}
+  </span>
+      <span class="number extra display-flex flex-items-xs-center flex-items-xs-middle"
+            *ngFor="let extra of latestDraw.winning_extra_numbers">
+    {{extra}}
+  </span>
+    </div>
+    <i class="biglotteryowin-right-open"></i>
+  </a>
+</div>

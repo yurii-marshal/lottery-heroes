@@ -1,0 +1,46 @@
+<div *ngIf="isShowlightbox" role="dialog" class="modal delete-cart-item-lightbox-component">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" (click)="closeLightbox()">×</button>
+      </div>
+      <div class="modal-body">
+        <ng-container [ngSwitch]="data.payload.item.type">
+          <ng-container *ngSwitchCase="'lottery'">
+            <p class="text-xs-center title">
+              {{'DeleteCartItemLightboxComponent.TEXT_REMOVE_LOTTERY' | translate}}
+            </p>
+            <p>
+              {{'DeleteCartItemLightboxComponent.TEXT_REMOVE_LOTTERY_CONFIRMATION' | translate}}
+            </p>
+          </ng-container>
+          <ng-container *ngSwitchCase="'combo'">
+            <p class="text-xs-center title">
+              {{'DeleteCartItemLightboxComponent.TEXT_REMOVE_COMBO' | translate}}
+            </p>
+            <p>
+              {{'DeleteCartItemLightboxComponent.TEXT_REMOVE_COMBO_CONFIRMATION' | translate}}
+            </p>
+          </ng-container>
+          <ng-container *ngSwitchCase="'syndicate'">
+            <p class="text-xs-center title">
+              {{'DeleteCartItemLightboxComponent.TEXT_REMOVE_SYNDICATE' | translate}}
+            </p>
+            <p>
+              {{'DeleteCartItemLightboxComponent.TEXT_REMOVE_SYNDICATE_CONFIRMATION' | translate}}
+            </p>
+          </ng-container>
+        </ng-container>
+        <div class="row form-row">
+          <button class="col-xs-11 col-md-10 bt green cancel" (click)="clickBtn(getBtnByType('close'))">
+            {{'DeleteCartItemLightboxComponent.BUTTON_KEEP_FOR_LUCK' | translate}}
+          </button>
+          <div class="col-xs-12 link remove" (click)="clickBtn(getBtnByType('confirm'))">
+            {{'DeleteCartItemLightboxComponent.TEXT_REMOVE_IT' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeLightbox()"></div>
+</div>

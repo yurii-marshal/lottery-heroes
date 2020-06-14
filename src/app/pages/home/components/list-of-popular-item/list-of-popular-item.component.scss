@@ -1,0 +1,229 @@
+@import '../../../../../scss/vars';
+
+.list-of-popular-item-component {
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  border-radius: 3px;
+  position: relative;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:active {
+    background: #f3f3f3;
+  }
+
+  .name {
+    font-size: 19px;
+    font-family: $headline;
+    color: $primary;
+    text-decoration: none;
+  }
+
+  .img {
+    position: relative;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 100%;
+    }
+
+    .syndicate-icon {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  .logo-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .jackpot {
+    font-family: $headline;
+    font-weight: bold;
+    color: $primary;
+  }
+
+  .no-jackpot-remark, .no-jackpot {
+    font-family: "Open Sans", sans-serif;
+    font-size: $small;
+    line-height: 15px;
+    color: $BLUE;
+    font-weight: bold;
+  }
+
+  .no-jackpot-remark {
+    margin-top: 4px;
+    position: absolute;
+  }
+
+  .no-jackpot {
+    position: relative;
+    top: -5px;
+    left: -2px;
+  }
+
+  .bt {
+    min-height: 35px; // height
+    min-width: 102px;
+    line-height: 35px;
+    font-size: $small;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .bottom {
+    margin: auto;
+    left: 10px;
+    right: 10px;
+    padding: 0;
+    position: absolute;
+    bottom: 10px;
+  }
+
+  .timer {
+    line-height: 35px;
+    color: $GRAY-LIGHT;
+    font-family: $headline;
+  }
+
+  .time {
+    text-align: center;
+    color: $primary;
+  }
+
+  .timer {
+    width: 55%;
+  }
+
+  .ribbon-wrapper {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    overflow: hidden;
+    width: 65px;
+    z-index: 1;
+
+    .ribbon-text {
+      color: #fff;
+      font-family: $CONTENT;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 61px;
+      margin: 0;
+      text-align: center;
+      transform: rotate(45deg);
+      position: absolute;
+      left: 10px;
+      top: 12px;
+    }
+  }
+
+  .freeLine {
+    color: $primary;
+    font-size: $small;
+    font-family: $headline;
+
+    .green {
+      color: $GREEN;
+      text-transform: uppercase;
+    }
+  }
+
+  .syndicate-description {
+    font-size: $small;
+    color: $primary;
+    padding-top: 0.2rem;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    padding: 12px 8px;
+    min-height: 160px;
+
+    .name {
+      font-size: 15px;
+    }
+    .jackpot {
+      font-size: $MEDIUM;
+    }
+    .timer {
+      font-size: $small;
+      width: 50%;
+    }
+    .img {
+      width: 70px;
+      height: 60px;
+
+      .syndicate-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .logo-bg {
+      width: 100%;
+    }
+    .no-jackpot-remark, .no-jackpot {
+      font-weight: normal;
+      margin: 0;
+    }
+    .no-jackpot-remark {
+      margin-top: 0.2rem;
+    }
+    .freeLine {
+      font-size: 13px;
+    }
+    .gift {
+      width: 18px;
+      margin-left: 2px;
+      margin-top: -4px;
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    padding: 12px 10px;
+    min-height: 172px;
+
+    .name {
+      font-size: 16px;
+    }
+    .jackpot {
+      font-size: $LARGE;
+    }
+    .timer {
+      font-size: $BASIC;
+    }
+    .img {
+      width: 110px;
+      height: 95px;
+      justify-content: flex-end;
+    }
+    .logo-bg {
+      max-width: 4.625rem;
+    }
+    .freeLine {
+      padding-top: 0.2rem;
+    }
+    .gift {
+      width: 20px;
+      margin-left: 5px;
+      margin-top: -7px;
+    }
+  }
+}

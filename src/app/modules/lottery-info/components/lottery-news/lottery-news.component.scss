@@ -1,0 +1,150 @@
+@import '../../../../../scss/vars';
+
+.lottery-news-component {
+  .section-title {
+    margin-bottom: 1.4rem;
+  }
+
+  .row + .row {
+    padding-top: 20px;
+  }
+
+  .post-img {
+    width: 100%;
+  }
+
+  .post-date {
+    color: $GRAY-LIGHT;
+    font-family: $headline;
+    margin-bottom: 2px;
+  }
+
+  .more {
+    margin-bottom: 20px;
+  }
+
+  .content-block {
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 91%;
+      height: 1px;
+      display: block;
+      background: #e6e6e6;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  .row:nth-last-child(2) {
+    .content-block,
+    .img-block {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .more-stories {
+    margin-top: 20px;
+  }
+
+  // MOBILE
+
+  @media (max-width: 992px) {
+    .post-img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .post-title {
+      color: #000;
+      line-height: 1.2;
+      margin-top: 0.5rem;
+      font-size: $MEDIUM;
+    }
+
+    .post-date {
+      font-size: $small;
+      margin-top: 12px;
+    }
+
+    .more {
+      font-size: $small;
+      margin-top: 20px;
+    }
+
+    .content-block {
+      &::after {
+        width: 91%;
+      }
+    }
+
+    .more-stories {
+      font-size: $small;
+      text-align: center;
+    }
+  }
+
+  // DESKTOP
+
+  @media (min-width: 768px) {
+    .post-title {
+      font-family: $headline;
+      font-size: $LARGE;
+      font-weight: normal;
+      line-height: 1.3;
+      margin-bottom: 9px;
+    }
+
+    .post-date {
+      font-size: $BASIC;
+    }
+
+    .post-content {
+      margin-bottom: 19px;
+      height: 48px;
+      overflow: hidden;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    .post-title {
+      margin-top: 0.5rem;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .post-title {
+      margin-top: -5px;
+    }
+
+    .img-block {
+      flex: 0 0 47.5%;
+      max-width: 351px;
+    }
+
+    .content-block {
+      flex: 0 0 52.5%;
+      max-width: 52.5%;
+      padding-left: 0;
+    }
+
+    .img-block {
+      position: relative;
+
+      &::after {
+        content: '';
+        width: 96%;
+        height: 1px;
+        display: block;
+        background: #e6e6e6;
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+}

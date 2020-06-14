@@ -1,0 +1,46 @@
+<div class="container results-component">
+  <div class="share-container">
+    <app-social-container
+      direction="vertical"
+      [textEnabled]="false"
+      [platforms]="['twitter','facebook','googlePlus','pinterest']">
+    </app-social-container>
+  </div>
+
+  <div class="row">
+    <div class="col-xs">
+      <h1 class="results-title text-xs-left" itemprop="name">
+        {{'ResultsComponent.TEXT_MAIN_HEADER' | translate}}
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs results-informer">
+      <p class="text-xs-left" [innerHTML]="'ResultsComponent.resultsInfo' | translate"></p>
+    </div>
+  </div>
+  <div class="results-table">
+    <div class="row">
+      <div class="col-xs-10 hidden-sm-down">
+        <div class="row">
+          <div class="col-md-3 table-title lottery-name">{{'ResultsComponent.TEXT_LOTTERY' | translate}}</div>
+          <div class="hidden-md-down col-lg-2 table-title">{{'ResultsComponent.TEXT_COUNTRY' | translate}}</div>
+          <div class="col-md-2 table-title draw-time">{{'ResultsComponent.TEXT_DRAW_TIME' | translate}}</div>
+          <div class="col-md-6 col-lg-3 table-title">{{'ResultsComponent.TEXT_LOTTO_RES' | translate}}</div>
+        </div>
+      </div>
+    </div>
+    <app-results-item-container
+      *ngFor="let lotteryId of lotteriesOrder; let index = index"
+      [position]="index + 1"
+      [lotteryId]="lotteryId"
+    ></app-results-item-container>
+  </div>
+  <div class="row">
+    <div class="col-xs results-informer">
+      <p class="text-left" [innerHTML]="'ResultsComponent.resultsInfo2' | translate"></p>
+      <p class="text-left" [innerHTML]="'ResultsComponent.resultsInfo3' | translate"></p>
+      <p class="text-left" [innerHTML]="'ResultsComponent.resultsInfo4' | translate"></p>
+    </div>
+  </div>
+</div>

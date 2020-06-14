@@ -1,0 +1,143 @@
+<div class="container how-to-play-component" *ngIf="cms">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="title main text-xs-center" *ngIf="cms.h1">{{ cms.h1 }}</h1>
+      <p class="post-title text-xs-center hidden-md-up">
+        {{'HowToPlayComponent.TEXT_GREATEST_LOTTERY' | translate}}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" *ngIf="cms.youtube_video_url">
+      <div class="video display-flex flex-items-xs-center">
+        <iframe [src]="cmsYouTubeVideoTrustedUrl"></iframe>
+      </div>
+    </div>
+    <div class="col-xs-12 text-xs-center" *ngIf="cms.play_button1_text">
+      <a routerLink="/{{lotterySlug}}" class="bt green" (click)="clickPlayLotteryEvent.emit(lotteryId)">{{ cms.play_button1_text }}</a>
+    </div>
+  </div>
+  <div class="row section instruction" *ngIf="cms.section_1_title && (cms.section_1_text || cms.section_1_image)">
+    <div class="col-md-6">
+      <h3 class="title-small display-flex flex-items-xs-middle">
+        <span class="step display-flex flex-items-xs-middle flex-items-xs-left">1</span>
+        {{ cms.section_1_title }}
+      </h3>
+      <div class="step-descr text-md-left text-xs-center" *ngIf="cms.section_1_text" [innerHTML]="cms.section_1_text">
+      </div>
+    </div>
+    <div class="col-md-6 display-flex flex-items-xs-center flex-items-xs-middle first-step"
+         *ngIf="cms.section_1_image">
+      <img [src]="cms.section_1_image.url" alt="{{ cms.section_1_image_alt }}">
+    </div>
+  </div>
+  <div class="row section instruction" *ngIf="cms.section_2_title && (cms.section_2_text || cms.section_2_image)">
+    <div class="col-md-6 flex-xs-last flex-md-first display-flex flex-items-xs-center flex-items-xs-middle second-step"
+         *ngIf="cms.section_2_image">
+      <img class="hidden-sm-down" [src]="cms.section_2_image.sizes.large" alt="{{ cms.section_2_image_alt }}">
+      <img class="hidden-md-up" [src]="cms.section_2_image.sizes.medium" alt="{{ cms.section_2_image_alt }}">
+    </div>
+    <div class="col-md-6 flex-xs-unordered">
+      <h3 class="title-small display-flex flex-items-xs-middle">
+        <span class="step display-flex flex-items-xs-middle flex-items-xs-left">2</span>
+        {{ cms.section_2_title }}
+      </h3>
+      <div class="step-descr text-md-left text-xs-center" *ngIf="cms.section_2_text" [innerHTML]="cms.section_2_text">
+      </div>
+    </div>
+  </div>
+  <div class="row section instruction" *ngIf="cms.section_3_title && (cms.section_3_text || cms.section_3_image)">
+    <div class="col-md-6">
+      <h3 class="title-small display-flex flex-items-xs-middle">
+        <span class="step display-flex flex-items-xs-middle flex-items-xs-left">3</span>
+        {{ cms.section_3_title }}
+      </h3>
+      <p class="step-descr text-md-left text-xs-center" *ngIf="cms.section_3_text" [innerHTML]="cms.section_3_text">
+      </p>
+    </div>
+    <div class="col-md-6 display-flex flex-items-xs-center flex-items-xs-middle third-step"
+         *ngIf="cms.section_3_image">
+      <img class="hidden-sm-down" [src]="cms.section_3_image.sizes.large" alt="{{ cms.section_3_image_alt }}">
+      <img class="hidden-md-up" [src]="cms.section_3_image.sizes.medium" alt="{{ cms.section_3_image_alt }}">
+    </div>
+  </div>
+  <div class="row section">
+    <div class="col-xs-12 text-xs-center" *ngIf="cms.text_on_2_button">
+      <a routerLink="/{{lotterySlug}}" class="bt green" (click)="clickPlayLotteryEvent.emit(lotteryId)">{{ cms.text_on_2_button }}</a>
+    </div>
+    <div class="col-xs-12" *ngIf="cms.h2">
+      <h1 class="title text-xs-center">{{ cms.h2 }}</h1>
+    </div>
+
+
+    <div class="col-xs-12">
+      <div class="row">
+
+        <div class="col-md-4 thumbnail" *ngIf="cms.special_offers_box_text || cms.special_offers_box_image">
+          <div class="img-thumbnail text-xs-center display-flex flex-items-xs-middle flex-items-xs-center"
+            *ngIf="cms.special_offers_box_image">
+            <img [src]="cms.special_offers_box_image.url" alt="{{ cms.special_offers_box_image_alt }}">
+          </div>
+          <h3 class="title-thumbnail text-xs-center">
+            Special Offers
+          </h3>
+          <div class="info-thumbnail text-xs-center" *ngIf="cms.special_offers_box_text" [innerHTML]="cms.special_offers_box_text">
+          </div>
+          <div class="text-xs-center" *ngIf="cms.special_offers_box_text_on_button">
+            <a href="#" class="link">{{ cms.special_offers_box_text_on_button }} <i class="biglotteryowin-right-open"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-4 thumbnail" *ngIf="cms.combo_box_text || cms.combo_box_image">
+          <div class="img-thumbnail text-xs-center display-flex flex-items-xs-middle flex-items-xs-center"
+            *ngIf="cms.combo_box_image">
+            <img [src]="cms.combo_box_image.url" alt="{{ cms.combo_box_image_alt }}">
+          </div>
+          <h3 class="title-thumbnail text-xs-center">
+            Combo
+          </h3>
+          <div class="info-thumbnail text-xs-center" *ngIf="cms.combo_box_text" [innerHTML]="cms.combo_box_text">
+          </div>
+          <div class="text-xs-center" *ngIf="cms.combo_box_text_on_button">
+            <a href="#" class="link">{{ cms.combo_box_text_on_button }} <i class="biglotteryowin-right-open"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-4 thumbnail" *ngIf="cms.bundle_box_text || cms.bundle_box_image">
+          <div class="img-thumbnail text-xs-center display-flex flex-items-xs-middle flex-items-xs-center"
+               *ngIf="cms.bundle_box_image">
+            <img [src]="cms.bundle_box_image.url" alt="{{ cms.bundle_box_image_alt }}">
+          </div>
+          <h3 class="title-thumbnail text-xs-center">
+            Bundle
+          </h3>
+          <div class="info-thumbnail text-xs-center" *ngIf="cms.bundle_box_text" [innerHTML]="cms.bundle_box_text">
+          </div>
+          <div class="text-xs-center" *ngIf="cms.bundle_box_text_on_button">
+            <a href="#" class="link">{{ cms.bundle_box_text_on_button }} <i class="biglotteryowin-right-open"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-4 thumbnail" *ngIf="cms.subscription_box_text || cms.subscription_box_image">
+          <div class="img-thumbnail text-xs-center display-flex flex-items-xs-middle flex-items-xs-center"
+            *ngIf="cms.subscription_box_image">
+            <img [src]="cms.subscription_box_image.url" alt="{{ cms.subscription_box_image_alt }}">
+          </div>
+          <h3 class="title-thumbnail text-xs-center">
+            {{'HowToPlayComponent.TEXT_SUBSCRIPTION' | translate}}
+          </h3>
+          <div class="info-thumbnail text-xs-center" *ngIf="cms.subscription_box_text" [innerHTML]="cms.subscription_box_text">
+          </div>
+          <div class="text-xs-center" *ngIf="cms.subscription_box_text_on_button">
+            <a href="#" class="link">{{ cms.subscription_box_text_on_button }} <i class="biglotteryowin-right-open"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row section explanation-wrapper" *ngIf="cms.bottom_paragraph">
+    <div class="col-md-8 offset-md-2 explanation" [innerHTML]="cms.bottom_paragraph">
+    </div>
+  </div>
+</div>

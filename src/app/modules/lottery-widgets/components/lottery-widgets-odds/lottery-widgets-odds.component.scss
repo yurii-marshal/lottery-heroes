@@ -1,0 +1,83 @@
+@import '../../../../../scss/vars';
+
+.lottery-widgets-odds-component {
+  .title-odds {
+    color: $primary;
+    font-family: $headline;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+  }
+
+  .number {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 100rem;
+    margin-right: 0.2rem;
+  }
+
+  .number.main {
+    background: #e8e8e8;
+  }
+
+  .number.extra {
+    background: #aed6f5;
+  }
+
+  .odds-line {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    background: #fff;
+    &:nth-child(2n) {
+      background: #fafafa;
+    }
+  }
+
+  .spacer {
+    color: #a1a1a1;
+    font-size: 0.9rem;
+    margin-right: 0.2rem;
+
+    &.or {
+      margin: 0 7px 0 4px;
+    }
+  }
+
+  .title-table {
+    color: $primary;
+    font-family: $headline;
+    font-size: 1.1rem;
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+
+  .chance {
+    font-family: $headline;
+    color: $primary;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .title-odds {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .table-title {
+      font-size: 1rem;
+    }
+    .odds-line {
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+    }
+    .number {
+      width: 1rem;
+      height: 1rem;
+    }
+    .spacer {
+      font-size: 0.7rem;
+    }
+    .chance {
+      font-size: 0.95rem;
+    }
+  }
+}

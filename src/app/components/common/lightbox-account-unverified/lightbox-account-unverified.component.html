@@ -1,0 +1,35 @@
+<div role="dialog" *ngIf="isShow" class="modal">
+  <div class="modal-dialog account-unverified">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="closeLightbox()">×</button>
+      </div>
+      <div class="modal-body">
+        <ng-container *ngIf="body['value'] === 'not verified'">
+          <p appTranslate="LightboxAccountUnverifiedComponent.TEMPLATE_RESEND">
+          </p>
+          <p>
+            {{"LightboxAccountUnverifiedComponent.TEXT_ISSUE" | translate}}
+          </p>
+        </ng-container>
+        <ng-container *ngIf="body['value'] === 'verification email sent'">
+          <p class="text-xs-center">
+            {{"LightboxAccountUnverifiedComponent.TEXT_CONFIRM_EMAIL" | translate}}
+          </p>
+        </ng-container>
+        <ng-container *ngIf="body['value'] === 'verified successfully'">
+          <p>
+            {{"LightboxAccountUnverifiedComponent.TEXT_CONFIRMED" | translate}}
+          </p>
+        </ng-container>
+        <ng-container *ngIf="body['value'] === 'resend successfully'">
+          <p class="text-xs-center">
+            {{"LightboxAccountUnverifiedComponent.TEXT_EMAIL_SENT" | translate}}
+          </p>
+        </ng-container>
+        <ng-container *ngIf="errorMessage">{{errorMessage}}</ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeLightbox()"></div>
+</div>

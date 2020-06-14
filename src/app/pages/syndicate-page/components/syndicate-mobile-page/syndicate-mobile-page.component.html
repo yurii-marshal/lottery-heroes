@@ -1,0 +1,37 @@
+<app-syndicate-header-mobile-container
+  [syndicateModel]="syndicateModel"
+></app-syndicate-header-mobile-container>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="syndicate-page-title text-xs-center"
+          [innerHTML]="'SyndicateMobilePageComponent.TEMPLATE_JOIN_SYNDICATE' | translate: {param: syndicateModel?.lotteryName}"></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-syndicate-body-mobile-container [syndicateModel]="syndicateModel"></app-syndicate-body-mobile-container>
+    </div>
+  </div>
+</div>
+
+<app-lottery-info-container
+  *ngIf="infoCms &&  infoCms.isInited && !infoCms.isShown"
+  [lotteryId]="syndicateModel?.lotteryId"
+></app-lottery-info-container>
+
+<app-lottery-info-cms-based-container
+  #infoCms
+  [lotteryId]="syndicateModel?.lotteryId"
+></app-lottery-info-cms-based-container>
+
+<div class="container">
+  <app-faq-cms-container
+    [lotteryId]="syndicateModel?.lotteryId"
+  ></app-faq-cms-container>
+</div>
+
+<app-other-lotteries-container
+  [lotteryId]="syndicateModel?.lotteryId"
+></app-other-lotteries-container>

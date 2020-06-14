@@ -1,0 +1,13 @@
+<div class="combos-menu-list-mobile-component">
+  <app-bundles-menu-list-item-container
+    *ngFor="let bundle of bundlesList"
+    [bundle]="bundle"
+  ></app-bundles-menu-list-item-container>
+  <a class="col-sm display-flex flex-items-xs-middle flex-items-xs-between all-combos"
+     [routerLink]="['/bundles']"
+     appCloseMobileMenu>
+    {{'BundlesMenuListMobileComponent.REF_ALL_BUNDLES' | translate}}
+    <i class="biglotteryowin-right-open"></i>
+  </a>
+</div>
+

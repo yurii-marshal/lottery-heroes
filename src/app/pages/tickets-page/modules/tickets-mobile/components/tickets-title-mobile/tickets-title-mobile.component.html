@@ -1,0 +1,6 @@
+<div class="title tickets-title-mobile-component">
+  {{'TicketMobileComponent.TEXT_PICK_NUMS' | translate}}
+  <ng-container *ngIf="rules.min_lines !==1">
+    <span>({{'TicketMobileComponent.TEXT_AT_LEAST' | translate}} {{rules.min_lines}} {rules.min_lines, plural, =1 {line} other {lines}})</span>
+  </ng-container>
+</div>

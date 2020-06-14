@@ -1,0 +1,9 @@
+<div class="app-offers-menu-list" [ngClass]="dropdownClass">
+  <div class="row">
+    <div class="col-xs item-wr" *ngFor="let lotteryId of lotteryIds">
+      <app-offers-menu-list-item-container
+        [lotteryId]="lotteryId"
+      ></app-offers-menu-list-item-container>
+    </div>
+  </div>
+</div>

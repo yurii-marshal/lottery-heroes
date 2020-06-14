@@ -1,0 +1,106 @@
+@import '../../../../../scss/vars';
+
+.lottery-widgets-stories-component {
+  .stories-container {
+    padding: 1rem 0 0;
+  }
+
+  .stories {
+    align-items: stretch;
+  }
+
+  .story {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    max-width: 329px;
+
+    figure {
+      margin: 0;
+      border: 3px solid #fff;
+    }
+
+    img {
+      max-width: 329px;
+      height: 173px;
+      display: block;
+    }
+
+    .link {
+      padding-left: 3px;
+    }
+  }
+
+  .headline {
+    min-height: 48px;
+
+    a {
+      color: $primary;
+      font-family: $CONTENT;
+      font-weight: bold;
+      line-height: 24px;
+      text-decoration: none;
+      margin-top: 5px;
+      margin-left: 3px;
+      display: block;
+    }
+  }
+
+  .see-more {
+    display: inline-block;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .stories {
+      flex-direction: column;
+    }
+
+    .story {
+      width: 100%;
+      overflow: hidden;
+      margin: 0 auto 2rem;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .headline {
+      font-size: $MEDIUM;
+    }
+
+    .see-more {
+      padding-bottom: 2rem;
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    .stories {
+      flex-direction: row;
+    }
+
+    .headline a {
+      font-size: $LARGE;
+      margin-right: 20px;
+    }
+
+    .see-more {
+      padding-top: 2.5rem;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 996px) {
+    .headline {
+      min-height: 72px;
+    }
+  }
+
+  @media (min-width: 996px) {
+    .headline a {
+      font-size: $LARGE;
+    }
+  }
+}
+

@@ -1,0 +1,18 @@
+@import '../../../../../scss/vars';
+
+.cart-page-component {
+  .title-offers {
+    margin-top: 1.9rem;
+    color: $primary;
+    font-family: $headline;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .title-offers {
+      color: $primary;
+      font-size: $small;
+    }
+  }
+}

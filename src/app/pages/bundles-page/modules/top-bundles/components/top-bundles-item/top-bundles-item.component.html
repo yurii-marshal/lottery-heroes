@@ -1,0 +1,65 @@
+<ng-container *ngIf="bundle.jackpotTotal !== 0">
+  <div class="logo">
+    <img *ngIf="bundle.logo_path" [src]="bundle.logo_path" [alt]="bundle.name">
+  </div>
+  <p class="text">{{'TopBundlesItemComponent.TEXT_COMBINED_JACKPOT' | translate}}</p>
+  <p class="jackpot" [innerHtml]="bundle.jackpotTotal | jackpotFormat:bundle.currencyId">
+  </p>
+  <div class="combo-info">
+    <span class="combo-info-item">
+      {{bundle.lotteriesTotal}} {bundle.lotteriesTotal, plural, =1 {Lottery} other {Lotteries}}</span>
+    <span class="combo-info-item" *ngIf="bundle.linesTotal > 0">
+      {{bundle.linesTotal}} {bundle.linesTotal, plural, =1 {Line} other {Lines}}</span>
+    <span class="combo-info-item" *ngIf="bundle.sharesTotal > 0">
+      {{bundle.sharesTotal}} {bundle.sharesTotal, plural, =1 {Share} other {Shares}}</span>
+    <span class="tooltip-holder">
+		<i class="biglotteryowin-question" (click)="openLotteriesList()"></i>
+    <div class="tooltip-wrapper" #tooltip>
+      <div class="blackout hidden-lg-up" (click)="closeLotteriesList()"></div>
+      <div class="tooltip">
+        <div class="display-flex flex-items-xs-middle flex-items-xs-center hidden-lg-up tooltip-header">
+          <p>{{bundle.name}}</p>
+          <button class="close" (click)="closeLotteriesList()">×</button>
+        </div>
+
+        <!-- Lotteries -->
+        <div class="lotteries-list" [ngClass]="{'scrollable':bundle.items.length > 3}">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-lg item" *ngFor="let lottery of bundle.items">
+                <app-bundle-lotteries
+                  [lottery]="lottery"
+                  [currency]="bundle.currencyId"
+                ></app-bundle-lotteries>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 text-xs-center total-combo-price">
+                {{'TopBundlesItemComponent.TEXT_TOTAL' | translate}}<span [innerHtml]="bundle.jackpotTotal | jackpotFormat:bundle.currencyId"></span>
+              </div>
+              <span class="arrow biglotteryowin-down-open hidden-sm-up"></span>
+            </div>
+          </div>
+        </div>
+        <div class="hidden-lg-up combo-action">
+          <button class="bt green" (click)="addToCart.emit(bundle); closeLotteriesList()">{{'TopBundlesItemComponent.TEXT_TOTAL' | translate}}</button>
+          <p class="price">
+            {{'TopBundlesItemComponent.TEXT_TOTAL' | translate}}Only {{bundle.price | currency:bundle.currencyId:'symbol':'1.2-2'}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </span>
+  </div>
+  <button class="bt green" (click)="addToCart.emit(bundle)">
+    {{'TopBundlesItemComponent.TEXT_SELECT_BUNDLE' | translate}}
+  </button>
+  <div class="text-xs-center prices">
+    <p class="former-price" *ngIf="bundle.formerPrice">
+      {{'TopBundlesItemComponent.TEXT_ONLY' | translate}} {{bundle.formerPrice | currency:bundle.currencyId:'symbol':'1.2-2'}}
+    </p>
+    <p class="price">
+      {{'TopBundlesItemComponent.TEXT_ONLY' | translate}} {{bundle.price | currency:bundle.currencyId:'symbol':'1.2-2'}}
+    </p>
+  </div>
+</ng-container>

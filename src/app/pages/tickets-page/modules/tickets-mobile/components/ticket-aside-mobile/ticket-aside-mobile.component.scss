@@ -1,0 +1,58 @@
+@import '../../../../../../../scss/vars';
+
+.ticket-aside-mobile-component {
+  &.fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 90;
+    background: rgba(255, 255, 255, 0.8);
+    border-top: 1px solid #a8a8a8;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .extra-wrapper {
+    margin-left: 1rem;
+  }
+
+  .number {
+    font-family: $headline;
+    font-size: $BASIC;
+    border: 1px solid;
+    width: 35px;
+    height: 35px;
+    border-radius: 100rem;
+    margin: 2px;
+  }
+
+  .number.main {
+    color: $primary;
+    border-color: #969593;
+    background: #fff;
+  }
+
+  .number.extra {
+    color: #fff;
+    border-color: transparent;
+    background: $BLUE;
+  }
+
+  .bt.green {
+    font-size: $LARGE;
+    width: 100%;
+    max-width: 320px;
+    min-height: 44px; // height
+    margin-top: 1rem;
+
+    .tag-success {
+      transform: rotate(0deg) translateY(-50%);
+      height: 18px;
+      width: 18px;
+      position: absolute;
+      top: 50%;
+      right: 15px;
+    }
+  }
+}

@@ -1,0 +1,137 @@
+@import '../../../../../../scss/vars';
+
+//DEFAULT STYLES
+
+.mobile-menu-component {
+
+  .mobile-menu-container {
+    transform: translateZ(0);
+  }
+
+  .mobile-close-button {
+    background: #2d4052;
+  }
+
+  .mobile-menu-option {
+    a {
+      text-decoration: none;
+      text-transform: capitalize;
+      color: #fff;
+      padding: 10px 0;
+    }
+
+    &.my-account .drop-down {
+      a {
+        padding: 10px 20px;
+      }
+    }
+
+    .bt-arrow {
+      font-size: 20px;
+      transform: translateZ(0);
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .lined-link {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  .drop-down {
+    display: none;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    background: #384d66;
+    transform: translateZ(0);
+    &.lang {
+      padding: 0;
+    }
+
+    .drop-down-body {
+      width: 100%;
+    }
+  }
+
+  //LOTTERIES
+
+  .lotteries .drop-down {
+    .lottery-name {
+      font-family: $CONTENT;
+      color: #fff;
+      text-transform: capitalize;
+      font-size: 1rem;
+    }
+    .jackpot {
+      font-family: $CONTENT;
+      color: #f9c12c;
+      font-size: 1rem;
+    }
+    a {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .all-lotteries {
+      color: #fff;
+      text-decoration: none;
+      text-transform: capitalize;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .user-in {
+    margin-top: 15px;
+
+    .bt-mobile-menu:first-child {
+      margin-right: 15px;
+    }
+
+    .bt-mobile-menu:last-child {
+      color: $YELLOW;
+    }
+  }
+
+  button.bt-mobile-menu {
+    border: 1px solid #a4acb4;
+    border-radius: 5px;
+    height: 45px;
+    width: 100%;
+    color: #fff;
+    font-size: $small;
+    font-family: $headline;
+    text-transform: capitalize;
+    font-weight: normal;
+    text-decoration: none;
+    margin: 10px 0;
+    background: transparent;
+    transform: translateZ(0);
+
+    > i {
+      font-size: 20px;
+      margin: 0 5px;
+
+      &.biglotteryowin-phone {
+        margin: 0;
+      }
+    }
+
+    &:hover {
+      background: #4b7398;
+    }
+  }
+
+  a.bt-mobile-menu {
+    @extend button.bt-mobile-menu;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttons-wrapper {
+    margin-top: 15px;
+  }
+}

@@ -1,0 +1,24 @@
+<div class="container-fluid ticket-aside-mobile-component fixed">
+  <div class="row">
+    <div class="col-xs display-flex flex-items-xs-middle flex-items-xs-center">
+      <span class="number main display-flex flex-items-xs-center flex-items-xs-middle"
+            *ngFor="let num of line.main_numbers">{{num}}</span>
+      <span class="number main display-flex flex-items-xs-center flex-items-xs-middle"
+            *ngFor="let num of 1|rangeTo:getNumberOfEmptyMainPicks()"></span>
+      <div class="extra-wrapper display-flex flex-items-xs-middle flex-items-xs-center">
+      <span class="number extra display-flex flex-items-xs-center flex-items-xs-middle"
+            *ngFor="let num of line.extra_numbers">{{num}}</span>
+        <span class="number extra display-flex flex-items-xs-center flex-items-xs-middle"
+              *ngFor="let num of 1|rangeTo:getNumberOfEmptyExtraPicks()"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs display-flex flex-items-xs-middle flex-items-xs-center">
+      <button class="bt green" (click)="saveUpdatedLineEvent.emit({line: line, rules: rules})">
+        {{'TicketMobileComponent.BUTTON_NEXT' | translate}}
+        <img *ngIf="isFilledLine" class="tag-success" src="assets/images/svg/checkmark-white.svg">
+      </button>
+    </div>
+  </div>
+</div>

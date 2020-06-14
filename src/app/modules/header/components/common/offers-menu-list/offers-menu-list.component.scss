@@ -1,0 +1,76 @@
+@import '../../../../../../scss/vars';
+
+.app-offers-menu-list {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  background: #fff;
+  border-radius: 3px;
+  position: relative;
+  padding: 0 15px 10px;
+
+  &:before {
+    border-bottom: 6px solid rgba(0, 0, 0, 0.2);
+    border-left: 7px solid rgba(0, 0, 0, 0);
+    border-right: 7px solid rgba(0, 0, 0, 0);
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 2%;
+    top: -7px;
+  }
+
+  &:after {
+    border-bottom: 6px solid #FFFFFF;
+    border-left: 7px solid rgba(0, 0, 0, 0);
+    border-right: 7px solid rgba(0, 0, 0, 0);
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 2%;
+    top: -6px;
+  }
+
+  .item-wr{
+    max-width: 190px;
+    padding: 0;
+
+    & + .item-wr {
+      border-left: 1px solid $GRAY-LIGHTER;
+    }
+  }
+
+  &.offer-1 {
+    width: 190px;
+  }
+  &.offers-2 {
+    width: 380px;
+  }
+  &.offers-3 {
+    width: 570px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1200px) {
+    &.offers-4,
+    &.offers-default {
+      width: 382px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    &.offers-4 {
+      width: 760px;
+    }
+    &.offers-default {
+      width: 760px;
+
+      .item-wr {
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4) {
+          padding-bottom: 15px;
+          border-bottom: 1px solid #eaeaea;
+        }
+      }
+    }
+  }
+}

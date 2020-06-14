@@ -1,0 +1,28 @@
+@import '../../../../../scss/vars';
+
+.home-promo-countdown-component {
+  &.time-left {
+    font-family: $headline;
+    font-size: 1.125rem;
+  }
+
+  i {
+    margin: 0 -5px;
+  }
+
+  .minutes {
+    position: relative;
+
+    .seconds {
+      display: inline-block;
+      min-width: 30px;
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    &.time-left {
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+<div class="container results-lottery-component">
+  <div class="share-container">
+    <app-social-container
+        direction="vertical"
+        [textEnabled]="false"
+        [platforms]="['twitter','facebook','googlePlus','pinterest']">
+    </app-social-container>
+  </div>
+
+  <div class="row">
+    <div class="col-xs">
+      <app-results-lottery-title-container></app-results-lottery-title-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 col-sm-12">
+      <div class="row">
+        <div class="col-xs">
+          <app-results-lottery-info-container></app-results-lottery-info-container>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <app-lottery-widgets-draw-results-container></app-lottery-widgets-draw-results-container>
+        </div>
+      </div>
+      <div class="row widgets-statistic-filed display-flex flex-items-xs-center">
+        <div class="col-xs customized-col">
+          <app-lottery-widgets-statistics-container
+            [pageType]="'ResultPage'"
+            [lotteryId]="lotteryId$|async"
+          ></app-lottery-widgets-statistics-container>
+        </div>
+      </div>
+      <div class="row widgets-filed display-flex flex-items-md-between flex-items-xs-center">
+        <div class="col-md-6 col-sm-12 customized-col border">
+          <app-lottery-widgets-hot-numbers-container [lotteryId]="lotteryId$|async">
+          </app-lottery-widgets-hot-numbers-container>
+        </div>
+        <div class="col-md-6 col-sm-12 customized-col border">
+          <app-lottery-widgets-jackpot-changes-container [lotteryId]="lotteryId$|async">
+          </app-lottery-widgets-jackpot-changes-container>
+        </div>
+
+        <app-lottery-widgets-notification-container class="hidden-md-up"></app-lottery-widgets-notification-container>
+
+        <div class="col-md-6 col-sm-12 customized-col">
+          <app-lottery-widgets-odds-container [lotteryId]="lotteryId$|async">
+          </app-lottery-widgets-odds-container>
+        </div>
+        <div class="col-md-6 flex-xs-first flex-sm-first flex-md-last customized-col">
+          <app-lottery-widgets-next-draw-container></app-lottery-widgets-next-draw-container>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <app-lottery-widgets-seo-description-container></app-lottery-widgets-seo-description-container>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <app-lottery-widget-similar-container></app-lottery-widget-similar-container>
+        </div>
+      </div>
+    </div>
+
+    <!--- ASIDE WIDGETS --->
+    <div class="col-md-3 hidden-sm-down">
+      <app-results-aside></app-results-aside>
+    </div>
+  </div>
+</div>
+
+<app-lottery-widgets-conversion-lightbox-container
+  *ngIf="!isLoggedIn()"
+  [lotteryId]="lotteryId$ | async"
+></app-lottery-widgets-conversion-lightbox-container>

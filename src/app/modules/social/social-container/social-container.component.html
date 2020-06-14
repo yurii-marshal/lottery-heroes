@@ -1,0 +1,10 @@
+<div class="n2s-shareContainer n2s-{{direction}} hidden-sm-down">
+  <app-social-button
+    *ngFor="let platform of platforms"
+    [platformName]="platform"
+    [textEnabled]="textEnabled"
+    [addedText]="addedText"
+    [direction]="direction"
+    [properties]="properties">
+  </app-social-button>
+</div>

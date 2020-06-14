@@ -1,0 +1,85 @@
+@import '../../../../../scss/_vars';
+
+.safe-and-secure {
+  .sas-title {
+    @include primary-title;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0 -15px 15px;
+  }
+
+  .sas-partners-board {
+    padding: 50px;
+
+    .sas-partner {
+      height: 100px;
+
+      &:nth-child(3n+2),
+      &:last-child {
+        border-left: 1px solid $GRAY-LIGHTER;
+        border-right: 1px solid $GRAY-LIGHTER;
+      }
+
+      &:nth-child(-n+9) {
+        border-bottom: 1px solid $GRAY-LIGHTER;
+      }
+
+      img {
+        width: 60%;
+        height: 50px;
+      }
+
+      &:hover {
+        background: $GRAY-LIGHTER;
+      }
+
+      @media (max-width: 767px) {
+
+        &:nth-child(3n+2),
+        &:last-child,
+        &:nth-child(-n+9) {
+          border: none;
+        }
+
+        &:nth-child(2n+1) {
+          border-right: 1px solid $GRAY-LIGHTER;
+        }
+
+        &:nth-child(-n+8) {
+          border-bottom: 1px solid $GRAY-LIGHTER;
+        }
+      }
+    }
+  }
+
+  .sas-partners-table {
+
+    .sas-partner {
+
+      img {
+        width: 60%;
+        height: 50px;
+      }
+    }
+
+    .sas-partner-descr {
+
+      h4 {
+        text-transform: uppercase;
+      }
+
+      p {
+        margin-bottom: 50px;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .sas-partner {
+      img {
+        margin: 20px 0;
+      }
+    }
+  }
+
+}

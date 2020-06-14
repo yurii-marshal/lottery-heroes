@@ -1,0 +1,58 @@
+<div class="row results-lottery-title-component" *ngIf="lottery">
+  <div class="col-xs">
+    <ng-container [ngSwitch]="lottery.id">
+      <h1 class="title-per-lottery" *ngSwitchCase="lottery.id === 'powerball'" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_POWERBALL_RES' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'powerball-au'" itemprop="name">
+        {{'ResultsLotteryTitleComponent.Oz Powerball' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'lotto-pl'" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_RES_POLISH' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'lotto-ie'" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_RES_IRISH' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'lotto-fr'" style="text-transform:none" itemprop="name">
+        {{'ResultsLotteryTitleComponent.France Lotto' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'lotto-uk'" itemprop="name">
+        {{'ResultsLotteryTitleComponent.UK National Lottery' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'superenalotto'" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_RES_SEL' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'megamillions'" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_RES_LMM' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="lottery.id === 'euromillions' || lottery.id === 'euromillions-ie' ? lottery.id : ''" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_RES_EML' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'eurojackpot'" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_RES_EJ' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'oz-lotto-au'" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_RES_AU' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'bonoloto'" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_RES_BONO' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'el-gordo-primitiva'" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_RES_EG' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'la-primitiva'" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_RES_LP' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'thunderball'" itemprop="name">
+        {{'ResultsLotteryTitleComponent.Thunderball Results' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchCase="'megasena'" itemprop="name">
+        {{'ResultsDrawTitleComponent.TEXT_RES_MS' | translate}}
+      </h1>
+      <h1 class="title-per-lottery" *ngSwitchDefault itemprop="name">
+        {{lottery.name}} {{'ResultsDrawTitleComponent.TEXT_LR' | translate}}
+      </h1>
+      <!--<h1 class="title-per-lottery" *ngSwitchCase="'lotto-6aus49'"> {{lottery.name}}</h1>-->
+    </ng-container>
+  </div>
+</div>

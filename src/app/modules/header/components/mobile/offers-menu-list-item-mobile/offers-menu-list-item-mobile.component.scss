@@ -1,0 +1,24 @@
+@import '../../../../../../scss/vars';
+
+.offers-menu-list-item-mobile-component {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  font-size: 20px;
+
+  .offer-info {
+    color: $YELLOW;
+    font-family: $headline;
+    font-size: $small;
+  }
+
+  .mobile-offers-name {
+    color: #fff;
+    font-family: $headline;
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  .biglotteryowin-right-open {
+    color: #fff;
+  }
+}

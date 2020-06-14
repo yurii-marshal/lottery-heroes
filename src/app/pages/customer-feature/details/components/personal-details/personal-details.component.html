@@ -1,0 +1,287 @@
+<div class="container d-section personal-details personal-details-component">
+  <!--- Header --->
+  <div class="row flex-items-xs-top flex-items-xs-between header">
+    <div class="title">
+      {{'PersonalDetailsComponent.TEXT_PERSONAL_DETAILS' | translate}}
+    </div>
+    <div class="action">
+      <button
+        type="button" class="bt only-text grey cancel"
+        (click)="onCancelForm()"
+        *ngIf="isEditDetails">{{'PersonalDetailsComponent.BUTTON_CANCEL' | translate}}
+      </button>
+      <button type="submit" class="bt bordered green"
+              (click)="onSaveForm()"
+              *ngIf="isEditDetails">{{'PersonalDetailsComponent.BUTTON_SAVE' | translate}}
+      </button>
+      <button type="button" class="bt green edit"
+              (click)="onTriggerEditDetails()"
+              *ngIf="!isEditDetails">{{'PersonalDetailsComponent.BUTTON_EDIT' | translate}}
+      </button>
+    </div>
+  </div>
+
+  <!--- Resulted data --->
+  <div class="row">
+    <div class="resulted-data" *ngIf="!isEditDetails">
+      <p>
+        <span class="name">{{customerObj.first_name}}</span>
+        <span class="surname">{{customerObj.last_name}}</span>
+      </p>
+      <p>
+        <span class="dayOfBirth">{{day.toString().length < 2 ? '0' + day : day}}<i>/</i></span>
+        <span class="monthOfBirth">{{month.toString().length < 2 ? '0' + month : month}}<i>/</i></span>
+        <span class="yearOfBirth">{{year}}</span>
+      </p>
+      <p class="country" *ngIf="customerCountry">{{customerCountry}}</p>
+      <p class="city" *ngIf="customerObj.city">{{customerObj.city}}</p>
+      <p *ngIf="customerObj.address">
+        <span class="address">{{customerObj.address}}</span><span class="zip">{{customerObj.zip ? ',': ''}} {{customerObj.zip}}</span>
+      </p>
+      <p>
+        <span class="phone">{{customerObj.phone}}</span>
+      </p>
+    </div>
+  </div>
+
+  <!--- Editable data --->
+  <div class="row">
+    <div class="editable-data" *ngIf="isEditDetails">
+      <form [formGroup]="personalDetailsForm">
+        <div class="row form-group">
+          <div class="col-xs-12 col-md-6 form-row">
+            <label for="personal-name">
+              {{'PersonalDetailsComponent.LABEL_FIRST_NAME' | translate}}
+            </label>
+            <div class="input-wr
+            {{ (personalDetailsForm.controls['first_name'].invalid && personalDetailsForm.controls['first_name'].touched) ? 'has-error' : '' }}">
+              <input
+                formControlName="first_name"
+                placeholder="{{'PersonalDetailsComponent.PLACEHOLDER_FN_E_G' | translate}}"
+                type="text"
+                id="personal-name"
+                value="Jonathan">
+
+              <div class="icon-tooltip icon-error"
+                   *ngIf="!personalDetailsForm.controls['first_name'].valid && personalDetailsForm.controls['first_name'].touched">
+                <span>!</span></div>
+              <div class="tooltip-container"
+                   *ngIf="!personalDetailsForm.controls['first_name'].valid && personalDetailsForm.controls['first_name'].touched">
+                <div class="tooltip-body">
+                  <p>{{'PersonalDetailsComponent.TEXT_FN_VALIDATION' | translate}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6 form-row">
+            <label for="personal-surname">{{'PersonalDetailsComponent.LABEL_SURNAME' | translate}}</label>
+            <div class="input-wr
+            {{ (personalDetailsForm.controls['last_name'].invalid && personalDetailsForm.controls['last_name'].touched) ? 'has-error' : '' }}">
+              <input
+                formControlName="last_name"
+                placeholder="{{'PersonalDetailsComponent.PLACEHOLDER_SN_E_G' | translate}}"
+                type="text"
+                id="personal-surname"
+                value="Smith">
+
+              <div class="icon-tooltip icon-error"
+                   *ngIf="!personalDetailsForm.controls['last_name'].valid && personalDetailsForm.controls['last_name'].touched">
+                <span>!</span></div>
+              <div class="tooltip-container"
+                   *ngIf="!personalDetailsForm.controls['last_name'].valid && personalDetailsForm.controls['last_name'].touched">
+                <div class="tooltip-body">
+                  <p>{{'PersonalDetailsComponent.TEXT_SN_VALIDATION' | translate}}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row flex-items-xs-bottom form-group date">
+          <p class="col-xs-12 label">{{'PersonalDetailsComponent.LABEL_DATE_BIRTH' | translate}}</p>
+          <div class="col-xs-3 form-row">
+            <div class="input-wr">
+              <!--- DESKTOP --->
+              <div class="hidden-sm-down day-of-birth">
+                <ng-select #changeDesktopDay
+                           class="ng-select"
+                           formControlName="dayOfBirth"
+                           [placeholder]="'PersonalDetailsComponent.PLACEHOLDER_DAY' | translate"
+                           [noFilter]="'Infinity'"
+                           [options]="optionsListDay"
+                           [(ngModel)]="selectedDay"
+                           (selected)="onChangeSelects()">
+                </ng-select>
+              </div>
+
+              <!--- MOBILE --->
+              <div class="hidden-sm-up">
+                <select formControlName="dayOfBirth" (change)="onChangeSelects()">
+                  <option *ngFor="let day of daysCounter; let i = index;" value="{{i + 1}}">{{i + 1}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-5 col-md-6 form-row">
+            <div class="input-wr">
+              <!--- DESKTOP --->
+              <div class="hidden-sm-down">
+                <ng-select #changeDesktopMonth
+                           class="ng-select"
+                           formControlName="monthOfBirth"
+                           [placeholder]="'PersonalDetailsComponent.PLACEHOLDER_MONTH' | translate"
+                           [noFilter]="'Infinity'"
+                           [options]="optionsListMonth"
+                           [(ngModel)]="selectedMonth"
+                           (selected)="onChangeSelects()">
+                </ng-select>
+              </div>
+
+              <!--- MOBILE --->
+              <div class="hidden-sm-up">
+                <select formControlName="monthOfBirth" (change)="onChangeSelects()">
+                  <option *ngFor="let month of monthNames; let i = index" value="{{i + 1}}">{{month}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-4 col-md-3 form-row">
+            <div class="input-wr">
+              <!--- DESKTOP --->
+              <div class="hidden-sm-down">
+                <ng-select #changeDesktopYear
+                           class="ng-select year-of-birth"
+                           formControlName="yearOfBirth"
+                           [placeholder]="'PersonalDetailsComponent.PLACEHOLDER_YEAR' | translate"
+                           [noFilter]="'Infinity'"
+                           [options]="optionsListYear"
+                           [(ngModel)]="selectedYear"
+                           (selected)="onChangeSelects()">
+                </ng-select>
+              </div>
+
+              <!--- MOBILE --->
+              <div class="hidden-sm-up">
+                <select formControlName="yearOfBirth" (change)="onChangeSelects()">
+                  <option *ngFor="let year of yearsCounter; let i = index" value="{{(1917 + i)}}">{{(1917 + i)}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <p class="label">{{'PersonalDetailsComponent.LABEL_COUNTRY' | translate}}</p>
+          <div class="input-wr
+          {{ (personalDetailsForm.controls['country'].invalid && personalDetailsForm.controls['country'].touched) ? 'has-error' : '' }}">
+
+            <!--- DESKTOP --->
+            <div class="hidden-sm-down">
+              <ng-select #changeDesktopCountry
+                         class="ng-select"
+                         formControlName="country"
+                         [noFilter]="10"
+                         [options]="optionsListCountries"
+                         [(ngModel)]="selectedCountry"
+                         (selected)="onChange($event.value)">
+              </ng-select>
+            </div>
+
+            <!--- MOBILE --->
+            <div class="hidden-sm-up">
+              <select formControlName="country"
+                      (change)="onChange($event.target.value)">
+                <option *ngFor="let c of countries" [attr.countryid]="c.id" value="{{c.name}}">{{c.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row flex-items-xs-bottom form-group">
+          <div class="col-xs-12 col-md-8 form-row">
+            <label for="personal-city">City</label>
+            <div class="input-wr
+            {{ (personalDetailsForm.controls['city'].invalid && personalDetailsForm.controls['city'].touched) ? 'has-error' : '' }}">
+              <input
+                formControlName="city"
+                placeholder="{{'PersonalDetailsComponent.PLACEHOLDER_CITY' | translate}}"
+                type="text"
+                id="personal-city">
+
+              <div class="icon-tooltip icon-error"
+                   *ngIf="!personalDetailsForm.controls['city'].valid && personalDetailsForm.controls['city'].touched">
+                <span>!</span></div>
+              <div class="tooltip-container"
+                   *ngIf="!personalDetailsForm.controls['city'].valid && personalDetailsForm.controls['city'].touched">
+                <div class="tooltip-body">
+                  <p>{{'PersonalDetailsComponent.TEXT_CITY_VALIDATION' | translate}}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-xs-6 col-md form-row">
+            <label for="personal-zip">{{'PersonalDetailsComponent.LABEL_POSTCODE' | translate}}</label>
+            <div class="input-wr
+            {{ (personalDetailsForm.controls['zip'].invalid && personalDetailsForm.controls['zip'].touched) ? 'has-error' : '' }}">
+              <input
+                formControlName="zip"
+                type="text"
+                id="personal-zip">
+
+              <div class="icon-tooltip icon-error"
+                   *ngIf="!personalDetailsForm.controls['zip'].valid && personalDetailsForm.controls['zip'].touched">
+                <span>!</span></div>
+              <div class="tooltip-container"
+                   *ngIf="!personalDetailsForm.controls['zip'].valid && personalDetailsForm.controls['zip'].touched">
+                <div class="tooltip-body">
+                  <p>{{'PersonalDetailsComponent.TEXT_POSTCODE_VALIDATION' | translate}}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row flex-items-xs-bottom form-group">
+          <div class="col-xs-12 col-md-12 form-row">
+            <label for="personal-address">{{'PersonalDetailsComponent.LABEL_ADDRESS' | translate}}</label>
+            <div class="input-wr
+            {{ (personalDetailsForm.controls['address'].invalid && personalDetailsForm.controls['address'].touched) ? 'has-error' : '' }}">
+              <input
+                formControlName="address"
+                placeholder="{{'PersonalDetailsComponent.PLACEHOLDER_ADDRESS' | translate}}"
+                type="text"
+                id="personal-address">
+
+              <div class="icon-tooltip icon-error"
+                   *ngIf="!personalDetailsForm.controls['address'].valid && personalDetailsForm.controls['address'].touched">
+                <span>!</span></div>
+              <div class="tooltip-container"
+                   *ngIf="!personalDetailsForm.controls['address'].valid && personalDetailsForm.controls['address'].touched">
+                <div class="tooltip-body">
+                  <p>{{'PersonalDetailsComponent.TEXT_ADDRESS_VALIDATION' | translate}}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row flex-items-xs-bottom form-group phone">
+          <div class="col-xs-12 col-md-12 form-row">
+            <label for="personal-phone">{{'PersonalDetailsComponent.LABEL_MOBILE_NUMBER' | translate}}</label>
+            <div class="input-wr">
+              <input
+                formControlName="mobile"
+                type="text"
+                id="personal-phone"
+                value="555-5555">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--<iframe src="https://www.apsp.biz/pay/FastLink/FastLinkPayment.aspx?token=72984b81e6224b968609d393076d9f14"-->
+          <!--class="fast-pay-iframe"-->
+          <!--frameborder="0">-->
+  <!--</iframe>-->
+</div>

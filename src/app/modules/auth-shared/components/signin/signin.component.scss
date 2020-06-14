@@ -1,0 +1,43 @@
+@import '../../../../../scss/vars';
+
+.signin-component {
+  .plain-modal {
+    .modal-header {
+      display: none;
+    }
+  }
+
+  .bt {
+    font-size: $LARGE;
+  }
+
+  form {
+    max-width: 331px;
+    margin: 0 auto;
+  }
+
+  .modal-body p {
+    font-size: $small;
+
+    a {
+      font-size: $small;
+    }
+  }
+
+  label {
+    display: none;
+  }
+
+  .forgot-pass {
+    margin-top: 15px;
+  }
+
+  #signin-password ~ .icon-tooltip {
+    right: 35px;
+
+    &:hover ~ .tooltip-container .tooltip-body {
+      right: -2%;
+    }
+  }
+
+}

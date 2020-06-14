@@ -1,0 +1,7 @@
+<app-steps
+  *ngIf="authRedirectUrl === '/cashier'"
+  [activeStep]="2"
+  [secondStepText]="'BuyingTicketsStepsComponent.register' | translate"
+  class="hidden-sm-down"
+></app-steps>
+<app-auth-container></app-auth-container>

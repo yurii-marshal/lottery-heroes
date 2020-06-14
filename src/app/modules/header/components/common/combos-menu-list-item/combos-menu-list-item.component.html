@@ -1,0 +1,26 @@
+<div class="combos-menu-list-item-component">
+  <div class="logo">
+    <img *ngIf="combo.logo_path" [src]="combo.logo_path" [alt]="combo.name">
+  </div>
+  <p class="text">{{'CombosMenuListItemComponent.TEXT_COMBINED_JACKPOT' | translate}}:</p>
+  <p class="jackpot" [innerHtml]="combo.jackpotTotal | jackpotFormat:combo.currencyId"></p>
+  <div class="combo-info">
+    <span class="combo-info-item" *ngIf="combo.linesTotal === 0 || combo.sharesTotal === 0">
+      {{combo.lotteriesTotal}} {combo.lotteriesTotal, plural, =1 {Lottery} other {Lotteries}}</span>
+    <span class="combo-info-item" *ngIf="combo.linesTotal > 0">
+      {{combo.linesTotal}} {combo.linesTotal, plural, =1 {Line} other {Lines}}</span>
+    <span class="combo-info-item" *ngIf="combo.sharesTotal > 0">
+      {{combo.sharesTotal}} {combo.sharesTotal, plural, =1 {Share} other {Shares}}</span>
+  </div>
+  <button class="bt green" (click)="addToCart.emit(combo)">
+    {{'CombosMenuListItemComponent.BUTTON_SELECT' | translate}}
+  </button>
+  <div class="text-xs-center prices">
+    <p class="former-price" *ngIf="combo.formerPrice">
+      {{'CombosMenuListItemComponent.TEXT_ONLY_PRICE' | translate}} {{combo.formerPrice | currency:combo.currencyId:'symbol':'1.2-2'}}
+    </p>
+    <p class="price">
+      {{'CombosMenuListItemComponent.TEXT_ONLY_PRICE' | translate}} {{combo.price | currency:combo.currencyId:'symbol':'1.2-2'}}
+    </p>
+  </div>
+</div>

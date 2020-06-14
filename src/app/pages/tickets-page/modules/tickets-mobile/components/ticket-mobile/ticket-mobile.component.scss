@@ -1,0 +1,127 @@
+@import '../../../../../../../scss/vars';
+
+.ticket-mobile-component {
+  .row {
+    position: relative;
+  }
+
+  .line {
+    width: 100%;
+    max-width: 320px;
+    padding: 15px 0 0;
+
+    .bt {
+      min-height: 28px; // height
+    }
+  }
+
+  .header {
+    z-index: 1;
+    margin-bottom: 0.95rem;
+    position: relative;
+  }
+
+  .title {
+    font-family: $headline;
+    color: $primary;
+    font-size: $BASIC;
+
+    div {
+      font-family: $CONTENT;
+      color: $GRAY-LIGHT;
+      font-size: $small;
+      margin-top: -5px;
+    }
+  }
+
+  .bt.blue {
+    width: 95px;
+    min-height: 25px; // height
+    font-size: $small;
+  }
+
+  .numbers {
+    flex-wrap: wrap;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .number {
+    width: 14.6%;
+    height: 2.708rem;
+    border: 1px solid #cecece;
+    border-radius: 2px;
+    font-family: $CONTENT;
+    color: #9896a4;
+    font-size: 1.2rem;
+    margin: 3px;
+
+    &:nth-child(6n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(6n+1) {
+      margin-left: 0;
+    }
+  }
+
+  .number.main {
+    &.picked {
+      color: #6A644B;
+      background: $YELLOW;
+    }
+  }
+
+  .number.extra {
+    background: #fff;
+    color: $BLUE;
+    border-color: $BLUE;
+
+    &.picked {
+      color: #fff;
+      background: $BLUE;
+    }
+  }
+
+  .extra-numbers {
+    margin-top: 1.25rem;
+  }
+
+  &.filled {
+    .number {
+      opacity: .4;
+
+      &.picked {
+        opacity: 1;
+        background: $GREEN;
+        color: #fff;
+      }
+    }
+  }
+
+  .pick-extra-text {
+    padding-left: 0;
+    padding-bottom: 4px;
+    font-family: $headline;
+    color: $primary;
+    font-size: $BASIC;
+  }
+
+  @media (max-width: 414px) {
+    .number {
+      margin: 3.9px;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .number {
+      margin: 3.8px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .number {
+      margin: 3.5px;
+    }
+  }
+}

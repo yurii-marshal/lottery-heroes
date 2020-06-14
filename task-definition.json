@@ -1,0 +1,32 @@
+[
+    {
+        "name": "service-web-app",
+        "image": "{IMAGE}",
+        "memoryReservation": 600,
+        "links": [],
+        "portMappings": [
+            {
+                "containerPort": 80,
+                "hostPort": 0,
+                "protocol": "tcp"
+            }
+        ],
+        "essential": true,
+        "entryPoint": [],
+        "command": [],
+        "environment": [
+            {
+                "name" : "ENV",
+                "value" : "{NODE_ENV}"
+            }
+        ],
+        "mountPoints": [],
+        "volumesFrom": [],
+        "logConfiguration": {
+            "logDriver": "json-file",
+            "options": {
+                "max-size": "200m"
+            }
+        }
+    }
+]

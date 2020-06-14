@@ -1,0 +1,254 @@
+<div class="shop-item col-xs cart-item-lottery-component"
+     [ngClass]="{'offer': freeLinesOffer, 'animated': item.animate, 'skip-first-draw': item.renewPeriod && skipFirstDrawParam !== null}"
+     #cartItem>
+  <div class="row flex-items-xs-left flex-items-xs-middle item-summary">
+    <!--- Ribbon --->
+    <div *ngIf="isShowRibbon && freeLinesNumber" class="hidden-md-up ribbon-wrapper small" [ngClass]="freeLineClass">
+      <p class="ribbon-text">{{ribbonText}}</p>
+      <img src="assets/images/lottery-free-line/ribbon-small-shadow.svg" alt="{{ribbonText}}" class="ribbon">
+    </div>
+    <div class="col-xs-9 col-md-4 lottery">
+      <div class="row flex-items-xs-middle flex-items-xs-between">
+        <button class="logo-wrapper" (click)="toggleLines()">
+          <span class="lotteries-logo display-flex flex-items-xs-middle flex-items-xs-center">
+            <img class="logo" [src]="lottery.logo" alt="{{lottery.name}}">
+          </span>
+        </button>
+        <div class="col-xs-8 col-sm-9 description">
+          <a class="name" [routerLink]="['/', lotterySlug]">{{lottery.name}}</a>
+          <div class="hidden-md-up lines-length">
+            {{nonFreeLinesNumber}}
+            <span *ngIf="nonFreeLinesNumber === 1">{{'CartItemLotteryComponent.TEXT_LINE' | translate}}</span>
+            <span *ngIf="nonFreeLinesNumber > 1">{{'CartItemLotteryComponent.TEXT_LINES' | translate}}</span>
+            <span *ngIf="freeLinesNumber"> + {{freeLinesNumber}} {{'CartItemLotteryComponent.TEXT_LINES' | translate}}</span>
+          </div>
+
+          <!--Monthly Subscription-->
+          <div class="cart-subscriptions">
+            <div class="cart-subscribe display-flex flex-items-xs-middle">
+              <input name="subscription-mobile"
+                     type="checkbox"
+                     id="subscribe_{{index}}"
+                     (change)="changeSubsription.emit({label: this.changeSubscriptionLabel, value: ($event.target.checked ? 'P1M' : null)})"
+                     [attr.checked]="item.renewPeriod ? 'checked' : null">
+              <div class="label-subscription-holder display-flex direction-column">
+                <label for="subscribe_{{index}}" class="label-subscription"></label>
+                <div class="display-flex flex-items-xs-middle">
+                  <span class="custom-checkbox"></span>
+                  {{'CartItemLotteryComponent.TEXT_MONTHLY_SUBSCRIPTION' | translate}}
+                  <div class="subscription-tooltip-holder">
+                    <i class="biglotteryowin-question hidden-sm-down"></i>
+                    <i class="biglotteryowin-question hidden-md-up" (click)="showSubscriptionsTooltip.emit()"></i>
+                    <div class="subscription-tooltip hidden-sm-down">
+                      {{'CartItemLotteryComponent.TEXT_PARTICIPATE' | translate}}
+                    </div>
+                  </div>
+                </div>
+                <div class="text-xs-left hidden-sm-down subscriptions-description">
+                  {{'CartItemLotteryComponent.TEXT_NEWER_MISS' | translate}}
+                  <span class="discount-percent" *ngIf="renewPeriods && renewPeriods[0]?.percent > 0">
+                    - {{renewPeriods[0].percent}}% {{'CartItemLotteryComponent.TEXT_OFF' | translate}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 display-flex flex-items-xs-middle flex-items-xs-center hidden-sm-down jackpot">
+      <div *ngIf="upcomingDraw">
+        <div class="jackpot-val">
+          <ng-container *ngIf="upcomingDraw.jackpot; else noJackpot">
+            <span [innerHtml]="upcomingDraw.jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+          </ng-container>
+          <ng-template #noJackpot>
+            <span [innerHtml]="upcomingDraw.min_jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+            <span class="no-jackpot">*</span>
+            <div class="no-jackpot-remark">
+              {{'CartItemLotteryComponent.TEXT_JACKPOT_EXPECT' | translate}}
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 display-flex flex-items-xs-middle flex-items-xs-center hidden-sm-down draws">
+      <div class="input-wr display-flex flex-items-xs-middle flex-items-xs-center">
+        <div class="lines-title">
+          {{'CartItemLotteryComponent.TEXT_LINES' | translate}}:
+        </div>
+        <input class="input text-xs-center"
+               type="number"
+               value="{{nonFreeLinesNumber}}"
+               #inputLinesNumber
+               (blur)="setLinesNumberEvent.emit({lotteryId: lottery.id, value: inputLinesNumber.value})"
+               (input)="onInputMaxCheck(inputLinesNumber.value)">
+        <div class="buttons-wrapper display-flex flex-items-xs-middle direction-column">
+          <button class="bt lines-increase biglotteryowin-up-dir"
+                  [disabled]="inputLinesNumber.value >= 200"
+                  (click)="addAutoselectedLineEvent.emit(lottery.id)"></button>
+          <ng-container *ngIf="isRemoveOneLine; else disabledDecries">
+            <button class="bt lines-decries biglotteryowin-down-dir" (click)="removeLastLineEvent.emit(lottery.id)"></button>
+          </ng-container>
+          <ng-template #disabledDecries>
+            <button class="bt lines-decries disabled"><i class="biglotteryowin-down-dir"></i></button>
+          </ng-template>
+        </div>
+        <div class="offer-info display-flex flex-items-xs-center flex-items-xs-middle direction-row"
+             *ngIf="freeLinesOffer">
+          <div class="tooltip-wrapper display-flex flex-items-xs-center flex-items-xs-middle">
+            <img src="assets/images/cart-page/star-cart.svg" alt="Free Lines">
+            <div class="tooltip-offer">
+              <span [innerHTML]="'CartItemLotteryComponent.TEXT_GET_LINE_FOR_EVERY_1' | translate"></span>
+              {{freeLinesOffer.details.lines_to_qualify}}
+              <span [innerHTML]="'CartItemLotteryComponent.TEXT_GET_LINE_FOR_EVERY_2' | translate"></span>
+            </div>
+          </div>
+          <ng-container *ngIf="!freeLinesNumber; else freeLinesInCart">
+            <div class="text-xs-left">
+              <!--Pick {{freeLinesOffer.details.lines_to_qualify}}<strong> get {{freeLinesOffer.details.lines_free}} free</strong>-->
+              {{'CartItemLotteryComponent.TEXT_PICK' | translate}} {{freeLinesOffer.details.lines_to_qualify - nonFreeLinesNumber %
+              freeLinesOffer.details.lines_to_qualify}}
+              <strong appTranslate="CartItemLotteryComponent.TEXT_GET_LINES_FREE"></strong>
+            </div>
+          </ng-container>
+          <ng-template #freeLinesInCart>
+            <div class="text-xs-left">+ {{freeLinesNumber}} {{'CartItemLotteryComponent.TEXT_FREE' | translate}}!</div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-2 col-md-1 display-flex flex-items-xs-middle flex-items-xs-right" *ngIf="itemPrice">
+      <div class="price">
+        {{itemPrice.priceWithDiscount | currency:siteCurrencyId:'symbol':'1.2-2'}}
+        <div *ngIf="itemPrice.discount > 0" class="old text-xs-right hidden-md-up">
+          {{itemPrice.price|currency:siteCurrencyId:'symbol':'1.2-2'}}
+        </div>
+      </div>
+      <!--<div class="price free">free</div>--> <!-- << will used in a future updates-->
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 line-toggle-wrapper  display-flex flex-items-xs-middle flex-items-xs-right">
+      <button class="bt clear hidden-sm-down" (click)="deleteItemEvent.emit(item)"><i class="biglotteryowin-trash"></i></button>
+      <button class="bt line-toggle hidden-md-up" #buttonLineToggleMobile (click)="toggleLines()"><i
+        class="biglotteryowin-down-open"></i></button>
+    </div>
+    <button class="bt clear hidden-md-up" (click)="deleteItemEvent.emit(item)"><i class="biglotteryowin-trash"></i></button>
+    <button class="bt line-toggle hidden-sm-down" #buttonLineToggle (click)="toggleLines()"><i
+      class="biglotteryowin-down-open"></i></button>
+    <div class="excluding-current-draw text-xs-center" *ngIf="item.renewPeriod && skipFirstDrawParam !== null">
+      {{'CartItemLotteryComponent.TEXT_START_AFTER_DRAW' | translate}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="lines-list-wrapper display-flex flex-items-xs-bottom" #linesListWrapper>
+      <div class="lines-list">
+        <div class="col-xs12 display-flex flex-items-xs-middle flex-items-xs-center hidden-md-up draws">
+          <div class="input-wr display-flex flex-items-xs-middle flex-items-xs-center direction-row hidden-md-up">
+            <div class="lines-title">
+              {{'CartItemLotteryComponent.TEXT_LINES' | translate}}:
+            </div>
+            <ng-container *ngIf="isRemoveOneLine; else disabledDecriesMobile">
+              <button class="bt lines-decries" (click)="removeLastLineEvent.emit(lottery.id)">-</button>
+            </ng-container>
+            <ng-template #disabledDecriesMobile>
+              <button class="bt lines-decries disabled">-</button>
+            </ng-template>
+            <input class="input text-xs-center"
+                   type="number"
+                   value="{{nonFreeLinesNumber}}"
+                   #inputLinesNumberMobile
+                   (blur)="setLinesNumberEvent.emit({lotteryId: lottery.id, value: inputLinesNumberMobile.value})"
+                   (input)="onInputMaxCheck(inputLinesNumberMobile.value)">
+            <button class="bt lines-increase"
+                    [disabled]="inputLinesNumberMobile.value >= 200"
+                    (click)="addAutoselectedLineEvent.emit(lottery.id)">+</button>
+            <div class="offer-info display-flex flex-items-xs-center flex-items-xs-middle direction-row"
+                 *ngIf="freeLinesOffer">
+              <ng-container *ngIf="!freeLinesNumber; else freeLinesInCart">
+                <div>
+                  {{'CartItemLotteryComponent.TEXT_ADD' | translate}} {{freeLinesOffer.details.lines_to_qualify - nonFreeLinesNumber %
+                  freeLinesOffer.details.lines_to_qualify}}
+                  <strong [innerHTML]="'CartItemLotteryComponent.TEXT_GET_LINES_FREE' | translate: {param: freeLinesOffer.details.lines_free}"></strong>
+                </div>
+              </ng-container>
+              <ng-template #freeLinesInCart>
+                <div>+ {{freeLinesNumber}} {{'CartItemLotteryComponent.TEXT_FREE' | translate}}!</div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 hidden-md-up">
+          <button class="link" (click)="toggleLinesBody()">
+            <ng-container *ngIf="isLinesOpened; else linesClosed">
+              {{'CartItemLotteryComponent.HIDE_LINES' | translate}}
+            </ng-container>
+            <ng-template #linesClosed>
+              {{'CartItemLotteryComponent.VIEW_ALL_LINES' | translate}}
+            </ng-template>
+          </button>
+        </div>
+        <div class="col-xs-12 lines-list-body" #linesListBody>
+          <div class="row">
+            <div class="col-xs-12 col-md-6 display-flex flex-items-xs-middle direction-column">
+              <div class="lines">
+                <div class="line display-flex flex-items-xs-middle flex-items-xs-between direction-row"
+                     *ngFor="let line of item.lines; trackBy: trackByLineId; let index = index;"
+                     [ngClass]="{free: line.isFree}">
+                  <div class="line-index">
+                    <ng-container *ngIf="line.isFree; else baseLineTpl">
+                      {{'CartItemLotteryComponent.TEXT_FREE' | translate}}
+                    </ng-container>
+                    <ng-template #baseLineTpl>
+                      {{'CartItemLotteryComponent.TEXT_LINE' | translate}} {{index + 1}}
+                    </ng-template>
+                  </div>
+                  <div class="flex-items-xs-middle flex-items-xs-between main-numbers"
+                       (click)="editLineEvent.emit({item: item, editedLine: line})">
+                    <span class="number main" *ngFor="let num of line.main_numbers">{{num | number:'2.0-0'}}</span>
+                    <span class="number extra" *ngFor="let num of line.extra_numbers">{{num | number:'2.0-0'}}</span>
+                  </div>
+                  <div class="display-flex flex-items-xs-left flex-items-xs-middle controls-wrapper">
+                    <button class="bt edit hidden-sm-down" (click)="editLineEvent.emit({item: item, editedLine: line})">
+                      <i class="biglotteryowin-pencil"></i>
+                    </button>
+                    <ng-container *ngIf="line.isFree; else clear">
+                      <img class="gift" src="assets/images/cart-page/gift.svg" alt="free line">
+                    </ng-container>
+                    <ng-template #clear>
+                      <button *ngIf="isRemoveOneLine" class="bt clear" (click)="deleteLineEvent.emit(line)">
+                        <i class="biglotteryowin-trash"></i>
+                      </button>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+              <div class="add-line display-flex flex-items-xs-left" #addLineLink>
+                <button class="link" (click)="scrollToAddAutoselectedLine()">
+                  {{'CartItemLotteryComponent.TEXT_ADD_LINE' | translate}}
+                </button>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6 display-flex flex-items-xs-center flex-items-xs-middle">
+              <ng-container *ngIf="freeLinesOffer && isShowFreeLinesButton()">
+                <button class="bt orange"
+                        (click)="addFreeLinesEvent.emit({lotteryId: lottery.id, addFreeLinesText: addFreeLinesText})">
+                  {{addFreeLinesText}}
+                  <img class="gift" src="assets/images/cart-page/gift.svg" alt="free line">
+                </button>
+              </ng-container>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 display-flex flex-items-xs-center flex-items-xs-middle hidden-sm-down">
+              <button class="bt hide" (click)="toggleLines()">
+                <i class="biglotteryowin-up-open"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

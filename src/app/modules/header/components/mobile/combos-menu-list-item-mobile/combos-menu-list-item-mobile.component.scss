@@ -1,0 +1,41 @@
+@import '../../../../../../scss/vars';
+
+:host {
+  .combos-item-mobile {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: #fff;
+    font-size: 20px;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      outline: none;
+    }
+
+    .jackpot {
+      color: $YELLOW;
+      font-family: $headline;
+      font-size: 1rem;
+      text-transform: capitalize;
+
+      &:hover,
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .lottery-name {
+      color: #fff;
+      font-family: $headline;
+      font-size: 1rem;
+      text-transform: capitalize;
+
+      &:hover,
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+

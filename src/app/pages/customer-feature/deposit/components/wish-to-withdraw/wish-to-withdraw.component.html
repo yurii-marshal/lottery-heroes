@@ -1,0 +1,94 @@
+<div class="container d-section withdraw wish-to-withdraw-component">
+  <div class="row flex-items-xs-top flex-items-xs-between header">
+    <div class="col-xs title">
+      {{'WishToWithdrawComponent.TEXT_WD' | translate}}
+    </div>
+  </div>
+  <p class="row"><a class="col-xs link" (click)="onTriggerWithdrawModal()">
+    {{'WishToWithdrawComponent.TEXT_CLICK_TO_REQUEST' | translate}}
+  </a></p>
+  <div role="dialog" *ngIf="isShown" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title" *ngIf="!successWithdrawResponse">
+            {{'WishToWithdrawComponent.TEXT_WD_FROM_BALANCE' | translate}}
+          </div>
+          <button class="close" type="button" (click)="onCloseLightbox()">×</button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="!successWithdrawResponse">
+            <p class="withdraw-amount">
+              {{'WishToWithdrawComponent.TEXT_WD_BALANCE' | translate}}
+              <span class="cur">{{symbol}}</span><span class="total">
+              {{balance?.customer_withdrawable|number:'1.2-2'}}
+            </span>
+            </p>
+
+            <form [formGroup]="withdrawForm" (ngSubmit)="onSubmit()">
+              <div
+                class="form-row {{(withdrawForm.controls.amount.invalid && withdrawForm.controls.amount.touched) || isErrorField('amount') ? 'has-error' : ''}}">
+                <div class="input-wr">
+                  <label for="withdraw-amount">{{'WishToWithdrawComponent.TEXT_WD_AMOUNT' | translate}}</label>
+                  <input
+                    type="number"
+                    appNumbersOnly="deposit"
+                    (input)="onInputWithdraw()"
+                    placeholder="{{symbol}}"
+                    name="amount"
+                    id="withdraw-amount"
+                    formControlName="amount">
+                  <div class="icon-tooltip icon-error"
+                       *ngIf="withdrawForm.controls['amount'].invalid && withdrawForm.controls['amount'].touched || isErrorField('amount')">
+                    <span>!</span></div>
+                  <div class="tooltip-container error"
+                       *ngIf="withdrawForm.controls['amount'].invalid && withdrawForm.controls['amount'].touched || isErrorField('amount')">
+                    <!--<div class="tooltip-body" *ngIf="withdrawForm.controls.amount.errors.required">-->
+                      <!--<p>{{ 'ERRORS.required$$_withdraw' | translate }}</p>-->
+                    <!--</div>-->
+                    <div class="tooltip-body" *ngIf="withdrawForm.controls['amount'].errors.incorrect">
+                      <p>{{ 'ERRORS.required$$_withdraw' | translate }}</p>
+                    </div>
+                    <!--<div class="tooltip-body" *ngIf="withdrawForm.controls.amount.errors.positiveValue">-->
+                      <!--<p>{{ 'ERRORS.required$$_withdraw' | translate }}</p>-->
+                    <!--</div>-->
+                    <div class="tooltip-body" *ngIf="withdrawForm.controls['amount'].errors.maxValue">
+                      <p>{{ 'ERRORS.enough_funds' | translate }}</p>
+                    </div>
+                    <div class="tooltip-body" *ngIf="withdrawForm.controls['amount'].errors.limitWithdraw">
+                      <p>{{ ('ERRORS.limit-withdraw' | translate:{currencySymbol: symbol, limit: limitWithdrawCount}) }}</p>
+                    </div>
+                    <div class="tooltip-body" *ngIf="isErrorField('amount')">
+                      <p>{{ errorObj['amount'].message }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="input-wr">
+                  <label for="payment">{{'WishToWithdrawComponent.TEXT_PREF_PAYMENT' | translate}}</label>
+                  <textarea
+                    name="payment"
+                    id="payment"
+                    formControlName="preferred_payment"
+                  ></textarea>
+                </div>
+              </div>
+              <button type="submit" class="bt green">{{'WishToWithdrawComponent.TEXT_SUBMIT_WD_REQUEST' | translate}}</button>
+            </form>
+            <p class="text-xs-center">{{'WishToWithdrawComponent.TEXT_ALLOW_UP' | translate}}</p>
+          </div>
+          <div *ngIf="successWithdrawResponse">
+            <p>
+              {{'WishToWithdrawComponent.TEXT_WD_RECEIVED_MSG' | translate}}
+            </p>
+            <p>
+              {{'WishToWithdrawComponent.TEXT_WD_CHECK_STATUS_MSG' | translate}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="blackout" (click)="onCloseLightbox()"></div>
+  </div>
+</div>

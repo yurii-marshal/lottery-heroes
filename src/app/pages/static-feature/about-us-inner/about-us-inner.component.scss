@@ -1,0 +1,76 @@
+@import '../../../../scss/_vars';
+
+.about-us-inner-component {
+  .about-us-title {
+    @include primary-title;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15px -15px;
+  }
+
+  .about-sections {
+    overflow: hidden;
+  }
+
+  .about-section-wrapper {
+    border-bottom: 1px solid $GRAY-LIGHTER;
+    margin-bottom: -1px;
+
+    &:nth-child(2n+1) {
+      border-right: 1px solid $GRAY-LIGHTER;
+    }
+  }
+
+  .about-main-view {
+    margin-bottom: 20px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .about-section-title {
+    background: $primary;
+    font-size: $LARGE;
+    color: #fff;
+    width: 200px;
+    height: 200px;
+    border-radius: 999px;
+    margin: 40px auto;
+    overflow: hidden;
+  }
+
+  .about-section-inf {
+    margin: 0;
+    padding-bottom: 40px;
+  }
+
+  .slogan {
+    font-family: $CONTENT;
+    font-size: 1.5rem;
+    color: #676767;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+  }
+
+  @media (max-width: 767px) {
+
+    .about-section-wrapper {
+      border: none;
+    }
+
+    .about-sections {
+      background: #f1f2f6;
+    }
+
+    .about-section-inf {
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .slogan {
+      font-size: 1.25rem;
+      margin: 2rem 2rem 2rem 0;
+    }
+  }
+}

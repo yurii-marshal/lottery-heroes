@@ -1,0 +1,543 @@
+@import '../../../../../../../scss/vars';
+
+.cart-item-combo-component {
+  border-top: 1px solid #ECECEC;
+
+  .description {
+    color: $primary;
+    font-family: $CONTENT;
+    font-size: $small;
+
+    .name {
+      font-size: 18px;
+      text-decoration: none;
+      color: $primary;
+    }
+  }
+
+  @keyframes lottery-height-animation-outer {
+    0% {
+      margin-top: 0;
+      height: 0;
+    }
+    50% {
+      margin-top: -10px;
+    }
+    100% {
+      margin-top: 0;
+    }
+  }
+
+  @keyframes lottery-height-animation-inner {
+    0% {
+      transform: translateY(30px);
+      height: 0;
+    }
+    100% {
+      transform: translateY(0);
+      height: 122px;
+    }
+  }
+
+  &.animated {
+    animation: lottery-height-animation-outer 0.25s ease-in-out 0s;
+
+    .item-summary {
+      animation: lottery-height-animation-inner 0.5s ease-in-out 0s;
+    }
+  }
+
+ .item-summary {
+    min-height: 122px;
+    position: relative;
+
+    .buttons-wrapper {
+      margin-top: -11px;
+    }
+
+    .bt {
+      &.line-toggle {
+        font-size: $LARGE;
+        color: $GRAY-LIGHT;
+        position: absolute;
+        top: inherit;
+        right: 0;
+        bottom: 0;
+        margin: 10px 0;
+        transition: none;
+      }
+      &.clear {
+        font-size: $XBASIC;
+        color: $GRAY-LIGHT;
+        min-width: 38px;
+      }
+      &.lines-increase,
+      &.lines-decries {
+        color: $primary;
+        font-size: $LARGE;
+        height: 19px;
+        overflow: hidden;
+
+        &:active {
+          color: $GREEN-LIGHT;
+        }
+
+        &.disabled {
+          color: $GRAY-LIGHTER;
+        }
+      }
+
+      &:hover {
+        color: $GRAY-LIGHTER;
+      }
+
+      &:active {
+        color: $GRAY-LIGHTER;
+      }
+    }
+  }
+
+  .description {
+    color: $primary;
+    font-family: $CONTENT;
+    font-size: $small;
+
+    .name {
+      font-size: $BASIC;
+      text-decoration: none;
+      color: $primary;
+    }
+  }
+
+  .jackpot-val {
+    font-family: "Montserrat", sans-serif;
+    color: $primary;
+    font-size: $LARGE;
+    text-align: center;
+    position: relative;
+  }
+
+  .draws {
+    .input-wr {
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      max-width: 40px;
+      height: 27px;
+      line-height: inherit;
+      padding: 0 2px;
+      font-size: $small;
+      margin-left: 10px;
+      background: #fff;
+      color: #676767;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      /* display: none; <- Crashes Chrome on hover */
+      -webkit-appearance: none;
+      margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+
+    select {
+      width: 100%;
+      height: 27px;
+      max-width: 130px;
+      padding-right: 24px;
+      line-height: 25px;
+      font-size: $small;
+    }
+  }
+
+  .price {
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+
+    .old {
+      position: absolute;
+      text-decoration: line-through;
+      color: #929292;
+      font-size: 12px;
+      top: 100%;
+      right: 0;
+      left: 0;
+    }
+  }
+
+  .lines-list-wrapper {
+    width: 100%;
+    background: #f2f3f8;
+    display: none;
+
+    .lines-list {
+      width: 100%;
+      padding-top: 25px;
+      padding-bottom: 5px;
+    }
+  }
+
+  .lotteries-logo {
+    width: 62px;
+    height: 62px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .line-toggle-wrapper {
+    padding: 0;
+  }
+
+  .bt {
+    &.hide {
+      color: $GRAY-LIGHT;
+    }
+
+    &.line-toggle {
+      margin-right: 15px;
+      img {
+        width: 13px;
+        height: auto;
+      }
+    }
+  }
+
+  .tooltip-wrapper {
+    position: relative;
+
+    &:hover .tooltip-offer {
+      display: block;
+    }
+  }
+
+  .tooltip-offer {
+    position: absolute;
+    background: #fff;
+    color: $primary;
+    padding: 10px;
+    box-shadow: 0 1px 5px grey;
+    border-radius: 3px;
+    width: 100%;
+    min-width: 170px;
+    max-width: 300px;
+    bottom: 100%;
+    margin: 5px 0 0;
+    text-transform: none;
+    display: none;
+
+    span {
+      color: $GREEN;
+      text-transform: uppercase;
+    }
+
+    &:before {
+      border-top: 4px solid rgba(0, 0, 0, 0.1);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      right: 0;
+      width: 7px;
+      margin: auto;
+      display: block;
+    }
+
+    &:after {
+      content: "";
+      border-top: 4px solid #FFFFFF;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      right: 0;
+      width: 7px;
+      margin: auto;
+      display: block;
+    }
+  }
+
+  .link:active, .link:hover {
+    text-decoration: underline !important;
+  }
+
+  .no-jackpot-remark, .no-jackpot {
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    line-height: 14px;
+    font-weight: bold;
+    color: $BLUE;
+  }
+
+  .combo-description {
+    padding: 0 5px;
+  }
+
+  .combo-description:not(:first-child) {
+    border-left: 1px solid $primary;
+  }
+
+  @media (max-width: 1023px) {
+    .lines-list-wrapper {
+      .lines, .add-line {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .list-columns {
+      flex-direction: column;
+    }
+
+    .item-summary {
+      height: 117px;
+
+      .bt {
+        &.line-toggle {
+          font-size: $MEDIUM;
+          position: relative;
+
+          &.star {
+            position: absolute;
+            margin: 0;
+          }
+        }
+        &.clear {
+          font-size: $small;
+          position: absolute;
+          top: 49px;
+          right: 0;
+          bottom: inherit;
+        }
+      }
+    }
+
+    .details-line {
+      padding-left: 5px;
+      margin-top: 0;
+    }
+
+    .lines-length {
+      font-size: 0;
+    }
+
+    .description .name,
+    .combo-description {
+      font-size: $small;
+    }
+
+    .line-toggle-wrapper {
+      height: 100%;
+      padding-top: 65px;
+    }
+
+    .logo-wrapper {
+      padding-left: 15px;
+    }
+
+    .lines-list-wrapper {
+      .lines-list {
+        padding-top: 25px;
+
+        .bt {
+          &.lines-increase {
+            color: #fff;
+            font-weight: bold;
+            background: $GREEN;
+            border-radius: 0;
+            width: 30px;
+            height: 30px;
+
+            &:active {
+              background: $GREEN-LIGHT;
+            }
+
+            &.disabled {
+              background: $GRAY-LIGHTER;
+            }
+          }
+
+          &.lines-decries {
+            color: #fff;
+            font-weight: bold;
+            background: $GRAY-LIGHT;
+            border-radius: 0;
+            width: 30px;
+            height: 30px;
+
+            &:active {
+              background: $GRAY-LIGHTER;
+            }
+
+            &.disabled {
+              background: $GRAY-LIGHTER;
+            }
+          }
+        }
+      }
+
+      .line-index {
+        text-transform: capitalize;
+      }
+
+      .bt .clear {
+        font-size: $small;
+      }
+
+      .add-line {
+        margin-top: 0;
+
+        .link {
+          text-transform: uppercase;
+        }
+      }
+
+      .draws {
+        .input-wr {
+          padding: 20px 0 24px;
+        }
+
+        input {
+          width: 100%;
+          max-width: 50px;
+          height: 32px;
+          padding: 0 2px;
+          font-size: $small;
+          margin: 0 10px;
+        }
+      }
+    }
+
+    .draws {
+      padding-left: 28.2%;
+    }
+
+    .price {
+      color: $GREEN;
+      font-size: 14px;
+      position: absolute;
+      top: -51px;
+      right: -19px;
+    }
+  }
+
+  @media (min-width: 767px) {
+    .details-line {
+      position: relative;
+      top: -11px;
+    }
+
+    app-cart-item-combo-lottery,
+    app-cart-item-combo-syndicate {
+      -webkit-box-flex: 0;
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    .list-columns {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  .combo-info-container {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+      .combo-info {
+        z-index: 1000;
+        display: block;
+      }
+    }
+  }
+
+  .combo-link {
+    font-size: $small;
+    color: $BLUE;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  .combo-info {
+    display: none;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 25px;
+    border-radius: 5px;
+    width: 205px;
+    background: #fff;
+    left: -79px;
+
+    .combo-info-inner {
+      max-height: 150px;
+      padding: 4px 12px;
+      border-radius: 5px;
+      margin: 3px 3px 0 0;
+      overflow-x: scroll;
+    }
+
+    &::before {
+      border-top: 6px solid rgba(0, 0, 0, 0.2);
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      bottom: -7px;
+      width: 6px;
+    }
+
+    &::after {
+      border-top: 6px solid #FFFFFF;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      bottom: -6px;
+      width: 6px;
+    }
+
+    .lname {
+      min-width: 110px;
+    }
+
+    .green {
+      color: $GREEN;
+    }
+  }
+
+  /* Scroll */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: #DADADA;
+  }
+
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: #DADADA;
+  }
+}

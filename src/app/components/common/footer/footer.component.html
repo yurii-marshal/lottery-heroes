@@ -1,0 +1,206 @@
+<footer *ngIf="globalService.isShowFooter" [ngClass]="globalService.footerClassList" class="footer-component">
+  <div class="container-60">
+    <div class="row">
+      <div class="col-xs display-flex flex-items-xs-middle flex-items-xs-center logo-partners"
+           [ngClass]="{'flex-items-xs-between':showIcons?.gamcare}">
+        <img height="20" src="assets/images/svg/gamstop.svg" alt="Gamstop" title="{{'FooterComponent.TITLE_GAMSTOP' | translate}}" class="gamstop {{brandId}}" *ngIf="showIcons?.gamstop">
+        <img *ngIf="showIcons?.eighteenPlus" width="35" src="assets/images/svg/18+.svg" alt="18+" class="plus18">
+        <a *ngIf="showIcons?.gamcare" target="_blank" href="http://www.gamcare.org.uk/" class="gamble-care {{brandId}}">
+          <img height="32" src="assets/images/svg/game-care.svg" alt="{{'FooterComponent.TITLE_GAMBLE_CARE' | translate}}" title="{{'FooterComponent.TITLE_GAMBLE_CARE' | translate}}">
+        </a>
+        <a *ngIf="protectionIcon?.protectionIconUK"
+           href="https://secure.gamblingcommission.gov.uk/PublicRegister/Search/Detail/xxxx"
+           target="_blank"
+           title="{{'FooterComponent.TITLE_GAMBLING_COMMISSION' | translate}}"
+           class="protectionIcon-uk">
+          <img src="assets/images/svg/gambling-commission-co-uk.svg" alt="{{'FooterComponent.TITLE_GAMBLING_COMMISSION' | translate}}" title="{{'FooterComponent.TITLE_GAMBLING_COMMISSION' | translate}}" height="38">
+        </a>
+        <a *ngIf="protectionIcon?.protectionIconIE"
+           href="https://www.revenue.ie/en/corporate/information-about-revenue/statistics/excise/licences/licensed-remote-bookmaking-operations.aspx"
+           target="_blank"
+           title="{{'FooterComponent.TITLE_OFFICE_REVENUE' | translate}}"
+           class="protectionIcon-ie">
+          <img src="assets/images/svg/gambling-commission-ie.svg" alt="{{'FooterComponent.TITLE_OFFICE_REVENUE' | translate}}" height="45"
+               title="{{'FooterComponent.TITLE_OFFICE_REVENUE' | translate}}">
+        </a>
+        <a *ngIf="showIcons?.gamblersanonymous" target="_blank" href="https://gamblersanonymous.org.uk/" class="gamblers-anonymous">
+          <img height="32" src="assets/images/svg/gamblers-anonymous.svg" alt="{{'FooterComponent.TITLE_GAMBLERS_ANONYMOUS' | translate}}" title="{{'FooterComponent.TITLE_GAMBLERS_ANONYMOUS' | translate}}">
+        </a>
+        <img *ngIf="showIcons?.norton" width="70" src="assets/images/svg/norton.svg" alt="norton" class="norton">
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="container-60">
+    <div class="row">
+      <div class="col-md menu-footer">
+        <input id="menu-footer-1" type="checkbox">
+        <label class="display-flex flex-items-md-left flex-items-xs-center" for="menu-footer-1">
+          {{'FooterComponent.LABEL_LOTTERIES' | translate}}
+          <img class="hidden-md-up" src="assets/images/svg/arrow-gray.svg" alt="drop-down">
+        </label>
+        <div class="case case-1 display-flex flex-items-xs-bottom">
+          <div class="drop-down-body">
+            <div *ngFor="let lotteryId of lotteryIds" class="text-md-left text-xs-center">
+              <a (click)="onTrackFooterClicked('Lotteries', altService.getAlt(lotteryId))"
+                 [routerLink]="['/', (getLotterySlug(lotteryId) | async)]"
+                 title="{{'FooterComponent.TEXT_BET_ON' | translate}} {{altService.getAlt(lotteryId)}}">{{'FooterComponent.TEXT_BET_ON' | translate}} {{altService.getAlt(lotteryId)}}</a>
+            </div>
+            <div class="text-md-left text-xs-center">
+              <a (click)="onTrackFooterClicked('Lotteries', 'All Lotteries')"
+                 [routerLink]="['/', 'lotteries']"
+                 title="{{'FooterComponent.TITLE_ALL_LOTTERIES' | translate}}"
+                 alt="All Lotteries">{{'FooterComponent.TITLE_ALL_LOTTERIES' | translate}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md menu-footer">
+        <input id="menu-footer-4" type="checkbox">
+        <label class="display-flex flex-items-md-left flex-items-xs-center" for="menu-footer-4">
+          {{'FooterComponent.LABEL_RESULTS' | translate}}
+          <img class="hidden-md-up" src="assets/images/svg/arrow-gray.svg" alt="drop-down">
+        </label>
+        <div class="case case-4 display-flex flex-items-xs-bottom">
+          <div class="drop-down-body">
+            <div *ngFor="let lotteryId of lotteryIds" class="text-md-left text-xs-center">
+              <a (click)="onTrackFooterClicked('Lotteries', altService.getAlt(lotteryId))"
+                 [routerLink]="['/', (getLotterySlug(lotteryId) | async), 'results']"
+                 title="{{altService.getAlt(lotteryId)}} {{'FooterComponent.LABEL_RESULTS' | translate}}">
+                {{altService.getAlt(lotteryId)}} {{'FooterComponent.LABEL_RESULTS' | translate}}
+              </a>
+            </div>
+            <div class="text-md-left text-xs-center">
+              <a (click)="onTrackFooterClicked('Results', 'All Results')"
+                 routerLink="/lotteries/results"
+                 title="{{'FooterComponent.TITLE_ALL_RESULTS' | translate}}"
+                 alt="All Results">{{'FooterComponent.TITLE_ALL_RESULTS' | translate}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 menu-footer">
+        <input id="menu-footer-2" type="checkbox">
+        <label class="display-flex flex-items-md-left flex-items-xs-center" for="menu-footer-2">
+          {{'FooterComponent.LABEL_USEFUL_INFO' | translate}}
+          <img class="hidden-md-up" src="assets/images/svg/arrow-gray.svg" alt="drop-down">
+        </label>
+        <div class="case case-2 display-flex flex-items-xs-bottom">
+          <div class="drop-down-body">
+            <div class="text-md-left text-xs-center">
+              <a (click)="onTrackFooterClicked('Company', 'FAQ\'s')"
+                 routerLink="/about/faq"
+                 title="{{'FooterComponent.TITLE_FAQ' | translate}}"
+                 alt="FAQ's">{{'FooterComponent.TITLE_FAQ' | translate}}</a>
+            </div>
+            <div *ngIf="showBetVsPlay" class="text-md-left text-xs-center hidden-md-up">
+              <a (click)="onTrackFooterClicked('Useful Information', 'Bet Vs. Play')"
+                 routerLink="/about/bet-vs-play"
+                 title="{{'FooterComponent.TITLE_BET_PLAY' | translate}}">
+                {{'FooterComponent.TITLE_BET_PLAY' | translate}}
+              </a>
+            </div>
+            <div class="text-md-left text-xs-center">
+              <a (click)="onTrackFooterClicked('Useful Information', 'Privacy')"
+                 routerLink="/about/privacy"
+                 title="{{'FooterComponent.REF_PRIVACY' | translate}}"
+                 alt="Privacy">{{'FooterComponent.REF_PRIVACY' | translate}}</a>
+            </div>
+            <div class="text-md-left text-xs-center">
+              <a (click)="onTrackFooterClicked('Company', 'Cookies Policy')"
+                 routerLink="/about/cookies-policy"
+                 title="{{'FooterComponent.REF_COOKIES_POLICY' | translate}}"
+                 alt="Cookies Policy">{{'FooterComponent.REF_COOKIES_POLICY' | translate}}</a>
+            </div>
+            <div class="text-md-left text-xs-center">
+              <a (click)="onTrackFooterClicked('Useful Information', 'Terms & Conditions')"
+                 routerLink="/about/terms-and-conditions"
+                 title="{{'FooterComponent.REF_TERMS_CONDITIONS' | translate}}"
+                 alt="Terms & Conditions">{{'FooterComponent.REF_TERMS_CONDITIONS' | translate}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md menu-footer last-list">
+        <input id="menu-footer-3" type="checkbox">
+        <label class="display-flex flex-items-md-left flex-items-xs-center" for="menu-footer-3">
+          {{'FooterComponent.LABEL_COMPANY' | translate}}
+          <img class="hidden-md-up" src="assets/images/svg/arrow-gray.svg" alt="drop-down">
+        </label>
+        <div class="case case-3 display-flex flex-items-xs-bottom">
+          <div class="drop-down-body">
+            <!--<div class="text-md-left text-xs-center">-->
+              <!--<a (click)="onTrackFooterClicked('Company', 'About Us')"-->
+                 <!--routerLink="/about"-->
+                 <!--title="{{'FooterComponent.REF_ABOUT_US' | translate}}"-->
+                 <!--alt="About Us">{{'FooterComponent.REF_ABOUT_US' | translate}}</a>-->
+            <!--</div>-->
+            <div class="text-md-left text-xs-center">
+              <a (click)="onTrackFooterClicked('Company', 'Contact Us')"
+                 routerLink="/about/contact"
+                 title="{{'FooterComponent.REF_CONTACT_US' | translate}}"
+                 alt="Contact Us">{{'FooterComponent.REF_CONTACT_US' | translate}}</a>
+            </div>
+            <!--<div class="text-md-left text-xs-center">-->
+              <!--<a (click)="onTrackFooterClicked('Company', 'Affiliates Program')"-->
+                 <!--href="/pages/affiliates-program"-->
+                 <!--title="{{'FooterComponent.REF_AFFILIATES_PROGRAM' | translate}}"-->
+                 <!--alt="Affiliates Program">{{'FooterComponent.REF_AFFILIATES_PROGRAM' | translate}}</a>-->
+            <!--</div>-->
+          </div>
+        </div>
+      </div>
+      <!--<div class="col-md">-->
+        <!--<div class="menu-footer text-xs-center">-->
+          <!--<label>{{'FooterComponent.LABEL_FOLLOW_US' | translate}}</label>-->
+          <!--<div class="social">-->
+            <!--<a (click)="onTrackSocialIconClicked('Facebook')"-->
+               <!--*ngIf="manageSocialIcons?.facebook" href="{{manageSocialIcons?.facebookUrl}}" target="_blank" title="{{'FooterComponent.REF_FACEBOOK' | translate}}" alt="Facebook">-->
+              <!--<svg version="1.1" x="0px" y="0px"-->
+                   <!--viewBox="0 0 78.7 79" style="enable-background:new 0 0 78.7 79;" xml:space="preserve">-->
+                <!--<path class="facebook" fill="#ADADAD" d="M69.4,26.1c-1.7-3.9-4-7.4-7.1-10.5c-3-3-6.5-5.4-10.5-7.1c-4.1-1.7-8.4-2.6-12.9-2.6c-4.5,0-8.7,0.9-12.8,2.6  c-4,1.7-7.5,4.1-10.5,7.1c-3,3.1-5.4,6.6-7.1,10.5C6.7,30.2,5.8,34.5,5.8,39c0,4.5,0.9,8.8,2.6,12.9c1.7,4,4.1,7.5,7.1,10.5  c3.1,3.1,6.6,5.4,10.5,7.1c4.1,1.7,8.4,2.6,12.8,2.6c4.5,0,8.8-0.9,12.9-2.6c4-1.7,7.5-4,10.5-7.1c3.1-3.1,5.4-6.6,7.1-10.5  c1.8-4.1,2.7-8.4,2.7-12.9C72.1,34.5,71.2,30.2,69.4,26.1z M48.5,27.1H45c-1.3,0-2.2,0.3-2.7,0.9c-0.4,0.5-0.6,1.2-0.6,2.4v4.1h6.5  l-0.9,6.6h-5.7V58h-6.8V41.1h-5.6v-6.6h5.6v-4.8c0-2.7,0.8-4.9,2.4-6.5c1.5-1.5,3.6-2.2,6.1-2.2c1.1,0,2.1,0,3.2,0.1  c0.8,0.1,1.5,0.1,1.9,0.2V27.1z"/>-->
+              <!--</svg>-->
+            <!--</a>-->
+            <!--<a (click)="onTrackSocialIconClicked('Tweeter')"-->
+               <!--*ngIf="manageSocialIcons?.twitter" href="{{manageSocialIcons?.twitterUrl}}" target="_blank" title="{{'FooterComponent.REF_TWITTER' | translate}}" alt="Twitter">-->
+              <!--<svg version="1.1" x="0px" y="0px"-->
+                   <!--viewBox="0 0 78.7 79" style="enable-background:new 0 0 78.7 79;" xml:space="preserve">-->
+                <!--<path class="twitter" fill="#ADADAD" d="M69.4,26.1c-1.7-3.9-4.1-7.4-7.1-10.5c-3.1-3-6.6-5.4-10.5-7.1c-4.1-1.7-8.4-2.6-12.9-2.6  c-4.5,0-8.8,0.9-12.9,2.6c-3.9,1.7-7.4,4.1-10.5,7.1c-3.1,3.1-5.4,6.6-7.1,10.5C6.7,30.2,5.8,34.5,5.8,39c0,4.5,0.9,8.8,2.6,12.9  c1.7,4,4,7.5,7.1,10.5c3.1,3.1,6.6,5.4,10.5,7.1c4.1,1.7,8.4,2.6,12.9,2.6c4.5,0,8.8-0.9,12.9-2.6c4-1.7,7.5-4,10.5-7.1  c3-3.1,5.4-6.6,7.1-10.5C71.1,47.8,72,43.5,72,39C72,34.5,71.1,30.2,69.4,26.1z M53.7,31.4v1c0,5.5-1.8,10.4-5.5,14.6  c-4.2,4.7-9.5,7.1-16.1,7.1c-4.2,0-8.1-1.2-11.7-3.5c0.7,0.1,1.3,0.1,1.8,0.1c3.5,0,6.7-1.1,9.5-3.2c-1.7,0-3.2-0.5-4.5-1.5  c-1.3-1-2.2-2.2-2.6-3.8c0.4,0.1,0.9,0.2,1.4,0.2c0.7,0,1.4-0.1,2-0.2c-1.7-0.4-3.2-1.2-4.3-2.6c-1.2-1.4-1.8-3-1.8-4.8v-0.2  c1.1,0.6,2.2,1,3.5,1c-1-0.7-1.9-1.5-2.5-2.7c-0.6-1.1-1-2.3-1-3.6c0-1.4,0.3-2.7,1-3.9c1.9,2.3,4.2,4.2,6.9,5.6  c2.7,1.4,5.7,2.2,8.8,2.3c-0.1-0.5-0.2-1.1-0.2-1.7c0-2.1,0.8-3.9,2.2-5.4c1.5-1.5,3.2-2.2,5.4-2.2c1.1,0,2.1,0.2,3.1,0.6  c0.9,0.4,1.8,1,2.5,1.8c1.7-0.3,3.3-0.9,4.8-1.8c-0.6,1.8-1.7,3.2-3.4,4.2c1.6-0.2,3-0.6,4.4-1.2C56.4,29,55.1,30.3,53.7,31.4z"/>-->
+              <!--</svg>-->
+            <!--</a>-->
+            <!--<a (click)="onTrackSocialIconClicked('Linkedin')"-->
+               <!--*ngIf="manageSocialIcons?.linkedin" href="https://www.linkedin.com/company/biglotteryowin" target="_blank" title="{{'FooterComponent.REF_LINKEDIN' | translate}}" alt="Linkedin">-->
+              <!--<svg version="1.1" x="0px" y="0px"-->
+                   <!--viewBox="-6 -5 76 76" style="enable-background:new -6 -5 76 76;" xml:space="preserve">-->
+                <!--<path class="linkedin" fill="#ADADAD" d="M68.76,24.35A33.28,33.28,0,0,0,51.11,6.75a33.18,33.18,0,0,0-25.75,0,34,34,0,0,0-10.5,7.1,32.86,32.86,0,0,0-9.7,23.4,33.09,33.09,0,0,0,9.7,23.4,33.08,33.08,0,0,0,46.8,0,33.81,33.81,0,0,0,7.1-10.55,32.43,32.43,0,0,0,2.6-12.85A33,33,0,0,0,68.76,24.35ZM29.33,55H21.55V30h7.78V55ZM25.44,26.53A4.51,4.51,0,1,1,30,22,4.51,4.51,0,0,1,25.44,26.53ZM58.49,55H50.71V42.82c0-2.9-.05-6.64-4-6.64S42,39.34,42,42.61V55H34.22V30h7.46v3.42h0.1a8.18,8.18,0,0,1,7.36-4c7.88,0,9.34,5.19,9.34,11.93V55Z" transform="translate(-5.16 -4.15)"/></svg>-->
+            <!--</a>-->
+          <!--</div>-->
+          <!--<div class="payment-systems">-->
+            <!--<img src="assets/images/svg/visa.svg" alt="visa" width="45">-->
+            <!--<img src="assets/images/svg/master-card.svg" alt="master-card" width="45">-->
+            <!--<img src="assets/images/svg/maestro.svg" alt="maestro" width="45">-->
+          <!--</div>-->
+
+          <!--<button class="bt green" (click)="onWinBtnClicked()" title="{{'FooterComponent.TITLE_JOIN_BIGLOTTERYOWIN' | translate}}" alt="Join BigLotteryOWin">-->
+            <!--{{'FooterComponent.BUTTON_JOIN_WIN' | translate}} <img src="assets/images/svg/arrow-white.svg" alt="Join BigLotteryOWin" title="{{'FooterComponent.TITLE_JOIN_BIGLOTTERYOWIN' | translate}}">-->
+          <!--</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    </div>
+    <div class="row">
+      <div class="col-xs copyright text-xs-center">
+        <p [innerHTML]="'FooterComponent.TEXT_COPY' | translate"></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="container-60">
+    <div class="row">
+      <div class="col-xs post-footer text-xs-center">
+        <p [innerHTML]="'FooterComponent.TEXT_FOOTER_DESC' | translate"></p>
+      </div>
+    </div>
+  </div>
+</footer>

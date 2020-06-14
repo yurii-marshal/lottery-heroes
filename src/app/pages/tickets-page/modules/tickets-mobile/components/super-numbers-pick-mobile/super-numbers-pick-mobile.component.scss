@@ -1,0 +1,124 @@
+@import '../../../../../../../scss/vars';
+
+.super-numbers-pick-mobile-component {
+  background: #fff;
+  padding: 25px 15px 1em;
+
+  &.animated {
+    z-index: 3;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 53px;
+    overflow: hidden;
+    transform: translateX(-100%);
+    animation: roll-right .4s ease forwards;
+  }
+
+  p {
+    font-size: $small;
+    font-weight: bold;
+    margin: 0 0 6px;
+  }
+
+  .bt.close {
+    position: absolute;
+    top: -13px;
+    right: -1px;
+    z-index: 99;
+    min-height: 18px; // height
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: 26px;
+    line-height: 16px;
+    color: #bebcbd;
+  }
+
+  .numbers-list {
+    flex-wrap: wrap;
+  }
+
+  .number {
+    background: #fff;
+    width: 14.2%;
+    height: 2.7rem;
+    margin: 3px;
+    border: 1px solid $BLUE;
+    border-radius: 2px;
+    font-size: 1.2rem;
+    color: $BLUE;
+    user-select: none;
+
+    &:nth-child(6n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(6n+1) {
+      margin-left: 0;
+    }
+
+    &.picked {
+      background: $BLUE;
+      color: #fff;
+
+      &:hover {
+        border-color: #E51E12;
+        box-shadow: inset 0px 0px 0px 1px #E51E12;
+      }
+    }
+  }
+
+  .super-numbers-pick-next {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    border-top: 1px solid $GRAY-LIGHT;
+
+    .bt {
+      font-size: 20px;
+      width: 100%;
+      max-width: 320px;
+      min-height: 44px; // height
+      margin-top: 1rem;
+    }
+  }
+
+  .number-selected {
+    width: 35px;
+    height: 35px;
+    background: $BLUE;
+    color: #fff;
+    border-radius: 50%;
+    margin: 2px;
+    font-size: $BASIC;
+  }
+
+  @keyframes roll-right {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @media (max-width: 375px) {
+    .ticket-mobile-component {
+      .number {
+        margin: 3.8px;
+      }
+    }
+  }
+
+  @media (max-width: 414px) {
+    .ticket-mobile-component {
+      .number {
+        margin: 3.9px;
+      }
+    }
+  }
+}

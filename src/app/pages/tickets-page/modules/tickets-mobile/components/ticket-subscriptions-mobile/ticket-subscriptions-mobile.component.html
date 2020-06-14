@@ -1,0 +1,29 @@
+<div class="container-fluid ticket-subscriptions-mobile-component">
+  <div class="row">
+    <div class="col-xs display-flex flex-items-xs-center flex-items-xs-middle">
+      <div class="ticket-subscriptions">
+        <ng-container *ngIf="renewPeriods && renewPeriods.length > 0">
+          <input name="subscription-mobile"
+                 type="checkbox"
+                 id="subscribe-mobile"
+                 (change)="changeRenewPeriod('Monthly Subscription', $event)">
+          <div class="subscriptions-subscription display-flex direction-column">
+            <div class="subscriptions-tooltip-holder">
+              <i class="biglotteryowin-question" (click)="subscriptionTooltipClickEvent.emit()"></i>
+            </div>
+            <label for="subscribe-mobile"></label>
+            <div class="display-flex flex-items-xs-middle"><span class="subscriptions-custom-radio"></span>
+             {{'TicketMobileComponent.TEXT_MONTHLY_SUBSCRIPTION' | translate}}
+            </div>
+            <div class="text-xs-left subscriptions-description">
+              {{'TicketMobileComponent.TEXT_DRAW' | translate}}
+              <span class="discount-percent" *ngIf="renewPeriods && renewPeriods[0]?.percent > 0">
+                - {{renewPeriods[0].percent}}% {{'TicketMobileComponent.TEXT_OFF' | translate}}
+              </span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

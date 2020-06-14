@@ -1,0 +1,45 @@
+<!-- Live Chat -->
+<!--<ng-container *ngIf="isShowChat && (device$ | async) === 'desktop'">-->
+  <!--<app-live-chat></app-live-chat>-->
+  <!--<div id="live-chat-container-desktop"></div>-->
+<!--</ng-container>-->
+
+<div class="cover" [ngClass]="{'active': isShownMobileMenu}">
+  <div class="app-swiper" [ngClass]="{'withCookie': isShownCookieModal || (boSessionHeader$ | async)}">
+    <app-cookie-modal
+      (hideCookieModalEvent)="hideCookieModal()"
+      *ngIf="isShownCookieModal"
+    ></app-cookie-modal>
+    <app-bo-session
+      *ngIf="boSessionHeader$ | async"
+      [text]="boSessionHeader$ | async"
+    ></app-bo-session>
+
+    <!-- Header -->
+    <section class="header-container">
+      <app-header></app-header>
+    </section>
+
+    <!-- Content -->
+    <div class="content-container">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- Footer -->
+    <app-footer></app-footer>
+
+    <!-- Lightbox -->
+    <app-auth-lightbox-container></app-auth-lightbox-container>
+    <app-lightbox-limited-status></app-lightbox-limited-status>
+    <app-lightbox-limited-deposit></app-lightbox-limited-deposit>
+    <app-lightbox-account-unverified (resendConfirmation)="onResendConfirmation()"></app-lightbox-account-unverified>
+    <app-lightboxes></app-lightboxes>
+
+    <!-- Cookies acceptance -->
+    <!--<app-cookies-acceptance></app-cookies-acceptance>-->
+
+    <!-- Other -->
+    <app-mobile-floating-button></app-mobile-floating-button>
+    <div class="blackout hidden-md-up" (click)="toggleMenu()" #blackout></div>
+  </div>
+</div>

@@ -1,0 +1,793 @@
+@import 'vars';
+
+/* ACCOUNT */
+.user-account {
+  padding: 1.2rem 0 0;
+
+  > .row {
+    margin: 0;
+  }
+
+  .minus {
+    min-width: 4px;
+    display: inline-block;
+  }
+
+  .back {
+    font-family: $CONTENT;
+    font-size: $BASIC;
+    position: static;
+    margin-bottom: 1rem;
+    text-decoration: none;
+
+    span:not(.arrow) {
+      text-decoration: underline;
+    }
+
+    svg {
+      fill: $BLUE;
+      width: 9px;
+      height: 9px;
+      transform: rotate(90deg);
+    }
+  }
+
+  /* view*/
+  .progressbar {
+    font-size: 12px;
+    height: 23px;
+  }
+  .details-view {
+    .header {
+      border-bottom: 1px solid $GRAY-LIGHTER;
+      padding-bottom: 0.25rem;
+      margin-bottom: 1rem;
+
+      .action {
+        padding-right: 0;
+        text-align: right;
+        margin-bottom: 0.875rem;
+      }
+      .bt {
+        font-size: $small;
+        padding: 0 0.9rem;
+        height: 23px;
+      }
+      .bt.only-text {
+        font-family: $CONTENT;
+        height: 19px;
+        padding: 0;
+        border-radius: 0;
+      }
+    }
+    .d-section:not(.personal-details):not(.deposit-details) {
+      margin: 3.75rem 0 0;
+    }
+    .d-section + .d-section {
+      margin: 3.75rem 0 0;
+    }
+    .modal-header {
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+    .title {
+      font-family: $headline;
+      font-size: $MEDIUM;
+      color: $primary;
+      padding-left: 0;
+    }
+    .form-row .title {
+      margin-bottom: 1rem;
+    }
+  }
+  .hide {
+    display: none;
+  }
+
+  /* table */
+  .table-header {
+    border-bottom: 1px solid $GRAY-LIGHTER;
+    padding-bottom: 0.5rem;
+
+    .th {
+      color: $primary;
+      font-family: $headline;
+      font-size: $BASIC;
+      padding: 0;
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+  .table-body {
+    .row > div {
+      padding: 0;
+    }
+    .td {
+      color: #8e8d8d;
+      font-family: $CONTENT;
+      font-size: $BASIC;
+      min-height: 2.25rem;
+      display: flex;
+      align-items: center;
+    }
+    .status {
+      justify-content: flex-end;
+      color: $BLUE;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+    .status:hover {
+      text-decoration: none;
+      cursor: pointer;
+
+      span {
+        text-decoration: none;
+      }
+    }
+    .arrow {
+      margin-right: 1rem;
+      text-decoration: none;
+      color: $primary;
+    }
+  }
+  .desc {
+    margin-right: 4px;
+    color: $primary;
+  }
+
+  .tickets-pager {
+    margin: 3rem 0 0;
+    color: #8e8d8d;
+    text-align: center;
+
+    > div, ul, li {
+      display: inline-block;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        padding: 0 6px;
+      }
+    }
+    li:hover {
+      cursor: pointer;
+    }
+    .active {
+      background-color: #e3eaef;
+    }
+    .prev {
+      margin-right: 1rem;
+    }
+    .next {
+      margin-left: 1rem;
+    }
+    .prev,
+    .next {
+      padding: 0 3px;
+    }
+    .prev:hover,
+    .next:hover {
+      cursor: pointer;
+    }
+    .prev::before {
+      content: '<';
+      margin-right: 4px;
+    }
+    .next::after {
+      content: '>';
+      margin-left: 4px;
+    }
+  }
+  .account-action-list .logout.link {
+    color: $BLUE;
+  }
+
+  #account-withdrawal .cashier-component {
+    margin: 0;
+
+    .form-wrapper {
+      margin: 0;
+      border: 1px solid #eee;
+      border-radius: 3px;
+    }
+
+    .footer {
+      display: block;
+    }
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 992px) {
+  .user-account {
+    .table-body .view .arrow::after {
+      content: '';
+      display: inline-block;
+      background: url("/assets/images/svg/arrow-gray.svg") no-repeat;
+      position: relative;
+      top: 3px;
+      width: 11px;
+      height: 11px;
+    }
+    .table-body .open .status .arrow::after {
+      transform: rotate(180deg);
+      top: -1px;
+    }
+    .table-header {
+      padding-bottom: 10px;
+
+      .th {
+        font-size: 12px;
+      }
+    }
+    #account-withdrawal .cashier-component {
+      .form-wrapper {
+        border: none;
+      }
+    }
+  }
+}
+
+/* MY GAMES */
+#account-tickets {
+  .games-table {
+    .th {
+      border-bottom: 1px solid $GRAY-LIGHTER;
+
+      a {
+        color: $primary;
+        font-size: $BASIC;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      a.sort::after {
+        content: '\e802';
+        font-family: "biglotteryowin-icons";
+        transform: none;
+        margin: 0 0 0 5px;
+        border: 0;
+        color: $GRAY-LIGHT;
+      }
+
+      a.sort.asc::after {
+        content: '\e805';
+      }
+
+      a.sort.desc::after {
+        content: '\e802';
+      }
+    }
+
+    tr:nth-child(2n) {
+      &:not(.game-details) {
+        //background: #d1d1d1;
+        background: #fbfbfb;
+      }
+    }
+
+    td {
+      text-transform: capitalize;
+
+      div {
+        font-size: $BASIC;
+      }
+
+      .won {
+        color: $GREEN;
+      }
+
+      .pending {
+        color: $primary;
+      }
+    }
+
+    .game-details {
+      position: relative;
+
+      &:nth-child(2n) {
+        background: #fff;
+      }
+
+      &:nth-child(3n) {
+        background: #FBFBFB;
+      }
+
+      .game-lines-list {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+        position: relative;
+      }
+
+      .close-view {
+        position: absolute;
+        cursor: pointer;
+        font-size: 20px;
+        top: 0;
+        right: 0;
+        color: $GRAY-LIGHT;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+
+      .line-item {
+        //min-width: 170px;
+        padding: 0 0 2px;
+        margin-right: 50px;
+
+        span {
+          padding-right: 2px;
+          font-size: $small;
+
+          &.equal {
+            color: $GREEN;
+          }
+
+          &.extra {
+            padding-left: 6px;
+
+            + .extra {
+              padding-left: 2px;
+            }
+          }
+        }
+
+        span:not(:last-child) {
+          &::after {
+            content: ','
+          }
+        }
+      }
+
+      .game-results {
+        display: flex;
+        border-top: 1px solid $GRAY-LIGHTER;
+        padding: 9px 0 15px 10px;
+
+        &.just-lines,
+        &.combo {
+          justify-content: space-between;
+        }
+
+        .result-wrapper {
+          display: flex;
+          align-items: center;
+        }
+
+        .result-label {
+          padding-right: 20px;
+        }
+
+        .results-line {
+          display: flex;
+          align-items: center;
+
+          span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border-radius: 100rem;
+            border: 1px solid $GRAY-LIGHT;
+            margin-right: 7px;
+            font-weight: bold;
+
+            &.extra {
+              color: #fff;
+              background: $BLUE;
+              border-color: $BLUE;
+              margin-left: 8px;
+              margin-right: 0;
+            }
+          }
+        }
+      }
+
+      .link.unsubscribe {
+        text-decoration: underline;
+        color: $BLUE;
+        font-size: $small;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .ng2-smart-row.selected {
+      background: none;
+    }
+
+    thead tr > th:last-child,
+    .td-status {
+      text-align: right;
+
+      i::before {
+        width: 10px;
+        color: $GRAY-LIGHT;
+        transition: all 300ms ease 0s;
+        transform: rotate(0deg);
+        margin-left: 6px;
+      }
+
+      &.open {
+        i::before {
+          transition: all 300ms ease 0s;
+          transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+
+  button {
+    height: 46px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #fff;
+  }
+
+  .tooltip-holder {
+    position: relative;
+    cursor: pointer;
+
+    .tooltip-text {
+      position: absolute;
+      right: -3px;
+      bottom: 130%;
+      padding: 8px;
+      background: #f6f6ff;
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px #9e9da2, 0 0 10px rgba(0, 0, 0, 0.3);
+      min-width: 200px;
+      display: none;
+      font-size: $small;
+      text-transform: none;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        border-top: 10px solid #9e9da2;
+        border-right: 9px solid transparent;
+        border-left: 9px solid transparent;
+      }
+
+      &::before {
+        right: 6px;
+      }
+
+      &::after {
+        right: 7px;
+        border-top: 9px solid #f6f6ff;
+        border-right: 8px solid transparent;
+        border-left: 8px solid transparent;
+      }
+    }
+
+    &:hover {
+      .tooltip-text {
+        display: block;
+      }
+    }
+  }
+}
+
+.ng2-smart-pagination-nav {
+  margin: 20px auto 0;
+
+  .page-link {
+    font-size: $BASIC;
+    color: $primary;
+    padding: 0 4px;
+    display: inline-block;
+    min-width: 20px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  a.page-link:not([aria-label="Prev"], [aria-label="Next"]):hover::after,
+  span.page-link::after {
+    content: '';
+    height: 2px;
+    margin-top: -2px;
+    display: block;
+    background: #E51E12;
+  }
+
+  a[aria-label="Prev"]::after,
+  a[aria-label="Next"]::after {
+    font-size: 16px;
+    background: #fff;
+    margin-left: -9px;
+  }
+
+  a[aria-label="Prev"]:hover::before,
+  a[aria-label="Next"]:hover::before {
+    content: '';
+    height: 2px;
+    margin-top: -2px;
+    display: block;
+    background: #E51E12;
+    width: 31px;
+    position: relative;
+    left: -1px;
+    top: 24px;
+  }
+
+  a[aria-label="Prev"]::after {
+    content: 'prev';
+  }
+
+  a[aria-label="Next"]::after {
+    content: 'next';
+  }
+}
+
+
+@media (max-width: 767px) {
+  .user-account {
+    .form-group .form-row:first-child,
+    .form-group .form-row + .form-row {
+      padding-right: 0;
+    }
+    .form-group > .col-xs-12 + .col-xs-12 {
+      margin-top: 1.25rem;
+    }
+    .details-view {
+      margin: 0 0 2rem;
+      padding-top: 1rem;
+
+      .header {
+        .action {
+          margin-bottom: 3px;
+        }
+      }
+    }
+    .sidebar-title,
+    .balance {
+      text-align: center;
+    }
+    .title {
+      line-height: 23px;
+    }
+    .table-body {
+      .td {
+        font-size: $small;
+      }
+    }
+    .form-group .form-row + .form-row {
+      margin-top: 1.25rem;
+    }
+    .tickets-pager {
+      margin: 2rem 0 0;
+    }
+    .table-header {
+      padding-left: 15px;
+      padding-right: 15px;
+
+      .th {
+        font-size: $small;
+      }
+    }
+    .table-row {
+      padding: 0 15px;
+    }
+    .logout {
+      &::after {
+        display: none;
+      }
+    }
+    #account-withdrawal .cashier-component {
+      .form-wrapper {
+        padding: 15px 0;
+      }
+    }
+  }
+
+  #account-tickets {
+    margin-left: -15px;
+    margin-right: -15px;
+    overflow-x: hidden;
+    position: relative;
+
+    .link.back {
+      padding-left: 15px;
+    }
+
+    .games-table {
+      thead {
+        display: none;
+      }
+
+      tr:not(.game-details) {
+        td {
+          padding-left: 0;
+          padding-right: 0;
+
+          div,
+          .link {
+            font-size: 15px;
+          }
+        }
+
+        td:first-child {
+          min-height: 58px;
+          display: block;
+          font-weight: bold;
+          padding-left: 15px;
+        }
+
+        td:nth-child(4) {
+          display: none;
+        }
+
+        td:nth-child(3) {
+          div {
+            position: absolute;
+            left: 5px;
+          }
+        }
+
+        td:last-child {
+          padding-right :15px;
+        }
+      }
+
+      .game-details {
+        td {
+          border-bottom: 1px solid $GRAY-LIGHTER;
+          padding-bottom: 0;
+        }
+
+        .line-item {
+          padding-bottom: 10px;
+          width: 200px;
+          text-align: center;
+
+          &:nth-last-child(2) {
+            padding-bottom: 5px;
+          }
+
+          span {
+            font-size: $BASIC;
+            min-width: 27px;
+            display: inline-block;
+
+            &.extra {
+              padding-left: 15px;
+            }
+          }
+
+          span:not(:last-child) {
+            &::after {
+              content: '';
+            }
+          }
+        }
+
+        .game-results {
+          padding-top: 12px;
+          padding-bottom: 10px;
+        }
+      }
+
+      .game-lines-list,
+      .game-results {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .game-results {
+        &.subscription {
+          flex-direction: row;
+          justify-content: center;
+          padding-bottom: 8px;
+        }
+
+        .result-wrapper {
+          flex-direction: column;
+          padding-bottom: 15px;
+        }
+
+        .result-label {
+          padding-bottom: 13px;
+          padding-right: 0;
+        }
+      }
+
+      .winnings-info {
+        text-align: center;
+        padding: 5px 0 10px;
+
+        &.hidden {
+          display: none;
+        }
+
+        b {
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .cell-game-lineShares,
+  .cell-game-comboShares {
+    min-height: 60px;
+    line-height: 18px;
+    max-width: 135px;
+  }
+
+  .cell-date-lineShares,
+  .cell-date-comboShares {
+    margin-top: 8px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .user-account {
+    .table-body .td {
+      font-size: $small;
+
+      &.lottery {
+        padding-left: 15px;
+      }
+    }
+    .th.lottery {
+      padding-left: 15px;
+    }
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 768px) {
+  .user-account {
+    .details-view {
+      padding: 0 0 2rem 0;
+      margin-bottom: 3rem;
+
+      form {
+        max-width: 25rem;
+      }
+    }
+    #account-withdrawal .cashier-component {
+      .form-wrapper {
+        padding: 15px 0;
+      }
+    }
+  }
+  .d-section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #account-tickets {
+    .games-table {
+      .game-details {
+        .line-item {
+          min-width: 160px;
+        }
+      }
+    }
+  }
+}

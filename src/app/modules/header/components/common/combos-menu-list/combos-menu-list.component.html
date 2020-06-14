@@ -1,0 +1,18 @@
+<div class="container-fluid app-combos-menu-list" *ngIf="combosList !== null">
+  <div class="row">
+    <div class="col-xs text-xs-center item-wr" *ngFor="let combo of combosList">
+      <app-combos-menu-list-item-container
+        [combo]="combo"
+      ></app-combos-menu-list-item-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs text-xs-center">
+      <a class="link"
+         (click)="onTrackNavigationClicked('Combos - All combos')"
+         [routerLink]="['/combos']">
+        {{'CombosMenuListComponent.REF_ALL_COMBOS' | translate}}
+      </a>
+    </div>
+  </div>
+</div>

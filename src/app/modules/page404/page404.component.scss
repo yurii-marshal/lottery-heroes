@@ -1,0 +1,145 @@
+@import '../../../scss/vars';
+
+.page-404-component {
+  position: relative;
+
+  img {
+    display: block;
+  }
+  h1, h2, p {
+    color: $primary;
+    clear: both;
+  }
+  h1 {
+    font-family: $headline;
+    font-size: 40px;
+    font-weight: 400;
+    margin: 0;
+  }
+  h2 {
+    font-family: $CONTENT;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  a {
+    color: $BLUE;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  .lists {
+    max-width: 25rem;
+  }
+  .fact {
+    position: relative;
+    border: 2px solid #47719d;
+    border-radius: 4px;
+    max-width: 50rem;
+
+    .title {
+      color: #47719d;
+      font-family: $headline;
+      padding: 0 10px;
+      background: #fff;
+      position: absolute;
+      left: 8px;
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 990px) {
+  .page-404-component {
+    h1, h2 {
+      text-align: center;
+    }
+    h1 {
+      font-size: 18px;
+      padding: 10px 0 0;
+    }
+    h2, p, ul li {
+      font-size: 14px;
+    }
+    h2 {
+      margin-bottom: 15px;
+    }
+    p {
+      line-height: 20px;
+    }
+    img {
+      max-width: 80%;
+      margin: 0 auto 10px;
+    }
+    .lists ul:first-child {
+      padding-left: 1rem;
+    }
+    ul li:not(:first-child) {
+      padding-top: 7px;
+    }
+    ul {
+      margin-bottom: 35px;
+    }
+    .fact {
+      padding: 20px 12px 15px;
+      margin: 25px 0 0;
+      border-width: 1px;
+
+      .title {
+        font-size: 16px;
+        top: -12px;
+      }
+    }
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 768px) {
+  .page-404-component {
+    img {
+      position: absolute;
+      right: 15px;
+      top: 85px;
+    }
+  }
+}
+
+@media (min-width: 767px) and (max-width: 996px) {
+  .page-404-component {
+    img {
+      max-width: 45%;
+    }
+  }
+}
+
+@media (min-width: 990px) {
+  .page-404-component {
+    ul li:not(:first-child) {
+      padding-top: 15px;
+    }
+    h2 {
+      margin-bottom: 30px;
+    }
+    ul {
+      margin-bottom: 50px;
+    }
+    img {
+      top: 120px;
+    }
+    .fact {
+      padding: 25px 15px 20px;
+      margin: 35px 0 0;
+
+      .title {
+        font-size: 18px;
+        top: -14px;
+      }
+    }
+  }
+}

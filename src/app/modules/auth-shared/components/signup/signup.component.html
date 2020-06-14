@@ -1,0 +1,532 @@
+<div class="signup-component">
+  <div class="logo-container">
+    <img _ngcontent-c3="" alt="biglotteryowin" src="assets/images/header/biglottery_logo.svg" title="BigLotteryOWin" />
+  </div>
+  <div class="modal-body plain-modal-inner">
+    <p class="text-xs-center">
+      {{'SignupComponent.TEXT_ALREADY_MEMBER' | translate}}
+
+      <a (click)="onTrackAlreadyMemberClicked()"
+         (click)="showNewComponent('signin')"
+         class="link" title="{{'SignupComponent.TITLE_SIGN_IN' | translate}}">
+        {{'SignupComponent.REF_SIGN_IN' | translate}}
+      </a>
+    </p>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="input-wr {{ isErrorField('email') ? 'has-error' : '' }}
+          {{ (!signupForm.controls['email'].valid && signupForm.controls['email'].touched) ?
+           showFrontendError('email') : hideFrontendError('email') }}">
+          <label for="signup-email"></label>
+          <input
+            (blur)="onTrackFieldBlur('email')"
+            formControlName="email"
+            placeholder="{{'SignupComponent.PLACEHOLDER_EMAIL' | translate}}*"
+            type="text"
+            id="signup-email"
+            name="email"
+            autocomplete="email">
+
+          <div class="icon-tooltip icon-error" *ngIf="isErrorField('email')"><span>!</span></div>
+          <div class="tooltip-container error" *ngIf="isErrorField('email')">
+            <div class="tooltip-body">
+              <p>{{ errorObj.email.message }}</p>
+            </div>
+          </div>
+
+          <div class="icon-tooltip icon-error"
+               *ngIf="signupForm.controls['email'].touched && !signupForm.controls['email'].valid">
+            <span>!</span></div>
+          <div class="tooltip-container error"
+               *ngIf="signupForm.controls['email'].touched && !signupForm.controls['email'].valid">
+            <div class="tooltip-body">
+              <p>{{ 'ERRORS.email$' | translate }}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-wr {{ isErrorField('password') ? 'has-error' : '' }}
+          {{ (!signupForm.controls['password'].valid && signupForm.controls['password'].touched) ?
+          showFrontendError('password') : hideFrontendError('password') }}">
+          <label for="signup-password"></label>
+          <input
+            (blur)="onTrackFieldBlur('password')"
+            maxlength="256"
+            formControlName="password"
+            placeholder="{{'SignupComponent.PLACEHOLDER_PASS' | translate}}*"
+            type="password"
+            id="signup-password"
+            #password>
+          <div id="show_password" (click)="showPassword(password)"></div>
+
+          <div class="icon-tooltip icon-error" *ngIf="isErrorField('password')"><span>!</span></div>
+          <div class="tooltip-container error" *ngIf="isErrorField('password')">
+            <div class="tooltip-body">
+              <p>{{ errorObj.password.message }}</p>
+            </div>
+          </div>
+
+          <div class="icon-tooltip icon-error"
+               *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].invalid">
+            <span>!</span></div>
+
+          <div class="tooltip-container error"
+               *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].invalid &&
+                (signupForm.controls['password'].hasError('passwordInvalid') || signupForm.controls['password'].hasError('required'))">
+            <div class="tooltip-body">
+              <p>{{ 'ERRORS.invalid_password' | translate }}</p>
+            </div>
+          </div>
+
+          <div class="tooltip-container error"
+               *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].invalid && signupForm.controls['password'].hasError('maxlength')">
+            <div class="tooltip-body">
+              <p>{{ 'ERRORS.maxlen$_password' | translate }}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-xs form-row">
+          <div class="input-wr
+          {{ isErrorField('first_name') ? 'has-error' : '' }}
+          {{ (!signupForm.controls['first_name'].valid && signupForm.controls['first_name'].touched) ?
+          showFrontendError('firstname') : hideFrontendError('firstname')  }}">
+            <label for="signup-name"></label>
+            <input
+              maxlength="256"
+              (blur)="onTrackFieldBlur('firstname')"
+              formControlName="first_name"
+              placeholder="{{'SignupComponent.PLACEHOLDER_FIRST_NAME' | translate}}*"
+              type="text"
+              id="signup-name"
+              name="fname"
+              autocomplete="given-name">
+
+            <div class="icon-tooltip icon-error" *ngIf="isErrorField('first_name')"><span>!</span></div>
+            <div class="tooltip-container error" *ngIf="isErrorField('first_name')">
+              <div class="tooltip-body">
+                <p>{{ errorObj.first_name.message }}</p>
+              </div>
+            </div>
+
+            <div class="icon-tooltip icon-error"
+                 *ngIf="!signupForm.controls['first_name'].valid && signupForm.controls['first_name'].touched">
+              <span>!</span></div>
+            <div class="tooltip-container"
+                 *ngIf="!signupForm.controls['first_name'].valid && signupForm.controls['first_name'].touched">
+              <div class="tooltip-body">
+                <p>{{ 'ERRORS.minlen$_firstname' | translate }}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-xs form-row">
+          <div class="input-wr {{ isErrorField('last_name') ? 'has-error' : '' }}
+            {{ (!signupForm.controls['last_name'].valid && signupForm.controls['last_name'].touched) ?
+             showFrontendError('lastname') : hideFrontendError('lastname') }}">
+            <label for="signup-surname"></label>
+            <input
+              (blur)="onTrackFieldBlur('lastname')"
+              maxlength="256"
+              formControlName="last_name"
+              placeholder="{{'SignupComponent.PLACEHOLDER_SURNAME' | translate}}*"
+              type="text"
+              id="signup-surname"
+              name="lname"
+              autocomplete="family-name">
+
+            <div class="icon-tooltip icon-error" *ngIf="isErrorField('last_name')"><span>!</span></div>
+            <div class="tooltip-container error" *ngIf="isErrorField('last_name')">
+              <div class="tooltip-body">
+                <p>{{ errorObj.last_name.message }}</p>
+              </div>
+            </div>
+
+            <div class="icon-tooltip icon-error"
+                 *ngIf="!signupForm.controls['last_name'].valid && signupForm.controls['last_name'].touched">
+              <span>!</span></div>
+            <div class="tooltip-container"
+                 *ngIf="!signupForm.controls['last_name'].valid && signupForm.controls['last_name'].touched">
+              <div class="tooltip-body">
+                <p>{{ 'ERRORS.minlen$_lastname' | translate }}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-group date">
+        <div class="col-xs-12 form-row">
+          <p class="label">
+          {{'SignupComponent.TEXT_DATE_OF_BIRTH' | translate}}*
+        </p>
+        </div>
+        <div class="col-xs form-row">
+          <div class="input-wr">
+            <label for="dayOfBirth"></label>
+            <!--- DESKTOP --->
+            <div class="hidden-sm-down day-of-birth">
+              <ng-select #changeDesktopDay
+                         class="ng-select"
+                         formControlName="dayOfBirth"
+                         [placeholder]="'SignupComponent.PLACEHOLDER_DAY' | translate"
+                         [noFilter]="'Infinity'"
+                         [options]="optionsListDay"
+                         [(ngModel)]="selectedDay"
+                         (selected)="onChangeBirthSelects()"
+                         (blur)="onTrackFieldBlur('dayOfBirth')">
+              </ng-select>
+            </div>
+
+            <!--- MOBILE --->
+            <div class="hidden-sm-up">
+              <select
+                id="dayOfBirth"
+                formControlName="dayOfBirth"
+                (change)="onChangeBirthSelects()"
+                (blur)="onTrackFieldBlur('dayOfBirth')">
+                <option *ngFor="let day of daysCounter; let i = index;" value="{{i + 1}}">{{i + 1}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-5 col-lg-6 form-row">
+          <div class="input-wr">
+            <label for="monthOfBirth"></label>
+            <!--- DESKTOP --->
+            <div class="hidden-sm-down">
+              <ng-select #changeDesktopMonth
+                         class="ng-select"
+                         formControlName="monthOfBirth"
+                         [placeholder]="'SignupComponent.PLACEHOLDER_MONTH' | translate"
+                         [noFilter]="'Infinity'"
+                         [options]="optionsListMonth"
+                         [(ngModel)]="selectedMonth"
+                         (selected)="onChangeBirthSelects()"
+                         (blur)="onTrackFieldBlur('monthOfBirth')">
+              </ng-select>
+            </div>
+
+            <!--- MOBILE --->
+            <div class="hidden-sm-up">
+              <select
+                id="monthOfBirth"
+                formControlName="monthOfBirth"
+                (change)="onChangeBirthSelects()"
+                (blur)="onTrackFieldBlur('monthOfBirth')">
+                <option *ngFor="let month of monthNames; let i = index" value="{{i}}">{{month}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs form-row">
+          <div class="input-wr" [ngClass]="{'has-error':signupForm.controls['age'].hasError('ageLimited')}">
+            <label for="yearOfBirth"></label>
+            <!--- DESKTOP --->
+            <div class="hidden-sm-down">
+              <ng-select #changeDesktopYear
+                         class="ng-select year-of-birth"
+                         formControlName="yearOfBirth"
+                         [placeholder]="'SignupComponent.PLACEHOLDER_YEAR' | translate"
+                         [noFilter]="'Infinity'"
+                         [options]="optionsListYear"
+                         [(ngModel)]="selectedYear"
+                         (selected)="onChangeBirthSelects()"
+                         (blur)="onTrackFieldBlur('yearOfBirth')">
+              </ng-select>
+            </div>
+
+            <!--- MOBILE --->
+            <div class="hidden-sm-up">
+              <select
+                id="yearOfBirth"
+                formControlName="yearOfBirth"
+                (change)="onChangeBirthSelects()"
+								(blur)="onTrackFieldBlur('yearOfBirth')">
+                <option *ngFor="let year of yearsCounter; let i = index" value="{{(1917 + i)}}">{{(1917 + i)}}
+                </option>
+              </select>
+            </div>
+
+            <div class="icon-tooltip icon-error" *ngIf="isErrorField('birth_date')"><span>!</span></div>
+            <div class="tooltip-container error" *ngIf="isErrorField('birth_date')">
+              <div class="tooltip-body">
+                <p>{{ errorObj.birth_date.message }}</p>
+              </div>
+            </div>
+
+            <div class="icon-tooltip icon-error"
+                 *ngIf="signupForm.controls['age'].hasError('ageLimited')">
+              <span>!</span></div>
+            <div class="tooltip-container"
+                 *ngIf="signupForm.controls['age'].hasError('ageLimited') && device === 'desktop'">
+              <div class="tooltip-body">
+                <p>{{ 'ERRORS.isDateGT18$' | translate }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-container *ngIf="signupForm.controls['age'].hasError('ageLimited') && device === 'mobile'">
+        <div class="agelimited-error tooltip-container"
+             *ngIf="signupForm.controls['age'].hasError('ageLimited')">
+          <div class="tooltip-body">
+            <p>{{ 'ERRORS.isDateGT18$' | translate }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="form-row">
+        <p class="label">{{'SignupComponent.TEXT_COUNTRY_RESIDENCE' | translate}}</p>
+        <div class="input-wr {{ isErrorField('country') ? 'has-error' : '' }}">
+          <label for="country"></label>
+					<!--- DESKTOP --->
+					<div class="hidden-sm-down">
+						<ng-select #changeDesktopCountry
+											 class="ng-select"
+											 formControlName="country"
+											 [noFilter]="10"
+											 [options]="optionsListCountries"
+											 [(ngModel)]="selectedCountry"
+											 (selected)="onChange()"
+											 (blur)="onTrackFieldBlur('country')">
+						</ng-select>
+					</div>
+
+					<!--- MOBILE --->
+					<div class="hidden-sm-up">
+						<select
+							id="country"
+							formControlName="country"
+							(change)="onChange()"
+							(blur)="onTrackFieldBlur('country')">
+							<option *ngFor="let c of countries" value="{{c.name}}">{{c.name}}</option>
+						</select>
+					</div>
+
+          <div class="icon-tooltip icon-error" *ngIf="isErrorField('country')"><span>!</span></div>
+          <div class="tooltip-container error" *ngIf="isErrorField('country')">
+            <div class="tooltip-body">
+              <p>{{ errorObj.country.message }}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-row" *ngIf="isShowFuulAddress">
+        <div class="input-wr {{ isErrorField('address') ? 'has-error' : '' }}
+        {{ (!signupForm.controls['address'].valid && signupForm.controls['address'].touched) ?
+         showFrontendError('address') : hideFrontendError('address') }}">
+          <label for="signup-address"></label>
+          <input
+            (blur)="onTrackFieldBlur('address')"
+            (change)="onChangeFullAddress()"
+            (input)="onInputAddress()"
+            formControlName="address"
+            placeholder="{{'SignupComponent.PLACEHOLDER_ADDRESS' | translate}}"
+            type="text"
+            id="signup-address"
+            name="address"
+            autocomplete="street-address">
+
+          <div class="icon-tooltip icon-error" *ngIf="isErrorField('address')"><span>!</span></div>
+          <div class="tooltip-container error" *ngIf="isErrorField('address')">
+            <div class="tooltip-body">
+              <p>{{ errorObj.address.message }}</p>
+            </div>
+          </div>
+
+          <div class="icon-tooltip icon-error"
+               *ngIf="!signupForm.controls['address'].valid && signupForm.controls['address'].touched">
+            <span>!</span></div>
+          <div class="tooltip-container"
+               *ngIf="!signupForm.controls['address'].valid && signupForm.controls['address'].touched">
+            <div class="tooltip-body">
+              <p>{{ 'ERRORS.required$$_address' | translate }}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row flex-items-xs-top form-group"  *ngIf="isShowFuulAddress">
+        <div class="col-xs-8 form-row">
+          <div class="input-wr {{ isErrorField('city') ? 'has-error' : '' }}
+            {{ (!signupForm.controls['city'].valid && signupForm.controls['city'].touched) ?
+             showFrontendError('city') : hideFrontendError('city') }}">
+            <label for="signup-city"></label>
+            <input
+              (blur)="onTrackFieldBlur('city')"
+              (change)="onChangeFullAddress()"
+              maxlength="256"
+              formControlName="city"
+              placeholder="{{'SignupComponent.PLACEHOLDER_CITY' | translate}}"
+              type="text"
+              id="signup-city"
+              name="city"
+              autocomplete="address-level2">
+
+            <div class="icon-tooltip icon-error" *ngIf="isErrorField('city')"><span>!</span></div>
+            <div class="tooltip-container error" *ngIf="isErrorField('city')">
+              <div class="tooltip-body">
+                <p>{{ errorObj.city.message }}</p>
+              </div>
+            </div>
+
+            <div class="icon-tooltip icon-error"
+                 *ngIf="!signupForm.controls['city'].valid && signupForm.controls['city'].touched">
+              <span>!</span></div>
+            <div class="tooltip-container"
+                 *ngIf="!signupForm.controls['city'].valid && signupForm.controls['city'].touched">
+              <div class="tooltip-body">
+                <p>{{ 'ERRORS.required$$_city' | translate }}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-xs form-row">
+          <div class="input-wr {{ isErrorField('zip') ? 'has-error' : '' }}
+            {{ (!signupForm.controls['zip'].valid && signupForm.controls['zip'].touched) ?
+             showFrontendError('zip') : hideFrontendError('zip') }}">
+            <label for="signup-postcode"></label>
+            <input
+              (blur)="onTrackFieldBlur('zip')"
+              (change)="onChangeFullAddress()"
+              maxlength="256"
+              formControlName="zip"
+              placeholder="{{'SignupComponent.PLACEHOLDER_POSTCODE' | translate}}"
+              type="text"
+              id="signup-postcode"
+              name="zip"
+              autocomplete="postal-code">
+
+            <div class="icon-tooltip icon-error" *ngIf="isErrorField('zip')"><span>!</span></div>
+            <div class="tooltip-container error" *ngIf="isErrorField('zip')">
+              <div class="tooltip-body">
+                <p>{{ errorObj.zip.message }}</p>
+              </div>
+            </div>
+
+            <div class="icon-tooltip icon-error"
+                 *ngIf="!signupForm.controls['zip'].valid && signupForm.controls['zip'].touched">
+              <span>!</span></div>
+            <div class="tooltip-container"
+                 *ngIf="!signupForm.controls['zip'].valid && signupForm.controls['zip'].touched">
+              <div class="tooltip-body">
+                <p>{{ 'ERRORS.required$$_zip' | translate }}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="link" *ngIf="isUnitedKingdom && isShowFuulAddress" (click)="showPostcodeSearch()">
+        {{'SignupComponent.TEXT_FIND_POSTCODE' | translate}}
+      </div>
+
+      <div class="row flex-items-xs-top form-group" *ngIf="isShowPostcodeSearch">
+        <div class="col-xs-7 form-row">
+          <div class="input-wr {{ isErrorField('britishPostcode') ? 'has-error' : '' }}">
+            <label for="britishPostcode"></label>
+            <input
+              (blur)="onTrackFieldBlur('UKzip')"
+              (input)="onChangeBritishPostcode()"
+              (keydown)="onKeyDownPostcode($event)"
+              maxlength="256"
+              formControlName="britishPostcode"
+              placeholder="{{'SignupComponent.PLACEHOLDER_POSTCODE' | translate}}"
+              type="text"
+              id="britishPostcode"
+              #britishPostcode>
+
+            <div class="icon-tooltip icon-error" *ngIf="isErrorField('britishPostcode')">
+              <span>!</span>
+            </div>
+            <div class="tooltip-container" *ngIf="isErrorField('britishPostcode')">
+              <div class="tooltip-body">
+                <p>{{ errorObj.britishPostcode.message }}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-xs form-row">
+          <div class="input-wr">
+            <button class="bt green bordered find_address" type="button" (click)="findAddress(britishPostcode.value)">
+              {{'SignupComponent.BUTTON_FIND_ADDRESS' | translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="form-row" *ngIf="listAddress && isShowPostcodeSearch">
+        <div class="input-wr {{ isErrorField('britishAddress') ? 'has-error' : '' }}">
+          <label for="postcode_address"></label>
+
+					<!--- DESKTOP --->
+					<div class="hidden-sm-down">
+						<ng-select #changeDesktopBritishAddress
+											 class="ng-select"
+											 formControlName="britishAddress"
+											 [noFilter]="'Infinity'"
+											 [options]="optionsListAddress"
+											 (selected)="onChangeAdress()"
+											 (blur)="onTrackFieldBlur('UKaddress')">
+						</ng-select>
+					</div>
+
+					<!--- MOBILE --->
+					<div class="hidden-sm-up">
+						<select
+							id="postcode_address"
+							formControlName="britishAddress"
+							(change)="onChangeAdress()"
+							(blur)="onTrackFieldBlur('UKaddress')">
+							<option
+								*ngFor="let address of listAddress; let i = index"
+								value="{{i}}">{{address.address}}</option>
+						</select>
+					</div>
+        </div>
+      </div>
+      <div class="link" *ngIf="isUnitedKingdom && isShowPostcodeSearch">
+        <span (click)="showFullAddressForUK()">
+          {{'SignupComponent.TEXT_ENTER_ADDRESS' | translate}}
+        </span>
+      </div>
+
+      <button type="submit" class="bt green plain-modal-inner"
+              [ngClass]="{'disabled': !isTermsAccepted}"
+              [disabled]="!isTermsAccepted"
+              title="{{'SignupComponent.TITLE_CREATE_ACC' | translate}}">
+        {{'SignupComponent.TITLE_CREATE_ACC' | translate}}
+      </button>
+    </form>
+    <div class="accept-checkers">
+      <div class="terms-and-conditions check-field">
+        <input type="checkbox" #ac1 id="ac1" name="item-checkbox" (change)="toggleTermsAndConditions($event)">
+        <label for="ac1">
+          {{'SignupComponent.TEXT_I_ACCEPT_TERMS' | translate}}
+        </label>
+      </div>
+      <div class="accept-offers check-field">
+        <input type="checkbox" #ac2 id="ac2" name="item-checkbox" (change)="toggleAcceptOffers($event)">
+        <label for="ac2">
+          {{'SignupComponent.TEXT_I_DONT_WANT_RECEIVE_OFFERS' | translate}}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

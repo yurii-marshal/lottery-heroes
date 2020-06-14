@@ -1,0 +1,30 @@
+{
+  "date_local": "2018-03-28",
+  "id": 2464,
+  "lottery_id": "powerball",
+  "date": "2018-03-29T04:00:00.000Z",
+  "status_id": "open",
+  "last_ticket_time": "2018-03-29T03:00:00.000Z",
+  "jackpot": 40000000,
+  "winning_main_numbers": null,
+  "winning_extra_numbers": null,
+  "winning_perticket_numbers": null,
+  "prizes": null,
+  "winners": null,
+  "is_scheduled": true,
+  "currency_id": "USD",
+  "min_jackpot": 40000000,
+  "number_facts": [],
+  "next": {
+    "id": 2483,
+    "status_id": "open",
+    "date": "2018-04-01T04:00:00.000Z",
+    "date_local": "2018-03-31"
+  },
+  "prev": {
+    "id": 2443,
+    "status_id": "settled",
+    "date": "2018-03-25T04:00:00.000Z",
+    "date_local": "2018-03-24"
+  }
+}

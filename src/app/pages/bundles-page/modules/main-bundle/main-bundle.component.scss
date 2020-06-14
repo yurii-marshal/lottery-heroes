@@ -1,0 +1,336 @@
+@import '../../../../../scss/vars';
+
+.main-combo-component {
+  background: $RED-LIGHT;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) inset, 0 -8px 10px rgba(0, 0, 0, 0.15) inset;
+  position: relative;
+
+  &.open {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) inset;
+
+    .arrow {
+      transform: rotate(180deg);
+      transition: transform 0.2s ease 0s;
+    }
+  }
+
+  .container {
+    overflow: hidden;
+  }
+
+  .banner-text {
+    h1 {
+      color: $YELLOW;
+      font-size: 24px;
+      font-weight: bold;
+      padding-top: 15px;
+
+      span {
+        font-size: 42px;
+        line-height: 42px;
+      }
+    }
+
+    p {
+      color: #fff;
+      font-size: 19px;
+      margin: 0;
+    }
+  }
+
+  .combo {
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 730px;
+      height: 730px;
+      position: absolute;
+      background: #B81B1B;
+      border-radius: 50%;
+    }
+
+    .combo-logo {
+      width: 185px;
+      max-width: 185px;
+      height: 155px;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+
+    p {
+      color: #fff;
+      margin: 0;
+    }
+
+    .static-text {
+      font-size: 25px;
+    }
+
+    .combo-jackpot {
+      font-size: 56px;
+      line-height: 56px;
+      font-weight: bold;
+    }
+
+    .combo-info {
+      font-size: 0px;
+
+      .combo-info-item {
+        font-size: 20px;
+        padding: 0 5px;
+      }
+
+      .combo-info-item:not(:first-child) {
+        border-left: 1px solid #eb746e;
+      }
+    }
+
+    .bt {
+      min-height: 64px; // height
+      font-size: 22px;
+      margin: 16px 0 5px;
+      box-shadow: 0 4px 3px rgba(0,0,0,0.5);
+      max-width: 345px;
+      width: 100%;
+    }
+
+    .prices {
+      max-width: 345px;
+      width: 100%;
+      position: relative;
+      margin-bottom: 10px;
+
+      .former-price {
+        color: #eea094;
+        font-size: $small;
+        text-decoration: line-through;
+
+        + .price {
+          margin-top: 0;
+        }
+      }
+
+      .price {
+        font-size: 18px;
+        line-height: 18px;
+        margin-top: 5px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .arrow {
+    position: absolute;
+    transition: transform 0.2s ease 0s;
+    color: #fff;
+  }
+
+  .lotteries-list {
+    display: none;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+
+    p {
+      color: #fff;
+      margin: 0;
+    }
+
+    .item {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    .total-combo-price {
+      border-top: 2px solid #fff;
+      font-size: 18px;
+      color: #fff;
+      padding: 15px 0 0;
+
+      span {
+        font-size: 22px;
+        text-transform: uppercase;
+        padding-left: 10px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .combo-description,
+    .banner-text {
+      max-width: 385px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &.open {
+      .combo {
+        .arrow {
+          display: none;
+        }
+      }
+    }
+
+    .banner-text {
+      z-index: 1;
+
+      h1 {
+        text-align: center;
+      }
+    }
+
+    .combo {
+      padding-bottom: 50px;
+
+      &::before {
+        content: '';
+        width: 730px;
+        height: 730px;
+        position: absolute;
+        background: #B81B1B;
+        bottom: 40px;
+        left: -50%;
+        right: -50%;
+        margin: auto;
+        border-radius: 50%;
+      }
+
+      .combo-logo {
+        margin: 0 auto;
+      }
+
+      .prices {
+        .former-price {
+          font-size: $BASIC;
+        }
+
+        .price {
+          font-size: 21px;
+          line-height: 21px;
+        }
+      }
+    }
+
+    .arrow {
+      top: 63px;
+      left: 0;
+      right: 0;
+      font-size: 30px;
+    }
+
+    .lotteries-list {
+      background: $RED-LIGHT;
+      padding: 0 0 13px;
+
+      .arrow {
+        position: static;
+        margin: 10px auto 0;
+        height: 25px;
+        line-height: 25px;
+      }
+    }
+  }
+
+  @media (max-width: 320px) {
+    .combo {
+      padding-bottom: 45px;
+
+      &::before {
+        left: -63%;
+        right: auto;
+      }
+
+      .combo-jackpot {
+        font-size: 51px;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    margin-top: -27px;
+
+    .banner-text {
+      h1 {
+        span {
+          display: block;
+        }
+      }
+    }
+
+    .combo {
+      padding-top: 35px;
+      padding-left: 90px;
+
+      &::before {
+        bottom: -110px;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+
+    .lotteries-list {
+      background: #af2728;
+      box-shadow: 0 -8px 10px rgba(0, 0, 0, 0.15) inset;
+      padding: 25px 0 13px;
+
+      &::before {
+        content: '';
+        width: 730px;
+        height: 730px;
+        position: absolute;
+        background: #871314;
+        top: -621px;
+        left: 203px;
+        right: auto;
+        margin: auto;
+        border-radius: 50%;
+      }
+
+      .item {
+        max-width: 235px;
+      }
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    &::after {
+      z-index: 0;
+      content: '';
+      width: 200px;
+      height: 100%;
+      background: #B81B1B;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .container {
+      z-index: 1;
+      position: relative;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .lotteries-list {
+      background: #af2728;
+      box-shadow: 0 -8px 10px rgba(0, 0, 0, 0.15) inset;
+      padding: 25px 0 13px;
+
+      &::before {
+        left: 254px;
+        right: 0;
+      }
+    }
+  }
+}

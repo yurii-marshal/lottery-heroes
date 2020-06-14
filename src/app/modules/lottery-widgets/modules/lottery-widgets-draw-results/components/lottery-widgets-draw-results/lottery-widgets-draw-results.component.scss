@@ -1,0 +1,138 @@
+@import '../../../../../../../scss/vars';
+
+.lottery-widgets-draw-results-component {
+  .title-latest-results {
+    color: $primary;
+    font-family: $headline;
+    font-size: 1.1rem;
+    margin: 2rem 0 0.5rem;
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+
+  .date {
+    color: $primary;
+    font-family: $headline;
+    font-size: 1rem;
+    font-weight: normal;
+    text-transform: capitalize;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .line {
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  #toggleDraws {
+    display: none;
+    visibility: hidden;
+  }
+
+  .single-draw {
+    border-bottom: 1px solid #f1f1f1;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+
+  .single-draw.hidden {
+    display: none;
+  }
+
+  .link.less {
+    display: none;
+  }
+
+  .link {
+    animation: fade-in .3s ease forwards;
+  }
+
+  #toggleDraws:checked ~ div .single-draw.hidden {
+    display: flex;
+    animation: fade-in .3s ease forwards;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #toggleDraws:checked ~ div .link.less {
+    display: block;
+  }
+
+  #toggleDraws:checked ~ div .link.more {
+    display: none;
+  }
+
+  .number {
+    font-family: $headline;
+    color: $primary;
+    font-size: 1rem;
+    width: 37px;
+    height: 37px;
+    border-radius: 100rem;
+    border: 2px solid;
+  }
+
+  .number.main {
+    background: #fff;
+    border-color: #cacaca;
+    color: $primary;
+    margin-right: 0.2rem;
+  }
+
+  .number.extra {
+    background: $BLUE;
+    border-color: $BLUE;
+    color: #fff;
+    margin-left: 0.5rem;
+  }
+
+  .in-draw {
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+
+    img {
+      width: 1rem;
+      transform: rotate(-90deg);
+    }
+  }
+
+  .link {
+    padding: 0.5rem 0;
+    display: inline-block;
+  }
+
+  @media (max-width: 768px) {
+    .title-latest-results {
+      font-size: 0.9rem;
+      margin: 1rem 0 0.5rem;
+    }
+    .date {
+      font-size: 0.8rem;
+    }
+    .number {
+      width: 27px;
+      height: 27px;
+      border-width: 1px;
+      font-size: 0.8rem;
+    }
+    .in-draw {
+      img {
+        width: 0.8rem;
+      }
+    }
+    .link {
+      font-size: 0.8rem;
+    }
+  }
+}

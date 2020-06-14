@@ -1,0 +1,89 @@
+<div class="container user-account">
+  <div class="row">
+    <div class="sidebar-title">
+      {{'CustomerAccountComponent.TEXT_MY_ACC' | translate}}
+    </div>
+
+    <section class="col-xs-12 col-md-3 sidebar"
+             [ngClass]="{'hidden-bar':(device === 'mobile' && isOpenOutlet)}">
+
+      <div class="balance-wr">
+        <section class="balance-container">
+          <div class="row flex-items-xs-between flex-items-xs-middle balance">
+            <span class="col-xs">{{'CustomerAccountComponent.TEXT_BALANCE' | translate}}</span>
+            <span class="col-xs total">{{siteCurrencySymbol$ | async}}{{balance$ | async | number:'1.2-2'}}</span>
+          </div>
+          <div class="link hidden-md-up"
+               (click)="onClickLink('deposit')"
+               [routerLink]="['/myaccount/deposit']">
+            {{'CustomerAccountComponent.TEXT_DEPOSIT' | translate}}
+          </div>
+        </section>
+      </div>
+
+      <ul class="account-action-list">
+        <li class="account-action-list-item icon-details"
+            [ngClass]="{'activeLink': activeLink === 'details' && device === 'desktop'}"
+            (click)="onTrackMenuClicked('Personal Details')"
+            (click)="onClickLink('details')"
+            [routerLink]="['/myaccount/details']">
+          <span>
+            {{'CustomerAccountComponent.TEXT_PERSONAL_DETAILS' | translate}}
+          </span>
+        </li>
+        <li class="account-action-list-item icon-games"
+            [ngClass]="{'activeLink': activeLink === 'lines' && device === 'desktop'}"
+            (click)="onTrackMenuClicked('My Games')"
+            (click)="onClickLink('lines')"
+            [routerLink]="['/myaccount/lines']">
+          <span>
+            {{'CustomerAccountComponent.TEXT_MY_GAMES' | translate}}
+          </span>
+        </li>
+        <li class="account-action-list-item icon-transaction"
+            [ngClass]="{'activeLink': activeLink === 'transactions' && device === 'desktop'}"
+            (click)="onTrackMenuClicked('My Transactions')"
+            (click)="onClickLink('transactions')"
+            [routerLink]="['/myaccount/transactions']">
+          <span>
+            {{'CustomerAccountComponent.TEXT_MY_TRANSACTIONS' | translate}}
+          </span>
+        </li>
+        <li class="account-action-list-item icon-withdraw"
+            [ngClass]="{'activeLink': activeLink === 'deposit' && device === 'desktop'}"
+            (click)="onTrackMenuClicked('Deposit & Withdraw')"
+            (click)="onClickLink('deposit')"
+            [routerLink]="['/myaccount/deposit']">
+          <span>
+            {{'CustomerAccountComponent.TEXT_DEPOSIT_WITHDRAW' | translate}}
+          </span>
+        </li>
+        <li class="account-action-list-item icon-lucky"
+            [ngClass]="{'activeLink': activeLink === 'my-lucky-numbers' && device === 'desktop'}"
+            (click)="onTrackMenuClicked('My Lucky Numbers')"
+            (click)="onClickLink('my-lucky-numbers')"
+            [routerLink]="['/myaccount/my-lucky-numbers']">
+          <span>
+            {{'CustomerAccountComponent.TEXT_MY_LUCKY_NUMBERS' | translate}} <i class="biglotteryowin-heart"></i>
+          </span>
+        </li>
+        <li class="link logout hidden-md-up icon-logout"
+            (click)="onLogout()">
+          <span>
+            {{'CustomerAccountComponent.TEXT_LOGOUT' | translate}}
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <div class="col-xs-12 col-md-9 details-view-container"
+         [ngStyle]="(isOpenOutlet) ? {'display': 'block'} : {'display': 'none'}">
+      <section class="details-view">
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+
+  </div>
+</div>
+
+

@@ -1,0 +1,91 @@
+[
+  {
+    "date_local": "2018-02-01",
+    "id": 22999,
+    "lottery_id": "megamillions",
+    "date": "2018-02-01T08:30:00.000Z",
+    "status_id": "settled",
+    "last_ticket_time": "2018-02-01T08:30:00.000Z",
+    "jackpot": 1699662,
+    "winning_main_numbers": [
+      20,
+      24,
+      26,
+      27,
+      35,
+      38
+    ],
+    "winning_extra_numbers": [
+      3
+    ],
+    "prizes": {
+      "m4": "28.60",
+      "m5": "231.85",
+      "m6": "0.00",
+      "m2_x1": "14.40",
+      "m3_x1": "41.80",
+      "m4_x1": "68.30",
+      "m5_x1": "14309.70",
+      "m6_x1": "0.00"
+    },
+    "winners": {
+      "m4": 25640,
+      "m5": 529,
+      "m6": 0,
+      "m2_x1": 116404,
+      "m3_x1": 19542,
+      "m4_x1": 1370,
+      "m5_x1": 30,
+      "m6_x1": 0,
+      "total": 163515
+    },
+    "winning_perticket_numbers": null,
+    "currency_id": "GBP",
+    "min_jackpot": 1700388
+  },
+  {
+    "date_local": "2018-01-31",
+    "id": 23887,
+    "lottery_id": "powerball",
+    "date": "2018-02-01T04:00:00.000Z",
+    "status_id": "settled",
+    "last_ticket_time": "2018-02-01T03:00:00.000Z",
+    "jackpot": 89716610,
+    "winning_main_numbers": [
+      4,
+      7,
+      14,
+      46,
+      59
+    ],
+    "winning_extra_numbers": [
+      22
+    ],
+    "prizes": {
+      "m3": "7.00",
+      "m4": "100.00",
+      "m5": "1000000.00",
+      "m0_x1": "4.00",
+      "m1_x1": "4.00",
+      "m2_x1": "7.00",
+      "m3_x1": "100.00",
+      "m4_x1": "50000.00",
+      "m5_x1": "127000000.00"
+    },
+    "winners": {
+      "m3": 28978,
+      "m4": 387,
+      "m5": 3,
+      "m0_x1": 361252,
+      "m1_x1": 157374,
+      "m2_x1": 21683,
+      "m3_x1": 1063,
+      "m4_x1": 13,
+      "m5_x1": 0,
+      "total": 570753
+    },
+    "winning_perticket_numbers": null,
+    "currency_id": "GBP",
+    "min_jackpot": 28178800
+  }
+]

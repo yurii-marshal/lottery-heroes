@@ -1,0 +1,35 @@
+<div class="cart-component">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="table-title">
+          <h1>{{'CartComponent.title' | translate}}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="isEmptyCart; else cartLotteriesTpl">
+    <app-cart-empty></app-cart-empty>
+    <app-cart-add-lottery-dropdown-container></app-cart-add-lottery-dropdown-container>
+  </ng-container>
+
+  <ng-template #cartLotteriesTpl>
+    <app-cart-items
+      [items]="items"
+      [totalPriceWithDiscount]="totalPriceWithDiscount"
+      [balance]="balance"
+      [siteCurrencyId]="siteCurrencyId"
+      [freeLinesOffersMap]="freeLinesOffersMap"
+      [lotteriesMap]="lotteriesMap"
+      [upcomingDrawsMap]="upcomingDrawsMap"
+      [itemPriceMap]="itemPriceMap"
+      [lotteryIdsNotInCart]="lotteryIdsNotInCart"
+      [placeholder]="placeholder"
+      [optionsList]="optionsList"
+      [expandedLines]="expandedLines"
+
+      (checkoutEvent)="checkoutEvent.emit()"
+    ></app-cart-items>
+  </ng-template>
+</div>

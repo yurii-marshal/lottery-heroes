@@ -1,0 +1,34 @@
+@import '../../../../../../scss/vars';
+
+.results-lottery-info-component {
+  .lotteries-logo {
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .lotteries-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .lottery-description {
+    margin: 1rem 0;
+    color: $primary;
+    font-size: $BASIC;
+    font-weight: normal;
+  }
+
+  @media (max-width: 768px) {
+    .lotteries-logo {
+      width: 50%;
+      height: auto;
+      margin: 10px 0;
+    }
+  }
+}

@@ -1,0 +1,150 @@
+@import '../../../../../../scss/vars';
+
+.results-item-component {
+  &.single-line {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid $GRAY-LIGHTER;
+  }
+
+  .lotteries-logo {
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 49px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .lottery-info {
+    max-width: 60%;
+    margin-left: 0.9rem;
+    color: $primary;
+    font-size: $BASIC;
+    text-decoration: none;
+  }
+
+  .date {
+    color: $primary;
+    font-size: $small;
+    text-decoration: none;
+
+    span {
+      display: none;
+
+      &.show {
+        display: inline;
+      }
+    }
+  }
+
+  .country {
+    font-style: italic;
+    color: $primary;
+    font-size: $small;
+  }
+
+  .number {
+    font-family: $headline;
+    color: $primary;
+    font-size: 1rem;
+    width: 37px;
+    height: 37px;
+    margin: 0.1rem 0.2rem 0.1rem 0;
+    border-radius: 100rem;
+    border: 2px solid;
+  }
+
+  .number.main {
+    background: #fff;
+    border-color: #cacaca;
+    color: $primary;
+
+    &.last {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .number.extra {
+    background: $BLUE;
+    border-color: $BLUE;
+    color: #fff;
+  }
+
+  .link {
+    width: 100%;
+    text-transform: capitalize;
+  }
+
+  .arrow {
+    width: 1rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    transform: rotate(-90deg);
+  }
+
+  .latest-draw {
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 767px) {
+    .date {
+      font-size: 0.9rem;
+    }
+    .number {
+      font-size: 0.9rem;
+      border-width: 1px;
+      width: 35px;
+      height: 35px;
+    }
+    &.single-line {
+      padding-bottom: 0.6rem;
+    }
+    .arrow {
+      path {
+        fill: $primary;
+      }
+    }
+
+    .lotteries-logo {
+      height: 33px;
+    }
+  }
+
+  @media all and (-ms-high-contrast: none) and (max-width: 992px) {
+    // IE11
+    *::-ms-backdrop, &.single-line {
+      height: 115px;
+    }
+  }
+
+  @media all and (-ms-high-contrast: none) and (min-width: 992px) {
+    // IE11
+    *::-ms-backdrop, &.single-line {
+      height: 70px;
+    }
+  }
+
+  /* DESKTOP */
+
+  @media (min-width: 992px) {
+    .lottery-name {
+      padding-left: 7px;
+    }
+
+    .date-col {
+      padding-left: 0;
+    }
+
+    .last {
+      padding-right: 0;
+    }
+  }
+}

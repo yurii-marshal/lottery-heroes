@@ -1,0 +1,215 @@
+@import '../../../../../scss/vars';
+
+.lottery-info-component {
+  padding: 0;
+  width: 100%;
+
+  .tabs {
+    margin-top: 2rem;
+  }
+
+  .tabs input[type=radio] {
+    display: none;
+  }
+
+  .tabs label {
+    display: block;
+    float: left;
+    width: 33.3333%;
+    color: $primary;
+    font-size: $BASIC;
+    font-family: $headline;
+    font-weight: normal;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+    border-bottom-color: $GRAY-LIGHTER;
+    border-radius: 2px 2px 0 0;
+    margin-bottom: 0;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .tabs label:hover {
+    color: $BLUE;
+  }
+
+  .tab-content {
+    box-sizing: border-box;
+    font-size: $BASIC;
+    font-family: $CONTENT;
+    padding: 2rem 15px;
+    border-bottom: 1px solid $GRAY-LIGHTER;
+    border-right: 1px solid $GRAY-LIGHTER;
+    border-left: 1px solid $GRAY-LIGHTER;
+    min-height: 550px;
+  }
+
+  #tab-content1,
+  #tab-content3 {
+    display: none;
+  }
+
+  #tab-content2 {
+    visibility: hidden;
+    position: absolute;
+    height: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+  }
+
+  #tab-content2 .widgets-statistic-filed {
+    display: none;
+  }
+
+  #tab1mobile:checked ~ .row .col-xs label[for='tab1mobile'],
+  #tab2mobile:checked ~ .row .col-xs label[for='tab2mobile'],
+  #tab3mobile:checked ~ .row .col-xs label[for='tab3mobile'],
+  #tab1desktop:checked ~ .row .col-xs label[for='tab1desktop'],
+  #tab2desktop:checked ~ .row .col-xs label[for='tab2desktop'],
+  #tab3desktop:checked ~ .row .col-xs label[for='tab3desktop'] {
+    color: $BLUE;
+    border-top-color: $GRAY-LIGHTER;
+    border-left-color: $GRAY-LIGHTER;
+    border-right-color: $GRAY-LIGHTER;
+    border-bottom-color: transparent;
+  }
+
+  #tab1mobile:checked ~ .row .col-xs #tab-content1,
+  #tab2mobile:checked ~ .row .col-xs #tab-content2,
+  #tab3mobile:checked ~ .row .col-xs #tab-content3,
+  #tab1desktop:checked ~ .row .col-xs #tab-content1,
+  #tab2desktop:checked ~ .row .col-xs #tab-content2,
+  #tab3desktop:checked ~ .row .col-xs #tab-content3 {
+    display: block;
+    height: 100%;
+  }
+
+  #tab2mobile:checked ~ .row .col-xs #tab-content2,
+  #tab2desktop:checked ~ .row .col-xs #tab-content2 {
+    display: block;
+    visibility: visible;
+    position: static;
+  }
+
+  #tab2mobile:checked ~ .row .col-xs #tab-content2 .widgets-statistic-filed,
+  #tab2desktop:checked ~ .row .col-xs #tab-content2 .widgets-statistic-filed {
+    display: block;
+  }
+
+  .lotteries-logo {
+    height: 10rem;
+    width: 10rem;
+    background-size: cover;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .last-results-cover {
+    padding: 1rem 5px;
+    background: #f3f3f3;
+    margin: 1rem 0 2rem;
+  }
+
+  .winning-numbers {
+    padding: 1rem;
+
+    .number {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 100rem;
+      border: 2px solid #c6c6c6;
+      background: #fff;
+      overflow: hidden;
+      font-size: 1.7rem;
+      margin-right: 0.6rem;
+
+    }
+    .ball {
+      background: $BLUE;
+      border-color: $BLUE;
+      color: #fff;
+    }
+  }
+
+  .lottery-info-title {
+    font-family: $headline;
+    color: $primary;
+    font-size: 1.2rem;
+    text-align: left;
+    margin-bottom: 0.3rem;
+  }
+
+  @media (max-width: 767px) {
+    &.container-custom {
+      padding: 0 15px;
+    }
+
+    .tab-content {
+      padding: 15px;
+      font-size: $small;
+
+      .link {
+        font-size: $small;
+      }
+    }
+
+    .lotteries-logo {
+      width: 6rem;
+      height: 6rem;
+    }
+
+    .winning-numbers {
+      .number {
+        width: 1.8rem;
+        height: 1.8rem;
+        border-width: 1px;
+        font-size: $BASIC;
+        margin-right: 0.1rem;
+      }
+    }
+
+    .lottery-info-title {
+      font-size: 0.7rem;
+    }
+
+    .tabs label {
+      font-size: $small;
+    }
+  }
+
+  //WIDGET COVER STYLES
+  .widgets-statistic-filed {
+    padding: 0 10px;
+
+    .customized-col {
+      margin: 5px 0;
+    }
+  }
+
+  .widgets-filed {
+    padding: 0 18px;
+
+    .customized-col {
+      margin: 7px -7px;
+    }
+  }
+
+  .border {
+    border: 2px solid $GRAY-LIGHTER;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 768px) {
+    .widgets-statistic-filed,
+    .widgets-filed {
+      padding: 0 15px;
+    }
+  }
+}

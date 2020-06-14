@@ -1,0 +1,84 @@
+<div *ngIf="item" class="main-jackpot-component" [ngClass]="brandId">
+  <!--<h1 class="title text-xs-center text-sm-left" itemprop="name">-->
+    <!--{{'MainJackpotComponent.TEXT_MAIN_TITLE' | translate}}-->
+  <!--</h1>-->
+  <div class="logo-wrapper">
+    <div class="display-flex flex-items-xs-center flex-items-md-left logo-container">
+      <div class="text-xs-center text-md-left">
+        <img class="logo" src="/assets/images/lottery-logos/lottery-logos-line/{{item.lotteryId}}.svg"
+             alt="{{item.name}}"
+             title="{{item.name}}">
+
+        <!--- Ribbon --->
+        <div *ngIf="freeLine"
+             class="ribbon-wrapper"
+             [ngClass]="freeLineClass"
+             (click)="addToCart([item.lotteryId, linesToQualify])">
+          <p class="ribbon-text">
+            {{linesToQualify}} {{'MainJackpotComponent.TEXT_LINES' | translate}}
+            <span class="plus">+</span>
+            <span class="free">{{linesFree}} {{'MainJackpotComponent.TEXT_FREE' | translate}}!</span>
+          </p>
+          <svg class="ribbon hidden-sm-down" viewBox="0 0 172 172">
+            <defs>
+              <style>.cls-1-banner {
+                stroke: #fff;
+                stroke-miterlimit: 10;
+                stroke-width: 2px;
+                fill: url(#linear-gradient);
+              }</style>
+              <linearGradient id="linear-gradient" x1="13.36" y1="24.39" x2="57.88" y2="54.71" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#d6a3d4"/>
+                <stop offset="1" stop-color="#b03caf"/>
+              </linearGradient>
+            </defs>
+            <image width="172" height="172"
+                   xlink:href="data:image/png;base64,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"/>
+            <path class="cls-1-banner"
+                  d="M104.44,52.85,99,57.47l4.34,5.65-6.26,3.4L100.18,73l-6.82,2L95,81.91l-7.09.55.2,7.13-7.05-.94-1.29,7-6.7-2.39-2.71,6.59-6.06-3.73-4,5.88L55.14,97.1,50,102l-4-5.88L39.9,99.86l-2.71-6.59-6.7,2.39-1.29-7-7.05.94.2-7.13-7.09-.55L16.92,75,10.1,73l3.07-6.43-6.26-3.4,4.34-5.65L5.84,52.85l5.41-4.63L6.91,42.57l6.26-3.4L10.1,32.74l6.82-2-1.67-6.93,7.09-.55-.2-7.13L29.2,17l1.29-7,6.7,2.39L39.9,5.83,46,9.57l4-5.88L55.14,8.6l5.15-4.92,4,5.88,6.06-3.73,2.71,6.59L79.79,10l1.29,7,7.05-.94-.2,7.13,7.09.55-1.67,6.93,6.82,2-3.07,6.43,6.26,3.4L99,48.22Z"
+                  transform="translate(31 27)"/>
+          </svg>
+          <div class="hidden-md-up">
+            <div class="ribbon-stars display-flex flex-items-xs-center flex-items-xs-bottom">
+              <img src="assets/images/lottery-free-line/star.svg" alt="free line" width="20" height="20" class="star left">
+              <img src="assets/images/lottery-free-line/star.svg" alt="free line" width="30" height="30" class="star middle">
+              <img src="assets/images/lottery-free-line/star.svg" alt="free line" width="20" height="20" class="star right">
+            </div>
+            <img class="ribbon" src="assets/images/lottery-free-line/ribbon-big.svg">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="display-flex flex-items-xs-center flex-items-md-left jackpot">
+      <ng-container *ngIf="item.jackpot; else noJackpot">
+          <span class="val"
+                [innerHtml]="item.jackpot | jackpotFormat:item.currencyId"></span>
+      </ng-container>
+      <ng-template #noJackpot>
+          <span class="val"
+                [innerHtml]="item.minJackpot | jackpotFormat:item.currencyId:'Million':'K':true:true"></span>
+      </ng-template>
+    </div>
+    <div class="no-jackpot-remark text-xs-center text-sm-left" *ngIf="!item.jackpot">
+      {{'MainJackpotComponent.TEXT_JACKPOT_EXPECT' | translate}}
+    </div>
+    <div class="display-flex flex-items-xs-center flex-items-md-left flex-items-xs-middle">
+      <a class="bt green"
+         [routerLink]="['/', item.slug]"
+         [appProductLink]="item.lotteryId"
+         [listKey]="'homeTop'"
+         [position]="1"
+         [title]="'MainJackpotComponent.' + item.buttonText | translate"
+         [appTranslate]="'MainJackpotComponent.' + item.buttonText"
+      ></a>
+    </div>
+    <div class="display-flex flex-items-xs-center timer main-jackpot-timer">
+      <div class="time">
+        <app-home-promo-countdown
+          [date]="item.time"
+        ></app-home-promo-countdown>
+      </div>
+    </div>
+  </div>
+</div>
+

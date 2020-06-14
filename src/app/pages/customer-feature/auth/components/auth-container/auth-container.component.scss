@@ -1,0 +1,117 @@
+@import '../../../../../../scss/vars';
+
+.auth-container-component {
+  .modal-dialog {
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 25px;
+  }
+
+  .modal-dialog-desktop {
+    min-height: 940px;
+    margin-top: 14px;
+  }
+
+  .plain-modal {
+    max-width: 489px;
+    margin: auto;
+    top: 0;
+    right: 0;
+    left: 0;
+    vertical-align: top;
+    z-index: 1;
+    transition: opacity .3s ease, transform .3s ease, visibility 0s ease .3s;
+  }
+
+  .sign-up {
+    opacity: 0;
+    position: absolute;
+    transform: translateX(50%);
+  }
+
+  .sign-in {
+    opacity: 0;
+    position: absolute;
+    transform: translateX(50%);
+  }
+
+  .forgot-password {
+    opacity: 0;
+    position: absolute;
+    transform: translateX(50%);
+  }
+
+  .register-forbidden-country,
+  .login-forbidden-country {
+    opacity: 0;
+    position: absolute;
+    transform: translateX(50%);
+    max-width: 606px;
+  }
+
+  .status-self-excluded,
+  .status-blocked,
+  .status-closed,
+  .status-limited {
+    opacity: 0;
+    position: absolute;
+    transform: translateX(50%);
+  }
+
+  .fade-in-left {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    transition: opacity .3s ease, transform .3s ease, visibility 0s ease 0s;
+  }
+
+  .fade-out-left {
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .modal-footer {
+    font-size: $small;
+  }
+
+  .position-inherit {
+    position: inherit;
+  }
+
+  .plain-modal {
+    .modal-header {
+      border: 1px solid #dcdcdc;
+      border-bottom: 0;
+      border-radius: 2px 2px 0 0;
+    }
+    .modal-title {
+      margin: 5px auto 0px;
+    }
+
+  }
+  .agreement {
+    border: 1px solid #dcdcdc;
+    border-top: 0;
+    border-radius: 0 0 2px 2px;
+    padding: 0 20px 15px;
+    text-align: center;
+    font-size: $small;
+    color: $primary;
+    line-height: 22px;
+    margin: 0 auto;
+
+    a {
+      font-size: $small;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .plain-modal {
+      // IE11
+      width: 489px;
+    }
+  }
+}

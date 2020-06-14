@@ -1,0 +1,43 @@
+<div class="cart-add-lottery-dropdown-component">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 cart-add-lottery-wr">
+				<div class="cart-add-lottery-wrapper display-flex flex-items-xs-center flex-items-xs-middle">
+
+					<!--- DESKTOP --->
+					<ng-select
+						class="cart-add-lottery hidden-sm-down ng-select"
+						name="cart-add-lottery"
+						placeholder="+ Add a lottery"
+						[options]="cartAddLotteryDropdownModel.options"
+						[noFilter]="'Infinity'"
+						(selected)="addToCartEvent.emit($event); scrollToComponent(); onTrackAddLotteryToCart();">
+						<ng-template let-option="option" #optionTemplate>
+							<span class="option-name display-flex" [ngClass]="option?.offerFreeLines ? 'col-xs-6' : 'col-xs-12'">{{option?.label}}</span>
+							<span class="option-offer display-flex col-xs-6" *ngIf="option?.offerFreeLines">
+							  <span class="option-line">{{option?.offerAllLines}}</span>
+							  <span class="option-free">{{option?.offerFreeLines}}</span>
+							</span>
+						</ng-template>
+					</ng-select>
+
+					<!--- MOBILE --->
+					<select name="cart-add-lottery"
+									class="cart-add-lottery hidden-sm-up"
+                  [ngModel]="selectedOptionMobile"
+                  (ngModelChange)="addToCartEvent.emit($event); scrollToComponent(); onTrackAddLotteryToCart();">
+						<option [ngValue]="undefined" class="green">
+							+ {{'CartAddLotteryDropdownComponent.TEXT_ADD_LOTTERY' | translate}}
+						</option>
+            <option *ngFor="let option of cartAddLotteryDropdownModel.options" [ngValue]="option">{{option.label}}
+                <span class="option-offer display-flex col-xs-6" *ngIf="option?.offerFreeLines">
+                  (<span class="option-line">{{option?.offerAllLines}}</span>
+                  <span class="option-free">{{option?.offerFreeLines}}</span>)
+                </span>
+            </option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

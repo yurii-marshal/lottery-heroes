@@ -1,0 +1,13 @@
+options:
+  max-warnings: 0
+files:
+  include:
+    - 'src/**/*.scss'
+  ignore:
+    - 'src/scss/vendor/**/*.scss'
+rules:
+  property-sort-order:
+    - 1
+    -
+      order: 'smacss'
+      ignore-custom-properties: true

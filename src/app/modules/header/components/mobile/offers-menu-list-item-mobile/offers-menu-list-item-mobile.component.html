@@ -1,0 +1,11 @@
+<a class="col-sm display-flex flex-items-xs-between flex-items-xs-middle offers-menu-list-item-mobile-component"
+   [routerLink]="['/', lotterySlug]"
+	 (click)="oTrackMegaMenuClicked.emit(lottery.name)"
+   appCloseMobileMenu>
+  <span class="mobile-offers-name">{{lottery.name}}</span>
+  <span class="display-flex flex-items-xs-right flex-items-xs-middle">
+    <span class="offer-info">{{lineToQualify}} + {{linesFree}} {{'OffersMenuListItemMobileComponent.TEXT_FREE' | translate}}</span>
+    <i class="biglotteryowin-right-open"></i>
+  </span>
+</a>
+

@@ -1,0 +1,13 @@
+<section class="top-combos-component" *ngIf="bundlesList !== null && bundlesList.length !== 0">
+	<div class="container">
+		<div class="row flex-items-md-center list">
+			<div class="col-xs-12 col-lg flex-items-xs-center text-xs-center item"
+           *ngFor="let bundle of bundlesList">
+			<app-top-bundles-item
+			  [bundle]="bundle"
+			  [device]="device"
+			  (addToCart)="addToCart.emit($event)"></app-top-bundles-item>
+			</div>
+		</div>
+	</div>
+</section>

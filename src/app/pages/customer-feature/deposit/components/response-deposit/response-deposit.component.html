@@ -1,0 +1,38 @@
+<div *ngIf="responseComponent" class="response response-deposit-component">
+  <div *ngIf="responseComponent === 'success'">
+    <div class="thank-you">
+      <div class="title">
+        {{'ResponseDepositComponent.TEXT_DEPOSIT_SUCCESSFUL' | translate}}
+        <br>
+        {{'ResponseDepositComponent.TEXT_DEPOSIT_SUCCESSFUL_DESCRIPTION' | translate}}
+      </div>
+      <img src="assets/images/svg/checkmark.svg" alt="">
+    </div>
+  </div>
+
+  <div *ngIf="responseComponent === 'failed'">
+    <div class="thank-you">
+      <div class="title">
+        {{'ResponseDepositComponent.TEXT_DEPOSIT_DECLINE' | translate}}
+        <br>
+        {{'ResponseDepositComponent.TEXT_DEPOSIT_DECLINE_DESCRIPTION' | translate}}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="responseComponent === 'cancelled'">
+    <div class="thank-you">
+      <div class="title">
+        {{'ResponseDepositComponent.TEXT_DEPOSIT_CANCELLED' | translate}}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="responseComponent === 'pending'">
+    <div class="thank-you">
+      <div class="title">
+        {{'ResponseDepositComponent.TEXT_DEPOSIT_PENDING' | translate}}
+      </div>
+    </div>
+  </div>
+</div>

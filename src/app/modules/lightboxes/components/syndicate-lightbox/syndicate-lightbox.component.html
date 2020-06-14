@@ -1,0 +1,27 @@
+<div *ngIf="isShowlightbox" role="dialog" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="text-xs-center" [appTranslate]="data.title"></h3>
+        <button class="close" type="button" (click)="closeLightbox()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4 display-flex flex-items-xs-between line" *ngFor="let line of data.payload?.lines; index as i">
+            <span class="line-number">#{{i + 1}}</span>
+            <span class="main-number-wrapper">
+                <span *ngFor="let main of line?.mainNumbers; last as isLast" class="main-number">{{main}}<span
+                  *ngIf="!isLast">,</span> </span>
+              </span>
+            <span class="extra-number-wrapper">
+                <span *ngFor="let extra of line?.extraNumbers; last as isLast" class="extra-number">{{extra}}<span
+                  *ngIf="!isLast">,</span> </span>
+              </span>
+            <span *ngFor="let perTicket of line?.perticketNumbers" class="per-ticket-number">{{perTicket}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeLightbox()"></div>
+</div>

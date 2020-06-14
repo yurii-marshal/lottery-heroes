@@ -1,0 +1,65 @@
+<ng-container *ngIf="combo.jackpotTotal !== 0">
+  <div class="logo">
+    <img *ngIf="combo.logo_path" [src]="combo.logo_path" [alt]="combo.name">
+  </div>
+  <p class="text">{{'TopCombosItemComponent.TEXT_COMBINED_JACKPOT' | translate}}</p>
+  <p class="jackpot" [innerHtml]="combo.jackpotTotal | jackpotFormat:combo.currencyId">
+  </p>
+  <div class="combo-info">
+    <span class="combo-info-item">
+      {{combo.lotteriesTotal}} {combo.lotteriesTotal, plural, =1 {Lottery} other {Lotteries}}</span>
+    <span class="combo-info-item" *ngIf="combo.linesTotal > 0">
+      {{combo.linesTotal}} {combo.linesTotal, plural, =1 {Line} other {Lines}}</span>
+    <span class="combo-info-item" *ngIf="combo.sharesTotal > 0">
+      {{combo.sharesTotal}} {combo.sharesTotal, plural, =1 {Share} other {Shares}}</span>
+    <span class="tooltip-holder">
+		<i class="biglotteryowin-question" (click)="openLotteriesList()"></i>
+    <div class="tooltip-wrapper" #tooltip>
+      <div class="blackout hidden-lg-up" (click)="closeLotteriesList()"></div>
+      <div class="tooltip">
+        <div class="display-flex flex-items-xs-middle flex-items-xs-center hidden-lg-up tooltip-header">
+          <p>{{combo.name}}</p>
+          <button class="close" (click)="closeLotteriesList()">×</button>
+        </div>
+
+        <!-- Lotteries -->
+        <div class="lotteries-list" [ngClass]="{'scrollable':combo.items.length > 3}">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-lg item" *ngFor="let lottery of combo.items">
+                <app-combo-lotteries
+                  [lottery]="lottery"
+                  [currency]="combo.currencyId"
+                ></app-combo-lotteries>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 text-xs-center total-combo-price">
+                {{'TopCombosItemComponent.TEXT_TOTAL' | translate}}<span [innerHtml]="combo.jackpotTotal | jackpotFormat:combo.currencyId"></span>
+              </div>
+              <span class="arrow biglotteryowin-down-open hidden-sm-up"></span>
+            </div>
+          </div>
+        </div>
+        <div class="hidden-lg-up combo-action">
+          <button class="bt green" (click)="addToCart.emit(combo); closeLotteriesList()">{{'TopCombosItemComponent.TEXT_TOTAL' | translate}}</button>
+          <p class="price">
+            {{'TopCombosItemComponent.TEXT_TOTAL' | translate}}Only {{combo.price | currency:combo.currencyId:'symbol':'1.2-2'}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </span>
+  </div>
+  <button class="bt green" (click)="addToCart.emit(combo)">
+    {{'TopCombosItemComponent.TEXT_SELECT_COMBO' | translate}}
+  </button>
+  <div class="text-xs-center prices">
+    <p class="former-price" *ngIf="combo.formerPrice">
+      {{'TopCombosItemComponent.TEXT_ONLY' | translate}} {{combo.formerPrice | currency:combo.currencyId:'symbol':'1.2-2'}}
+    </p>
+    <p class="price">
+      {{'TopCombosItemComponent.TEXT_ONLY' | translate}} {{combo.price | currency:combo.currencyId:'symbol':'1.2-2'}}
+    </p>
+  </div>
+</ng-container>

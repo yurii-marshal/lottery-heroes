@@ -1,0 +1,37 @@
+<form [formGroup]="notificationsForm" (ngSubmit)="onSubmit()"
+  class="real-time-notification display-flex direction-column flex-items-xs-middle flex-items-xs-between">
+  <div class="ribbon-wrapper small purple"><p class="ribbon-text">
+    {{'RealTimeNotificationsComponent.TEXT_FREE' | translate}}
+  </p>
+    <img src="assets/images/lottery-free-line/ribbon-small-shadow.svg" alt="free line" class="ribbon">
+  </div>
+
+  <div class="content-wrapper">
+    <div class="widget-icon-wrapper text-xs-center">
+      <img src="assets/images/cart-page-thank-you/widget-real-time.svg">
+    </div>
+    <h4 class="text-xs-center title">{{'RealTimeNotificationsComponent.TEXT_RT_NOTES' | translate}}</h4>
+    <p class="content-text">{{'RealTimeNotificationsComponent.TEXT_GET_SMS_RES' | translate}}</p>
+    <p class="sale-box-content-text">{{'RealTimeNotificationsComponent.TEXT_GET_LIVE_RES_MSG' | translate}}</p>
+    <div class="flex-items-xs-between select-wrapper input-wr"
+         [ngClass]="{'has-error': (notificationsForm.controls['mobile'].touched && notificationsForm.controls['mobile'].invalid)}">
+
+      <input formControlName="mobile" class="input"
+             placeholder="{{'RealTimeNotificationsComponent.PLACEHOLDER_MOBILE_NUM' | translate}}" type="text">
+
+      <div class="icon-tooltip icon-error"
+           *ngIf="notificationsForm.controls['mobile'].touched && notificationsForm.controls['mobile'].invalid"><span>!</span></div>
+      <div class="tooltip-container error"
+           *ngIf="notificationsForm.controls['mobile'].touched && notificationsForm.controls['mobile'].invalid">
+        <div class="tooltip-body">
+          <p>{{'RealTimeNotificationsComponent.TEXT_REQUIRED_VALIDATION' | translate}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="sub-content">
+    <button type="submit" class="bt green">{{'RealTimeNotificationsComponent.BUTTON_KEEP_UPDATED' | translate}}</button>
+    <div class="sale-box-sub-content-text">{{'RealTimeNotificationsComponent.TEXT_ITS_FREE' | translate}}</div>
+  </div>
+</form>

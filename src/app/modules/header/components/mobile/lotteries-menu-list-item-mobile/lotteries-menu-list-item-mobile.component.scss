@@ -1,0 +1,54 @@
+@import '../../../../../../scss/vars';
+
+.lotteries-menu-list-item-mobile-component {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #fff;
+  font-size: 20px;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+
+  .jackpot {
+    color: $YELLOW;
+    font-family: $headline;
+    font-size: 1rem;
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .lottery-name {
+    color: #fff;
+    font-family: $headline;
+    font-size: 1rem;
+    text-transform: capitalize;
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .no-jackpot-remark {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: $BLUE;
+    position: absolute;
+    bottom: -5px;
+    left: 15px;
+  }
+
+  .no-jackpot {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: $BLUE;
+  }
+}

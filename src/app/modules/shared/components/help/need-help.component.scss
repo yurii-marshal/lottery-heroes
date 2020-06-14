@@ -1,0 +1,104 @@
+@import '../../../../../scss/vars';
+
+.need-help-component {
+  .aside {
+    min-height: 300px;
+
+    &.fixed {
+      position: fixed;
+      top: 35px;
+    }
+
+    .ico {
+      max-width: 45px;
+      height: 40px;
+      padding: 0;
+    }
+
+    .email .ico {
+      width: 40px;
+    }
+
+    p {
+      font-size: $small;
+      padding: 5px 0 0;
+    }
+
+    > .row {
+      margin: 40px 0 0;
+    }
+
+    .title {
+      color: $primary;
+      font-size: $BASIC;
+      font-family: $headline;
+      max-width: 90%;
+    }
+
+    .email,
+    .live-chat,
+    .desc {
+      padding-right: 0;
+      font-size: $small;
+    }
+
+    a {
+      font-size: $small;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .aside {
+      padding: 0;
+
+      .title {
+        border-bottom: 1px solid #EEEFEE;
+        padding: 2rem 0 1rem;
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      > .row {
+        text-align: center;
+      }
+
+      .ico {
+        min-height: 38px;
+        margin: 0 auto 1rem;
+      }
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    &.aside-container {
+      height: 100%;
+    }
+
+    .aside {
+      padding: 40px 0 0 40px;
+    }
+
+    .fixed {
+      width: 235px;
+      right: auto;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .aside {
+      width: 343px;
+
+      &.bottom {
+        position: absolute;
+        bottom: 10px;
+      }
+    }
+  }
+}

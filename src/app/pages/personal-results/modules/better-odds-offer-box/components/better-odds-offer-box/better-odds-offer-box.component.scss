@@ -1,0 +1,68 @@
+@import '../../../../../../../scss/vars';
+
+.better-odds-offer-box {
+  width: 300px;
+  height: 340px;
+  border: 1px solid #e3e3e3;
+  padding: 45px 15px 0 15px;
+  overflow: hidden;
+
+  .title-wrapper {
+    line-height: 32px;
+
+    .title {
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+
+  .content {
+    position: relative;
+
+    .odds-to-win {
+      font-size: 28px;
+      color: $GREEN;
+    }
+
+    .no-jackpot-remark {
+      font-family: "Open Sans", sans-serif;
+      font-size: 13px;
+      color: $BLUE;
+      font-weight: bold;
+    }
+
+    .no-jackpot {
+      font-family: "Open Sans", sans-serif;
+      font-size: $small;
+      color: $BLUE;
+      font-weight: bold;
+    }
+
+    .logo {
+      width: 85px;
+      height: 85px;
+      position: absolute;
+      top: 50%;
+      left: 87%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .sub-content {
+    .sub-content-text {
+      font-size: 14px;
+      line-height: 40px;
+      margin-bottom: 18px;
+    }
+
+    .navigation-btn {
+      padding: 11px;
+      border-radius: 0;
+      width: 100%;
+    }
+  }
+
+  .font-size-18 {
+    font-size: 18px;
+  }
+}

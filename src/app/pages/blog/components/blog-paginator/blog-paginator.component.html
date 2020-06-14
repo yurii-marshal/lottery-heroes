@@ -1,0 +1,9 @@
+<div class="blog-paginator">
+  <a *ngFor="let page of 1|rangeTo:totalPages"
+     [routerLink]="'page/' + page"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{exact: true}"
+     class="flex-items-xs-center flex-items-xs-middle">
+    {{page}}
+  </a>
+</div>

@@ -1,0 +1,348 @@
+<div class="cashier-component">
+	<div class="form-wrapper">
+
+		<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+			<div class="row form-group">
+				<div class="col-xs-4 flex-items-xs-center flex-items-xs-middle card-item active">
+					<img src="assets/images/svg/visa.svg" alt="Visa" title="{{'CashierComponent.TITLE_VISA' | translate}}">
+					<img src="assets/images/svg/master-card.svg" alt="Mastercard" title="{{'CashierComponent.TITLE_MASTERCARD' | translate}}">
+					<img src="assets/images/svg/maestro.svg" alt="Maestro" title="{{'CashierComponent.TITLE_MAESTRO' | translate}}">
+				</div>
+				<!--<div class="col-xs-4 flex-items-xs-center flex-items-xs-middle card-item">-->
+					<!--<img src="/assets/images/svg/skrill.svg" alt="Skrill" title="{{'CashierComponent.TITLE_SKRILL' | translate}}">-->
+				<!--</div>-->
+				<!--<div class="col-xs-4 flex-items-xs-center flex-items-xs-middle card-item">-->
+					<!--<img src="assets/images/svg/neteller.svg" alt="Neteller" title="{{'CashierComponent.TITLE_NETELLER' | translate}}">-->
+				<!--</div>-->
+			</div>
+
+			<div class="form-row" *ngIf="customerCards.length !== 0">
+				<div class="input-wr">
+					<!--- DESKTOP --->
+					<div class="hidden-sm-down">
+						<ng-select #changeDesktopCards
+											 class="ng-select"
+											 formControlName="cards"
+											 [noFilter]="'Infinity'"
+											 [placeholder]="'CashierComponent.PLACEHOLDER_ADD_CARD' | translate"
+											 [options]="optionsListCards"
+											 (selected)="onSelectCard()">
+						</ng-select>
+					</div>
+
+					<!--- MOBILE --->
+					<div class="hidden-sm-up">
+						<select
+							formControlName="cards"
+							(change)="onSelectCard()">
+							<option *ngFor="let card of customerCards; let i = index;"
+											value="{{ i }}">{{creditCardNiceType[card.type] + ' - ' + card.number_last4}}
+							</option>
+							<option value="">
+								{{'CashierComponent.TEXT_ADD_CARD' | translate}}
+							</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<ng-container *ngIf="selectedCard">
+				<div class="form-row">
+					<div class="input-wr">
+						<div class="input input-card-num disabled">**** **** **** {{ selectedCard?.number_last4 }}</div>
+					</div>
+				</div>
+
+				<div class="row form-group date">
+					<div class="col-xs form-row">
+						<div class="input-wr">
+							<div class="select disabled">{{ selectedCard?.expire_month }}</div>
+						</div>
+					</div>
+					<div class="col-xs form-row">
+						<div class="input-wr">
+							<div class="select disabled">{{ selectedCard?.expire_year}}</div>
+						</div>
+					</div>
+					<div class="col-xs col-md-5 form-row">
+						<div class="input-wr
+          {{ (isErrorField('cvv') || (!paymentForm.controls['cvv'].valid && paymentForm.controls['cvv'].touched)) ?
+           showFrontendError('cvv') : hideFrontendError('cvv') }}">
+							<input
+								(blur)="onTrackFieldBlur('cvv')"
+								formControlName="cvv"
+								type="tel"
+								pattern="[0-9]*"
+								appNumbersOnly="cvv"
+								placeholder="CVV/CVC2">
+
+							<div class="icon-tooltip icon-error" *ngIf="isErrorField('cvv')"><span>!</span></div>
+							<div class="tooltip-container error" *ngIf="isErrorField('cvv')">
+								<div class="tooltip-body">
+									<p>{{ errorObj.cvv.message }}</p>
+								</div>
+							</div>
+
+							<div class="icon-tooltip icon-error" *ngIf="(paymentForm.controls['cvv'].touched && paymentForm.controls['cvv'].invalid)">
+								<span>!</span></div>
+							<div class="tooltip-container error" *ngIf="(paymentForm.controls['cvv'].touched && paymentForm.controls['cvv'].invalid)">
+								<div class="tooltip-body">
+									<p>{{ 'ERRORS.not_valid_cvv' | translate }}</p>
+								</div>
+							</div>
+
+							<div class="cvv-example hidden-sm-down">
+								<i class="biglotteryowin-question"></i>
+								<div class="cvv-tooltip"><img src="assets/images/svg/cvv.svg" alt="cvv"></div>
+							</div>
+							<div class="cvv-example hidden-md-up">
+								<i class="biglotteryowin-question" (click)="onShowCvvLightbox()"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="input disabled">{{ selectedCard?.name_on_card }}</div>
+				</div>
+			</ng-container>
+
+			<ng-container *ngIf="!selectedCard">
+				<div class="form-row">
+					<div class="input-wr
+           {{ (isErrorField('card_number') || (!paymentForm.controls['card_number'].valid && paymentForm.controls['card_number'].touched)) ?
+           showFrontendError('creditCardNumber') : hideFrontendError('creditCardNumber') }}">
+						<input
+							(blur)="onTrackFieldBlur('creditCardNumber')"
+							type="tel"
+							pattern="[0-9]*"
+							appNumbersOnly="card"
+							formControlName="card_number"
+							placeholder="Card Number">
+
+						<div class="icon-tooltip icon-error" *ngIf="isErrorField('card_number')"><span>!</span></div>
+						<div class="tooltip-container error" *ngIf="isErrorField('card_number')">
+							<div class="tooltip-body">
+								<p>{{ errorObj.card_number.message }}</p>
+							</div>
+						</div>
+
+						<div class="icon-tooltip icon-error"
+								 *ngIf="(paymentForm.controls['card_number'].touched && paymentForm.controls['card_number'].invalid)"><span>!</span></div>
+						<div class="tooltip-container error"
+								 *ngIf="(paymentForm.controls['card_number'].touched && paymentForm.controls['card_number'].invalid)">
+							<div class="tooltip-body">
+								<p>{{ 'ERRORS.not_valid_card_number' | translate }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row form-group date">
+					<div class="col-xs form-row">
+						<div class="input-wr expire-month
+           {{ (isErrorField('expire_month') || (!paymentForm.controls['expire_month'].valid && paymentForm.controls['expire_month'].touched)) ?
+           showFrontendError('month') : hideFrontendError('month') }}">
+
+							<!--- DESKTOP --->
+							<div class="hidden-sm-down">
+								<ng-select #changeDesktopMonth
+													 class="ng-select"
+													 formControlName="expire_month"
+													 [noFilter]="'Infinity'"
+													 [placeholder]="'CashierComponent.PLACEHOLDER_MONTH' | translate"
+													 [options]="optionsListMonth"
+													 (selected)="onChangeDate()"
+													 (blur)="onTrackFieldBlur('month')">
+								</ng-select>
+							</div>
+
+							<!--- MOBILE --->
+							<div class="hidden-sm-up">
+								<select
+									(blur)="onTrackFieldBlur('month')"
+									(change)="onChangeDate()"
+									formControlName="expire_month">
+									<option selected disabled value="">
+										{{"CashierComponent.PLACEHOLDER_MONTH" | translate}}
+									</option>
+									<option *ngFor="let month of months; let i = index;" value="{{(i + 1)| number:'2.0'}}">{{(i + 1)| number:'2.0'}}</option>
+								</select>
+							</div>
+
+							<div class="icon-tooltip icon-error" *ngIf="isErrorField('expire_month')"><span>!</span></div>
+							<div class="tooltip-container error" *ngIf="isErrorField('expire_month')">
+								<div class="tooltip-body">
+									<p>{{ errorObj.expire_month.message }}</p>
+								</div>
+							</div>
+
+							<div class="icon-tooltip icon-error"
+									 *ngIf="(paymentForm.controls['expire_month'].touched && paymentForm.controls['expire_month'].invalid)"><span>!</span>
+							</div>
+							<div class="tooltip-container error"
+									 *ngIf="(paymentForm.controls['expire_month'].touched && paymentForm.controls['expire_month'].invalid)">
+								<div class="tooltip-body">
+									<p>{{ 'ERRORS.not_valid_expire_month' | translate }}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs form-row">
+						<div class="input-wr expire-year
+           {{ (isErrorField('expire_year') || (!paymentForm.controls['expire_year'].valid && paymentForm.controls['expire_year'].touched)) ?
+           showFrontendError('year') : hideFrontendError('year') }}">
+
+							<!--- DESKTOP --->
+							<div class="hidden-sm-down">
+								<ng-select #changeDesktopYear
+													 class="ng-select"
+													 formControlName="expire_year"
+													 [noFilter]="'Infinity'"
+													 [placeholder]="'CashierComponent.PLACEHOLDER_YEAR' | translate"
+													 [options]="optionsListYear"
+													 (selected)="onChangeDate()"
+													 (blur)="onTrackFieldBlur('year')">
+								</ng-select>
+							</div>
+
+							<!--- MOBILE --->
+							<div class="hidden-sm-up">
+								<select
+									(blur)="onTrackFieldBlur('year')"
+									(change)="onChangeDate()"
+									formControlName="expire_year">
+									<option selected disabled value="">
+										{{'CashierComponent.PLACEHOLDER_YEAR' | translate}}
+									</option>
+									<option *ngFor="let year of years; let i = index;" value="{{currentYear + i}}">{{currentYear + i}}</option>
+								</select>
+							</div>
+
+							<div class="icon-tooltip icon-error" *ngIf="isErrorField('expire_year')"><span>!</span></div>
+							<div class="tooltip-container error" *ngIf="isErrorField('expire_year')">
+								<div class="tooltip-body">
+									<p>{{ errorObj.expire_year.message }}</p>
+								</div>
+							</div>
+
+							<div class="icon-tooltip icon-error"
+									 *ngIf="(paymentForm.controls['expire_year'].touched && paymentForm.controls['expire_year'].invalid)"><span>!</span></div>
+							<div class="tooltip-container error"
+									 *ngIf="(paymentForm.controls['expire_year'].touched && paymentForm.controls['expire_year'].invalid)">
+								<div class="tooltip-body">
+									<p>{{ 'ERRORS.not_valid_expire_year' | translate }}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs col-md-5 form-row">
+						<div class="input-wr
+           {{ (isErrorField('cvv') || (!paymentForm.controls['cvv'].valid && paymentForm.controls['cvv'].touched)) ?
+           showFrontendError('cvv') : hideFrontendError('cvv') }}">
+							<input
+								(blur)="onTrackFieldBlur('cvv')"
+								formControlName="cvv"
+								type="tel"
+								pattern="[0-9]*"
+								appNumbersOnly="cvv"
+								placeholder="CVV/CVC2">
+
+							<div class="icon-tooltip icon-error" *ngIf="isErrorField('cvv')"><span>!</span></div>
+							<div class="tooltip-container error" *ngIf="isErrorField('cvv')">
+								<div class="tooltip-body">
+									<p>{{ errorObj.cvv.message }}</p>
+								</div>
+							</div>
+
+							<div class="icon-tooltip icon-error" *ngIf="(paymentForm.controls['cvv'].touched && paymentForm.controls['cvv'].invalid)">
+								<span>!</span>
+							</div>
+							<div class="tooltip-container error" *ngIf="(paymentForm.controls['cvv'].touched && paymentForm.controls['cvv'].invalid)">
+								<div class="tooltip-body">
+									<p>{{ 'ERRORS.not_valid_cvv' | translate }}</p>
+								</div>
+							</div>
+
+							<div class="cvv-example hidden-sm-down">
+								<i class="biglotteryowin-question"></i>
+								<div class="cvv-tooltip"><img src="assets/images/svg/cvv.svg" alt="cvv"></div>
+							</div>
+							<div class="cvv-example hidden-md-up">
+								<i class="biglotteryowin-question" (click)="onShowCvvLightbox()"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="input-wr
+           {{ (isErrorField('name_on_card') || (!paymentForm.controls['name_on_card'].valid && paymentForm.controls['name_on_card'].touched)) ?
+           showFrontendError('name_on_card') : hideFrontendError('name_on_card') }}">
+						<input
+							(blur)="onTrackFieldBlur('name_on_card')"
+							formControlName="name_on_card"
+							type="text"
+							placeholder="{{'CashierComponent.PLACEHOLDER_NAME_OF_CARD' | translate}}">
+
+						<div class="icon-tooltip icon-error" *ngIf="isErrorField('name_on_card')"><span>!</span></div>
+						<div class="tooltip-container error" *ngIf="isErrorField('name_on_card')">
+							<div class="tooltip-body">
+								<p>{{ errorObj.name_on_card.message }}</p>
+							</div>
+						</div>
+
+						<div class="icon-tooltip icon-error"
+								 *ngIf="(paymentForm.controls['name_on_card'].touched && paymentForm.controls['name_on_card'].invalid)"><span>!</span></div>
+						<div class="tooltip-container error"
+								 *ngIf="(paymentForm.controls['name_on_card'].touched && paymentForm.controls['name_on_card'].invalid)">
+							<div class="tooltip-body">
+								<p>{{ 'ERRORS.not_valid_name_on_card' | translate }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</ng-container>
+
+			<!--- SUBMIT --->
+			<div class="row form-row total-row">
+				<div class="col-xs-12 col-md-5 col-lg-6 total">
+					<span>
+						{{'CashierComponent.TEXT_TOTAL' | translate}}
+					</span>
+					<span>{{amount|currency:siteCurrencyId:'symbol':'1.2-2'}}</span>
+				</div>
+				<div class="col-xs-12 col-md-7 col-lg-6">
+					<button type="submit" class="bt green" [ngClass]="{disabled: submitInProgress}">
+
+						<ng-container *ngIf="!submitInProgress; else cashierPreloader">
+							{{'CashierComponent.TEXT_COMPLETE_PURCHASE' | translate}}
+						</ng-container>
+						<ng-template #cashierPreloader>
+							<img class="cashier-loader" src="/assets/images/loader/oval.svg" alt="">
+						</ng-template>
+					</button>
+				</div>
+			</div>
+			<div class="row form-row flex-items-xs-middle flex-items-lg-center bottom">
+				<div class="col-xs-8 col-md display-flex flex-items-xs-left flex-items-xs-middle">
+					<img src="/assets/images/svg/shield-icon-cashier.svg" class="shield">
+					<span class="text">
+						{{'CashierComponent.TEXT_TRANSACTIONS_SECURED' | translate}}
+					</span>
+				</div>
+				<div class="col-xs-4 col-md-3 text-xs-center"><img src="/assets/images/svg/norton-color.svg"></div>
+			</div>
+		</form>
+	</div>
+	<div class="footer">
+		<p appTranslate="CashierComponent.TEMPLATE_NEED_HELP"></p>
+    	<p *ngIf="isFirstDeposit">
+        {{"CashierComponent.TEXT_SET_LIMIT" | translate}}
+        <a (click)='showDepositLimitModal()'>{{"CashierComponent.TEXT_CLICK_HERE" | translate}}</a>
+      </p>
+	</div>
+</div>

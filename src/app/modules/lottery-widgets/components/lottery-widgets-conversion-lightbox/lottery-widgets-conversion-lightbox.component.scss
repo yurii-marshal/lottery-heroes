@@ -1,0 +1,122 @@
+@import '../../../../../scss/vars';
+
+.lottery-widgets-conversion-lightbox-component {
+  .modal-body {
+    margin: -29px auto 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 460px;
+    padding-top: 15px;
+    padding-bottom: 42px;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 140px;
+      top: -107px;
+      bottom: -50px;
+      margin: auto;
+      width: 310px;
+      border-radius: 50%;
+      background: #fff;
+    }
+  }
+
+  .modal-content {
+    position: relative;
+  }
+
+  .content {
+    z-index: 1;
+    position: relative;
+    padding-top: 29px;
+  }
+
+  h2 {
+    font-size: 22px;
+    color: #404040;
+    margin-bottom: 35px;
+
+    b {
+      display: block;
+    }
+  }
+
+  p {
+    font-size: $MEDIUM;
+    color: #404040;
+    margin-bottom: 8px;
+  }
+
+  .lottery-wrapper {
+    background: $RED-LIGHT;
+    width: 110px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -42px;
+    margin: auto;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .lottery-logo {
+    z-index: 1;
+    width: 150px;
+    height: 125px;
+    position: absolute;
+    left: -50px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .bt {
+    max-width: 305px;
+    margin: 0 auto;
+  }
+
+  .link {
+    font-size: $BASIC;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding-bottom: 157px;
+
+      &::after {
+        bottom: 45px;
+        width: auto;
+        left: -25px;
+        right: -25px;
+        top: auto;
+        height: 165px;
+      }
+    }
+
+    .lottery-wrapper {
+      width: auto;
+      height: 107px;
+      left: 0;
+      top: auto;
+      right: 0;
+      border-radius: 0 0 3px 3px;
+    }
+
+    .lottery-logo {
+      left: 0;
+      right: 0;
+      top: auto;
+      bottom: 15px;
+    }
+  }
+}

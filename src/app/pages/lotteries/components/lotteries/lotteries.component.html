@@ -1,0 +1,51 @@
+<div class="container lotteries-component">
+  <div class="row top">
+    <div class="col-xs-12">
+      <div class="title-section display-flex flex-items-xs-between">
+        <h1 class="title-lotteries"
+            itemprop="name"
+            [innerHTML]="'LotteriesComponent.TEXT_MAKE_PICK' | translate"></h1>
+        <div class="display-flex sort-by flex-items-xs-middle flex-items-xs-between">
+          <span>
+            {{'LotteriesComponent.TEXT_SORT_BY' | translate}}
+          </span>
+          <span class="row form-group sort-type-list">
+        <a class="col-xs sort-type"
+           [ngClass]="{active: sortBy === 'jackpot'}"
+           [routerLink]="['/lotteries']" [queryParams]="{sort: 'jackpot'}">
+          {{'LotteriesComponent.REF_JACKPOT' | translate}}
+        </a>
+        <a class="col-xs sort-type"
+           [ngClass]="{active: sortBy === 'offers'}"
+           [routerLink]="['/lotteries']" [queryParams]="{sort: 'offers'}">
+          {{'LotteriesComponent.REF_OFFERS' | translate}}
+        </a>
+        <a class="col-xs sort-type"
+           [ngClass]="{active: sortBy === 'dateasc'}"
+           [routerLink]="['/lotteries']" [queryParams]="{sort: 'dateasc'}">
+          {{'LotteriesComponent.REF_CLOSING' | translate}}
+        </a>
+      </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 flex-xs-unordered flex-sm-first description"
+         [innerHTML]="'LotteriesComponent.TEMPLATE_LOOKING_TO_PLAY' | translate"></div>
+
+    <div class="col-xs-12 flex-xs-first flex-sm-unordered">
+      <div class="lottery-list" [ngClass]="{'lottery-list-pseudo' : !shuffleInstance}" #shuffleContainer>
+        <app-lotteries-item-container
+          *ngFor="let lotteryId of initialLotteriesOrder; let i = index"
+          [position]="i + 1"
+          [lotteryId]="lotteryId"
+          [attr.data-lottery-id]="lotteryId"
+        ></app-lotteries-item-container>
+      </div>
+    </div>
+
+    <div class="col-xs-12 flex-xs-last" [appTranslate]="'LotteriesComponent.TEMPLATE_LOOK_FOR_MORE'"></div>
+  </div>
+</div>

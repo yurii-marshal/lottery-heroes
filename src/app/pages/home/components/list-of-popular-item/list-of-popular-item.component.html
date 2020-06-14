@@ -1,0 +1,61 @@
+<a class="item list-of-popular-item-component"
+   [appProductLink]="item.lotteryId"
+   [listKey]="'homeCarousel'"
+   [position]="position"
+   [routerLink]="['/', item.slug]">
+
+  <!--- Ribbon --->
+  <div *ngIf="freeLineOffer" class="ribbon-wrapper small" [ngClass]="freeLineOfferClass">
+    <p (click)="addToCart($event, [item.lotteryId, linesToQualify])" class="ribbon-text">{{ribbonText}}</p>
+    <img class="ribbon" src="assets/images/lottery-free-line/ribbon-small-shadow.svg">
+  </div>
+
+  <div class="display-flex flex-items-xs-between">
+    <div class="direction-column">
+      <div class="name">{{item.name}}</div>
+      <ng-container *ngIf="item.jackpot; else noJackpot">
+        <span class="jackpot"
+              [innerHtml]="item.jackpot | jackpotFormat:item.currencyId"></span>
+      </ng-container>
+      <ng-template #noJackpot>
+        <span class="jackpot"
+              [innerHtml]="item.minJackpot | jackpotFormat:item.currencyId"></span>
+        <span class="no-jackpot">*</span>
+      </ng-template>
+
+      <!--- Free line --->
+      <div *ngIf="freeLineOffer" class="freeLine">
+        {{linesToQualify}} {{'ListOfPopularItemComponent.TEXT_LINES' | translate}} +
+        <span class="green">{{linesFree}} {{'ListOfPopularItemComponent.TEXT_FREE' | translate}}</span>
+        <img src="assets/images/lottery-free-line/gift.svg" alt="free line" class="gift">
+      </div>
+      <div class="syndicate-description" *ngIf="item.type === 'syndicate'">
+        {{ item.numLines }}
+        {{'ListOfPopularItemComponent.TEXT_LINES' | translate}} | {{ item.numShares }}
+        {{'ListOfPopularItemComponent.TEXT_SHARES' | translate}}
+      </div>
+      <div class="no-jackpot-remark" *ngIf="!item.jackpot">
+        {{'TEXT_JACKPOT_EXPECT' | translate}}
+      </div>
+    </div>
+    <div class="img">
+      <img class="logo" src="{{item.logo}}" alt="{{item.name}}" title="{{item.name}}" id="id_{{item.name}}">
+      <div class="syndicate-icon" *ngIf="item.type === 'syndicate'">
+        <img src="assets/images/syndicates/syndicate_icon.svg" alt="syndicate_icon">
+      </div>
+    </div>
+  </div>
+  <div class="display-flex flex-items-xs-between flex-items-xs-bottom flex-items-sm-middle bottom">
+    <div class="timer">
+      <div class="time text-xs-left">
+        <app-simple-countdown
+          [date]="item.time"
+        ></app-simple-countdown>
+      </div>
+    </div>
+    <button class="bt green"
+       [title]="'ListOfPopularItemComponent.' + item.buttonText | translate"
+       [appTranslate]="'ListOfPopularItemComponent.' + item.buttonText"
+    ></button>
+  </div>
+</a>

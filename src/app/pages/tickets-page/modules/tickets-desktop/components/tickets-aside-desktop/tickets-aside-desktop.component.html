@@ -1,0 +1,78 @@
+<div class="aside-container tickets-aside-desktop-component">
+  <div class="aside-body" #asideBody>
+    <div class="aside-summary">
+      <div class="ribbon-wrapper" *ngIf="freeLinesOfferDisplayProperties" #banner
+           [ngClass]="freeLinesOfferDisplayProperties.ribbon_css_class">
+        <div class="ribbon-stars display-flex flex-items-xs-center flex-items-xs-bottom">
+          <img src="assets/images/lottery-free-line/star.svg" alt="free line" width="20" height="20" class="star left">
+          <img src="assets/images/lottery-free-line/star.svg" alt="free line" width="30" height="30" class="star middle">
+          <img src="assets/images/lottery-free-line/star.svg" alt="free line" width="20" height="20" class="star right">
+        </div>
+        <div class="ribbon-text">{{freeLinesOfferDisplayProperties.long_text}}</div>
+        <div (click)="addToCartFromRibbon($event, [lottery.id, freeLinesOffer.details.lines_to_qualify])" class="ribbon-glow"></div>
+        <img src="assets/images/lottery-free-line/ribbon-big.svg" alt="free line" class="ribbon">
+      </div>
+      <div class="aside-title display-flex flex-items-xs-left flex-items-xs-middle">
+        {{'TicketsAsideDesktopComponent.TEXT_SUMMARY' | translate}}
+      </div>
+      <div class="gutter">
+        <div class="aside-logo display-flex flex-items-xs-middle flex-items-xs-center">
+          <img [src]="lottery.logo" alt="{{lottery.name}}">
+        </div>
+        <div class="aside-jackpot text-xs-center">
+          <ng-container *ngIf="upcomingDraw.jackpot; else noJackpot">
+            {{this.upcomingDraw.jackpot | jackpotRound | currency:upcomingDraw.currency_id:'symbol':'1.0-0' }}
+          </ng-container>
+          <ng-template #noJackpot>{{this.upcomingDraw.min_jackpot | jackpotRound |
+            currency:upcomingDraw.currency_id:true:'1.0-0'}}<span class="no-jackpot">*</span></ng-template>
+          <div class="no-jackpot-remark display-flex flex-items-xs-middle flex-items-xs-center" *ngIf="!upcomingDraw.jackpot">
+            {{'TicketsAsideDesktopComponent.TEXT_JACKPOT_EXPECT' | translate}}
+          </div>
+        </div>
+        <div class="aside-lines-summary">
+          <input name="subscription"
+                 type="checkbox"
+                 id="subscribe"
+                (change)="changeRenewPeriod('Monthly Subscription', $event)">
+          <label class="aside-subscription display-flex direction-column" for="subscribe">
+            <div class="display-flex flex-items-xs-middle flex-items-xs-between">
+              <div class="display-flex flex-items-xs-middle"><span class="aside-custom-radio"></span>
+                {{'TicketsAsideDesktopComponent.TEXT_SUBSCRIPTION' | translate}}
+              </div>
+              <div class="aside-tooltip-holder">
+                <i class="biglotteryowin-question"></i>
+                <div class="aside-tooltip">
+                  {{'TicketsAsideDesktopComponent.TEXT_BILLING' | translate}}
+                </div>
+              </div>
+            </div>
+            <div class="text-xs-left subscriptions-description">
+              {{'TicketsAsideDesktopComponent.TEXT_DRAW' | translate}}
+              <span class="discount-percent" *ngIf="renewPeriods && renewPeriods[0]?.percent > 0">
+                - {{renewPeriods[0].percent}}% {{'TicketsAsideDesktopComponent.TEXT_OFF' | translate}}
+              </span>
+            </div>
+          </label>
+        </div>
+        <div class="aside-total">
+          <div class="display-flex flex-items-xs-between flex-items-xs-center">
+            {{'TicketsAsideDesktopComponent.TEXT_TOTAL' | translate}} <span [ngClass]="{'price': discountTotal > 0}">{{priceTotal | currency:siteCurrencyId:'symbol':'1.2-2'}}</span>
+          </div>
+          <div *ngIf="discountTotal > 0" class="old-price text-xs-right">
+            {{priceOriginal | currency:siteCurrencyId:'symbol': '1.2-2'}}
+          </div>
+        </div>
+
+        <button class="bt green"
+                (click)="saveToCartEvent.emit()"
+                [title]="'TicketsAsideDesktopComponent.Add to Cart' | translate">
+          {{'TicketsAsideDesktopComponent.Add to Cart' | translate}}
+          <img src="assets/images/svg/arrow-white.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="aside-timer text-xs-center">
+      <app-big-countdown [date]="upcomingDraw.last_ticket_time"></app-big-countdown>
+    </div>
+  </div>
+</div>

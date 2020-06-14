@@ -1,0 +1,28 @@
+<div role="dialog" *ngIf="isShow" class="modal">
+  <div class="modal-dialog" [ngClass]="{'status-limited':afterAuthLimitedMessage}">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">
+          {{'LightboxLimitedDepositComponent.TEXT_OH_NO' | translate}}
+        </div>
+        <button type="button" class="close" (click)="closeLightbox()">×</button>
+      </div>
+      <div class="modal-body">
+
+        <!--- Limited message basic --->
+        <div>
+          <p class="text-xs-center">
+            {{'LightboxLimitedDepositComponent.TEXT_PURCHASE_LIMIT' | translate}}
+          </p>
+          <div appTranslate="LightboxLimitedDepositComponent.TEMPLATE_DEPOSIT_ACC"></div>
+          <div class="row flex-items-xs-center form-row">
+            <button type="button" class="col-xs bt green save" (click)="closeLightbox()">
+              {{'LightboxLimitedDepositComponent.BUTTON_CLOSE' | translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeLightbox()"></div>
+</div>

@@ -1,0 +1,140 @@
+@import '../../../../../../scss/vars';
+
+.deposit-component {
+  .container {
+    max-width: 480px;
+    margin: 0;
+  }
+
+  .title-note {
+    display: inline-block;
+    font-size: 14px;
+    color: #929292;
+  }
+
+  .choose-package {
+    max-width: 480px;
+
+    .input-wr {
+      padding: 0;
+    }
+  }
+
+  .d-section .header {
+    .bt {
+      margin: 0;
+      font-family: $CONTENT;
+      font-size: $BASIC;
+    }
+
+    .bt + .bt {
+      margin-left: 0.9rem;
+    }
+  }
+
+  .bt.deposit {
+    font-size: 18px;
+    min-height: 46px; // height
+  }
+
+  iframe {
+    border: 0;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .norton {
+    max-width: 420px;
+
+    div {
+      width: 71px;
+      margin: 20px auto 0;
+    }
+  }
+
+  .deposit-wr {
+    // IE11
+    flex-direction: column;
+    align-items: flex-end;
+    height: 44px;
+  }
+
+  /* Mobile */
+
+  @media (max-width: 992px) {
+    .choose-package {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    h1 {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .form-group .form-row + .form-row {
+      margin: 0
+    }
+
+    .date {
+      .form-row + .form-row {
+        padding: 0 1rem;
+      }
+    }
+
+    iframe {
+      height: 670px;
+    }
+
+    form {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  @media (max-width: 374px) {
+    .custom_input {
+      input {
+        padding: 0 6px;
+      }
+    }
+  }
+
+  /* Desktop */
+
+  @media (min-width: 768px) {
+    .deposit-details {
+      .form-row:not(.choose-package),
+      .form-group {
+        width: 29.1875rem;
+      }
+      .custom_input {
+        min-width: 9.0625rem;
+
+        input {
+          top: 0;
+          width: 100%;
+        }
+      }
+      form {
+        max-width: 32.5rem;
+        // IE11
+        width: 32.5rem;
+      }
+    }
+    .bt.deposit {
+      max-width: 144px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .user-account {
+      .form-row:not(.choose-package),
+      .form-group {
+        width: 24.375rem;
+      }
+    }
+  }
+}
+

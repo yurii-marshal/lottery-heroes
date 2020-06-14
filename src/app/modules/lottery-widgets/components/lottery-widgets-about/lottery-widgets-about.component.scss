@@ -1,0 +1,12 @@
+@import '../../../../../scss/vars';
+
+.lottery-widgets-about-component {
+  @media (max-width: 768px) {
+    h1 {
+      font-size: $MEDIUM;
+    }
+    h2 {
+      font-size: $BASIC;
+    }
+  }
+}

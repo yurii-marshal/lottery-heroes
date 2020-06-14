@@ -1,0 +1,94 @@
+<div class="row prize-table results-draw-prizes-component" *ngIf="(prizesData && winnersData)">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-4 title-table text-xs-left">{{'ResultsDrawPrizesComponent.TEXT_MATCH' | translate}}</div>
+      <div class="col-xs-4 title-table text-xs-center">{{'ResultsDrawPrizesComponent.TEXT_PRIZE' | translate}}</div>
+      <div class="col-xs-4 title-table text-xs-right">{{'ResultsDrawPrizesComponent.TEXT_WINNERS' | translate}}</div>
+    </div>
+  </div>
+  <div class="col-xs-12 prize-line" *ngFor="let item of prizesData">
+    <div class="row">
+      <div class="col-xs-3 col-md-4">
+        <div class="odds-line display-flex flex-items-xs-middle">
+          <ng-container *ngIf="item['m'] && device === 'desktop'">
+            <div class="number main" *ngFor="let main of 1|rangeTo:item['m']"></div>
+          </ng-container>
+
+          <ng-container *ngIf="item['m'] && device === 'mobile'">
+            <div class="numbers-quantity">{{item['m']}}</div>
+          </ng-container>
+
+          <ng-container *ngIf="item['m'] && item['x'] || item['m'] && item['t']">
+            <div class="spacer">+</div>
+          </ng-container>
+
+          <ng-container *ngIf="item['x'] && device === 'desktop'">
+            <div class="number extra" *ngFor="let extra of 1|rangeTo:item['x']"></div>
+          </ng-container>
+
+          <ng-container *ngIf="item['x'] && device === 'mobile'">
+            <div class="numbers-quantity">{{item['x']}}</div>
+          </ng-container>
+
+          <ng-container *ngIf="item['t'] && device === 'desktop'">
+            <div class="number extra" *ngFor="let perTicket of 1|rangeTo:item['t']"></div>
+          </ng-container>
+          <ng-container *ngIf="item['t'] && device === 'mobile'">
+            <div class="numbers-quantity">{{item['t']}}</div>
+          </ng-container>
+
+          <ng-container *ngIf="item['assoc']">
+            <ng-container *ngFor="let itemassoc of item['assoc']">
+              <span class="spacer or"> {{'ResultsDrawPrizesComponent.TEXT_OR' | translate}} </span>
+
+              <ng-container *ngIf="itemassoc['m'] && device === 'desktop'">
+                <div class="number main" *ngFor="let main of 1|rangeTo:itemassoc['m']"></div>
+              </ng-container>
+
+              <ng-container *ngIf="itemassoc['m'] && device === 'mobile'">
+                <div class="numbers-quantity">{{itemassoc['m']}}</div>
+              </ng-container>
+
+              <ng-container *ngIf="itemassoc['m'] && itemassoc['x'] || itemassoc['m'] && itemassoc['t']">
+                <div class="spacer">+</div>
+              </ng-container>
+
+              <ng-container *ngIf="itemassoc['x'] && device === 'desktop'">
+                <div class="number extra" *ngFor="let extra of 1|rangeTo:itemassoc['x']"></div>
+              </ng-container>
+
+              <ng-container *ngIf="itemassoc['x'] && device === 'mobile'">
+                <div class="numbers-quantity">{{itemassoc['x']}}</div>
+              </ng-container>
+
+              <ng-container *ngIf="itemassoc['t'] && device === 'desktop'">
+                <div class="number extra" *ngFor="let perTicket of 1|rangeTo:itemassoc['t']"></div>
+              </ng-container>
+
+              <ng-container *ngIf="itemassoc['t'] && device === 'mobile'">
+                <div class="numbers-quantity">{{itemassoc['t']}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-4 text-xs-center">
+        <div class="prize">
+          <ng-container *ngIf="item.val !== 0">
+            <!--{{ item.val | currency:upcomingDraw.currency_id:'symbol':'1.2-2'}}-->
+            {{jackpotCurrencySymbol}}{{item.val|number:'1.2-2'}}
+          </ng-container>
+          <ng-container *ngIf="item.val == 0">
+            -
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-xs-3 col-md-4 text-xs-right">
+        <div class="winners">
+          {{getWinnersVal(item.key)}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

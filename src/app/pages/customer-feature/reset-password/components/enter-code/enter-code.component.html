@@ -1,0 +1,59 @@
+<div class="app-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>{{'EnterCodeComponent.TEXT_MAIN_HEADER' | translate}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 app-form">
+      <form [formGroup]="enterCodePassword" (ngSubmit)="onSubmit()">
+        <h4 class="loto-form-title">{{'EnterCodeComponent.TEXT_NEW_PASS' | translate}}</h4>
+
+        <div class="app-info">
+          <span class="help-block sub-little-text">{{'EnterCodeComponent.TEXT_PASS_VALIDATION_1' | translate}}</span>
+        </div>
+
+        <div class="form-group">
+          <label for="enterCode">{{'EnterCodeComponent.LABEL_CODE_RESET' | translate}}</label>
+          <input formControlName="enterCode" type="text" id="enterCode" class="form-control">
+          <span *ngIf="!enterCodePassword.controls['enterCode'].valid && enterCodePassword.controls['enterCode'].touched"
+                class="help-block sub-little-text error-message">
+            {{'EnterCodeComponent.TEXT_REQUIRED_VALIDATION' | translate}}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="enterCodeNewPassword">{{'EnterCodeComponent.LABEL_NEW_PASS' | translate}}</label>
+          <input formControlName="enterCodeNewPassword" type="password" id="enterCodeNewPassword" class="form-control">
+          <span *ngIf="!enterCodePassword.controls['enterCodeNewPassword'].valid && enterCodePassword.controls['enterCodeNewPassword'].touched"
+                class="help-block sub-little-text error-message">
+            {{'EnterCodeComponent.TEXT_PASS_VALIDATION_2' | translate}}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="enterCodeRepeatPassword">{{'EnterCodeComponent.LABEL_REPEAT_PASS' | translate}}</label>
+          <input formControlName="enterCodeRepeatPassword" type="password" id="enterCodeRepeatPassword" class="form-control">
+          <span *ngIf="!enterCodePassword.valid && enterCodePassword.controls['enterCodeRepeatPassword'].touched"
+                class="help-block sub-little-text error-message">
+            {{'EnterCodeComponent.TEXT_PASS_DONT_MATCH' | translate}}
+          </span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!enterCodePassword.valid">
+          {{'EnterCodeComponent.BUTTON_SUBMIT' | translate}}
+        </button>
+        <div>
+          <span id="enterCodePasswordErrorMsg" class="help-block sub-little-text error-message"></span>
+        </div>
+        <div>
+          <span id="enterCodePasswordSuccessMsg" class="help-block sub-little-text success-message"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

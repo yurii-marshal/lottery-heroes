@@ -1,0 +1,25 @@
+<div class="lottery-widgets-similar-component">
+  <div class="row">
+    <div class="col-xs">
+      <div class="title-similar" title="{{'LotteryWidgetSimilarComponent.TEXT_CHECK_OUT_RES' | translate}}">
+        {{'LotteryWidgetSimilarComponent.TEXT_CHECK_OUT_RES' | translate}}:
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs display-flex flex-items-xs-middle flex-items-xs-between">
+      <a *ngFor="let item of items"
+         class="lotteries-logo"
+         title="{{item.name}} {{'LotteryWidgetSimilarComponent.REF_RESULTS' | translate}}"
+         [routerLink]="['/' + item.slug + '/results']">
+
+        <img src="{{item.logo}}"
+             alt="{{item.name}} Results"
+             title="{{item.name}} {{'LotteryWidgetSimilarComponent.REF_RESULTS' | translate}}">
+        <div *ngIf="item.type === 'syndicate'" class="syndicate-icon">
+          <img src="assets/images/syndicates/syndicate_icon.svg" alt="syndicate_icon">
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

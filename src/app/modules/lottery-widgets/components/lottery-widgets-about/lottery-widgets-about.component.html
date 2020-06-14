@@ -1,0 +1,39 @@
+<ng-container [ngSwitch]="lottery?.id">
+  <div class="lottery-widgets-about-component">
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.thunderball'" *ngSwitchCase="'thunderball'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.uknationallotto'" *ngSwitchCase="'lotto-uk'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.eurojackpot'" *ngSwitchCase="'eurojackpot'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.euromillions'" *ngSwitchCase="'euromillions'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.euromillions-ie'" *ngSwitchCase="'euromillions-ie'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.megamillions'" *ngSwitchCase="'megamillions'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.oz-lotto-au'" *ngSwitchCase="'oz-lotto-au'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.superenalotto'" *ngSwitchCase="'superenalotto'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.lotto-fr'" *ngSwitchCase="'lotto-fr'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.lotto-pl'" *ngSwitchCase="'lotto-pl'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.powerball'" *ngSwitchCase="'powerball'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.powerball-au'" *ngSwitchCase="'powerball-au'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.lotto-ie'" *ngSwitchCase="'lotto-ie'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.bonoloto'" *ngSwitchCase="'bonoloto'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.el-gordo-primitiva'" *ngSwitchCase="'el-gordo-primitiva'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.la-primitiva'" *ngSwitchCase="'la-primitiva'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.megasena'" *ngSwitchCase="'megasena'"></section>
+
+    <section [appTranslate]="'LotteryWidgetsAboutComponent.lotto-6aus49'" *ngSwitchCase="'lotto-6aus49'"></section>
+  </div>
+</ng-container>

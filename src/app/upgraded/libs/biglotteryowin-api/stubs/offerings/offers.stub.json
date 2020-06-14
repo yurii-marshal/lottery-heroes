@@ -1,0 +1,40 @@
+{
+  "megamillions": [
+    {
+      "offer_id": 7,
+      "offer_type": "free_lines",
+      "details": {
+        "lines_to_qualify": 2,
+        "lines_free": 1,
+        "is_multiplied": true
+      },
+      "display_properties": {
+        "short_text": "+1 FREE",
+        "long_text": "3 LINES + 1 FREE",
+        "ribbon_css_class": "purple",
+        "ribbon_lotteries_page": true,
+        "is_preferred": null,
+        "preferred_text": null
+      }
+    }
+  ],
+  "powerball": [
+    {
+      "offer_id": 34,
+      "offer_type": "free_lines",
+      "details": {
+        "lines_to_qualify": 3,
+        "lines_free": 1,
+        "is_multiplied": true
+      },
+      "display_properties": {
+        "short_text": "+1 FREE",
+        "long_text": "3 LINES + 1 FREE",
+        "ribbon_css_class": "purple",
+        "ribbon_lotteries_page": true,
+        "is_preferred": null,
+        "preferred_text": null
+      }
+    }
+  ]
+}

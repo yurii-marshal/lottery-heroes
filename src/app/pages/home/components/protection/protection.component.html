@@ -1,0 +1,40 @@
+<div class="protection-component">
+  <p class="title">{{'ProtectionComponent.TEXT_CONFIDENCE' | translate}}</p>
+  <div class="display-flex flex-items-xs-top flex-items-xs-center cols">
+    <div class="col col-xs-12 col-md-5 text-xs-center">
+      <span class="img"><img src="assets/images/svg/norton.svg" alt="Norton VeriSign" width="114"></span>
+      <p>
+        {{'ProtectionComponent.TEXT_SECURE' | translate}}
+      </p>
+      <br>
+    </div>
+    <div class="col col-xs-12 col-md-5 text-xs-center commission">
+      <span class="img">
+        <a *ngIf="protectionIcon.protectionIconCOM"
+           href="https://www.authorisation.mga.org.mt/verification.aspx?lang=EN&company=xxxx&details=1"
+           target="_blank"
+           class="{{brandId}}-protection"
+           title="{{'ProtectionComponent.TITLE_MGA' | translate}}">
+          <img src="assets/images/svg/malta-gaming-authority.svg" alt="BigLotteryOWin - MGA Dynamic Seal of Authorisation" width="220" height="48">
+        </a>
+
+        <a *ngIf="protectionIcon.protectionIconUK"
+           href="https://secure.gamblingcommission.gov.uk/PublicRegister/Search/Detail/xxxx"
+           target="_blank"
+           class="{{brandId}}-protection"
+           title="{{'ProtectionComponent.TITLE_COMMISSION' | translate}}">
+          <img src="assets/images/svg/gambling-commission-co-uk.svg" alt="Gambling Commission" width="220" height="48">
+        </a>
+
+        <a *ngIf="protectionIcon.protectionIconIE"
+           href="https://www.revenue.ie/en/corporate/information-about-revenue/statistics/excise/licences/licensed-remote-bookmaking-operations.aspx"
+           target="_blank"
+           class="{{brandId}}-protection"
+           title="{{'ProtectionComponent.TITLE_REVENUE' | translate}}">
+          <img src="assets/images/svg/gambling-commission-ie.svg" alt="The Office of the Revenue Commissioners in Ireland" width="220" height="61">
+        </a>
+      </span>
+      <p>{{'ProtectionComponent.TEXT_STANDARDS' | translate}}</p>
+    </div>
+  </div>
+</div>

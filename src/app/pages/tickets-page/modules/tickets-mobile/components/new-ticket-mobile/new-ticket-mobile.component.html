@@ -1,0 +1,16 @@
+<div class="container new-ticket-mobile-component" #newLine>
+  <div class="row">
+    <div class="col-xs display-flex flex-items-xs-bottom flex-items-xs-center new-line-container" #newLineContainer>
+      <div class="new-line display-flex flex-items-xs-center flex-items-xs-middle">
+        <div class="line-number">{{'TicketMobileComponent.TEXT_LINE' | translate}} {{lineIndex}}</div>
+        <button class="bt blue" (click)="onNewLineAutoselectEvent()">
+          {{'TicketMobileComponent.BUTTON_ADD_QP' | translate}}
+        </button>
+        <span>or</span>
+        <a (click)="newLineEditEvent.emit()">
+          {{'TicketMobileComponent.REF_PICK' | translate}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+@import '../../../../../../scss/vars';
+
+.syndicate-total-mobile-component {
+  .total {
+    font-size: 1rem;
+    color: $primary;
+    width: 100%;
+    max-width: 345px;
+    padding: 10px 0 15px;
+  }
+
+  .total-wrapper {
+    margin-top: 20px;
+    border-top: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+  }
+
+  .price {
+    position: relative;
+    line-height: 20px;
+
+    &.discount {
+      color: $GREEN;
+    }
+
+    .old-price {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 200%;
+      color: #929292;
+      font-size: $small;
+      line-height: 13px;
+      text-decoration: line-through;
+    }
+  }
+
+  .bt.green {
+    font-size: $MEDIUM;
+    width: 100%;
+    max-width: 345px;
+    min-height: 49px; // height
+    margin: 15px 0;
+    text-transform: none;
+    border-radius: 0;
+  }
+}

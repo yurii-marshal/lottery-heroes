@@ -1,0 +1,34 @@
+<div class="syndicate-aside-container"
+     #asideContainer>
+  <div class="row syndicate-aside-body"
+       #asideBody>
+    <div class="col-xs-12 syndicate-total text-xs-center">
+      <div class="logo display-flex flex-items-xs-center flex-items-xs-middle">
+        <img src="{{syndicateModel?.lotteryLogo}}" alt="{{syndicateModel?.lotteryName}}">
+      </div>
+      <div class="jackpot">
+        <ng-container *ngIf="syndicateModel?.jackpot; else noJackpot">
+          {{syndicateModel?.jackpot | jackpotRound | currency:syndicateModel?.currencyId:'symbol':'1.0-0'}}
+        </ng-container>
+        <ng-template #noJackpot>
+          {{syndicateModel?.minJackpot | jackpotRound | currency:syndicateModel?.currencyId:'symbol':'1.0-0'}}
+          <span class="no-jackpot">*</span></ng-template>
+        <div class="no-jackpot-remark display-flex flex-items-xs-middle flex-items-xs-center"
+             *ngIf="!syndicateModel?.jackpot">
+          {{'SyndicateTotalDesktopComponent.TEXT_JACKPOT_EXPECT' | translate}}
+        </div>
+      </div>
+      <div class="total display-flex flex-items-xs-middle flex-items-xs-between">
+        Total:
+        <div class="price">{{totalSyndicatePrice | currency:syndicateModel?.currencyId:'symbol':'1.2-2'}}</div>
+      </div>
+      <button class="bt green"
+              (click)="addToCartEvent.emit({templateId: syndicateModel.templateId, lotteryId: syndicateModel.lotteryId, sharesAmount: sharesAmount})">
+        {{'SyndicateTotalDesktopComponent.TEXT_JOIN' | translate}} <img src="assets/images/svg/arrow-white.svg" alt="go to cart">
+      </button>
+    </div>
+    <div class="col-xs-12 text-xs-center">
+      <app-big-countdown [date]="syndicateModel?.stopSellTime"></app-big-countdown>
+    </div>
+  </div>
+</div>

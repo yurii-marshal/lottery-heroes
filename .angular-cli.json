@@ -1,0 +1,154 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "app-website"
+  },
+  "apps": [
+    {
+      "name": "app-website",
+      "root": "src",
+      "outDir": "dist/browser",
+      "assets": [
+        "assets",
+        "payment",
+        "favicons",
+        "favicon.ico",
+        "robots.txt"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "scss"
+        ]
+      },
+      "styles": [
+        "scss/main.scss",
+        "../node_modules/cookieconsent/build/cookieconsent.min.css",
+        "../node_modules/chartist/dist/chartist.css",
+        "../node_modules/swiper/dist/css/swiper.css"
+      ],
+      "scripts": [
+        "../node_modules/cookieconsent/build/cookieconsent.min.js",
+        "../node_modules/hammerjs/hammer.js",
+        "../node_modules/velocity-animate/velocity.js",
+        "../node_modules/fastclick/lib/fastclick.js",
+        {
+          "input": "../node_modules/chartist/dist/chartist.js",
+          "output": "chartist",
+          "lazy": true
+        },
+        {
+          "input": "../node_modules/swiper/dist/js/swiper.js",
+          "output": "swiper",
+          "lazy": true
+        },
+        {
+          "input": "../node_modules/shufflejs/dist/shuffle.min.js",
+          "output": "shufflejs",
+          "lazy": false
+        }
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "local": "environments/environment.local.ts",
+        "dev": "environments/environment.development.ts",
+        "development": "environments/environment.development.ts",
+        "staging": "environments/environment.staging.ts",
+        "testing": "environments/environment.testing.ts",
+        "production": "environments/environment.production.ts"
+      }
+    },
+    {
+      "name": "app-website-server",
+      "platform": "server",
+      "root": "src",
+      "outDir": "dist/server",
+      "assets": [
+        "assets",
+        "payment",
+        "favicons",
+        "favicon.ico",
+        "robots.txt"
+      ],
+      "index": "index.html",
+      "main": "main.server.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.server.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "scss"
+        ]
+      },
+      "styles": [
+        "scss/main.scss",
+        "../node_modules/chartist/dist/chartist.css",
+        "../node_modules/swiper/dist/css/swiper.css"
+      ],
+      "scripts": [
+        "../node_modules/hammerjs/hammer.js",
+        "../node_modules/velocity-animate/velocity.js",
+        "../node_modules/fastclick/lib/fastclick.js",
+        {
+          "input": "../node_modules/chartist/dist/chartist.js",
+          "output": "chartist",
+          "lazy": true
+        },
+        {
+          "input": "../node_modules/swiper/dist/js/swiper.js",
+          "output": "swiper",
+          "lazy": true
+        },
+        {
+          "input": "../node_modules/shufflejs/dist/shuffle.min.js",
+          "output": "shufflejs",
+          "lazy": false
+        }
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "local": "environments/environment.local.ts",
+        "dev": "environments/environment.development.ts",
+        "development": "environments/environment.development.ts",
+        "staging": "environments/environment.staging.ts",
+        "testing": "environments/environment.testing.ts",
+        "production": "environments/environment.production.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "scss",
+    "component": {}
+  }
+}

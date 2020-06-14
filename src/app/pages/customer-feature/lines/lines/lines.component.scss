@@ -1,0 +1,48 @@
+@import '../../../../../scss/vars';
+
+.account-games-component {
+  .arrow {
+    &.biglotteryowin-left-open {
+      color: $BLUE;
+      display: inline-flex;
+      width: 8px;
+
+      &::before {
+        margin: 0;
+      }
+    }
+
+    &.biglotteryowin-left-down {
+      color: $GRAY-LIGHT;
+    }
+  }
+
+  .empty-block {
+    padding: 35px 25px;
+    text-align: center;
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 767px) {
+    .lottery {
+      order: -1;
+    }
+
+    h1 {
+      font-size: 18px;
+    }
+  }
+
+  /* DESKTOP */
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1024px) {
+    .tickets-table {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}

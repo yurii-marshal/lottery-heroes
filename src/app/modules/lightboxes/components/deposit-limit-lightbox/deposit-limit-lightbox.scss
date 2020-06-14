@@ -1,0 +1,54 @@
+.app-deposit-limit-lightbox {
+  .modal-header {
+    padding: 15px 15px 5px;
+    max-width: 100%;
+  }
+
+  .modal-body {
+    min-height: initial;
+
+    .bt {
+      margin: 2rem 0 0;
+
+      & + .bt {
+        margin-left: 10px;
+      }
+    }
+
+    p {
+      padding: 0;
+    }
+
+    .btn-containrer {
+      width: 100%;
+    }
+
+    .account-status {
+      font-style: italic;
+    }
+
+    .title-text {
+      margin-bottom: 0;
+    }
+
+    .radio-container {
+      text-align: center;
+      margin: 15px 0px;
+    }
+
+    .radio {
+      position: relative;
+      margin: 0px 15px;
+    }
+
+    .amount-label {
+      width: 40px;
+      display: inline-block;
+    }
+
+    .amount-input {
+      width: calc(100% - 45px);
+      display: inline-block;
+    }
+  }
+}

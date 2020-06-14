@@ -1,0 +1,224 @@
+<header class="header-component">
+  <div class="container-fluid white hidden-sm-down"></div>
+  <div class="container">
+    <div class="row">
+      <div class="display-flex flex-items-xs-center flex-items-xs-middle hidden-md-up mobile-menu-button-cover">
+        <app-mobile-menu-button></app-mobile-menu-button>
+      </div>
+
+      <!--- Logo --->
+      <div class="logo-container">
+        <!--<a class="display-flex flex-items-xs-center flex-items-xs-middle logo"-->
+           <!--(click)="onTrackNavigationClicked('Logo')"-->
+           <!--[routerLink]="['']">-->
+        <!--</a>-->
+        <img src="assets/images/header/test_logo.jpg" alt="BigLotteryOWin"
+             (click)="onTrackNavigationClicked('Logo')"
+             [routerLink]="['']" class="logo"
+             title="{{'HeaderComponent.TITLE_BIGLOTTERYOWIN' | translate}}"
+             [attr.itemprop]="itempropImage$ | async">
+      </div>
+
+      <nav class="slidemenu">
+        <!--- Lotteries --->
+        <input type="radio" name="slideItem" id="slide-item-1"
+               (mouseenter)="onTrackMegaMenuPresented('Lotteries')"
+               (mouseenter)="showDropdown(dropdownLotteries)"
+               class="slide-toggle" checked/>
+        <label for="slide-item-1"
+               (click)="onTrackNavigationClicked('Lotteries')"
+               [routerLink]="['/lotteries']">
+          <span>
+            {{'HeaderComponent.REF_LOTTERIES' | translate}}
+          </span>
+        </label>
+        <div class="drop-down hide" #dropdownLotteries>
+          <!--<app-lotteries-menu-list-container></app-lotteries-menu-list-container>-->
+        </div>
+
+        <!--- Combos --->
+        <input type="radio" name="slideItem" id="slide-item-2"
+               *ngIf="(device$ | async) === 'desktop'"
+               (mouseenter)="onTrackMegaMenuPresented('Combos')"
+               (mouseenter)="showDropdown(dropdownCombos)"
+               class="slide-toggle"/>
+        <label for="slide-item-2"
+               (click)="onTrackNavigationClicked('Combos')"
+               [routerLink]="['/combos']">
+          <span>
+            {{'HeaderComponent.REF_COMBOS' | translate}}
+          </span>
+        </label>
+        <div class="drop-down hide" #dropdownCombos>
+          <!--<app-combos-menu-list-container></app-combos-menu-list-container>-->
+        </div>
+
+        <!--- Bundles --->
+        <input type="radio" name="slideItem" id="slide-item-3"
+               *ngIf="(device$ | async) === 'desktop'"
+               (mouseenter)="onTrackMegaMenuPresented('Bundles')"
+               (mouseenter)="showDropdown(dropdownBundles)"
+               class="slide-toggle"/>
+        <label for="slide-item-3"
+               (click)="onTrackNavigationClicked('Bundles')"
+               [routerLink]="['/bundles']">
+          <span>
+            {{'HeaderComponent.REF_BUNDLES' | translate}}
+          </span>
+        </label>
+        <div class="drop-down hide" #dropdownBundles>
+          <!--<app-bundles-menu-list-container></app-bundles-menu-list-container>-->
+        </div>
+
+        <!--- Results --->
+        <input type="radio" name="slideItem" id="slide-item-4"
+               (mouseenter)="onTrackMegaMenuPresented('Results')"
+               (mouseenter)="showDropdown(dropdownResults)"
+               class="slide-toggle"/>
+        <label for="slide-item-4"
+               (click)="onTrackNavigationClicked('Results')"
+               [routerLink]="['/lotteries/results']">
+          <span>
+            {{'HeaderComponent.REF_RESULTS' | translate}}
+          </span>
+        </label>
+        <div class="drop-down hide" #dropdownResults>
+          <!--<app-results-menu-list-container></app-results-menu-list-container>-->
+        </div>
+
+        <!--- Heroes Blog --->
+        <input type="radio" name="slideItem" id="slide-item-5"
+               (mouseenter)="onTrackMegaMenuPresented('HeroesBlog')"
+               (mouseenter)="showDropdown(dropdownResults)"
+               class="slide-toggle"/>
+        <label for="slide-item-5"
+               (click)="onTrackNavigationClicked('HeroesBlog')"
+               [routerLink]="['/heroes-blog']">
+          <span>
+            {{'HeaderComponent.REF_HEROES_BLOG' | translate}}
+          </span>
+        </label>
+
+        <!--- How It Works --->
+        <input type="radio" name="slideItem" id="slide-item-6"
+               (mouseenter)="showDropdown(howItWorks)"
+               class="slide-toggle"/>
+        <label for="slide-item-6"
+               title="{{'HeaderComponent.REF_HOW_IT_WORKS' | translate}}"
+               (click)="onTrackNavigationClicked('How It Works?')"
+               [routerLink]="['/about/faq']">
+          <span>
+            {{'HeaderComponent.REF_HOW_IT_WORKS' | translate}}
+          </span>
+        </label>
+        <div class="drop-down hide menu-dropdown why-biglotteryowin-menu-dropdown" #howItWorks>
+          <div class="menu-dropdown-inner why-biglotteryowin-menu-dropdown-inner">
+            <a class="lined-link display-flex" [routerLink]="['/about/about-us']"
+               title="{{'HeaderComponent.TITLE_ABOUT_US' | translate}}"
+               (click)="onTrackNavigationClicked('About BigLotteryOWin')">
+              {{'HeaderComponent.REF_ABOUT_BIGLOTTERYOWIN' | translate}}
+            </a>
+            <a class="lined-link display-flex" [routerLink]="['/about/safe-and-secure']"
+               title="{{'HeaderComponent.REF_SAFE_SECURE' | translate}}"
+               (click)="onTrackNavigationClicked('Safe & Secure')"
+               *ngIf="showMenuItem?.safeAndSecure">
+              {{'HeaderComponent.REF_SAFE_SECURE' | translate}}
+            </a>
+            <a class="lined-link display-flex" [routerLink]="['/about/bet-vs-play']"
+               title="What is lottery betting" (click)="onTrackNavigationClicked('Bet Vs. Play')"
+               *ngIf="showBetVsPlay">
+              {{'HeaderComponent.REF_BET_PLAY' | translate}}
+            </a>
+            <a class="lined-link display-flex" [routerLink]="['/about/faq']"
+               (click)="onTrackNavigationClicked('FAQ')"
+               title="{{'HeaderComponent.REF_FAQ' | translate}}">
+              {{'HeaderComponent.REF_FAQ' | translate}}
+            </a>
+            <a class="lined-link display-flex" [routerLink]="['/about/contact']"
+               (click)="onTrackNavigationClicked('Contact Us')"
+               title="{{'HeaderComponent.REF_CONTACT_US' | translate}}">
+              {{'HeaderComponent.REF_CONTACT_US' | translate}}
+            </a>
+          </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <!-- Bar -->
+        <div class="slider">
+          <div class="bar">
+            <div class="inner"></div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="menu-option display-flex flex-items-xs-center hidden-sm-down deposit" *ngIf="isLoggedIn()">
+        <button class="display-flex flex-items-xs-middle flex-items-xs-center bt"
+           (click)="onTrackNavigationClicked('Deposit')"
+           [routerLink]="['/myaccount/deposit']">
+          {{'HeaderComponent.REF_DEPOSIT' | translate}}
+        </button>
+      </div>
+
+      <div class="menu-option display-flex flex-items-xs-center hidden-sm-down"
+           (mouseenter)="showDropdown(langSwitch)">
+        <a class="display-flex flex-items-xs-middle flex-items-xs-center lang-switch">
+          <img src="../assets/images/header/test_lag_switcher.png" alt="{{translateLang}}">
+          <!--<span>{{translateLang}}</span>-->
+        </a>
+        <div class="drop-down hide menu-dropdown lang-switch-menu-dropdown" #langSwitch>
+          <div class="menu-dropdown-inner lang-switch-menu-dropdown-inner">
+            <a class="lined-link display-flex" *ngFor="let item of translateLangItems"
+               title="{{item['key']}}" (click)="onLanguageItemClicked(item['key'])">
+              <img [src]="imgUrl + item['key'] + '.png'" alt="{{item['key']}}">
+              <span>{{item['key']}}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-option display-flex flex-items-xs-center hidden-sm-down log-in" *ngIf="!isLoggedIn()">
+        <button class="display-flex flex-items-xs-middle flex-items-xs-center bt"
+                (click)="onTrackNavigationClicked('Log in')"
+                (click)="showSigninLightbox()">
+          {{'HeaderComponent.REF_LOG_IN' | translate}}
+        </button>
+        <button class="display-flex flex-items-xs-middle flex-items-xs-center bt register"
+                (click)="onTrackNavigationClicked('Register')"
+                (click)="showSignupLightbox()">
+          {{'HeaderComponent.REF_REGISTER' | translate}}
+        </button>
+      </div>
+
+      <div class="menu-option display-flex flex-items-xs-center hidden-sm-down my-account" *ngIf="isLoggedIn()"
+           (mouseenter)="showDropdown(dropdownAccount)">
+        <a class="display-flex flex-items-xs-middle flex-items-xs-center"
+           (click)="onTrackNavigationClicked('my account')"
+           [routerLink]="['/myaccount/details']">
+          {{'HeaderComponent.REF_MY_ACC' | translate}}
+          <img src="assets/images/svg/arrow-gray.svg" alt=""></a>
+        <div class="drop-down hide" #dropdownAccount>
+          <app-my-account (hideDropdown)="hideDropdowns()"></app-my-account>
+        </div>
+      </div>
+      <div class="menu-option display-flex flex-items-xs-center hidden-md-up my-account-mobile" *ngIf="isLoggedIn()">
+        <a [routerLink]="['/myaccount']" class="bt clear" (click)="showAccountMenuMobile()">
+          <img src="assets/images/svg/logged.svg" alt="my account" width="20">
+        </a>
+      </div>
+
+      <div class="menu-option display-flex flex-items-xs-center hidden-md-up log-in-mobile"
+           *ngIf="!isLoggedIn()">
+        <a (click)="showSigninLightbox()" class="bt clear account-icon">
+          <img src="assets/images/svg/not-logged.svg" alt="my account" width="17">
+        </a>
+      </div>
+
+    </div>
+  </div>
+  <div class="container-fluid hidden-md-up mobile-menu" #mobileMenu>
+    <app-mobile-menu *ngIf="(device$ | async) === 'mobile'"
+                     [superJackpotLottery$]="superJackpotLottery$"
+    ></app-mobile-menu>
+  </div>
+</header>

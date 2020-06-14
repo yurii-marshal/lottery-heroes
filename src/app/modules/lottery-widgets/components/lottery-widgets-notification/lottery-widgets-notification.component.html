@@ -1,0 +1,51 @@
+<div class="row lottery-widgets-notification-component" *ngIf="lottery">
+  <section class="email-notification" [ngClass]="{aside: isInAside}">
+      <div class="display-flex col-xs-12 flex-items-xs-middle header">
+        {{'LotteryWidgetsNotificationComponent.TEXT_RES_ALERT' | translate}}
+      </div>
+      <div class="display-flex col-xs-12 body">
+        <div class="col-xs-12">
+          <p>
+            <span [innerHTML]="'LotteryWidgetsNotificationComponent.TEMPLATE_ENTER_EMAIL_1' | translate"></span>
+            <strong>{{lottery.name}}</strong>
+            <span [innerHTML]="'LotteryWidgetsNotificationComponent.TEMPLATE_ENTER_EMAIL_2' | translate"></span>
+          </p>
+          <form class="display-flex" [formGroup]="notificationForm">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="input-wr"
+                     [ngClass]="{'has-error': isSubmited && notificationForm.controls['email'].invalid}">
+                  <input placeholder="{{'LotteryWidgetsNotificationComponent.PLACEHOLDER_ENTER_EMAIL' | translate}}"
+                         name="email"
+                         formControlName="email"
+                         type="email"
+                         maxlength="256">
+
+                  <div class="icon-tooltip icon-error"
+                       *ngIf="isSubmited && notificationForm.controls['email'].invalid">
+                    <span>!</span></div>
+                  <div class="tooltip-container error"
+                       *ngIf="isSubmited && notificationForm.controls['email'].invalid">
+                    <div class="tooltip-body">
+                      <p>
+                        {{'LotteryWidgetsNotificationComponent.TEXT_INCORRECT_EMAIL' | translate}}
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-xs-12 text-xs-right">
+                <button type="submit" alt="Submit"
+                        class="bt green"
+                        (click)="onSubmit()"
+                        [ngClass]="{'disabled':notificationForm.controls['email'].invalid}">
+                  {{'LotteryWidgetsNotificationComponent.BUTTON_SUBMIT' | translate}}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </section>
+</div>

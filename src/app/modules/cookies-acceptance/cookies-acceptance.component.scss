@@ -1,0 +1,24 @@
+@import '../../../scss/vars';
+
+.cookies-acceptance-component {
+  display: flex;
+  justify-content: space-between;
+  width: 99%;
+  padding: 20px;
+  position: fixed;
+  bottom: 20px;
+  background-color: #bdd8da;
+  border-radius: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 9999999999;
+  .text-acceptance {
+    width: 88%;
+    text-align: center;
+  }
+  .accept-btn {
+    max-height: 50px;
+    min-width: 100px;
+  }
+}

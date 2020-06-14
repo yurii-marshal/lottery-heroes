@@ -1,0 +1,49 @@
+<div class="subscribe-lines-box display-flex direction-column flex-items-xs-between">
+  <div class="title">
+    {{'SubscribeLinesBoxComponent.TEXT_SUBSCRIBE' | translate}} <span class="no-wrap">{{ lottery?.name }}</span>
+  </div>
+  <div class="content">
+    <div class="logo-wrapper text-xs-center">
+      <img [src]="lottery?.logo" alt="{{lottery?.name}}" title="{{lottery?.name}}" class="logo">
+    </div>
+    <div class="font-size-14">{{'SubscribeLinesBoxComponent.TEXT_EXPIRE' | translate}}</div>
+    <div class="display-flex flex-items-xs-between timer">
+      <div>
+        <div class="timer-el">{{ remainingTime?.hours }}</div>
+        <div class="font-size-14">
+          {{'SubscribeLinesBoxComponent.TEXT_HRS' | translate}}
+        </div>
+      </div>
+      <div>
+        <div class="timer-el color-blue">{{ remainingTime?.minutes }}</div>
+        <div class="font-size-14">
+          {{'SubscribeLinesBoxComponent.TEXT_MIN' | translate}}
+        </div>
+      </div>
+      <div>
+        <div class="timer-el color-blue">{{ remainingTime?.seconds }}</div>
+        <div class="font-size-14">
+          {{'SubscribeLinesBoxComponent.TEXT_SEC' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sub-content">
+    <button class="bt green navigation-btn" (click)="redirectToCart.emit()">
+      {{'SubscribeLinesBoxComponent.BUTTON_SUBSCRIBE' | translate}}
+    </button>
+    <div class="sub-content-text">
+      {{'SubscribeLinesBoxComponent.TEXT_NEVER_MISS' | translate}}
+    </div>
+  </div>
+  <!--- Ribbon --->
+  <div class="ribbon-wrapper">
+    <div class="ribbon-text">
+      <div>{{ monthlySubscriptionDiscount?.percent }}%</div>
+      <div>
+        {{'SubscribeLinesBoxComponent.TEXT_DISCOUNT' | translate}}
+      </div>
+    </div>
+    <img src="assets/images/lottery-free-line/ribbon-small-shadow.svg" alt="ribbon" class="ribbon">
+  </div>
+</div>

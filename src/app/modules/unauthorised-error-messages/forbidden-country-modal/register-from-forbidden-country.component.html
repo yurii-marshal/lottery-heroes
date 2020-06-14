@@ -1,0 +1,14 @@
+<div class="register-from-forbidden-country-component">
+  <div class="modal-body plain-modal-inner">
+    <img class="icon" src="assets/images/svg/lock_icon_flag.svg">
+    <div>
+      <span [innerHTML]="'RegisterFromForbiddenCountryComponent.TEMPLATE_FORBIDDEN_COUNTRY_REG_1' | translate"></span>
+      <a class="link" (click)="showNewComponent('signup')">
+        {{'RegisterFromForbiddenCountryComponent.REF_SIGN_UP' | translate}}
+      </a>
+      <span [innerHTML]="'RegisterFromForbiddenCountryComponent.TEMPLATE_FORBIDDEN_COUNTRY_REG_2' | translate"></span>
+      <a href="mailto:{{supportEmail}}">{{supportEmail}}</a>
+      <span [innerHTML]="'RegisterFromForbiddenCountryComponent.TEMPLATE_FORBIDDEN_COUNTRY_REG_3' | translate"></span>
+    </div>
+  </div>
+</div>

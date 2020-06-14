@@ -1,0 +1,42 @@
+<div class="row results-draw-next-draw-component" [ngClass]="{'no-button':!isShowBetNow()}">
+  <img class="hidden-md-down background left" src="assets/images/lotteries-results-draw-next-draw.component/confetti-per-draw.svg"
+       alt="Next {{lottery.name}} Draw">
+  <div class="col-md-6 offset-md-3 col-sm-12  display-flex flex-items-md-center flex-items-sm-center flex-items-xs-left">
+    <div class="title-next-draw">{{'ResultsDrawNextDrawComponent.TEXT_NEXT_DRAW' | translate}} {{upcomingDraw.date|date}}:</div>
+  </div>
+  <div class="col-xs-12">
+    <div class="jackpot display-flex flex-items-xs-left flex-items-sm-center flex-items-xs-middle">
+      <ng-container *ngIf="upcomingDraw.jackpot; else noJackpot">
+        <span [innerHtml]="upcomingDraw.jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+      </ng-container>
+      <ng-template #noJackpot>
+        <span [innerHtml]="upcomingDraw.min_jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+        <span class="no-jackpot">*</span>
+      </ng-template>
+    </div>
+    <div class="display-flex flex-items-xs-left flex-items-sm-center" *ngIf="!upcomingDraw.jackpot">
+      <div class="no-jackpot-remark">
+        {{'ResultsDrawNextDrawComponent.TEXT_JACKPOT_EXPECT' | translate}}
+      </div>
+    </div>
+    <div class="display-flex flex-items-xs-left flex-items-sm-center post-info hidden-sm-down">
+      {{'ResultsDrawNextDrawComponent.TEMPLATE_NEXT_WINNING_1' | translate}} {{lottery.name}} {{'ResultsDrawNextDrawComponent.TEMPLATE_NEXT_WINNING_2' | translate}}
+    </div>
+  </div>
+  <div class="col-xs-12 display-flex flex-items-xs-center hidden-sm-down" *ngIf="isShowBetNow()">
+    <a class="bt green"
+       [routerLink]="['/', lotterySlug]"
+       [title]="lottery.id === 'euromillions' ? 'Join' : 'ResultsDrawNextDrawComponent.Play Now' | translate"
+       [appTranslate]="lottery.id === 'euromillions' ? 'Join' : 'ResultsDrawNextDrawComponent.Play Now'"
+    ></a>
+  </div>
+  <div class="col-xs-12 display-flex flex-items-xs-center hidden-sm-down">
+    <div class="time-left">
+      <app-simple-countdown
+              [date]="syndicate ? syndicate.stopSellTime : upcomingDraw.last_ticket_time"></app-simple-countdown>
+    </div>
+  </div>
+  <img class="hidden-md-down background right"
+       src="assets/images/lotteries-results-draw-next-draw.component/confetti-per-draw.svg"
+       alt="Next {{lottery.name}} Draw">
+</div>

@@ -1,0 +1,42 @@
+<div class="row text-xs-center border lottery-widgets-next-draw-component"
+     *ngIf="upcomingDraw" [ngClass]="{aside: isInAside}">
+  <div class="col-xs-12">
+    <div class="title-next-draw">
+      {{'LotteryWidgetsNextDrawComponent.TEXT_NEXT_DRAW' | translate}} {{upcomingDraw.date | date}}
+    </div>
+  </div>
+  <div class="col-xs-12 display-flex flex-items-xs-middle flex-items-xs-center">
+    <img class="hidden-md-down rotate confetti" src="assets/images/widget-next-draw/confetti-per-lottery.svg"
+         alt="Next {{lottery.name}} Draw">
+    <div class="display-flex direction-column">
+      <div class="jackpot">
+        <ng-container *ngIf="upcomingDraw.jackpot; else noJackpot">
+          <div [innerHtml]="upcomingDraw.jackpot | jackpotFormat:upcomingDraw.currency_id"></div>
+        </ng-container>
+        <ng-template #noJackpot>
+          <span [innerHtml]="upcomingDraw.min_jackpot | jackpotFormat:upcomingDraw.currency_id:'Million':'K':true:true">
+          </span>
+          <div class="no-jackpot-remark">
+            {{'LotteryWidgetsNextDrawComponent.TEXT_JACKPOT_EXPECT' | translate}}
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <img class="hidden-md-down confetti" src="assets/images/widget-next-draw/confetti-per-lottery.svg"
+         alt="Next {{lottery.name}} Draw">
+  </div>
+  <div class="col-xs-12 display-flex flex-items-xs-center" *ngIf="isShowBetNow()">
+    <a class="bt green"
+       (click)="onTrackPlayNow(lottery.name)"
+       [routerLink]="['/', lotterySlug]"
+       [title]="lottery.id === 'euromillions' ? 'Join' : 'LotteryWidgetsNextDrawComponent.Play Now' | translate"
+       [appTranslate]="lottery.id === 'euromillions' ? 'Join' : 'LotteryWidgetsNextDrawComponent.Play Now'"></a>
+  </div>
+  <div class="col-xs-12">
+    <div class="time-left">
+      <app-simple-countdown [date]="!isSold && syndicate ? syndicate.stopSellTime : upcomingDraw.last_ticket_time">
+      </app-simple-countdown>
+    </div>
+  </div>
+</div>
+

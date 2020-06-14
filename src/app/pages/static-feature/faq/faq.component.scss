@@ -1,0 +1,299 @@
+@import '../../../../scss/vars';
+
+.faq-component {
+  h2 {
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .intro {
+    color: $primary;
+    font-family: $CONTENT;
+    padding-top: 15px;
+  }
+
+  .item {
+    position: relative;
+  }
+
+  .search {
+    padding: 20px 0 0;
+
+    form {
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    input {
+      height: 36px;
+      line-height: 36px;
+      padding-right: 48px;
+    }
+
+    button {
+      position: absolute;
+      width: 36px;
+      right: 1px;
+      top: 1px;
+      bottom: 1px;
+      text-align: center;
+      background: #fff;
+      border: 0;
+      color: #b6b6b6;
+
+      img {
+        height: 70%;
+        transform: rotate(30deg)
+      }
+    }
+  }
+
+  .item input[type=checkbox][name=item-checkbox] {
+    display: none;
+  }
+
+  .item-title {
+    z-index: 1;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(100% - 57px);
+    top: 0;
+    margin: 0;
+  }
+
+  h2 {
+    padding: 1rem 0;
+    border-bottom: 1px solid $GRAY-LIGHTER;
+    color: $primary;
+    font-family: $CONTENT;
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background: url('/assets/images/svg/arrow-gray.svg') no-repeat 50%;
+      transition: all .2s ease;
+    }
+
+    &:hover {
+      color: $BLUE;
+    }
+  }
+
+  .item:last-child .item-body {
+    border-bottom: 1px solid $GRAY-LIGHTER;
+  }
+
+  .item-wrapper {
+    display: flex;
+    max-height: 0;
+    transition: max-height .5s ease;
+    overflow: hidden;
+    align-items: flex-end;
+  }
+
+  .item-body {
+    border-bottom: 1px solid $GRAY-LIGHTER;
+
+    p {
+      color: $primary;
+    }
+
+    .helpfulness {
+      color: $primary;
+      margin-top: 2rem;
+
+      ul {
+        margin: 0 0 0 6px;
+        display: inline-block;
+        padding: 0;
+      }
+
+      li {
+        width: 12px;
+        height: 12px;
+        background: #dadada;
+        border-radius: 12px;
+        display: inline-block;
+
+        &.active {
+          background-color: $GREEN;
+        }
+      }
+    }
+  }
+
+  .row {
+    width: 100%;
+    .faq-external-btn {
+      margin-left: 10%;
+      margin-bottom: 50px;
+      background-color: #204094;
+      font-size: 16px;
+      min-width: 400px;
+      min-height: 45px;
+    }
+  }
+
+  input:checked {
+    ~ .item-wrapper {
+      // max-height set via JS for each item because of arrow animation:
+      // arrow starts to animate with appropriate height at the same time
+    }
+
+    ~ h2 {
+      color: $BLUE;
+
+      &::after {
+        transform: rotate(-180deg)
+      }
+    }
+  }
+
+  .help-title {
+    border-top: 1px solid $GRAY-LIGHTER;
+    padding: 30px 0 10px;
+    margin: 60px 0 0;
+  }
+
+  .help-icon-wrapper {
+    padding: 0 10px 0 0;
+    color: #b5b5b5;
+    font-size: 40px;
+  }
+
+  .help-side-left {
+    border-right: 1px solid $GRAY-LIGHTER;
+
+    .help-icon-wrapper {
+      padding: 0 23px 0 0;
+      font-size: 31px;
+    }
+  }
+
+  .help-content-wrapper {
+
+    .help-link {
+      padding: 20px 0 5px;
+      display: block;
+    }
+  }
+
+  .faq-title {
+    @include primary-title;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0 -15px 15px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .intro {
+      font-size: 15px;
+      line-height: 18px;
+    }
+
+    .list-items {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    h2 {
+      padding-left: 15px;
+      padding-right: 35px;
+      font-size: 15px;
+
+      &::after {
+        width: 11px;
+        height: 11px;
+        right: 15px;
+      }
+    }
+
+    .row {
+      justify-content: center;
+      margin: 0;
+      .faq-external-btn {
+        min-width: 300px;
+        margin: 20px auto;
+      }
+    }
+
+    .item-body {
+      font-size: 15px;
+      padding: 1rem;
+
+      p {
+        line-height: 20px;
+        padding-left: 1rem;
+      }
+
+      .helpfulness {
+        text-align: center;
+
+        ul {
+          margin-top: 0.5rem;
+        }
+
+        li {
+          margin-left: 6px;
+        }
+      }
+    }
+
+    .item-title {
+      bottom: calc(100% - 65px);
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    .search {
+      form {
+        max-width: 335px;
+      }
+    }
+
+    .intro {
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    .list-items {
+      padding-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: $BASIC;
+
+      &::after {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    .item-body {
+      padding: 1rem 0 1rem 1.875rem;
+
+      p {
+        line-height: 30px;
+        padding-right: 0.5rem;
+      }
+
+      .helpfulness {
+        text-align: right;
+
+        li {
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+}

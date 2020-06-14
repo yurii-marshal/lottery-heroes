@@ -1,0 +1,43 @@
+import { Component, ElementRef, EventEmitter, Inject, Input, OnChanges, Output, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+import { ComboItemModel } from '../../../../../../models/combo.model';
+import { DeviceType } from '../../../../../../services/device/entities/types/device.type';
+import { DOCUMENT } from '@angular/common';
+
+@Component({
+  selector: 'app-list-combos-item',
+  templateUrl: './list-combos-item.component.html',
+  styleUrls: ['./list-combos-item.component.scss']
+})
+export class ListCombosItemComponent implements OnChanges {
+  @Input() combo: ComboItemModel;
+  @Input() device: DeviceType;
+
+  @Output() addToCart = new EventEmitter();
+
+  @ViewChild('tooltip') tooltip: ElementRef;
+
+  showLotteriesList = false;
+
+  constructor(@Inject(DOCUMENT) private document,
+              protected renderer: Renderer2) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['device'] && this.tooltip) {
+      this.closeLotteriesList();
+    }
+  }
+
+  openLotteriesList() {
+    if (this.device === 'mobile') {
+      this.showLotteriesList = true;
+      this.tooltip.nativeElement.classList.toggle('open');
+      this.renderer.addClass(this.document.body, 'fixed');
+    }
+  }
+
+  closeLotteriesList() {
+    this.showLotteriesList = false;
+    this.tooltip.nativeElement.classList.remove('open');
+    this.renderer.removeClass(this.document.body, 'fixed');
+  }
+}

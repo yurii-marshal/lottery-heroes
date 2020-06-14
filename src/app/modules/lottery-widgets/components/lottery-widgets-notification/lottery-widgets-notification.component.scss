@@ -1,0 +1,145 @@
+@import '../../../../../scss/_vars';
+
+.lottery-widgets-notification-component {
+  .email-notification {
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .header {
+    z-index: 1;
+    color: #fff;
+    font-size: $MEDIUM;
+    font-family: $headline;
+    height: 46px;
+    background: $RED-LIGHT;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 40px;
+      height: 50px;
+      position: absolute;
+      right: 13px;
+      top: -12px;
+      background: url('/assets/images/svg/alert.svg') no-repeat;
+    }
+  }
+
+  .body {
+    background: #f1bf09;
+    border-radius: 0 0 5px 5px;
+    padding: 16px 0;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      height: 285px;
+      position: absolute;
+      right: -75px;
+      left: -340px;
+      top: -84px;
+      margin: auto;
+      background: #FDC700;
+      border-radius: 50%;
+      width: 650px;
+    }
+
+    > div {
+      z-index: 1;
+      position: relative;
+    }
+
+    p {
+      color: #3c3c3c;
+    }
+
+    button {
+      width: 105px;
+      border-radius: 2px;
+      border: 1px solid #fff;
+      margin-top: 9px;
+      height: 36px;
+
+      &.disabled {
+        pointer-events: none;
+        background-color: #66B126;
+        border-color: #FEEEB2;
+        color: #FBECB5;
+      }
+    }
+  }
+
+  input {
+    border-color: #cda812;
+  }
+
+  .has-error input {
+    border-color: #E51E12;
+  }
+
+  .icon-tooltip:hover ~ .tooltip-container {
+    min-width: 85px;
+
+    .tooltip-body {
+      right: -8px;
+
+      &::before,
+      &::after {
+        right: 10px
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .email-notification {
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .icon-tooltip ~ .tooltip-container.error {
+      display: block;
+      position: static;
+    }
+
+    .error .tooltip-body {
+      background: none;
+      box-shadow: none;
+      border: 0;
+      padding: 0;
+    }
+
+    .input-wr .tooltip-body {
+      position: static;
+    }
+
+    .tooltip-container {
+      margin-top: 5px;
+    }
+
+    .has-error .tooltip-body,
+    .has-error .tooltip-body p {
+      color: #e51e12;
+    }
+
+    .input-wr .tooltip-body::before,
+    .input-wr .tooltip-body::after {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .email-notification {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      border: 2px solid #fff;
+    }
+  }
+}

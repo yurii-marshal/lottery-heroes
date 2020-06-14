@@ -1,0 +1,58 @@
+@import '../../../../../scss/vars';
+
+.lottery-widgets-statistics-component {
+  .title-statistic {
+    color: $primary;
+    font-family: $headline;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+
+  .single-statistic {
+    color: $primary;
+    font-family: $headline;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 1rem 0;
+  }
+
+  .border {
+    border: 2px solid $GRAY-LIGHTER;
+    border-radius: 6px;
+  }
+
+  .single-statistic:not(:last-child) {
+    border-right: 1px solid $GRAY-LIGHTER;
+  }
+
+  @media (max-width: 768px) {
+    .title-statistic {
+      font-size: 0.9rem;
+    }
+
+    .single-statistic {
+      margin: 0;
+      padding: 0.4rem;
+    }
+
+    .single-statistic:not(:last-child) {
+      border: none;
+    }
+    .single-statistic:first-child {
+      border-right: 1px solid $GRAY-LIGHTER;
+      border-bottom: 1px solid $GRAY-LIGHTER;
+    }
+    .single-statistic:nth-child(2) {
+      border-bottom: 1px solid $GRAY-LIGHTER;
+    }
+    .single-statistic:nth-child(3) {
+      border-right: 1px solid $GRAY-LIGHTER;
+    }
+
+    .border {
+      padding: 0.4rem;
+    }
+  }
+}

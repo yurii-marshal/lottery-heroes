@@ -1,0 +1,12 @@
+<div class="faq-box display-flex direction-column flex-items-xs-between text-xs-center">
+  <div class="thumbnail-wrapper">
+    <div class="logo-wrapper">
+      <img src="{{ cms?.box3_icon.url }}" alt="{{ cms?.box3_icon.alt }}">
+    </div>
+    <div class="title-text">
+      {{ cms?.box3_title }}
+    </div>
+  <div class="summary" [innerHTML]="cms?.box3_summary"></div>
+  </div>
+  <a href="{{ cms?.box3_link_url }}" title="{{ cms?.box3_link_title }}">{{ cms?.box3_link_text }}</a>
+</div>

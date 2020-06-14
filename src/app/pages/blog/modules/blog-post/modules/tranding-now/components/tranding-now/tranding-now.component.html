@@ -1,0 +1,15 @@
+<section class="tranding-now">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="text-xs-left">{{'TrandingNowComponent.TEXT_TRANDING_NOW' | translate}}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let post of trandingNow | slice:0:3">
+      <a [routerLink]="post?.slug">
+        <img [src]="host + post?.image" alt="biglotteryowin">
+        <h4 class="post-title" [innerHTML]="post?.title | safe:'html'"></h4>
+      </a>
+    </div>
+  </div>
+</section>

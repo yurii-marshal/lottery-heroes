@@ -1,0 +1,35 @@
+<ng-container *ngIf="lottery">
+  <div class="lottery-widgets-statistics-component">
+    <div class="row" *ngIf="showCaption">
+      <div class="col-xs">
+        <h2 class="title-statistic">
+          {{lottery.name}} {{'lotteryStatisticsTicketPage.TEXT_STATISTICS' | translate}}:
+        </h2>
+      </div>
+    </div>
+    <div class="row" [ngClass]="{border: showCaption}">
+      <div
+        class="col-md-3 col-sm-6 col-xs-6 display-flex flex-items-xs-middle flex-items-xs-center text-xs-center direction-column single-statistic"
+        [innerHTML]="'lotteryStatistics' + pageType +'.' + lottery.id +'.v1' | translate">
+      </div>
+      <div
+        class="col-md-3 col-sm-6 col-xs-6 display-flex flex-items-xs-middle flex-items-xs-center text-xs-center direction-column single-statistic"
+        [innerHTML]="'lotteryStatistics' + pageType +'.' + lottery.id +'.v2' | translate">
+      </div>
+      <div
+        class="col-md-3 col-sm-6 col-xs-6 display-flex flex-items-xs-middle flex-items-xs-center text-xs-center direction-column single-statistic"
+        [innerHTML]="'lotteryStatistics' + pageType +'.' + lottery.id +'.v3' | translate">
+      </div>
+      <div
+        class="col-md-3 col-sm-6 col-xs-6 display-flex flex-items-xs-middle flex-items-xs-center text-xs-center direction-column single-statistic">
+        <div class="statistic-count" [ngClass]="{green: fromLastJackpot > 0, red:fromLastJackpot < 0}">
+          <ng-container *ngIf="fromLastJackpot > 0">+</ng-container>
+          {{fromLastJackpot}}%
+        </div>
+        <div class="count-expl">
+          {{'lotteryStatisticsTicketPage.TEXT_FROM_LAST_JACKPOT' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

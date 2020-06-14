@@ -1,0 +1,41 @@
+<div *ngIf="isShowlightbox" role="dialog" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" (click)="closeLightbox()">×</button>
+      </div>
+      <div class="modal-body">
+        <h1 class="text-xs-center" [appTranslate]="data.title"></h1>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 display-flex flex-items-md-center flex-items-xs-between text-xs-center period-option"
+                 [ngClass]="{'active': data.payload.item.renewPeriod === 'P1M'}"
+                 (click)="onClickSubscribePeriod({item: data.payload.item, period: 'P1M', label: 'Monthly'})">
+              <div class="subscription-period">
+                {{'SubscriptionsCartLightboxComponent.TEXT_MONTHLY' | translate}}
+              </div>
+              <div class="subscription-discount"
+                   *ngIf="data.payload.renewPeriods && (data.payload.renewPeriods | async)[0].percent > 0">
+                {{(data.payload.renewPeriods | async)[0].percent}}% {{'SubscriptionsCartLightboxComponent.TEXT_DISCOUNT' | translate}}
+              </div>
+            </div>
+            <div class="col-md-6 display-flex flex-items-md-center flex-items-xs-between text-xs-center period-option"
+                 [ngClass]="{'active': data.payload.item.renewPeriod === null}"
+                 (click)="onClickSubscribePeriod({item: data.payload.item, period: null, label: 'One Time Purchase'})">
+              <div class="subscription-period default">
+                {{'SubscriptionsCartLightboxComponent.TEXT_ONE_TIME' | translate}}
+                <br class="hidden-sm-down">
+                <span>
+                  {{'SubscriptionsCartLightboxComponent.TEXT_PURCHASE' | translate}}
+                </span></div>
+              <div class="subscription-discount">
+                {{'SubscriptionsCartLightboxComponent.TEXT_NO_DISCOUNT' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeLightbox()"></div>
+</div>

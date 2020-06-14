@@ -1,0 +1,70 @@
+@import '../../../../../../scss/vars';
+
+.my-account-menu-component {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  background: #fff;
+  border-radius: 3px;
+  position: relative;
+
+  color: $primary;
+  font-size: 0.9rem;
+
+  &:before {
+    border-bottom: 6px solid rgba(0, 0, 0, 0.2);
+    border-left: 7px solid rgba(0, 0, 0, 0);
+    border-right: 7px solid rgba(0, 0, 0, 0);
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 45%;
+    top: -7px;
+  }
+  &:after {
+    border-bottom: 6px solid #FFFFFF;
+    border-left: 7px solid rgba(0, 0, 0, 0);
+    border-right: 7px solid rgba(0, 0, 0, 0);
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 45%;
+    top: -6px;
+  }
+
+  a {
+    color: $primary;
+    font-size: $small;
+    font-family: sans-serif;
+    text-transform: capitalize;
+    padding: 0 0.6rem;
+    margin: 0.3rem 0;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    &:after {
+      content: '';
+      width: 0%;
+      height: 2px;
+      display: block;
+      left: 0;
+      bottom: 0;
+      background: $RED;
+      transition: all .2s ease;
+    }
+    &:hover:after {
+      width: 40%;
+    }
+  }
+
+  .balance {
+    color: $GRAY-LIGHT;
+    text-transform: capitalize;
+    text-align: center;
+    padding: 0.6rem 0;
+    border-top: 1px solid $GRAY-LIGHTER;
+  }
+
+  .gutters {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}

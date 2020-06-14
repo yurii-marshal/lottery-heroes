@@ -1,0 +1,24 @@
+<div role="dialog" class="modal confirmation-remove-line-component">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" (click)="closeRemoveLineConfirmation.emit()">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-xs-center">
+          {{'ConfirmationRemoveLineComponent.TEXT_REMOVE_LINE_CONFIRMATION' | translate}}
+        </p>
+        <div class="row form-row">
+          <button class="col-xs-11 col-md-8 bt green cancel" (click)="closeRemoveLineConfirmation.emit()">
+            {{'ConfirmationRemoveLineComponent.TEXT_DECLINE_REMOVE' | translate}}
+          </button>
+          <div class="col-xs-12 link remove" (click)="approveRemove.emit()">
+            {{'ConfirmationRemoveLineComponent.TEXT_ACCEPT_REMOVE' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeRemoveLineConfirmation.emit()"></div>
+</div>
+

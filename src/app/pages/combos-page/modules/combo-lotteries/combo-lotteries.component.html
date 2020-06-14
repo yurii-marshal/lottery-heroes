@@ -1,0 +1,24 @@
+<div
+	class="flex-items-xs-middle display-flex combo-lotteries">
+	<div class="lottery-logo">
+		<img class="logo" [src]="lottery.logo_path" alt="{{lottery.name}}">
+    <div class="syndicate-icon" *ngIf="lottery.type === 'shares'">
+      <img src="assets/images/syndicates/syndicate_icon.svg" alt="syndicate_icon">
+    </div>
+	</div>
+	<div class="lottery-desc">
+		<p class="name">{{lottery.name}}</p>
+    <div class="jackpot">
+      <ng-container *ngIf="lottery.jackpot; else noJackpot">
+        <div [innerHtml]="lottery.jackpot | jackpotFormat:currency"></div>
+      </ng-container>
+      <ng-template #noJackpot>
+        <span [innerHtml]="lottery.min_jackpot | jackpotFormat:currency"></span>
+        <span class="no-jackpot">*</span>
+        <div class="no-jackpot-remark">
+            {{'ComboLotteriesComponent.TEXT_JACKPOT_EXPECT' | translate}}
+        </div>
+      </ng-template>
+    </div>
+	</div>
+</div>

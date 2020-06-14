@@ -1,0 +1,53 @@
+@import '../../../../../../scss/vars';
+
+.desc {
+  font-size: $BASIC;
+  font-family: $CONTENT;
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+  .row {
+    border-top: 1px solid #dedede;
+  }
+  .table-row {
+    .confirmation {
+      display: none;
+    }
+    &.open {
+      .confirmation {
+        display: block;
+      }
+    }
+    .desc {
+      margin-right: 8px;
+      display: block;
+      line-height: 20px;
+    }
+  }
+  .confirmation {
+    order: 99;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 992px) {
+  .desc {
+    font-size: $small;
+  }
+}
+
+/* DESKTOP */
+
+@media (min-width: 768px) {
+  .table-row .td.confirmation {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    white-space: nowrap;
+    padding-right: 20px;
+  }
+}
+
+

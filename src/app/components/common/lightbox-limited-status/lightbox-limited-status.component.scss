@@ -1,0 +1,25 @@
+.modal-header {
+  padding: 15px 15px 5px;
+  max-width: 100%;
+}
+
+.modal-body {
+  min-height: 100%;
+  padding: 15px 22px 50px;
+
+  .bt {
+    max-width: 30%;
+    margin: 2rem 0 0;
+
+    & + .bt {
+      margin-left: 10px;
+    }
+  }
+  p {
+    padding: 0;
+  }
+  .account-status {
+    font-style: italic;
+
+  }
+}

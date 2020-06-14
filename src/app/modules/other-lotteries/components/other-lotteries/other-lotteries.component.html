@@ -1,0 +1,26 @@
+<section class="other-lotteries-navigation" *ngIf="popularLotteries">
+  <div class="title display-flex text-xs-center text-lg-left">Other Lotteries:</div>
+  <div class="display-flex content-box">
+    <div class="display-flex nav-section" *ngFor="let lottery of popularLotteries">
+      <a [routerLink]="['/' + getLotterySlug(lottery)]"
+         title="{{lottery.name}}"
+         (click)="linkClickEvent.emit(lottery.name)">
+        {{ lottery.name }}<span class="biglotteryowin-right-open"></span>
+      </a>
+    </div>
+    <div class="display-flex nav-section" *ngIf="previousLottery">
+      <a [routerLink]="['/' + getLotterySlug(previousLottery)]"
+         title="{{previousLottery.name}}"
+         (click)="linkClickEvent.emit(previousLottery.name)">
+        {{ previousLottery.name }}<span class="biglotteryowin-right-open"></span>
+      </a>
+    </div>
+    <div class="display-flex nav-section" *ngIf="nextLottery">
+      <a [routerLink]="['/' + getLotterySlug(nextLottery)]"
+        title="{{nextLottery.name}}"
+        (click)="linkClickEvent.emit(nextLottery.name)">
+        {{ nextLottery.name}}<span class="biglotteryowin-right-open"></span>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,103 @@
+@import '../../../../../../../scss/vars';
+
+.cart-item-combo-lottery-component {
+  > div:first-child {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .lottery-item {
+    .line-index {
+      color: #949494;
+      width: 60px;
+    }
+
+    .main-numbers {
+      color: $primary;
+      font-size: $BASIC;
+    }
+
+    .number {
+      padding: 0 3px;
+    }
+
+    .extra {
+      padding-left: 10px;
+
+      + .extra {
+        padding-left: 5px;
+      }
+    }
+
+    .bt.clear, .bt.edit {
+      font-size: $LARGE;
+      color: $GRAY-LIGHT;
+    }
+
+    .no-padding {
+      padding: 0;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 30px;
+
+    .lottery-item {
+      img {
+        height: 30px;
+        max-width: 215px;
+      }
+
+      .line-index {
+        padding-right: 0;
+      }
+
+      .line {
+        margin-top: 15px;
+      }
+    }
+
+    .lottery-logo {
+      margin-bottom: 10px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+
+    .lottery-item {
+      width: 100%;
+
+      img {
+        width: 60px;
+        height: 53px;
+      }
+
+      .line {
+        width: 100%;
+        margin-bottom: 10px;
+
+        &.margin-top {
+          margin-top: 13px;
+        }
+      }
+
+      .line-index {
+        text-transform: uppercase;
+      }
+    }
+
+    .main-numbers {
+      padding-left: 0;
+    }
+
+    .lines {
+      padding: 0 0 0 12px;
+    }
+
+    .lottery-logo {
+      position: relative;
+      left: 7px;
+    }
+  }
+}

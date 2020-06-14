@@ -1,0 +1,140 @@
+@import '../../../../../../../scss/vars';
+
+.tickets-desktop-component {
+  .title {
+    color: #626262;
+    font-family: $headline;
+    font-size: 1.2rem;
+
+    &.other-lotteries {
+      margin: 10px 0;
+    }
+  }
+
+  .content-box {
+    border: 1px solid #ECECEC;
+    padding: 2rem 15px;
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .overall-control {
+    @extend .margin-bottom-10;
+
+    .title  {
+      .min-lines {
+        color: #757575;
+        font-family: inherit;
+        font-size: 1rem;
+      }
+
+      .lottery-name {
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        color: $primary;
+      }
+    }
+
+    .bt.blue {
+      width: 5.9rem;
+      min-height: 1.7rem; // height
+      font-size: 0.9rem;
+    }
+
+    .bt.clear {
+      margin-left: 0.6rem;
+      // IE11
+      width: 22px;
+    }
+  }
+
+  .bt.heart {
+    font-family: $CONTENT;
+    color: $primary;
+    font-size: 13px;
+    text-transform: capitalize;
+    width: 155px;
+    min-height: 27px; // height
+    margin: 0 5px;
+    border: 1px solid $GRAY-LIGHTER;
+
+    i {
+      color: red;
+    }
+
+    .biglotteryowin-heart {
+      display: none;
+    }
+
+    .biglotteryowin-heart-empty {
+      display: flex;
+    }
+
+    &.haveLucky {
+      .biglotteryowin-heart {
+        display: flex;
+      }
+
+      .biglotteryowin-heart-empty {
+        display: none;
+      }
+    }
+  }
+
+  .add-line {
+    margin: 0.7rem 0;
+    cursor: pointer;
+    color: $BLUE;
+    font-family: $CONTENT;
+    font-size: 0.9rem;
+    padding: 0 0 0 0.7rem;
+
+    span:first-child {
+      text-decoration: underline;
+    }
+
+    .plus {
+      padding-left: 3px;
+    }
+  }
+
+  .aside {
+    padding-left: 0;
+  }
+
+  .bt.clear {
+    padding-right: 0;
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    width: 738px;
+
+    .bt.haveLucky {
+      display: none;
+    }
+
+    .aside {
+      margin-top: -50px;
+    }
+
+    .winning-numbers {
+      .number {
+        width: 2.9rem;
+        height: 2.9rem;
+        font-size: 1.4em;
+      }
+    }
+  }
+
+  .margin-bottom-10 {
+    margin-bottom: 10px;
+  };
+}
+
+

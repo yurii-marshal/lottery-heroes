@@ -1,0 +1,32 @@
+<div class="container blog-post-cover">
+  <div class="row">
+    <div class="col-xs-12">
+      <!--<a class="back-to display-flex flex-items-xs-middle" [routerLink]="['/biglotteryowinzone']">-->
+        <!--<span><i class="biglotteryowin-left-open"></i></span>-->
+        <!--{{'BlogPostComponent.TEXT_BACK_TO_BIGLOTTERYOWINONE' | translate}}-->
+      <!--</a>-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <article class="blog-post">
+        <header class="entry-header">
+          <h1 class="hidden-sm-down" [innerHTML]="post?.title | safe:'html'"></h1>
+          <div class="article-img">
+            <img [src]="host + post?.image" alt="biglotteryowin">
+          </div>
+          <h1 class="hidden-md-up" [innerHTML]="post?.title | safe:'html'"></h1>
+        </header>
+        <div class="entry-content">
+          <div [innerHTML]="post?.fullContent | safe:'html'"></div>
+        </div>
+      </article>
+        <app-tranding-now-container></app-tranding-now-container>
+      <!--<a class="back-to display-flex flex-items-xs-middle" [routerLink]="['/biglotteryowinzone']">-->
+        <!--<span><i class="biglotteryowin-left-open"></i></span> {{'BlogPostComponent.TEXT_BACK_TO_BIGLOTTERYOWINONE' | translate}}</a>-->
+    </div>
+    <div class="col-md-4 hidden-sm-down">
+      <app-tranding-now-container [vertical]="true"></app-tranding-now-container>
+    </div>
+  </div>
+</div>

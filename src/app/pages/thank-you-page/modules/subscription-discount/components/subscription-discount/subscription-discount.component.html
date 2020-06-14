@@ -1,0 +1,37 @@
+<ng-container *ngIf="lotteriesMap && currencyId && lastOrderSubscriptionsPriceMap">
+  <div class="subscription-discount display-flex direction-column flex-items-xs-middle flex-items-xs-between">
+    <div class="ribbon-wrapper small purple"><p class="ribbon-text">% Off</p>
+      <img src="assets/images/lottery-free-line/ribbon-small-shadow.svg" alt="free line" class="ribbon">
+    </div>
+
+    <div class="content-wrapper">
+      <div class="widget-icon-wrapper text-xs-center">
+        <img src="assets/images/cart-page-thank-you/widget-subscription.svg">
+      </div>
+      <h4 class="text-xs-center">{{'SubscriptionDiscountComponent.TEXT_MAIN_HEADER' | translate}}</h4>
+      <p>{{'SubscriptionDiscountComponent.TEXT_DISCOUNT_DESCRIPTION' | translate}}</p>
+      <div class="table-wrapper" [ngClass]="{'scrollable':lotteryIds.length > 3}">
+        <table>
+          <tbody>
+          <tr *ngFor="let lotteryId of lotteryIds">
+            <td>{{lotteriesMap[lotteryId].name}}</td>
+            <td class="text-xs-right">
+              {{lastOrderSubscriptionsPriceMap[lotteryId].price + lastOrderSubscriptionsPriceMap[lotteryId].discount|currency:currencyId:'symbol':'1.2-2'}}
+            </td>
+            <td class="text-xs-right">{{lastOrderSubscriptionsPriceMap[lotteryId].price|currency:currencyId:'symbol':'1.2-2'}}</td>
+          </tr>
+          <tr *ngIf="lotteryIds.length > 1">
+            <td><strong>{{'SubscriptionDiscountComponent.TEXT_TOTAL' | translate}}</strong></td>
+            <td class="text-xs-right">{{totalSubscriptionsPrice + totalSubscriptionsDiscount|currency:currencyId:'symbol':'1.2-2'}}</td>
+            <td class="text-xs-right"><strong>{{totalSubscriptionsPrice|currency:currencyId:'symbol':'1.2-2'}}</strong></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <button class="bt green" (click)="addSubscriptionsToCartEvent.emit()">
+      {{'SubscriptionDiscountComponent.BUTTON_WANT_DISCOUNT' | translate}}
+    </button>
+  </div>
+</ng-container>

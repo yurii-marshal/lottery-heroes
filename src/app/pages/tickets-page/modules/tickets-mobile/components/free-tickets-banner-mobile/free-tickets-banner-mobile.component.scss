@@ -1,0 +1,54 @@
+@import '../../../../../../../scss/vars';
+
+.free-tickets-banner-mobile-component {
+  .new-line {
+    border: 1px solid #d2d2d2;
+    border-radius: 6px;
+    padding: 0.54rem 0.5rem 0.54rem 0.8rem;
+    position: relative;
+    width: 100%;
+    max-width: 345px;
+    margin-top: .5rem;
+  }
+
+  .new-line-container {
+    overflow: hidden;
+    margin-top: .5rem;
+  }
+
+  .gift-wrapper {
+    .gift {
+      width: 34px;
+    }
+  }
+
+  .free-line-counter {
+    font-family: $headline;
+    font-size: $small;
+    color: #82641b;
+    margin: 0 7px 0 0;
+    line-height: 20px;
+
+    span {
+      font-size: $BASIC;
+    }
+  }
+
+  .bt.get-free-line {
+    font-size: $BASIC;
+    margin-top: 3px;
+    width: 120px;
+    min-height: 40px; // height
+  }
+
+  .free-line-title {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 0.8em;
+    color: #b4b4b4;
+    padding: 0 3px;
+    background: #fff;
+    text-transform: capitalize;
+  }
+}

@@ -1,0 +1,81 @@
+@import '../../../../../../../scss/vars';
+
+.subscribe-lines-box {
+  width: 300px;
+  height: 340px;
+  border: 1px solid #e3e3e3;
+  padding: 45px 15px 0 15px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  .title {
+    padding: 0;
+    font-size: 19px;
+  }
+
+  .content {
+    .logo-wrapper {
+      width: 60px;
+      height: 46px;
+      margin: -5px auto 8px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .timer {
+      margin: 0 45px;
+
+      .timer-el {
+        color: $BLUE;
+        font-size: 40px;
+        line-height: 50px;
+      }
+    }
+  }
+
+  .sub-content {
+
+    .navigation-btn {
+      padding: 11px;
+      border-radius: 0;
+      width: 100%;
+    }
+
+    .sub-content-text {
+      font-size: 14px;
+      line-height: 40px;
+      margin-bottom: 18px;
+    }
+  }
+
+  .ribbon-wrapper {
+    position: absolute;
+    width: 100px;
+    top: 0;
+    right: -23px;
+
+    .ribbon-text {
+      position: absolute;
+      transform: rotate(45deg);
+      color: #fff;
+      font-size: 14px;
+      line-height: 15px;
+      top: 10px;
+      left: 26px;
+    }
+  }
+
+  .font-size-14 {
+    font-size: 14px;
+  }
+
+  .no-wrap {
+    white-space: nowrap;
+  }
+}
+
+

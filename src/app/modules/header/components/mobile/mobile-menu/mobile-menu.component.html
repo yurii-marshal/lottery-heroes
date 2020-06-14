@@ -1,0 +1,221 @@
+<div class="row mobile-menu-container mobile-menu-component" #mobileMenu>
+  <div class="col-xs-12">
+    <div class="mobile-menu-option greatest-lottery">
+      <div class="display-flex flex-items-xs-between flex-items-xs-middle" appCloseMobileMenu>
+        <app-lottery-with-greatest-jackpot
+          [lottery]="superJackpotLottery$|async"
+        ></app-lottery-with-greatest-jackpot>
+      </div>
+    </div>
+    <div class="mobile-menu-option lotteries" (click)="toggleDropDown($event, languages, languagesDropDown)">
+      <div class="display-flex flex-items-xs-between flex-items-xs-middle">
+        <a class="display-flex">
+          <!--{{'MobileMenuComponent.REF_LANGUAGE' | translate}}-->
+          Language
+        </a>
+        <button class="biglotteryowin-down-open bt-arrow"
+                #languages
+                [ngClass]="{'active' : toggler === true}"></button>
+      </div>
+      <div class="row flex-items-xs-bottom drop-down lang" #languagesDropDown>
+        <div class="drop-down-body">
+          <app-mobile-language-switcher [brandId]="brandId"
+                                        [translateLang]="translateLang"
+                                        (languageItemClicked)="onLanguageItemClicked($event)"
+                                        [translateLangItems]="translateLangItems">
+          </app-mobile-language-switcher>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu-option lotteries">
+      <div class="display-flex flex-items-xs-between flex-items-xs-middle">
+        <a class="display-flex" (click)="onTrackNavigationClicked('Lotteries')"
+           [routerLink]="['/lotteries']" appCloseMobileMenu>
+          {{'MobileMenuComponent.REF_LOTTERIES' | translate}}
+        </a>
+        <button class="biglotteryowin-down-open bt-arrow"
+                #lottery
+                (click)="toggleDropDown($event, lottery, lotteryDropDown)"
+                [ngClass]="{'active' : toggler === true}"></button>
+      </div>
+      <div class="row flex-items-xs-bottom drop-down" #lotteryDropDown>
+        <div class="drop-down-body">
+          <app-lotteries-menu-list-container></app-lotteries-menu-list-container>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu-option combos">
+      <div class="display-flex flex-items-xs-between flex-items-xs-middle">
+        <a class="display-flex" (click)="onTrackNavigationClicked('Combos')" [routerLink]="['/combos']"
+           appCloseMobileMenu>
+          {{'MobileMenuComponent.REF_COMBOS' | translate}}
+        </a>
+        <button class="biglotteryowin-down-open bt-arrow"
+                #combos
+                (click)="toggleDropDown($event, combos, combosDropDown)"
+                [ngClass]="{'active' : toggler === true}"></button>
+      </div>
+      <div class="row flex-items-xs-bottom drop-down" #combosDropDown>
+        <div class="drop-down-body">
+          <app-combos-menu-list-container></app-combos-menu-list-container>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu-option combos">
+      <div class="display-flex flex-items-xs-between flex-items-xs-middle">
+        <a class="display-flex" (click)="onTrackNavigationClicked('Bundles')" [routerLink]="['/bundles']"
+           appCloseMobileMenu>
+          {{'MobileMenuComponent.REF_BUNDLES' | translate}}
+        </a>
+        <button class="biglotteryowin-down-open bt-arrow"
+                #bundles
+                (click)="toggleDropDown($event, bundles, bundlesDropDown)"
+                [ngClass]="{'active' : toggler === true}"></button>
+      </div>
+      <div class="row flex-items-xs-bottom drop-down" #bundlesDropDown>
+        <div class="drop-down-body">
+          <app-bundles-menu-list-container></app-bundles-menu-list-container>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu-option results">
+      <div class="display-flex flex-items-xs-between flex-items-xs-middle">
+        <a class="display-flex" (click)="onTrackNavigationClicked('Results')"
+           [routerLink]="['/lotteries/results']"
+           appCloseMobileMenu>
+          {{'MobileMenuComponent.REF_RESULTS' | translate}}
+        </a>
+        <button class="biglotteryowin-down-open bt-arrow"
+                #results
+                (click)="toggleDropDown($event, results, resultsDropDown)"
+                [ngClass]="{'active' : toggler === true}"></button>
+      </div>
+      <div class="row flex-items-xs-bottom drop-down" #resultsDropDown>
+        <div class="drop-down-body">
+          <app-results-menu-list-container></app-results-menu-list-container>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu-option my-account" *ngIf="isLoggedIn()">
+      <div class="display-flex flex-items-xs-between flex-items-xs-middle">
+        <a class="display-flex" href="#" (click)="onTrackNavigationClicked('My Account')"
+           [routerLink]="['/myaccount/details']" appCloseMobileMenu>
+          {{'MobileMenuComponent.REF_ACCOUNT' | translate}}
+        </a>
+        <button class="biglotteryowin-down-open bt-arrow"
+                #myAccount
+                (click)="toggleDropDown($event, myAccount, myAccountDropDown)"
+                [ngClass]="{'active' : toggler === true}"></button>
+      </div>
+      <div class="row flex-items-xs-bottom drop-down" #myAccountDropDown>
+        <div class="drop-down-body">
+          <a class="col-sm display-flex flex-items-xs-between flex-items-xs-middle"
+             (click)="onTrackNavigationClicked('Personal details'); showAccountSection()"
+             [routerLink]="['/myaccount/details']"
+             appCloseMobileMenu>
+            {{'MobileMenuComponent.REF_PERSONAL_DETAILS' | translate}}
+          </a>
+          <a class="col-sm display-flex flex-items-xs-between flex-items-xs-middle"
+             (click)="onTrackNavigationClicked('My Games'); showAccountSection()"
+             [routerLink]="['/myaccount/lines']"
+             appCloseMobileMenu>
+            {{'MobileMenuComponent.REF_MY_GAMES' | translate}}
+          </a>
+          <a class="col-sm display-flex flex-items-xs-between flex-items-xs-middle"
+             (click)="onTrackNavigationClicked('My transactions'); showAccountSection()"
+             [routerLink]="['/myaccount/transactions']"
+             appCloseMobileMenu>
+            {{'MobileMenuComponent.REF_MY_TRANSACTIONS' | translate}}
+          </a>
+          <a class="col-sm display-flex flex-items-xs-between flex-items-xs-middle"
+             (click)="onTrackNavigationClicked('Deposit & Withdraw'); showAccountSection()"
+             [routerLink]="['/myaccount/deposit']"
+             appCloseMobileMenu>
+            {{'MobileMenuComponent.REF_DEPOSIT_WITHDRAW' | translate}}
+          </a>
+          <a class="col-sm display-flex flex-items-xs-between flex-items-xs-middle"
+             (click)="onTrackNavigationClicked('My Lucky Numbers'); showAccountSection()"
+             [routerLink]="['/myaccount/my-lucky-numbers']"
+             appCloseMobileMenu>
+            {{'MobileMenuComponent.REF_LUCKY_NUMBERS' | translate}}
+          </a>
+          <a class="col-sm display-flex flex-items-xs-between flex-items-xs-middle"
+             (click)="onTrackNavigationClicked('Log out')"
+             (click)="onLogout()"
+             appCloseMobileMenu>
+            {{'MobileMenuComponent.REF_LOG_OUT' | translate}}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu-option why-biglotteryowin">
+      <div class="display-flex flex-items-xs-between flex-items-xs-middle">
+        <a class="display-flex"
+           title="{{'MobileMenuComponent.REF_WHY_BIGLOTTERYOWIN' | translate}}"
+           [routerLink]="['/about']"
+           (click)="onTrackNavigationClicked('Why BigLotteryOWin?')"
+           appCloseMobileMenu>
+          {{'MobileMenuComponent.REF_WHY_BIGLOTTERYOWIN' | translate}}
+        </a>
+        <button class="biglotteryowin-down-open bt-arrow"
+                #whyBigLotteryOWin
+                (click)="toggleDropDown($event, whyBigLotteryOWin, whyBigLotteryOWinDropDown)"
+                [ngClass]="{'active' : toggler === true}"></button>
+      </div>
+      <div class="row flex-items-xs-bottom drop-down" #whyBigLotteryOWinDropDown>
+        <div class="drop-down-body">
+          <!--<a class="lined-link display-flex" [routerLink]="['/about/about-us']"-->
+          <!--title="{{'MobileMenuComponent.TITLE_ABOUT_US' | translate}}"-->
+          <!--(click)="onTrackNavigationClicked('About BigLotteryOWin')" appCloseMobileMenu>-->
+          <!--{{'MobileMenuComponent.REF_ABOUT_BIGLOTTERYOWIN' | translate}}-->
+          <!--</a>-->
+          <a class="lined-link display-flex" [routerLink]="['/about/safe-and-secure']"
+             title="{{'MobileMenuComponent.REF_SAFE_SECURE' | translate}}"
+             (click)="onTrackNavigationClicked('Safe & Secure')"
+             *ngIf="showMenuItem.safeAndSecure" appCloseMobileMenu>
+            {{'MobileMenuComponent.REF_SAFE_SECURE' | translate}}
+          </a>
+          <a class="lined-link display-flex" [routerLink]="['/about/bet-vs-play']"
+             title="{{'MobileMenuComponent.TITLE_WHATS_BETTING' | translate}}"
+             (click)="onTrackNavigationClicked('Bet Vs. Play')"
+             *ngIf="showBetVsPlay">
+            {{'MobileMenuComponent.REF_BET_PLAY' | translate}}
+          </a>
+          <a class="lined-link display-flex" [routerLink]="['/about/faq']"
+             title="{{'MobileMenuComponent.REF_FAQ' | translate}}" (click)="onTrackNavigationClicked('FAQ')"
+             appCloseMobileMenu>
+            {{'MobileMenuComponent.REF_FAQ' | translate}}
+          </a>
+          <a class="lined-link display-flex" [routerLink]="['/about/contact']"
+             title="{{'MobileMenuComponent.REF_CONTACT_US' | translate}}"
+             (click)="onTrackNavigationClicked('Contact Us')" appCloseMobileMenu>
+            {{'MobileMenuComponent.REF_CONTACT_US' | translate}}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu-option display-flex flex-items-xs-between user-in" *ngIf="!isLoggedIn()">
+      <button class="bt-mobile-menu"
+              (click)="onTrackNavigationClicked('Join')"
+              (click)="showSignupLightbox()"
+              appCloseMobileMenu>
+        {{'MobileMenuComponent.BUTTON_JOIN' | translate}}
+      </button>
+      <button class="bt-mobile-menu"
+              (click)="onTrackNavigationClicked('Log in')"
+              (click)="showSigninLightbox()"
+              appCloseMobileMenu>
+        {{'MobileMenuComponent.BUTTON_LOG_IN' | translate}}
+      </button>
+    </div>
+  </div>
+  <!--<div class="col-xs-12 display-flex flex-items-xs-right direction-column buttons-wrapper">-->
+    <!--<app-live-chat *ngIf="isShowChat"-->
+    <!--&gt;</app-live-chat>-->
+    <!--<div id="live-chat-container-mobile"></div>-->
+    <!--<a class="bt-mobile-menu phone" href="tel:+44xxxxxxxxxx"-->
+       <!--title="{'MobileMenuComponent.TITLE_CALL_US' | translate}}">-->
+      <!--<i class="biglotteryowin-phone"></i> +44 (0) xxx xxxx xxx-->
+    <!--</a>-->
+  <!--</div>-->
+</div>

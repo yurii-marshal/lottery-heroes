@@ -1,0 +1,74 @@
+@font-face {
+  font-family: 'biglotteryowin-icons';
+  src: url('../assets/biglotteryowin-icons/font/biglotteryowin-icons.eot?40762341');
+  src: url('../assets/biglotteryowin-icons/font/biglotteryowin-icons.eot?40762341#iefix') format('embedded-opentype'),
+       url('../assets/biglotteryowin-icons/font/biglotteryowin-icons.woff2?40762341') format('woff2'),
+       url('../assets/biglotteryowin-icons/font/biglotteryowin-icons.woff?40762341') format('woff'),
+       url('../assets/biglotteryowin-icons/font/biglotteryowin-icons.ttf?40762341') format('truetype'),
+       url('../assets/biglotteryowin-icons/font/biglotteryowin-icons.svg?40762341#biglotteryowin-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'biglotteryowin-icons';
+    src: url('../font/biglotteryowin-icons.svg?40762341#biglotteryowin-icons') format('svg');
+  }
+}
+*/
+
+ [class^="biglotteryowin-"]:before, [class*=" biglotteryowin-"]:before {
+  font-family: "biglotteryowin-icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.biglotteryowin-heart-empty:before { content: '\e800'; }
+.biglotteryowin-heart:before { content: '\e801'; }
+.biglotteryowin-down-open:before { content: '\e802'; }
+.biglotteryowin-left-open:before { content: '\e803'; }
+.biglotteryowin-right-open:before { content: '\e804'; }
+.biglotteryowin-up-open:before { content: '\e805'; }
+.biglotteryowin-up-dir:before { content: '\e806'; }
+.biglotteryowin-trash:before { content: '\e807'; }
+.biglotteryowin-right-dir:before { content: '\e808'; }
+.biglotteryowin-left-dir:before { content: '\e809'; }
+.biglotteryowin-down-dir:before { content: '\e80a'; }
+.biglotteryowin-pencil:before { content: '\e80b'; }
+.biglotteryowin-question:before { content: '\e80d'; }
+.biglotteryowin-hourglass:before { content: '\e80c'; }
+.biglotteryowin-phone:before { content: '\e80e'; }
+.biglotteryowin-email:before { content: '\e80f'; }
+.biglotteryowin-chat:before { content: '\e810'; }

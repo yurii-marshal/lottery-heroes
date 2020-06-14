@@ -1,0 +1,20 @@
+{
+  "megamillions": {
+    "prices": [
+      {
+        "draw_id": null,
+        "base_line_price": 3.5,
+        "base_currency_id": "GBP"
+      }
+    ]
+  },
+  "powerball": {
+    "prices": [
+      {
+        "draw_id": null,
+        "base_line_price": 4,
+        "base_currency_id": "GBP"
+      }
+    ]
+  }
+}

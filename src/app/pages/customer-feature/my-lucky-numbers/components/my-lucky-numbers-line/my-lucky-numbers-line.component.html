@@ -1,0 +1,26 @@
+<div class="row flex-items-xs-between line my-lucky-numbers-line-component">
+  <div class="col-xs-10">
+    <form class="display-flex" [formGroup]="luckyNumbersLineForm">
+      <input *ngFor="let item of lineCounter; let i = index;" type="number"
+             class="number display-flex flex-items-xs-middle flex-items-xs-center" formControlName="num_{{i +1}}"
+             (input)="onInputMaxCheck('num_' + (i + 1))"
+             (focus)="onFocus('num_' + (i + 1))"
+             (blur)="onBlur('num_' + (i + 1))">
+    </form>
+    <div *ngIf="isGroupEmpty">
+      <p class="save-error">
+        {{'MyLuckyNumbersLineComponent.TEXT_VALUE_VALIDATION' | translate}}
+      </p>
+    </div>
+  </div>
+  <div class="col-xs-2">
+    <button class="bt clear" (click)="onTrashIconClicked()">
+      <svg viewBox="0 0 58.85 77.35">
+        <g><path class="cls-2"
+                 d="M65.37,21.52H10.58l3.3,57.25a66.81,66.81,0,0,0,22.7,3.85,93.49,93.49,0,0,0,25.5-3.85l3.3-57.25m-44.2,9.3a2.79,2.79,0,0,1,1.8.6,1.75,1.75,0,0,1,.85,1.35l2.7,37.15a1.58,1.58,0,0,1-.65,1.4,2.75,2.75,0,0,1-1.75.55,3,3,0,0,1-1.8-.55,1.81,1.81,0,0,1-.8-1.4l-2.7-37.15a1.56,1.56,0,0,1,.6-1.35,2.59,2.59,0,0,1,1.75-.6m16.8,0a2.79,2.79,0,0,1,1.8.6,1.66,1.66,0,0,1,.7,1.35V69.92a1.71,1.71,0,0,1-.7,1.4,3,3,0,0,1-1.8.55,2.75,2.75,0,0,1-1.75-.55,1.67,1.67,0,0,1-.75-1.4V32.77a1.63,1.63,0,0,1,.75-1.35,2.59,2.59,0,0,1,1.75-.6M53,31.42a2.79,2.79,0,0,1,1.8-.6,2.59,2.59,0,0,1,1.75.6,1.56,1.56,0,0,1,.6,1.35l-2.7,37.15a1.81,1.81,0,0,1-.8,1.4,3,3,0,0,1-1.8.55,2.75,2.75,0,0,1-1.75-.55,1.58,1.58,0,0,1-.65-1.4l2.7-37.15A1.75,1.75,0,0,1,53,31.42M32.48,5.27A1.54,1.54,0,0,0,31,6.77v4.6q-1.65.15-3.25,0.35a82.71,82.71,0,0,0-19.15,4.8l0.2,3.1h58.5l0.15-3.1a83.88,83.88,0,0,0-22.5-5.15V6.77a1.54,1.54,0,0,0-1.5-1.5H32.48m1.5,5.9V8.27h7.95v2.9Q40,11.07,38,11.07T34,11.17Z"
+                 transform="translate(-8.58 -5.27)"/>
+        </g>
+      </svg>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="container free-tickets-banner-mobile-component">
+  <div class="row">
+    <div class="col-xs display-flex flex-items-xs-bottom flex-items-xs-center new-line-container">
+      <div class="new-line display-flex flex-items-xs-between flex-items-xs-middle">
+        <span class="free-line-title">{{'TicketMobileComponent.TEXT_FREE_LINE' | translate}}</span>
+        <button class="bt purple get-free-line" (click)="autoselectForFreeLineEvent.emit()">
+          {{'TicketMobileComponent.BUTTON_FREE_LINE' | translate}}
+        </button>
+        <div class="gift-wrapper"><img src="assets/images/lottery-free-line/gift.svg" alt="free line" class="gift"></div>
+        <p class="free-line-counter text-xs-center" appTranslate="TicketMobileComponent.TEMPLATE_GET_FREE_LINES"></p>
+      </div>
+    </div>
+  </div>
+</div>

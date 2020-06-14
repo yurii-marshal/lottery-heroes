@@ -1,0 +1,150 @@
+@import '../../../../../scss/vars';
+
+.edit-line-lightbox-component {
+  height: 100vh;
+  overflow: scroll;
+  padding-bottom: 70px;
+
+  .modal-dialog {
+    width: 218px;
+  }
+
+  .line {
+    padding: 11px 22px;
+
+    .header {
+      .bt {
+        font-size: $small;
+        min-height: 23px; // height
+        width: 96px;
+        margin: 0;
+      }
+      .clear {
+        text-align: right;
+        padding: 0;
+        width: 30px;
+      }
+    }
+  }
+
+  .ticket-title {
+    position: relative;
+    text-transform: uppercase;
+    font-family: $headline;
+    font-size: 1.2rem;
+
+    color: $primary;
+
+    .tag-success {
+      position: absolute;
+      top: 0;
+      right: 1rem;
+      bottom: 0;
+      margin: auto;
+      color: $GREEN;
+      display: none;
+
+      img {
+        width: 1rem;
+        height: auto;
+      }
+    }
+  }
+
+  .ticket-title.clicked {
+    color: $GREEN;
+
+    .tag-success {
+      display: flex;
+    }
+  }
+
+  .line {
+    font-size: $small;
+    transition: all .3s ease;
+    position: relative;
+
+    &:hover {
+      .ticket-title {
+        opacity: 0;
+      }
+    }
+  }
+
+  .actions {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    right: 22px;
+  }
+
+  .line:hover .actions {
+    display: flex;
+  }
+
+  .caption {
+    font-family: $headline;
+    font-size: 0.9rem;
+    color: $primary;
+    padding: 7px 0 5px;
+  }
+
+  .numbers {
+    flex-wrap: wrap;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .number {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #a2a19c;
+    border-radius: 2px;
+    font-family: $CONTENT;
+    color: #000;
+    margin: 1px;
+    transition: all .2s ease;
+
+    font-size: 0.8rem;
+  }
+
+  .number.main {
+    @media (min-width: 768px) {
+      &:hover {
+        box-shadow: inset 0px 0px 0px 1px $YELLOW;
+        background: #fef2c1;
+        border-color: $YELLOW;
+      }
+    }
+  }
+
+  .number.main.picked {
+    background: $YELLOW;
+  }
+
+.number.extra {
+  background: #fff;
+  color: $BLUE;
+  border-color: $BLUE;
+  @media (min-width: 768px) {
+    &:hover {
+
+      background: $BLUE;color: #fff;
+    }
+  }
+}
+
+  .number.extra.picked {
+    color: #fff;
+    background: $BLUE;
+  }
+
+  .number.main.picked, .number.extra.picked {
+    &:hover {
+      border-color: $RED;
+      box-shadow: inset 0px 0px 0px 1px $RED;
+    }
+  }
+}

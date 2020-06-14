@@ -1,0 +1,529 @@
+@import '../../../../../scss/vars';
+
+.main-jackpot-component {
+  .title {
+    font-size: 23px;
+    font-family: $headline;
+    margin-bottom: 5px;
+    font-weight: normal;
+  }
+
+  .logo-wrapper {
+    margin-top: 30px;
+  }
+
+  .logo-container {
+    > div {
+      position: relative;
+    }
+  }
+
+  .logo {
+    width: auto;
+    height: 45px;
+  }
+
+  .bt {
+    min-width: 15.625rem;
+    line-height: 60px;
+    min-height: 60px; // height
+    font-size: 24px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 1px 2px 2px rgba(0, 0, 0, 0.4);
+    margin-right: 0.5rem;
+    text-transform: none;
+    margin-top: 0;
+  }
+
+  .jackpot {
+    font-family: $headline;
+    font-weight: bold;
+    margin: 1rem 0;
+
+    span {
+      vertical-align: text-bottom;
+      line-height: 84px;
+    }
+  }
+
+  .mil {
+    padding-left: 0.5rem;
+    position: relative;
+    top: 20px;
+  }
+
+  .time {
+    text-align: right;
+  }
+
+  .ribbon-wrapper {
+    z-index: 1;
+    position: absolute;
+
+    .ribbon {
+      width: 172px;
+    }
+
+    .ribbon-text {
+      cursor: pointer;
+      position: absolute;
+      font-family: $CONTENT;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .free {
+      font-size: $BASIC;
+    }
+  }
+
+  .no-jackpot-remark {
+    font-family: "Open Sans", sans-serif;
+    font-size: $small;
+    color: $BLUE;
+    font-weight: bold;
+    margin-top: -13px;
+  }
+
+  .no-jackpot {
+    font-family: "Open Sans", sans-serif;
+    font-size: $small;
+    color: $BLUE;
+    font-weight: bold;
+    position: absolute;
+    right: -7px;
+    top: -6px;
+  }
+
+  .timer {
+    line-height: 35px;
+  }
+
+  &.BIGLOTTERYOWIN_UK {
+    .title {
+      color: $primary;
+    }
+
+    .jackpot {
+      color: $BLUE;
+    }
+
+    .cur,
+    .val {
+      text-shadow: 0   -2px 1px #FFFFFF,
+      0   -2px 1px #FFFFFF,
+      0 2px 1px #FFFFFF,
+      0 2px 1px #FFFFFF,
+      -2px 0 1px #FFFFFF,
+      2px 0 1px #FFFFFF,
+      -2px 0 1px #FFFFFF,
+      2px 0 1px #FFFFFF,
+      -1px -2px 1px #FFFFFF,
+      1px -2px 1px #FFFFFF,
+      -1px 2px 1px #FFFFFF,
+      1px 2px 1px #FFFFFF,
+      -2px -1px 1px #FFFFFF,
+      2px -1px 1px #FFFFFF,
+      -2px 1px 1px #FFFFFF,
+      2px 1px 1px #FFFFFF,
+      -2px -2px 1px #FFFFFF,
+      2px -2px 1px #FFFFFF,
+      -2px 2px 1px #FFFFFF,
+      2px 2px 1px #FFFFFF,
+      -2px -2px 1px #FFFFFF,
+      2px -2px 1px #FFFFFF,
+      -2px 2px 1px #FFFFFF,
+      2px 2px 1px #FFFFFF, 3px 5px 4px rgba(0, 0, 0, 0.35);
+    }
+
+    .time {
+      color: $primary;
+    }
+  }
+
+  &.BIGLOTTERYOWIN_IE {
+    .jackpot,
+    .time {
+      color: #ecf6e6;
+    }
+
+    .cur,
+    .val,
+    .mil {
+      text-shadow: 0   -2px 1px #1a5103,
+      0   -2px 1px #1a5103,
+      0 2px 1px #1a5103,
+      0 2px 1px #1a5103,
+      -2px 0 1px #1a5103,
+      2px 0 1px #1a5103,
+      -2px 0 1px #1a5103,
+      2px 0 1px #1a5103,
+      -1px -2px 1px #1a5103,
+      1px -2px 1px #1a5103,
+      -1px 2px 1px #1a5103,
+      1px 2px 1px #1a5103,
+      -2px -1px 1px #1a5103,
+      2px -1px 1px #1a5103,
+      -2px 1px 1px #1a5103,
+      2px 1px 1px #1a5103,
+      -2px -2px 1px #1a5103,
+      2px -2px 1px #1a5103,
+      -2px 2px 1px #1a5103,
+      2px 2px 1px #1a5103,
+      -2px -2px 1px #1a5103,
+      2px -2px 1px #1a5103,
+      -2px 2px 1px #1a5103,
+      2px 2px 1px #1a5103, 0 7px 0 #0A4201;
+    }
+
+    .mil {
+      color: #f3c906;
+    }
+
+    .bt {
+      background: #2bb13e;
+      border: 2px solid #178027;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.6);
+
+      &:hover {
+        background: #3ad74f;
+      }
+    }
+  }
+
+  &.BIGLOTTERYOWIN_COM {
+    .title,
+    .time {
+      color: #010d2e;
+    }
+
+    .title {
+      font-weight: bold;
+    }
+
+    .cur,
+    .val,
+    .mil {
+      color: #3152a8;
+      text-shadow: 0   -2px 1px #fff,
+      0   -2px 1px #fff,
+      0 2px 1px #fff,
+      0 2px 1px #fff,
+      -2px 0 1px #fff,
+      2px 0 1px #fff,
+      -2px 0 1px #fff,
+      2px 0 1px #fff,
+      -1px -2px 1px #fff,
+      1px -2px 1px #fff,
+      -1px 2px 1px #fff,
+      1px 2px 1px #fff,
+      -2px -1px 1px #fff,
+      2px -1px 1px #fff,
+      -2px 1px 1px #fff,
+      2px 1px 1px #fff,
+      -2px -2px 1px #fff,
+      2px -2px 1px #fff,
+      -2px 2px 1px #fff,
+      2px 2px 1px #fff,
+      -2px -2px 1px #fff,
+      2px -2px 1px #fff,
+      -2px 2px 1px #fff,
+      2px 2px 1px #fff, 0 7px 5px #d3bf73;
+    }
+
+    .bt {
+      background: #1aa32f;
+      border: 2px solid #178027;
+      box-shadow: 0 3px 5px #6f8e0d;
+
+      &:hover {
+        background: #3ad74f;
+      }
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    //.logo-wrapper {
+    //  margin-top: 0;
+    //}
+
+    .jackpot {
+      text-align: center;
+      margin: 0.5rem 0;
+    }
+
+    .timer {
+      margin: 1rem 0;
+      padding-bottom: 170px;
+      flex-direction: column;
+
+      .time {
+        min-height: 35px;
+      }
+    }
+
+    .cur,
+    .val {
+      font-size: 70px;
+    }
+
+    .mil {
+      font-size: 45px;
+      display: block;
+      margin-top: -10px;
+    }
+
+    .bar {
+      width: 72%;
+      margin-bottom: 7px;
+    }
+
+    .bt {
+      margin-right: 0;
+    }
+
+    .logo {
+      max-width: 320px;
+    }
+
+    .logo-container {
+      > div {
+        min-width: 100%;
+      }
+    }
+
+    .ribbon-wrapper {
+      right: -15px;
+      top: -17px;
+
+      .ribbon {
+        margin: -7px -8px 0 0;
+      }
+
+      .ribbon-stars {
+        transform: rotate(45deg);
+        position: absolute;
+        top: 23px;
+        left: 88px;
+
+        .star.left,
+        .star.right {
+          width: 23px;
+          transform: rotate(30deg);
+        }
+      }
+
+      .ribbon-text {
+        cursor: pointer;
+        top: 51px;
+        left: 20px;
+        transform: rotate(45deg);
+        font-size: $BASIC;
+        width: 100%;
+      }
+
+      .free {
+        color: #fff;
+      }
+    }
+
+    .no-jackpot {
+      right: inherit;
+    }
+
+    &.BIGLOTTERYOWIN_UK {
+      .title {
+        display: none;
+      }
+
+      .timer {
+        font-weight: bold;
+      }
+
+      .time {
+        color: #fff;
+      }
+    }
+
+    &.BIGLOTTERYOWIN_IE {
+      .title {
+        margin-top: 5px;
+        line-height: 28px;
+      }
+
+      .timer {
+        padding-bottom: 161px;
+      }
+
+      .ribbon-wrapper {
+        top: -81px;
+      }
+
+      .cur,
+      .val,
+      .mil {
+        text-shadow: 0   -2px 1px #1a5103,
+        0   -2px 1px #1a5103,
+        0 2px 1px #1a5103,
+        0 2px 1px #1a5103,
+        -2px 0 1px #1a5103,
+        2px 0 1px #1a5103,
+        -2px 0 1px #1a5103,
+        2px 0 1px #1a5103,
+        -1px -2px 1px #1a5103,
+        1px -2px 1px #1a5103,
+        -1px 2px 1px #1a5103,
+        1px 2px 1px #1a5103,
+        -2px -1px 1px #1a5103,
+        2px -1px 1px #1a5103,
+        -2px 1px 1px #1a5103,
+        2px 1px 1px #1a5103,
+        -2px -2px 1px #1a5103,
+        2px -2px 1px #1a5103,
+        -2px 2px 1px #1a5103,
+        2px 2px 1px #1a5103,
+        -2px -2px 1px #1a5103,
+        2px -2px 1px #1a5103,
+        -2px 2px 1px #1a5103,
+        2px 2px 1px #1a5103, 0 5px 0 #0A4201;
+      }
+    }
+
+
+    &.BIGLOTTERYOWIN_COM {
+      .title {
+        line-height: 28px;
+      }
+
+      .ribbon-wrapper {
+        top: -75px;
+      }
+
+      .time {
+        color: #1b1600;
+      }
+
+      .timer {
+        margin-top: 5px;
+      }
+
+      .bt {
+        box-shadow: 0 4px 0 #6f8e0d;
+      }
+    }
+  }
+
+  @media (max-width: 376px) {
+    .timer {
+      padding-bottom: 165px;
+    }
+
+    .logo {
+      width: 100%;
+    }
+
+    &.BIGLOTTERYOWIN_IE {
+      .timer {
+        padding-bottom: 150px;
+        margin-top: 4px;
+      }
+    }
+  }
+
+  @media (max-width: 320px) {
+    .timer {
+      padding-bottom: 50px;
+    }
+
+    .jackpot span {
+      line-height: 64px;
+    }
+
+    .cur,
+    .val {
+      font-size: 65px;
+    }
+
+    .mil {
+      font-size: 30px;
+      display: block;
+      margin-top: -5px;
+    }
+
+    &.BIGLOTTERYOWIN_IE {
+      .timer {
+        padding-bottom: 130px;
+        margin-top: 0;
+      }
+
+      .title {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .ribbon-wrapper {
+        top: -71px;
+      }
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    .timer {
+      max-width: 15.625rem;
+      margin: 0.45rem 0;
+    }
+
+    .cur {
+      font-size: 90px;
+    }
+
+    .val {
+      font-size: 114px;
+    }
+
+    .mil {
+      font-size: 65px;
+    }
+
+    .logo-container {
+      > div {
+        min-width: 240px;
+      }
+    }
+
+    .ribbon-wrapper {
+      right: -144px;
+      top: -36px;
+
+      .ribbon-text {
+        cursor: pointer;
+        top: 51px;
+        left: 57px;
+        transform: rotate(15deg);
+        font-size: 12px;
+      }
+
+      .free {
+        color: $YELLOW;
+        line-height: $small;
+        display: block;
+      }
+
+      .plus {
+        display: block;
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .title {
+      font-size: 24px;
+    }
+  }
+}
+
+

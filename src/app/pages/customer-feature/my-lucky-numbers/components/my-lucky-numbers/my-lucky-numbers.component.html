@@ -1,0 +1,58 @@
+<section id="account-lucky-numbers" class="my-lucky-numbers-component">
+  <div class="row hidden-md-up">
+    <div class="col-xs-4">
+      <div class="link back" (click)="onBackToMenu()" [routerLink]="['/myaccount']">
+        <svg viewBox="0 0 46.01 27.74">
+          <title>{{'MyLuckyNumbersComponent.TEXT_BACK' | translate}}</title>
+          <path d="M12.36,7.11L30.54,25.23A4.81,4.81,0,0,1,23.72,32L5.54,13.91A4.81,4.81,0,0,1,12.36,7.11Z"
+                transform="translate(-4.13 -5.7)"/>
+          <path d="M48.73,7.11a4.8,4.8,0,0,1,0,6.8L30.54,32a4.81,4.81,0,0,1-6.82-6.8L41.91,7.11A4.83,4.83,0,0,1,48.73,7.11Z"
+                transform="translate(-4.13 -5.7)"/>
+        </svg>
+        <span>{{'MyLuckyNumbersComponent.TEXT_BACK' | translate}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!--- Header --->
+    <div class="row flex-items-xs-top flex-items-xs-between header">
+      <div class="title">
+        {{'MyLuckyNumbersComponent.TEXT_LUCKY_NUMS' | translate}}
+        <i class="biglotteryowin-heart"></i></div>
+      <div class="action">
+        <button type="button" class="bt only-text grey cancel"
+                *ngIf="isEditDetails"
+                (click)="onCancel()">
+          {{'MyLuckyNumbersComponent.BUTTON_CANCEL' | translate}}
+        </button>
+        <button type="submit" class="bt bordered green"
+                *ngIf="isEditDetails"
+                (click)="onSave()">
+          {{'MyLuckyNumbersComponent.BUTTON_SAVE' | translate}}
+        </button>
+        <button type="button" class="bt green edit"
+                *ngIf="!isEditDetails"
+                (click)="onEdit()">
+          {{'MyLuckyNumbersComponent.BUTTON_EDIT' | translate}}
+        </button>
+      </div>
+    </div>
+
+    <!--- No numbers --->
+    <app-no-lucky-numbers *ngIf="(editLuckyNumbers$|async).length === 0"></app-no-lucky-numbers>
+
+    <!--- Resulted data --->
+    <app-my-lucky-numbers-saved
+      *ngIf="!isEditDetails && (editLuckyNumbers$|async).length !== 0"
+      [editLuckyNumbers]="editLuckyNumbers$|async"
+    ></app-my-lucky-numbers-saved>
+
+    <!--- Editable data --->
+    <app-my-lucky-numbers-edit
+      *ngIf="isEditDetails"
+      [editLuckyNumbers]="editLuckyNumbers$|async"
+      [editNewLuckyNumbers]="editNewLuckyNumbers$|async"
+    ></app-my-lucky-numbers-edit>
+  </div>
+</section>

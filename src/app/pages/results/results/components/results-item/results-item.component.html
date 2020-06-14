@@ -1,0 +1,70 @@
+<div class="row single-line results-item-component">
+  <div class="col-xs-10">
+    <div class="row">
+      <div class="col-xs-3 col-md-3 display-flex flex-items-xs-middle flex-items-xs-left lottery-name">
+
+        <ng-container *ngIf="isShowLogoLink()">
+          <a class="lotteries-logo" [routerLink]="['/', lotterySlug]" [appProductLink]="lottery.id" [listKey]="'results'"
+             [position]="position" title="{{lottery.name}}" [attr.itemprop]="setItempropAttr()">
+            <img [src]="lottery.logo" alt="{{lottery.name}}" class="lottery-logo">
+          </a>
+          <a class="hidden-sm-down lottery-info"
+             [routerLink]="['/', lotterySlug]"
+             [appProductLink]="lottery.id"
+             [listKey]="'results'"
+             [position]="position"
+             title="{{lottery.name}}"
+             [attr.itemprop]="setItempropAttr()"
+          >{{lottery.name}}</a>
+        </ng-container>
+
+        <ng-container *ngIf="!isShowLogoLink()">
+          <span class="lotteries-logo">
+            <img [src]="lottery.logo" alt="{{lottery.name}}" class="lottery-logo">
+          </span>
+          <span class="hidden-sm-down lottery-info">
+            {{lottery.name}}
+          </span>
+        </ng-container>
+
+      </div>
+      <div class="hidden-md-down col-lg-2 display-flex flex-items-xs-middle flex flex-items-xs-left">
+        {{lotteryCountryName}}
+      </div>
+      <div class="col-xs-9 col-md-2 display-flex flex-items-xs-middle flex flex-items-xs-left date-col">
+        <div class="date">
+          <span [ngClass]="{'show': showToday}">{{'ResultsItemComponent.TEXT_TODAY' | translate}},</span>
+          <span [ngClass]="{'show': showYesterday}">{{'ResultsItemComponent.TEXT_YESTERDAY' | translate}},</span>
+          <span [ngClass]="{'show': showDay}">{{latestDraw.date_local | date:'EEE'}},</span>
+          {{latestDraw.date_local | date}}
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-5 display-flex flex-items-xs-middle">
+        <div class="latest-draw display-flex flex-items-xs-middle flex-items-md-left">
+          <span class="number main display-flex flex-items-xs-middle flex-items-xs-center"
+                *ngFor="let main of latestDraw.winning_main_numbers; let last = last;" [ngClass]="{'last': last}">{{main}}</span>
+          <span class="number extra display-flex flex-items-xs-middle flex-items-xs-center"
+                *ngFor="let extra of latestDraw.winning_extra_numbers">{{extra}}</span>
+          <span class="number extra display-flex flex-items-xs-middle flex-items-xs-center"
+                *ngFor="let perTicket of latestDraw.winning_perticket_numbers">{{perTicket}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-2 display-flex last">
+    <a class="link display-flex flex-items-xs-right flex-items-xs-middle"
+       [attr.itemprop]="setItempropAttr()"
+       (click)="onTrackSeeAllResultsClicked(lottery.name)"
+       [routerLink]="['/' + lotterySlug, 'results']"
+       title="{{'ResultsItemComponent.TITLE_SEE_RES' | translate}}">
+      <span class="hidden-sm-down">{{'ResultsItemComponent.TEXT_SEE_ALL_RES' | translate}}</span>
+      <svg role="img" class="arrow" data-name="Layer 1" viewBox="0 0 46.01 27.74">
+        <title>{{'ResultsItemComponent.TITLE_SEE_RES' | translate}}</title>
+        <path fill="#469ADA" d="M12.36,7.11L30.54,25.23A4.81,4.81,0,0,1,23.72,32L5.54,13.91A4.81,4.81,0,0,1,12.36,7.11Z"
+              transform="translate(-4.13 -5.7)"/>
+        <path fill="#469ADA" d="M48.73,7.11a4.8,4.8,0,0,1,0,6.8L30.54,32a4.81,4.81,0,0,1-6.82-6.8L41.91,7.11A4.83,4.83,0,0,1,48.73,7.11Z"
+              transform="translate(-4.13 -5.7)"/>
+      </svg>
+    </a>
+  </div>
+</div>

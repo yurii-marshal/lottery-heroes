@@ -1,0 +1,17 @@
+<div class="ticket-popup ticket-edit-mobile-component" [ngClass]="{animated: editedLineDelayed}">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs display-flex flex-items-xs-center">
+        <div class="overlay-control display-flex flex-items-xs-middle flex-items-xs-between">
+          <div class="line-number">{{'TicketMobileComponent.TEXT_LINE' | translate}} {{lineIndex}}</div>
+          <button class="bt close" (click)="closeEditEvent.emit()">×</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 overlay">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

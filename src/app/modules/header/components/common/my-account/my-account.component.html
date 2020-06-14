@@ -1,0 +1,49 @@
+<div class="container-fluid my-account-menu-component">
+  <div class="row">
+    <div class="col-xs display-flex flex-items-xs-left direction-column gutters">
+      <a
+        [routerLink]="['/myaccount/details']"
+        (click)="onTrackNavigationClicked('Personal details')"
+        (click)="hideOpenedDropDown()">
+        {{'MyAccountComponent.REF_PERSONAL_DETAILS' | translate}}
+      </a>
+      <a
+        [routerLink]="['/myaccount/lines']"
+        (click)="onTrackNavigationClicked('My Games')"
+        (click)="hideOpenedDropDown()">
+        {{'MyAccountComponent.REF_MY_GAMES' | translate}}
+      </a>
+      <a
+        [routerLink]="['/myaccount/transactions']"
+        (click)="onTrackNavigationClicked('My Transactions')"
+        (click)="hideOpenedDropDown()">
+        {{'MyAccountComponent.REF_MY_TRANSACTIONS' | translate}}
+      </a>
+      <a
+        [routerLink]="['/myaccount/deposit']"
+        (click)="onTrackNavigationClicked('Deposit & Withdraw')"
+        (click)="hideOpenedDropDown()">
+        {{'MyAccountComponent.REF_DEPOSIT_WITHDRAW' | translate}}
+      </a>
+      <a
+        [routerLink]="['/myaccount/my-lucky-numbers']"
+        (click)="onTrackNavigationClicked('My Lucky Numbers')"
+        (click)="hideOpenedDropDown()">
+        {{'MyAccountComponent.REF_LUCKY_NUMBERS' | translate}}
+      </a>
+      <a
+        (click)="onTrackNavigationClicked('Log out')"
+        (click)="onLogout(); hideOpenedDropDown()">
+        {{'MyAccountComponent.REF_LOG_OUT' | translate}}
+      </a>
+    </div>
+  </div>
+  <div class="row" *ngIf="balance$|async">
+    <div class="col-xs">
+      <div class="balance">
+        {{'MyAccountComponent.TEXT_BALANCE' | translate}}:
+        {{(balance$|async).customer_total|currency:siteCurrencyId:'symbol':'1.2-2'}}
+      </div>
+    </div>
+  </div>
+</div>

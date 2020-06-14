@@ -1,0 +1,18 @@
+<div class="container-fluid results-menu-list-component">
+  <div class="cover"
+       *ngFor="let lotteryId of lotteryIds; let currentIndex = index;"
+       [class.bordered]=" currentIndex== 1">
+    <app-results-menu-list-item-container
+        [lotteryId]="lotteryId"
+    ></app-results-menu-list-item-container>
+  </div>
+  <div class="row">
+    <div class="col-xs text-xs-center">
+      <a class="link"
+         (click)="onTrackNavigationClicked('Results - see all results')"
+         [routerLink]="['/lotteries/results']">
+        {{'ResultsMenuListComponent.REF_SEE_RESULTS' | translate}}
+      </a>
+    </div>
+  </div>
+</div>

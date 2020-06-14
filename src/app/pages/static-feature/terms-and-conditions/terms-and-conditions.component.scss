@@ -1,0 +1,72 @@
+@import '../../../../scss/vars';
+
+.terms-and-conditions-component {
+  .title-privacy {
+    @include primary-title;
+  }
+
+  a {
+    word-break: break-all;
+  }
+
+  .item-title {
+    font-family: $headline;
+    color: $primary;
+    margin-top: 2rem;
+  }
+
+  ol {
+    padding-left: 20px;
+  }
+
+  ul {
+    padding-left: 0;
+
+    li {
+      position: relative;
+      padding-left: 13px;
+
+      &::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 10px;
+        background: $BLUE;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+
+  .list-items > p:first-child {
+    padding-top: 1rem;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    p, li {
+      font-size: $small;
+    }
+    ul {
+      li {
+        &::before {
+          top: 10px;
+        }
+      }
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    .item-title {
+      font-size: $MEDIUM;
+    }
+    ul {
+      li {
+        &::before {
+          top: 11px;
+        }
+      }
+    }
+  }
+}

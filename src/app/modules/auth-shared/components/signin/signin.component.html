@@ -1,0 +1,93 @@
+<div class="signin-component">
+  <div class="modal-body">
+    <p class="text-xs-center">
+      {{'SigninComponent.TEXT_NOT_REG' | translate}}
+      <a (click)="onTrackLogInClicked('Create a free account')"
+         (click)="showNewComponent('signup')"
+         class="link"
+         title="{{'SigninComponent.REF_CREATE_YOUR_ACC' | translate}}">
+        {{'SigninComponent.REF_CREATE_FREE_ACC' | translate}}
+      </a>
+    </p>
+
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="input-wr"
+             [ngClass]="{'has-error': (isErrorField('email') || signinForm.controls['email'].touched && signinForm.controls['email'].invalid)}">
+          <label for="signin-email"></label>
+          <input
+            formControlName="email"
+            maxlength="256"
+            placeholder="{{'SigninComponent.PLACEHOLDER_EMAIL' | translate}}*"
+            type="text"
+            id="signin-email">
+
+          <div class="icon-tooltip icon-error" *ngIf="isErrorField('email')"><span>!</span></div>
+          <div class="tooltip-container error" *ngIf="isErrorField('email')">
+            <div class="tooltip-body">
+              <p>{{ errorObj.email.message }}</p>
+            </div>
+          </div>
+
+          <div class="icon-tooltip icon-error"
+               *ngIf="signinForm.controls['email'].touched && signinForm.controls['email'].invalid">
+            <span>!</span></div>
+          <div class="tooltip-container error"
+               *ngIf="signinForm.controls['email'].touched && signinForm.controls['email'].invalid">
+            <div class="tooltip-body">
+              <p>{{ 'ERRORS.email$' | translate }}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-wr"
+             [ngClass]="{'has-error': (isErrorField('password') || signinForm.controls['password'].touched && signinForm.controls['password'].invalid)}">
+          <label for="signin-password"></label>
+          <input
+            formControlName="password"
+            maxlength="256"
+            placeholder="{{'SigninComponent.PLACEHOLDER_PASS' | translate}}*"
+            type="password"
+            id="signin-password"
+            #password>
+          <div id="show_password" (click)="showPassword(password)"></div>
+
+          <div class="icon-tooltip icon-error"
+               *ngIf="signinForm.controls['password'].touched && signinForm.controls['password'].invalid">
+            <span>!</span></div>
+          <div class="tooltip-container error"
+               *ngIf="signinForm.controls['password'].touched && signinForm.controls['password'].invalid &&
+               (signinForm.controls['password'].hasError('passwordInvalid') || signinForm.controls['password'].hasError('required'))">
+            <div class="tooltip-body">
+              <p>{{ 'ERRORS.invalid_login_password' | translate }}</p>
+            </div>
+          </div>
+          <div class="tooltip-container error"
+               *ngIf="signinForm.controls['password'].touched && signinForm.controls['password'].invalid && signinForm.controls['password'].hasError('maxlength')">
+            <div class="tooltip-body">
+              <p>{{ 'ERRORS.maxlen$_password' | translate }}</p>
+            </div>
+          </div>
+          <div class="icon-tooltip icon-error" *ngIf="isErrorField('password')"><span>!</span></div>
+          <div class="tooltip-container error" *ngIf="isErrorField('password')">
+           <div class="tooltip-body">
+             <p>{{ errorObj.password.message }}</p>
+           </div>
+          </div>
+
+        </div>
+      </div>
+      <p class="text-xs-center forgot-pass">
+        <a (click)="showNewComponent('forgot-password')" class="link" title="{{'SigninComponent.TITLE_FORGOT_PASS' | translate}}">
+          {{'SigninComponent.REF_FORGOT_PASS' | translate}}
+        </a>
+      </p>
+      <button (click)="onTrackLogInClicked('Sign in')" type="submit" class="bt green" title="{{'SigninComponent.TITLE_SIGN_TO_ACC' | translate}}">
+        {{'SigninComponent.BUTTON_SIGN_IN' | translate}}
+      </button>
+    </form>
+  </div>
+</div>

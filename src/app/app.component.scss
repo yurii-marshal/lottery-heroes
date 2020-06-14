@@ -1,0 +1,90 @@
+@import '../scss/vars';
+
+.cover {
+  .app-swiper {
+    padding-top: 150px;
+
+    &.withCookie {
+      padding-top: calc(30px + 5.5rem);
+    }
+
+    .blackout {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 800; //should be less then header: 800
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .withCookie {
+      .header-container {
+        top: 30px;
+      }
+    }
+
+    .app-swiper {
+      padding-top: 2.2rem;
+
+      &.withCookie {
+        padding-top: 67px;
+      }
+    }
+
+    &.active {
+      overflow: hidden;
+
+      .app-swiper{
+        .blackout {
+          display: block;
+        }
+      }
+    }
+    .header-container,
+    .content-container {
+      padding-top: 16px;
+      background: #fff;
+    }
+  }
+
+  @media (max-width: 554px) {
+    .withCookie {
+      .header-container {
+        top: 46px;
+      }
+    }
+
+    .app-swiper {
+      &.withCookie {
+        padding-top: 83px;
+      }
+    }
+  }
+
+  @media (max-width: 306px) {
+    .header-container,
+    .content-container {
+      padding-top: 37px;
+    }
+  }
+}
+
+.header-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 23px 0;
+  background-color: #ffffff;
+}
+
+.withCookie {
+  .header-container {
+    top: 30px;
+  }
+}

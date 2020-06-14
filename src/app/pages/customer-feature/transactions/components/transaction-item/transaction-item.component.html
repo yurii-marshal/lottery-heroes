@@ -1,0 +1,12 @@
+<div class="row flex-items-xs-middle table-row" [ngClass]="{'open':isOpened}" (click)="onTriggerOpen()">
+  <div class="col-xs td col-md date">{{transaction.updated_at | date: 'dd/MM/y' }}</div>
+  <div class="col-xs col-md td type" [appTranslate]="'TransactionsComponent.transactionsType' + transaction.type.id"></div>
+  <div class="col-xs-12 col-md-4 td confirmation">
+    <span class="desc hidden-md-up">Confirmation No:</span>{{transaction.id}}</div>
+  <div class="col-xs col-md-2 td amount">
+    <span class="minus"
+          [innerHTML]="(transaction.type.name === 'Purchase order' || transaction.type.name === 'Withdraw') ? '-' : ''"></span>
+    <span class="winning-sum">{{transaction.customer_amount|currency:siteCurrencyId:'symbol':'1.2-2'}}</span>
+  </div>
+  <div class="td hidden-md-up view"><span class="arrow"></span></div>
+</div>

@@ -1,0 +1,66 @@
+@import '../../../../../../../scss/vars';
+
+:host {
+
+  .list {
+    margin-top: 20px;
+  }
+
+  .item {
+    + .item {
+      border-left: 1px solid #cecece;
+    }
+  }
+
+  @media (max-width: 567px) {
+
+    .item {
+      padding-bottom: 20px;
+      max-width: 330px;
+
+      + .item {
+        border-top: 1px solid #cecece;
+        border-left: 0;
+        padding-top: 20px;
+      }
+    }
+
+    .list {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .item {
+      max-width: 100%;
+    }
+  }
+
+  @media (min-width: 568px) and (max-width: 767px) {
+    .list {
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .item {
+      max-width: 240px;
+
+      &+.item {
+        border: 0;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .item {
+      max-width: 240px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .item {
+      max-width: 340px;
+    }
+  }
+}

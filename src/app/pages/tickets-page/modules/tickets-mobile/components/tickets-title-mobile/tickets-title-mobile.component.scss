@@ -1,0 +1,22 @@
+@import '../../../../../../../scss/vars';
+
+.tickets-title-mobile-component {
+  font-family: $headline;
+  max-width: 345px;
+  font-size: $BASIC;
+  color: $primary;
+  padding-top: 15px;
+  margin: 0 auto;
+  padding-left: 0;
+
+  span {
+    font-weight: normal;
+    font-size: $small;
+  }
+
+  @media (max-width: 320px) {
+    max-width: 320px;
+    padding-left: 15px;
+  }
+}
+

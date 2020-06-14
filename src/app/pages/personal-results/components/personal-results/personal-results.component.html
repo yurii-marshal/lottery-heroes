@@ -1,0 +1,63 @@
+<div class="container">
+
+  <!--- Winning numbers --->
+  <div class="row" *ngIf="lottery !== null && draw !== null">
+    <div class="col-xs-12">
+      <app-winning-results-container
+        [customer]="customer"
+        [lottery]="lottery"
+        [draw]="draw"
+      ></app-winning-results-container>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+
+      <!--Boxes for up/cross-sale-->
+      <!--TODO: Footers were hided until content will be discussed MG-3136-->
+      <div class="sale-boxes">
+        <div class="text-xs-center section-title sale-boxes-title">
+          {{'PersonalResultsComponent.TEXT_WHAT_NOW' | translate}}
+        </div>
+        <div class="boxes-wrapper display-flex flex-items-md-around">
+          <div class="box">
+            <div class="order-number" *ngIf="box1ViewContainerRef.length > 0">1</div>
+            <ng-template #box1></ng-template><div class="footer" *ngIf="false">
+              <span class="heart-sign">&#9825;</span>
+            {{'PersonalResultsComponent.TEXT_WINNERS_PICKED' | translate}}
+            </div>
+          </div>
+          <div class="box">
+            <div class="order-number" *ngIf="box2ViewContainerRef.length > 0">2</div>
+            <ng-template #box2></ng-template><div class="footer" *ngIf="false">
+              <span class="heart-sign">&#9825;</span>
+            {{'PersonalResultsComponent.TEXT_WINNERS_PICKED' | translate}}
+            </div>
+          </div>
+          <div class="box">
+            <div class="order-number" *ngIf="box3ViewContainerRef.length > 0">3</div>
+            <ng-template #box3></ng-template><div class="footer" *ngIf="false">
+              <span class="heart-sign">&#9825;</span>
+            {{'PersonalResultsComponent.TEXT_WINNERS_PICKED' | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--- Fun Facts --->
+  <div class="row" *ngIf="lottery !== null">
+    <div class="col-xs-12">
+      <div class="text-xs-center section-title fun-facts-title">{{lottery.name}} {{'PersonalResultsComponent.TEXT_GOOD_TO_KNOW' | translate}}</div>
+      <div class="fun-facts-container">
+        <app-lottery-widgets-statistics-container
+          [pageType]="'ResultPage'"
+          [showCaption]="false"
+          [lotteryId]="lottery.id"
+        ></app-lottery-widgets-statistics-container>
+      </div>
+    </div>
+  </div>
+</div>

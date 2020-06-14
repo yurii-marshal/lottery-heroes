@@ -1,0 +1,87 @@
+@import '../../../../../../scss/vars';
+
+.contacts-component {
+  .title-contact-us {
+    @include primary-title;
+  }
+
+  .h3 {
+    font-size: $MEDIUM;
+    font-family: $headline;
+    color: $primary;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #929292;
+  }
+
+  .list {
+    max-width: 16.25rem;
+  }
+
+  .col {
+    margin: 1rem 0 2rem;
+
+    > * {
+      width: 100%;
+      max-width: 23.75rem;
+    }
+    + .col {
+      border-left: 1px solid $GRAY-LIGHTER;
+    }
+  }
+
+  .line {
+    margin-top: 1.625rem;
+    text-decoration: none;
+
+    &:first-child {
+      margin-top: 1rem;
+    }
+    span {
+      color: $primary;
+
+      &:hover {
+        color: $BLUE;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .img {
+    width: 30px;
+    text-align: center;
+    margin-right: 1rem;
+    vertical-align: middle;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .col:first-child {
+      order: 1;
+    }
+    .more {
+      order: 2;
+
+      > * {
+        font-size: $small;
+      }
+    }
+    .col + .col {
+      order: 3;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  /* MOBILE */
+  @media (min-width: 768px) {
+    .col {
+      margin-top: 2rem;
+      margin-bottom: 4.68rem;
+    }
+  }
+}

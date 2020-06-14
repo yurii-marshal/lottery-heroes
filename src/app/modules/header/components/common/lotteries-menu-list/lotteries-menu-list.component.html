@@ -1,0 +1,19 @@
+<div class="container-fluid lotteries-menu-list-component">
+  <div class="row">
+    <div class="col-xs lotteries-wrapper text-xs-center"
+         *ngFor="let lotteryId of lotteryIds; let currentIndex = index;">
+      <app-lotteries-menu-list-item-container
+          [lotteryId]="lotteryId"
+      ></app-lotteries-menu-list-item-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs text-xs-center">
+      <a class="link"
+         (click)="onTrackNavigationClicked('Lotteries - see more lotteries')"
+         [routerLink]="['/lotteries']">
+        {{'LotteriesMenuListComponent.REF_MORE_LOTTERIES' | translate}}
+      </a>
+    </div>
+  </div>
+</div>

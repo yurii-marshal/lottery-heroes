@@ -1,0 +1,42 @@
+<div role="dialog" *ngIf="isShow" class="modal">
+  <div class="modal-dialog" [ngClass]="{'status-limited':afterAuthLimitedMessage}">
+    <div class="modal-content">
+      <div class="modal-header">
+        <ng-container *ngIf="afterAuthLimitedMessage; else elseTplHeader">
+          <div class="modal-ico"><img src="assets/images/svg/lock_icon.svg"></div>
+          <div class="modal-title">
+            {{'lightboxLimitedStatus.TEXT_ACC_LIMITED' | translate}}
+          </div>
+        </ng-container>
+        <ng-template #elseTplHeader>
+          <div class="modal-title">
+            {{'lightboxLimitedStatus.TEXT_CONFIRMATION' | translate}}
+          </div>
+        </ng-template>
+        <button type="button" class="close" (click)="closeLightbox()">×</button>
+      </div>
+      <div class="modal-body">
+
+        <!--- Limited message after login --->
+        <ng-container *ngIf="afterAuthLimitedMessage; else elseTplBody">
+          <div class="text-xs-center" appTranslate="lightboxLimitedStatus.TEMPLATE_LIMITED_STATUS"></div>
+        </ng-container>
+
+        <!--- Limited message basic --->
+        <ng-template #elseTplBody>
+          <p class="text-xs-center">
+            {{'lightboxLimitedStatus.TEXT_ACC_LIMITED_FOR_ACTION' | translate}}
+          </p>
+          <div [innerHTML]="'lightboxLimitedStatus.TEMPLATE_SUPPORT' | translate: {param: supportEmail}"></div>
+          <div class="row flex-items-xs-center form-row">
+            <button type="button" class="col-xs bt green save" (click)="closeLightbox()">
+              {{'lightboxLimitedStatus.BUTTON_CLOSE' | translate}}
+            </button>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeLightbox()"></div>
+</div>

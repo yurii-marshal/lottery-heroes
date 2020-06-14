@@ -1,0 +1,57 @@
+@import '../../../../../scss/_vars';
+
+.about-us-inner-uk-component {
+  .about-us-title {
+    @include primary-title;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15px -15px;
+  }
+
+  .about-sections {
+    overflow: hidden;
+  }
+
+  .about-main-view {
+    margin-bottom: 20px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .about-section-title {
+    background: $primary;
+    font-size: $LARGE;
+    color: #fff;
+    width: 200px;
+    height: 200px;
+    border-radius: 999px;
+    margin: 40px auto;
+    overflow: hidden;
+  }
+
+  .about-section-inf {
+    margin: 0;
+    padding-bottom: 40px;
+  }
+
+  @media (max-width: 767px) {
+    .about-section-wrapper {
+      border: none;
+    }
+
+    .about-sections {
+      background: #f1f2f6;
+    }
+
+    .about-section-inf {
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .slogan {
+      font-size: 1.25rem;
+      margin: 2rem 2rem 2rem 0;
+    }
+  }
+}

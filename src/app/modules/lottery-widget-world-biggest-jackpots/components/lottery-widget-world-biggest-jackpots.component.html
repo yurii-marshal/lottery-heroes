@@ -1,0 +1,45 @@
+<div class="container worlds-biggest-jackpot-component">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="title">
+        {{'LotteryWidgetWorldBiggestJackpotsComponent.TEXT_BIGGEST_LOTTERIES' | translate}}
+      </h2>
+      <div class="display-flex flex-items-xs-middle flex-items-xs-between items">
+
+        <div class="item" *ngFor="let item of items; let index = index; let last = last;"
+             [ngClass]="{hidden: last}">
+          <div class="display-flex flex-items-xs-center flex-items-md-left flex-items-xs-middle">
+            <a class="img"
+               [routerLink]="['/', item.slug]"
+               [appProductLink]="item.lotteryId"
+               [listKey]="'homeBottom'"
+               [position]="index + 1">
+              <img class="logo" src="{{item.logo}}" alt="{{item.name}}" title="{{item.name}}">
+              <div class="syndicate-icon" *ngIf="item.type === 'syndicate'">
+                <img src="assets/images/syndicates/syndicate_icon.svg" alt="syndicate_icon">
+              </div>
+            </a>
+          </div>
+          <a class="display-flex bt bordered green"
+             [routerLink]="['/', item.slug]"
+             [appProductLink]="item.lotteryId"
+             [listKey]="'homeBottom'"
+             [position]="index + 1"
+             [title]="'LotteryWidgetWorldBiggestJackpotsComponent.' + item.buttonText | translate"
+             [appTranslate]="'LotteryWidgetWorldBiggestJackpotsComponent.' + item.buttonText">
+          </a>
+        </div>
+
+      </div>
+      <p class="display-flex flex-items-xs-center see_more">
+        <a class="link"
+           (click)="onTrackAllLotteriesClicked()"
+           [routerLink]="['/lotteries']"
+           title="{{'LotteryWidgetWorldBiggestJackpotsComponent.REF_EXPLORE_LOTTERIES' | translate}}"
+           alt="Explore All Lotteries">
+          {{'LotteryWidgetWorldBiggestJackpotsComponent.REF_EXPLORE_LOTTERIES' | translate}}
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

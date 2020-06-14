@@ -1,0 +1,19 @@
+@import '../../../../../scss/vars';
+
+.lottery-widgets-jackpot-changes-component {
+  .title-changes {
+    color: $primary;
+    font-family: $headline;
+    font-size: 1.2rem;
+    margin: 1rem 0 0;
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+
+  @media (max-width: 768px) {
+    .title-changes {
+      font-size: 1rem;
+      margin: 0.5rem 0 0;
+    }
+  }
+}

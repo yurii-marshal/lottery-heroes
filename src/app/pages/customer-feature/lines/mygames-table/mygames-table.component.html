@@ -1,0 +1,13 @@
+<div *ngIf="(device === 'mobile')"
+  class="display-flex flex-items-xs-center flex-items-xs-middle flex-items-xs-between sorting">
+  <label>{{'MygamesTableComponent.LABEL_SORT_BY' | translate}}</label>
+  <select #select (change)="onChangeSelect(select)">
+    <option *ngFor="let type of sortingTypes; let i = index"
+            [selected]="type.id === 'purchased'"
+            value="{{type.id}}">{{type.name}}</option>
+  </select>
+  <i class="biglotteryowin-up-open sort-arrow"
+     [ngClass]="{'open': (sortDirection === 'desc')}"
+     (click)="onChangeDirection()"></i>
+</div>
+<ng2-smart-table [source]="data" [settings]="settings"></ng2-smart-table>

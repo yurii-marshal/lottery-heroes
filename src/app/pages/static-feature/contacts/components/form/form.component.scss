@@ -1,0 +1,44 @@
+@import '../../../../../../scss/vars';
+
+.contacts-form-component {
+  textarea {
+    min-height: 144px;
+  }
+
+  label {
+    display: none;
+  }
+
+  .bt {
+    width: 100%;
+    max-width: 8.125rem;
+    min-height: 44px; // height
+    line-height: 44px;
+    margin-top: 7px;
+  }
+
+  .form-error {
+    font-size: 13px;
+    color: $RED;
+    text-align: center;
+    display: block;
+
+    &:empty {
+      padding: 0;
+    }
+    &:not(:empty) {
+      padding: 5px 0;
+    }
+  }
+
+  .submitted-msg {
+    margin-top: 25%;
+
+    .success {
+      color: $GREEN;
+    }
+    .error {
+      color: $RED;
+    }
+  }
+}

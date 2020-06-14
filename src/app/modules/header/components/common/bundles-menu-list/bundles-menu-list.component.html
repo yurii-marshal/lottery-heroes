@@ -1,0 +1,18 @@
+<div class="container-fluid app-combos-menu-list" *ngIf="bundlesList !== null">
+  <div class="row bundles-list">
+    <div class="col-xs text-xs-center item-wr" *ngFor="let bundle of bundlesList">
+      <app-bundles-menu-list-item-container
+        [bundle]="bundle"
+      ></app-bundles-menu-list-item-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs text-xs-center">
+      <a class="link"
+         (click)="onTrackNavigationClicked('Bundles - All bundles')"
+         [routerLink]="['/bundles']">
+        {{'BundlesMenuListComponent.REF_ALL_BUNDLES' | translate}}
+      </a>
+    </div>
+  </div>
+</div>

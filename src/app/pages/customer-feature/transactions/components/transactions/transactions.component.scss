@@ -1,0 +1,40 @@
+.no-items {
+  padding: 35px 0 0;
+  text-align: center;
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+  .row.table-header {
+    border-bottom: 0;
+    padding-bottom: 1rem;
+  }
+
+  .transactions-table {
+    .th:first-child,
+    .td:first-child {
+      padding-left: 10px;
+    }
+
+    .th:last-child,
+    .td:last-child,
+    .view {
+      padding-right: 10px;
+    }
+  }
+
+  h1 {
+    font-size: 18px;
+    padding-left: 0;
+  }
+}
+
+/* DESKTOP */
+
+@media (min-width: 768px) {
+  .transactions-table {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

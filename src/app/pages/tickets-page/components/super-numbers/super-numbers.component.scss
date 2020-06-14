@@ -1,0 +1,42 @@
+@import '../../../../../scss/vars';
+
+.super-numbers-component {
+  padding: 5px 0 17px;
+
+  p {
+    font-size: 0.9em;
+    margin: 0;
+  }
+
+  .numbers-list {
+    margin-left: 10px;
+  }
+
+  .number {
+    background: #fff;
+    width: 25px;
+    height: 25px;
+    margin: 1px;
+    border: 1px solid $BLUE;
+    border-radius: 2px;
+    font-size: 0.8rem;
+    user-select: none;
+    color: $BLUE;
+
+    &:hover {
+      background: $BLUE;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    &.picked {
+      background: $BLUE;
+      color: #fff;
+
+      &:hover {
+        border-color: #E51E12;
+        box-shadow: inset 0px 0px 0px 1px #E51E12;
+      }
+    }
+  }
+}

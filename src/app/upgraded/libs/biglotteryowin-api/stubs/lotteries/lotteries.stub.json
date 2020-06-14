@@ -1,0 +1,184 @@
+[
+  {
+    "id": "megamillions",
+    "name": "Mega Millions",
+    "country_id": "US",
+    "currency_id": "USD",
+    "min_prize": 15000000,
+    "rules": {
+      "main_numbers": {
+        "highest": 70,
+        "picks": 5,
+        "lowest": 1
+      },
+      "even_lines_only": false,
+      "max_lines": 5,
+      "extra_numbers": {
+        "highest": 25,
+        "picks": 1,
+        "lowest": 1,
+        "in_results_only": false
+      },
+      "min_lines": 1,
+      "num_lines_multiple_of": 1
+    },
+    "odds": {
+      "m0_x1": 21,
+      "m1_x1": 56,
+      "m3": 766,
+      "m4": 52835,
+      "m4_x1": 739688,
+      "m5": 18492204,
+      "m5_x1": 258890850,
+      "m3_x1": 10720,
+      "m2_x1": 473
+    },
+    "stats": {
+      "hot_numbers": [
+        3,
+        24,
+        1,
+        7,
+        10,
+        42
+      ],
+      "cold_numbers": [
+        68,
+        53,
+        44,
+        72,
+        43,
+        74
+      ]
+    },
+    "is_active": true,
+    "jackpot_alert_threshold_amount": 50000000,
+    "jackpot_alert_threshold_currency_id": "GBP",
+    "draws_to_predict": 52,
+    "draws_timezone": "EST",
+    "draws_per_ticket": [
+      1,
+      3,
+      7,
+      15,
+      26,
+      52
+    ],
+    "draws_per_week": 2,
+    "draws_schedule": [
+      {
+        "local_time": "23:00",
+        "weekday": 2,
+        "local_cutoff_time": "22:00"
+      },
+      {
+        "local_time": "23:00",
+        "weekday": 5,
+        "local_cutoff_time": "22:00"
+      }
+    ],
+    "brands": [
+      {
+        "id": "BIGLOTTERYOWIN_COM",
+        "date_started": "2017-05-10T19:23:07.000Z",
+        "is_sold": false,
+        "custom_country": null,
+        "custom_country_short": null,
+        "url_slug": "mega-millions",
+        "lotid": 10,
+        "popularity": 11
+      }
+    ]
+  },
+  {
+    "id": "powerball",
+    "name": "Powerball",
+    "country_id": "US",
+    "currency_id": "USD",
+    "min_prize": 40000000,
+    "rules": {
+      "main_numbers": {
+        "highest": 69,
+        "picks": 5,
+        "lowest": 1
+      },
+      "even_lines_only": false,
+      "max_lines": 5,
+      "extra_numbers": {
+        "highest": 26,
+        "picks": 1,
+        "lowest": 1,
+        "in_results_only": false
+      },
+      "min_lines": 1,
+      "num_lines_multiple_of": 1
+    },
+    "odds": {
+      "m0_x1": 38,
+      "m1_x1": 91,
+      "m2_x1": 701,
+      "m3": 579,
+      "m3_x1": 14494,
+      "m4": 36525,
+      "m4_x1": 913129,
+      "m5": 11688053,
+      "m5_x1": 292201338
+    },
+    "stats": {
+      "hot_numbers": [
+        26,
+        24,
+        7,
+        69,
+        28,
+        25
+      ],
+      "cold_numbers": [
+        46,
+        27,
+        65,
+        5,
+        34,
+        52
+      ]
+    },
+    "is_active": true,
+    "jackpot_alert_threshold_amount": 400000000,
+    "jackpot_alert_threshold_currency_id": "USD",
+    "draws_to_predict": 52,
+    "draws_timezone": "EST",
+    "draws_per_ticket": [
+      1,
+      3,
+      7,
+      15,
+      26,
+      52
+    ],
+    "draws_per_week": 2,
+    "draws_schedule": [
+      {
+        "local_time": "23:00",
+        "weekday": 3,
+        "local_cutoff_time": "22:00"
+      },
+      {
+        "local_time": "23:00",
+        "weekday": 6,
+        "local_cutoff_time": "22:00"
+      }
+    ],
+    "brands": [
+      {
+        "id": "BIGLOTTERYOWIN_COM",
+        "date_started": "2017-05-10T19:23:07.000Z",
+        "is_sold": true,
+        "custom_country": null,
+        "custom_country_short": null,
+        "url_slug": "powerball",
+        "lotid": 12,
+        "popularity": 2
+      }
+    ]
+  }
+]

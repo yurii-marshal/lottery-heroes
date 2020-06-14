@@ -1,0 +1,43 @@
+@import '../../../../../../../scss/vars';
+
+.total-mobile-component {
+  .total,
+  .free {
+    font-size: 1rem;
+    color: $primary;
+    width: 100%;
+    max-width: 345px;
+  }
+
+  .total {
+    padding: 10px 0 15px;
+  }
+
+  .price {
+    position: relative;
+    line-height: 20px;
+
+    &.discount {
+      color: $GREEN;
+    }
+
+    .old-price {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 200%;
+      color: #929292;
+      font-size: $small;
+      line-height: 13px;
+      text-decoration: line-through;
+    }
+  }
+
+  .bt.green {
+    font-size: 1rem;
+    width: 100%;
+    max-width: 345px;
+    min-height: 49px; // height
+    text-transform: none;
+  }
+}

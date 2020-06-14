@@ -1,0 +1,7 @@
+<div class="info approximately-currency-info-component">
+	<span class="ico">!</span>
+	<div class="body">
+		<p>{{'ApproximatelyCurrencyInfoComponent.TEXT_APPROXIMATELY' | translate}}</p>
+		<p class="mil" [innerHtml]="(jackpot * currencyRate) | jackpotFormat:siteCurrencyId"></p>
+	</div>
+</div>

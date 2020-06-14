@@ -1,0 +1,53 @@
+<div class="lottery-info-cms-based">
+  <div class="display-flex flex-items-xs-between boxes-wrapper"
+    [ngClass]="{'centered': !showBox1 || !showBox2 || !showBox3}"
+    *ngIf="showBox1 || showBox2 || showBox3">
+    <app-why-box-container
+      *ngIf="showBox1"
+      [cms]="cms"
+    ></app-why-box-container>
+    <app-how-to-play-box-container
+      *ngIf="showBox2"
+      [cms]="cms"
+    ></app-how-to-play-box-container>
+    <app-faq-box-container
+      *ngIf="showBox3"
+      [cms]="cms"
+    ></app-faq-box-container>
+  </div>
+  <div class="row">
+    <div class="col-xs">
+      <div class="last-results-cover">
+        <div class="last-result-date text-xs-center">{{lotteryLatestDraw.date_local | date}} {{lottery.name}} {{' '}}
+          {{'LotteryInfoCmsBasedComponent.TEXT_RESULTS' | translate}}
+        </div>
+        <div class="winning-numbers display-flex flex-items-xs-center flex-items-xs-middle">
+          <span class="number display-flex flex-items-xs-center flex-items-xs-middle"
+                *ngFor="let mainNum of lotteryLatestDraw.winning_main_numbers">{{mainNum}}</span>
+          <span class="number display-flex flex-items-xs-center flex-items-xs-middle ball"
+                *ngFor="let extraNum of lotteryLatestDraw.winning_extra_numbers">
+            {{extraNum}}
+          </span>
+          <span class="number display-flex flex-items-xs-center flex-items-xs-middle ball"
+                *ngFor="let perTicket of lotteryLatestDraw.winning_perticket_numbers">
+            {{perTicket}}
+          </span>
+        </div>
+        <div class="text-xs-center">
+          <a class="link" [routerLink]="['/' + lotterySlug + '/results', lotteryLatestDraw.date_local]"
+             title="Latest {{lottery.name}} Results" [attr.itemprop]="setItemPropAttr()">
+            <span [innerHTML]="'LotteryInfoCmsBasedComponent.TEMPLATE_SEE_PRIZE' | translate: {param: lottery.name}">
+            </span>
+            <!--See {{lottery.name}} prize breakdown and winners-->
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="cms?.bottom_area">
+    <div class="col-xs">
+      <div class="additional-headline" [innerHTML]="cms.bottom_area | safe:'html'">
+      </div>
+    </div>
+  </div>
+</div>

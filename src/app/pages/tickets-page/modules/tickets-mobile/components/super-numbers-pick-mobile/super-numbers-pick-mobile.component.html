@@ -1,0 +1,50 @@
+<div class="super-numbers-pick-mobile-component animated">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs display-flex">
+        <div class="overlay-control display-flex flex-items-xs-middle flex-items-xs-between">
+          <p>
+            {{'TicketMobileComponent.TEXT_PICK' | translate}} {{rules.perticket_numbers.picks}}
+            {{rules.perticket_numbers.name}}</p>
+          <button class="bt close" (click)="closePickedPerTicketNumbersEvent.emit()">×</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 overlay">
+        <div class="display-flex flex-items-xs-left flex-items-xs-middle numbers-list">
+          <span class="display-flex flex-items-xs-center flex-items-xs-middle number"
+                [ngClass]="{picked: isPicked(num)}"
+                (click)="toggle(num)"
+                *ngFor="let num of rules.perticket_numbers.lowest|rangeTo:rules.perticket_numbers.highest">
+            {{num}}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="container-fluid super-numbers-pick-next">
+          <div class="row">
+            <div class="col-xs display-flex flex-items-xs-middle flex-items-xs-center">
+              <span class="number-selected display-flex flex-items-xs-center flex-items-xs-middle"
+                    *ngFor="let num of editedPerTicketNumbers">{{num}}</span>
+              <span class="number-selected display-flex flex-items-xs-center flex-items-xs-middle"
+                    *ngFor="let num of 1|rangeTo:getNumberOfEmptyPicks()"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs display-flex flex-items-xs-middle flex-items-xs-center">
+              <button class="bt green"
+                      (click)="savePerTicketNumbersEvent.emit({rules: rules, value: editedPerTicketNumbers})">
+                {{'TicketMobileComponent.BUTTON_NEXT' | translate}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

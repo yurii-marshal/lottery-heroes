@@ -1,0 +1,56 @@
+<div role="dialog" class="modal confirmation-remove-item-component">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" (click)="closeRemoveConfirmation.emit()">×</button>
+      </div>
+      <div class="modal-body">
+        <ng-container *ngIf="item.type === 'lottery'">
+          <p class="text-xs-center title">
+            {{'ConfirmationRemoveItemComponent.TEXT_REMOVE_LOTTERY' | translate}}
+          </p>
+          <p>
+            {{'ConfirmationRemoveItemComponent.TEXT_REMOVE_CONFIRMATION' | translate}}
+          </p>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'combo'">
+          <p class="text-xs-center title">
+            {{'ConfirmationRemoveItemComponent.TEXT_REMOVE_COMBO' | translate}}
+          </p>
+          <p>
+            {{'ConfirmationRemoveItemComponent.TEXT_REMOVE_COMBO_CONFIRMATION' | translate}}
+          </p>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'bundle'">
+          <p class="text-xs-center title">
+            {{'ConfirmationRemoveItemComponent.TEXT_REMOVE_BUNDLE' | translate}}
+          </p>
+          <p>
+            {{'ConfirmationRemoveItemComponent.TEXT_REMOVE_BUNDLE_CONFIRMATION' | translate}}
+          </p>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'syndicate'">
+          <p class="text-xs-center title">
+            {{'ConfirmationRemoveItemComponent.TEXT_REMOVE_SYNDICATE' | translate}}
+          </p>
+          <p>
+            {{'ConfirmationRemoveItemComponent.TEXT_REMOVE_SYNDICATE_CONFIRMATION' | translate}}
+          </p>
+        </ng-container>
+
+        <div class="row form-row">
+          <button class="col-xs-11 col-md-10 bt green cancel"
+                  (click)="keepForLuckPressed.emit()"
+                  (click)="closeRemoveConfirmation.emit()">
+            {{'ConfirmationRemoveItemComponent.TEXT_KEEP_IT' | translate}}
+          </button>
+          <div class="col-xs-12 link remove" (click)="approveRemoveConfirmation.emit(item)">
+            {{'ConfirmationRemoveItemComponent.TEXT_REMOVE_IT' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeRemoveConfirmation.emit()"></div>
+</div>
+

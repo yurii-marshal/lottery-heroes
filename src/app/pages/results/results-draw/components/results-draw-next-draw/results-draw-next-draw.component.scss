@@ -1,0 +1,90 @@
+@import '../../../../../../scss/vars';
+
+.results-draw-next-draw-component {
+  .title-next-draw,
+  .post-info,
+  .time-left {
+    font-family: $headline;
+    color: $primary;
+    font-size: 1.1rem
+  }
+
+  .bt.green {
+    width: 200px;
+    min-height: 45px; // height
+    font-size: 1.2rem;
+    margin: 1.2rem 0 .7rem;
+    color: #fff;
+  }
+
+  .jackpot {
+    font-family: $headline;
+    color: $GREEN;
+    font-size: 60px;
+    line-height: 65px;
+
+    div {
+      position: relative;
+    }
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 190px;
+
+    &.left {
+      transform: rotateY(180deg);
+      left: 0;
+    }
+
+    &.right {
+      right: 0;
+    }
+  }
+
+  .no-jackpot-remark {
+    font-family: "Open Sans", sans-serif;
+    font-size: $small;
+    color: $BLUE;
+    font-weight: bold;
+    position: relative;
+    top: -7px;
+  }
+
+  .no-jackpot {
+    font-family: "Open Sans", sans-serif;
+    font-size: $small;
+    color: $BLUE;
+    font-weight: bold;
+    position: relative;
+    top: -7px;
+  }
+
+  @media (max-width: 768px) {
+    .title-next-draw {
+      font-size: 0.9rem;
+    }
+
+    .jackpot {
+      font-size: 46px;
+    }
+
+    .background {
+      padding: 0;
+      background: none;
+    }
+
+    .direction-column {
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .no-button {
+      padding-bottom: 65px;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+<div class="row results-lottery-info-component" *ngIf="lottery">
+  <div class="col-md-2 col-sm-12 display-flex flex-items-xs-center flex-items-xs-middle">
+    <ng-container *ngIf="isShowLogoLink$|async; else noLink">
+      <a class="lotteries-logo"
+         [routerLink]="['/', lotterySlug]"
+         [appProductLink]="lottery.id"
+         title="{{lottery.id}}"
+         [attr.itemprop]="setItempropAttr()">
+        <img [src]="lottery.logo_wide" alt="{{lottery.name}}"
+             class="lottery-logo hidden-md-up id_{{lottery.id}}" itemprop="image">
+        <img [src]="lottery.logo" alt="{{lottery.name}}" class="lottery-logo hidden-sm-down id_{{lottery.id}}"
+             itemprop="image">
+      </a>
+    </ng-container>
+    <ng-template #noLink>
+      <div class="lotteries-logo">
+        <img [src]="lottery.logo_wide" alt="{{lottery.name}}"
+             class="lottery-logo hidden-md-up id_{{lottery.id}}" itemprop="image">
+        <img [src]="lottery.logo" alt="{{lottery.name}}" class="lottery-logo hidden-sm-down id_{{lottery.id}}"
+             itemprop="image">
+      </div>
+    </ng-template>
+  </div>
+  <div class="col-md-9 col-sm-12 display-flex flex-items-xs-left flex-items-xs-middle">
+    <ng-container [ngSwitch]="lottery.id">
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.powerball'"
+         *ngSwitchCase="'powerball'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.powerball-au'"
+         *ngSwitchCase="'powerball-au'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.lotto-pl'"
+         *ngSwitchCase="'lotto-pl'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.lotto-ie'"
+         *ngSwitchCase="'lotto-ie'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.superenalotto'"
+         *ngSwitchCase="'superenalotto'"></p>
+      <p class="lottery-description" [innerHTML]="'ResultsLotteryInfoComponent.megamillions'"
+         *ngSwitchCase="'megamillions'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.euromillions'"
+         *ngSwitchCase="lottery.id === 'euromillions' || lottery.id === 'euromillions-ie' ? lottery.id : ''"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.eurojackpot'"
+         *ngSwitchCase="'eurojackpot'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.oz-lotto-au'"
+         *ngSwitchCase="'oz-lotto-au'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.bonoloto'"
+         *ngSwitchCase="'bonoloto'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.el-gordo-primitiva'"
+         *ngSwitchCase="'el-gordo-primitiva'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.la-primitiva'"
+         *ngSwitchCase="'la-primitiva'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.lotto-fr'"
+         *ngSwitchCase="'lotto-fr'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.thunderball'"
+         *ngSwitchCase="'thunderball'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.lotto-uk'"
+         *ngSwitchCase="'lotto-uk'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.megasena'"
+         *ngSwitchCase="'megasena'"></p>
+      <p class="lottery-description" [appTranslate]="'ResultsLotteryInfoComponent.lotto-6aus49'"
+         *ngSwitchCase="'lotto-6aus49'"></p>
+    </ng-container>
+  </div>
+</div>

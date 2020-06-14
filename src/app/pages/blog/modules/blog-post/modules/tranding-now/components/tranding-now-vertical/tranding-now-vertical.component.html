@@ -1,0 +1,17 @@
+<div class="tranding-now-vertical aside-container">
+  <aside class="aside-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class="text-xs-center">{{'TrandingNowVerticalComponent.TEXT_TRANDING_NOW' | translate}}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" *ngFor="let post of trandingNow">
+        <a [routerLink]="post?.slug">
+          <img [src]="host + post?.image" alt="biglotteryowin">
+          <h4 class="post-title" [innerHTML]="post?.title | safe:'html'"></h4>
+        </a>
+      </div>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,74 @@
+@import '../../../../../scss/vars';
+
+.modal-body {
+  max-width: 370px;
+  padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .period-option {
+    border-top: 1px solid $GRAY-LIGHTER;
+    border-bottom: 1px solid $GRAY-LIGHTER;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: -1px;
+    cursor: pointer;
+
+    .subscription-discount {
+      font-size: $BASIC;
+      color: $GREEN;
+    }
+
+    &.active {
+      background: $GREEN;
+      color: #fff;
+      box-shadow: inset 0px 4px 15px -5px #000;
+
+      .subscription-period {
+        font-weight: bold;
+      }
+
+      .subscription-discount {
+        color: #fff;
+      }
+
+      &:hover {
+        background: $GREEN;
+        color: #fff;
+        box-shadow: inset 0px 4px 15px -5px #000;
+      }
+    }
+
+    @media (min-width: 768px) {
+
+      flex-direction: column;
+      border: 1px solid $GRAY-LIGHTER;
+      margin-right: -1px;
+      border-radius: 2px;
+      min-height: 180px;
+
+      &:hover {
+        background: #DEDEDE;
+        box-shadow: none;
+      }
+
+      .subscription-period {
+        font-size: 27px;
+        line-height: 30px;
+
+        &.default {
+          font-size: 22px;
+        }
+      }
+    }
+
+  }
+
+  @media (max-width: 767px) {
+
+    max-width: none;
+    width:100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

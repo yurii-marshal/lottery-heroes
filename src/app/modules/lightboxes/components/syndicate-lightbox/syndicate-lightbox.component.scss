@@ -1,0 +1,38 @@
+.modal-dialog {
+  max-width: 770px;
+}
+
+.modal-content {
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 15px 15px 5px;
+  max-width: 100%;
+  border-bottom: 1px solid #ECECEC;
+  font-size: 18px;
+}
+
+.modal-body {
+  padding: 15px 30px 0;
+  margin: 0 auto 50px;
+  max-width: 770px;
+  height: 340px;
+  overflow-y: auto;
+}
+
+.modal-body {
+  min-height: initial;
+
+  p {
+    padding: 0;
+  }
+}
+
+.line {
+  margin-bottom: 3px;
+}
+
+.no-gutter {
+  padding: 0;
+}

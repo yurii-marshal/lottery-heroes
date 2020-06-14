@@ -1,0 +1,7 @@
+@import '../../../../../../scss/vars';
+
+.results-lottery-title-component {
+  .title-per-lottery {
+    @include primary-title;
+  }
+}

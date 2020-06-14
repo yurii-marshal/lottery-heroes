@@ -1,0 +1,67 @@
+<div class="main-combo-component" [ngClass]="{'open': showLotteriesList}" *ngIf="bundle && bundle !== null">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-3 banner-text">
+				<h1 itemprop="name" [innerHTML]="'MainBundleComponent.TEMPLATE_BUNDLES' | translate"></h1>
+				<p class="hidden-md-down" itemprop="description">
+					{{'MainBundleComponent.TEXT_LOTTERIES_EXTENDS' | translate}}
+				</p>
+				<p class="hidden-lg-up">
+					{{'MainBundleComponent.TEXT_LOTTERIES_BUNDLE' | translate}}
+				</p>
+			</div>
+			<div class="col-xs-12 col-md-9 combo">
+				<div class="row">
+					<div class="col-xs-12 col-md-3 combo-logo">
+						<img *ngIf="bundle.logo_path" [src]="bundle.logo_path" [alt]="bundle.name">
+					</div>
+					<div class="col-xs-12 col-md-9 combo-description">
+						<p class="static-text">
+							{{'MainBundleComponent.TEXT_COMBINED_JACKPOT' | translate}}
+						</p>
+						<p class="combo-jackpot"
+                           [innerHtml]="bundle.jackpotTotal | jackpotFormat:bundle.currencyId"></p>
+						<p class="combo-info">
+							<span class="combo-info-item">
+							{{bundle.lotteriesTotal}} {bundle.lotteriesTotal, plural, =1 {Lottery} other {Lotteries}}</span>
+						  <span class="combo-info-item" *ngIf="bundle.linesTotal > 0">
+							{{bundle.linesTotal}} {bundle.linesTotal, plural, =1 {Line} other {Lines}}</span>
+						  <span class="combo-info-item" *ngIf="bundle.sharesTotal > 0">
+							{{bundle.sharesTotal}} {bundle.sharesTotal, plural, =1 {Share} other {Shares}}</span>
+						</p>
+						<button class="bt green"
+										(click)="addToCart.emit(bundle)">
+							{{'MainBundleComponent.TEXT_SELECT_BUNDLE' | translate}}
+						</button>
+						<div class="text-xs-center prices">
+							<p class="former-price" *ngIf="bundle.formerPrice">
+								{{'MainBundleComponent.TEXT_ONLY' | translate}} {{bundle.formerPrice | currency:bundle.currencyId:'symbol':'1.2-2'}}
+							</p>
+							<p class="price" (click)="toggleList()">
+								{{'MainBundleComponent.TEXT_ONLY' | translate}} {{bundle.price | currency:bundle.currencyId:'symbol':'1.2-2'}}
+								<span class="arrow biglotteryowin-down-open"></span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Lotteries -->
+	<div class="lotteries-list" #lotteriesList>
+		<div class="container">
+			<div class="row" [ngClass]="{'flex-items-xs-center': bundle.items.length < 4}">
+				<div class="col-xs-6 col-lg item" *ngFor="let lottery of bundle.items">
+					<app-bundle-lotteries [lottery]="lottery" [currency]="bundle.currencyId"></app-bundle-lotteries>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 text-xs-center total-combo-price">
+          			{{'MainBundleComponent.TEXT_TOTAL' | translate}}<span [innerHtml]="bundle.jackpotTotal | jackpotFormat:bundle.currencyId"></span>
+				</div>
+				<span class="arrow biglotteryowin-down-open hidden-md-up" (click)="toggleList()"></span>
+			</div>
+		</div>
+	</div>
+</div>

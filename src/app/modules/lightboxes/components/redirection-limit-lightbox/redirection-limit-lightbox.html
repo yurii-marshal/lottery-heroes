@@ -1,0 +1,32 @@
+<div *ngIf="isShowlightbox" role="dialog" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-9">
+            <div class="modal-body">
+              <h2 class="headline" [appTranslate]="'Lightboxes.redirectionTitleTo' + data.payload.brand"></h2>
+
+              <p [appTranslate]="'Lightboxes.redirectionTo' + data.payload.brand" #redirectionLinkContainer></p>
+
+              <div class="display-flex flex-items-xs-middle flex-items-xs-between actions-wrapper">
+                <button class="link" (click)="closeLightbox()">
+                  {{'RedirectionLimitLightboxComponent.BUTTON_STAY' | translate}}
+                </button>
+                <a class="bt blue" href="{{data.payload.host}}/{{data.payload.search}}" (click)="onTrackRedirected()">
+                  {{'RedirectionLimitLightboxComponent.REF_TAKE_TO' | translate}}
+                  {{data.payload.host.split('://')[1]}} <i class="biglotteryowin-right-open"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-3 redirection-background">
+            <img class="conf" src="/assets/images/svg/lightbox-confetti.svg" alt="">
+            <img class="ball" src="/assets/images/svg/lightbox-ball.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeLightbox()"></div>
+</div>

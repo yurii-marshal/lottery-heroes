@@ -1,0 +1,40 @@
+<div class="container contacts-component">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="title-contact-us" itemprop="name">
+        {{'ContactsComponent.TEXT_CONTACT_US' | translate}}
+      </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <!--<div class="col-xs-12 col-md-6 display-flex flex-items-xs-center col">-->
+      <!--<div>-->
+        <!--<div class="h3">{{'ContactsComponent.TEXT_SEND_MESSAGE' | translate}}</div>-->
+        <!--<p>{{'ContactsComponent.TEXT_SEND_QUESTIONS' | translate}}.</p>-->
+        <!--&lt;!&ndash;- CONTACT FORM -&ndash;&gt;-->
+        <!--<app-form></app-form>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="col-xs-12 col-md-6 display-flex flex-items-xs-center col">
+      <div class="display-flex direction-column">
+        <div class="h3">{{'ContactsComponent.TEXT_GET_IN_TOUCH' | translate}}</div>
+        <a class="line display-flex flex-items-xs-middle" href="mailto:{{supportEmail}}">
+          <span class="img"><img class="ico" src="/assets/images/svg/envelop.svg" alt="Email" width="25"></span>
+          <span>{{supportEmail}}</span>
+        </a>
+        <!--<a class="line display-flex flex-items-xs-middle" target="_blank" href="{{manageSocialIcons.twitterUrl}}">-->
+          <!--<span class="img"><img class="ico" src="/assets/images/contact-us/twitter.svg" alt="Twitter" width="28"></span>-->
+          <!--<span>{{'ContactsComponent.TEXT_BIGLOTTERYOWIN' | translate}}</span>-->
+        <!--</a>-->
+        <!--<a class="line display-flex flex-items-xs-middle" target="_blank" href="{{manageSocialIcons.facebookUrl}}">-->
+          <!--<span class="img"><img class="ico" src="/assets/images/svg/facebook.svg" alt="Facebook" width="28"></span>-->
+          <!--<span>{{'ContactsComponent.TEXT_FBL' | translate}}</span>-->
+        <!--</a>-->
+      </div>
+    </div>
+    <!--<div class="col-xs-12 display-flex flex-items-xs-center more">-->
+      <!--<a class="link" [routerLink]="['/about/faq']">{{'ContactsComponent.TEXT_FAQ' | translate}}</a>-->
+    <!--</div>-->
+  </div>
+</div>

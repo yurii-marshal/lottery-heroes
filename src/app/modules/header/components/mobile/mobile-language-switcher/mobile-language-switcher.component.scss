@@ -1,0 +1,18 @@
+@import '../../../../../../scss/vars';
+
+.mobile-language-switcher-component {
+  transform: translateZ(0);
+  .lang-item {
+    display: flex;
+    width: 100%;
+    margin: 1px 0;
+    background-color: #283848;
+    padding: 10px 15px;
+    .icon {
+      min-width: 35px;
+    }
+    .name {
+      color: #ffffff;
+    }
+  }
+}

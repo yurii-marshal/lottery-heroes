@@ -1,0 +1,28 @@
+<div class="row lottery-widgets-hot-numbers-component" *ngIf="lotteryStats">
+  <div class="col-xs-12 text-xs-left">
+    <h3 class="title-numbers">
+      {{'LotteryWidgetsHotNumbersComponent.TEXT_HOT_COLD_NUMS' | translate}}
+    </h3>
+    <h3 class="post-title">
+      ({{'LotteryWidgetsHotNumbersComponent.TEXT_LAST_100_DRAWS' | translate}})
+    </h3>
+  </div>
+  <div class="col-xs-12">
+    <div class="line-hot display-flex flex-items-xs-middle flex-items-xs-between">
+      <img src="assets/images/svg/hot-numbers.svg" alt="Hot {{lottery.name}} Numbers">
+      <span class="number"
+            *ngFor="let hot of lotteryStats.hot_numbers"
+      >{{hot}}
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <div class="line-cold display-flex flex-items-xs-middle flex-items-xs-between">
+      <img src="assets/images/svg/cold-numbers.svg" alt="Cold {{lottery.name}} Numbers">
+      <span class="number"
+            *ngFor="let cold of lotteryStats.cold_numbers"
+      >{{cold}}
+      </span>
+    </div>
+  </div>
+</div>

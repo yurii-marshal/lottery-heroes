@@ -1,0 +1,25 @@
+<a class="col-sm display-flex flex-items-xs-between flex-items-xs-middle single-lottery lotteries-menu-list-item-mobile-component"
+   *ngIf="upcomingDraw"
+   [routerLink]="['/', lotterySlug]"
+   appCloseMobileMenu>
+  <span class="lottery-name">{{lottery.name}}</span>
+  <span class="display-flex flex-items-xs-right flex-items-xs-middle">
+  <ng-container *ngIf="upcomingDraw.jackpot; else noJackpot">
+    <span class="jackpot">
+      <span class="amount"
+            [innerHtml]="upcomingDraw.jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+    </span>
+  </ng-container>
+  <ng-template #noJackpot>
+    <span class="jackpot">
+      <span class="amount"
+            [innerHtml]="upcomingDraw.min_jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+      <span class="no-jackpot">*</span>
+    </span>
+  </ng-template>
+  <div class="no-jackpot-remark text-xs-left" *ngIf="!upcomingDraw.jackpot">
+    {{'LotteriesMenuListItemMobileComponent.TEXT_JACKPOT_EXPECTED' | translate}}
+  </div>
+  <i class="biglotteryowin-right-open"></i>
+  </span>
+</a>

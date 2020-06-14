@@ -1,0 +1,14 @@
+User-agent: *
+
+Disallow: /
+Disallow: /wp/wp-admin/
+Disallow: /wp-admin/
+Disallow: /biglotteryowinzone/feed/
+Disallow: /biglotteryowinzone/lottery-news/feed/
+Disallow: /biglotteryowinzone/blog/feed/
+Disallow: /biglotteryowinzone/lottery-winners-stories/feed/
+Disallow: /myaccount/
+Disallow: /cart
+Disallow: /lottery-notification-subscribe
+Disallow: /lottery-notification-unsubscribe
+Disallow: /affiliates/terms-and-conditions

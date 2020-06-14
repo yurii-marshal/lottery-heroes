@@ -1,0 +1,71 @@
+@import '../../../../../scss/vars';
+
+.approximately-currency-info-component {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  .ico {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid $BLUE;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 14px;
+    color: $BLUE;
+    text-align: center;
+
+    &:hover + .body {
+      z-index: 1;
+      display: block;
+    }
+  }
+
+  .body {
+    position: absolute;
+    right: -1rem;
+    display: none;
+    width: 170px;
+    margin: auto;
+    padding: 0.7rem 1.5rem;
+    border: 1px solid #2e74a5;
+    border-radius: 3px;
+    background: $BLUE;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+
+    &::after {
+      content: '';
+      width: 0;
+      border-bottom: 7px solid $BLUE;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      position: absolute;
+      top: -7px;
+      right: 15px;
+    }
+    &::before {
+      content: '';
+      width: 0;
+      border-bottom: 8px solid #2e74a5;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      position: absolute;
+      top: -8px;
+      right: 13px;
+    }
+
+    p {
+      margin: 0;
+      font-size: $BASIC;
+      font-weight: normal;
+      line-height: 20px;
+      color: #fff;
+    }
+
+    .mil {
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../../../scss/vars';
+
+.bet-vs-play-component {
+  .bet-vs-play-title {
+    @include primary-title;
+  }
+
+  h2 {
+    margin-top: 2rem;
+    font-family: $headline;
+    font-size: $MEDIUM;
+    font-weight: normal;
+    color: $primary;
+  }
+
+  p {
+    font-size: $BASIC;
+    color: $primary;
+  }
+
+  @media screen and (max-width: 768px) {
+    h2 {
+      font-size: $BASIC;
+    }
+  }
+}

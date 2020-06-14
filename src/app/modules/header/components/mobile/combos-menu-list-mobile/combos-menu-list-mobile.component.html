@@ -1,0 +1,13 @@
+<div class="combos-menu-list-mobile-component">
+  <app-combos-menu-list-item-container
+    *ngFor="let combo of combosList"
+    [combo]="combo"
+  ></app-combos-menu-list-item-container>
+  <a class="col-sm display-flex flex-items-xs-middle flex-items-xs-between all-combos"
+     [routerLink]="['/combos']"
+     appCloseMobileMenu>
+    {{'CombosMenuListMobileComponent.REF_ALL_COMBOS' | translate}}
+    <i class="biglotteryowin-right-open"></i>
+  </a>
+</div>
+

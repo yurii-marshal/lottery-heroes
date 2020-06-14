@@ -1,0 +1,33 @@
+@import '../../../../scss/vars';
+
+.n2s-shareContainer {
+  display: inline-flex;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.n2s-vertical {
+  flex-direction: column;
+}
+
+.n2s-share-btn:hover {
+  color: #ffffff;
+}
+
+.n2s-share-btn-more {
+  background: #ccc;
+}
+
+@media (min-width: 768px) {
+  .n2s-vertical {
+    position: fixed;
+    height: 214px;
+    top: 105px;
+    margin: auto;
+    border-top: 1px solid $GRAY-LIGHTER;
+    border-bottom: 1px solid $GRAY-LIGHTER;
+  }
+}
+

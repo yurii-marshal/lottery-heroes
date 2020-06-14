@@ -1,0 +1,55 @@
+<div class="row draw-line-container results-draw-results-component">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-sm-3 col-xs-7 display-flex flex-items-xs-left flex-items-xs-middle">
+        <a class="lotteries-logo"
+           [routerLink]="['/', lotterySlug,'results']"
+           title="{{lottery.id}}"
+           [attr.itemprop]="setItempropAttr()">
+          <img [src]="lottery.logo_wide" alt="{{lottery.name}} Results" class="lottery-logo hidden-md-up id_{{lottery.id}}"
+               itemprop="image">
+          <img [src]="lottery.logo" alt="{{lottery.name}} Results" class="lottery-logo hidden-sm-down id_{{lottery.id}}" itemprop="image">
+        </a>
+      </div>
+      <div class="col-sm-6 col-xs-5 display-flex flex-items-xs-center flex-items-xs-middle">
+        <h2 class="draw-date">{{draw.date_local | date}}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 draw-line-body display-flex flex-items-xs-center flex-items-xs-middle">
+    <div class="draw-line display-flex flex-items-xs-center flex-items-xs-middle">
+      <div class="number main display-flex flex-items-xs-middle flex-items-xs-center"
+           *ngFor="let main of draw.winning_main_numbers">{{main}}
+      </div>
+      <ng-container *ngIf="draw && draw.winning_extra_numbers">
+        <div class="number extra display-flex flex-items-xs-middle flex-items-xs-center"
+             *ngFor="let extra of draw.winning_extra_numbers">{{extra}}
+        </div>
+      </ng-container>
+      <ng-container *ngIf="draw && draw.winning_perticket_numbers">
+        <div class="number extra display-flex flex-items-xs-middle flex-items-xs-center"
+             *ngFor="let perTicket of draw.winning_perticket_numbers">{{perTicket}}
+        </div>
+      </ng-container>
+    </div>
+    <div class="draw-control display-flex flex-items-xs-center flex-items-xs-middle">
+      <ng-container *ngIf="draw.prev && draw.prev.status_id === 'settled'">
+        <a [routerLink]="['/' + lotterySlug, 'results', draw.prev.date_local]" class="prev">
+          <img src="assets/images/svg/arrow-gray.svg" alt="{{lottery.name}} Previous Draw Results">
+        </a>
+      </ng-container>
+      <ng-container *ngIf="!draw.prev || draw.prev.status_id !== 'settled'">
+        <a class="prev disabled"><img src="assets/images/svg/arrow-gray.svg" alt="{{lottery.name}} Previous Draw Results"></a>
+      </ng-container>
+
+      <ng-container *ngIf="draw.next && draw.next.status_id === 'settled'">
+        <a [routerLink]="['/' + lotterySlug, 'results', draw.next.date_local]" class="next">
+          <img src="assets/images/svg/arrow-gray.svg" alt="Next {{lottery.name}} Draw Results">
+        </a>
+      </ng-container>
+      <ng-container *ngIf="!draw.next || draw.next.status_id !== 'settled'">
+        <a class="next disabled"><img src="assets/images/svg/arrow-gray.svg" alt="Next {{lottery.name}} Draw Results"></a>
+      </ng-container>
+    </div>
+  </div>
+</div>

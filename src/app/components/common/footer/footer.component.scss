@@ -1,0 +1,255 @@
+@import '../../../../scss/vars';
+
+.footer-component {
+  margin-top: 2rem;
+  background: #f3f3f3;
+
+  .container-60 {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .divider {
+    background: #dcdcdc;
+    height: 1px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  .logo-partners {
+    margin: 1.5rem 0;
+
+    img {
+      margin: 0 10px;
+    }
+  }
+
+  .menu-footer {
+    color: $primary;
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    label {
+      position: relative;
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-family: $headline;
+      padding: 1.5rem 0;
+      margin: 0;
+      cursor: default;
+
+      img {
+        position: absolute;
+        width: 15px;
+        right: 1rem;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        transition: all .2s ease;
+      }
+    }
+    .case a {
+      margin: 10px 0;
+      display: inline-block;
+      font-family: $CONTENT;
+      font-size: 1rem;
+      color: $primary;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .bt {
+      width: 155px;
+      min-height: 40px; // height
+    }
+  }
+
+  .payment-systems {
+    margin: 100px 0 40px;
+    img {
+      margin: 0 3px;
+    }
+  }
+
+  .social {
+    a {
+      display: inline-block;
+      padding: 0;
+      svg {
+        height: 35px;
+        width: 35px;
+        vertical-align: middle;
+        path {
+          transition: all .1s ease;
+          pointer-events: all;
+        }
+      }
+      &:hover .facebook {
+        fill: #2d609b;
+      }
+      &:hover .twitter {
+        fill: #00c3f3;
+      }
+      &:hover .linkedin {
+        fill: #0077B5;
+      }
+    }
+  }
+
+  .copyright {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: $primary;
+  }
+
+  .post-footer {
+    color: $primary;
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .drop-down-body {
+    width: 100%;
+  }
+
+  .BIGLOTTERYOWIN_UK-gambling img {
+    max-width: 125px;
+  }
+
+  .BIGLOTTERYOWIN_IE-gambling img {
+    height: 45px;
+  }
+
+  @media (max-width: 767px) {
+    &.moved {
+      padding-bottom: 145px;
+    }
+
+    .container {
+      width: 100%;
+    }
+
+    .logo-partners {
+      display: flex;
+      flex-wrap: wrap;
+
+      img {
+        margin: 10px 6px;
+        display: inline-block;
+        height: 30px;
+        width: auto;
+      }
+
+      *:first-child {
+        img {
+          margin-left: 0;
+        }
+      }
+
+      *:last-child {
+        img {
+          margin-right: 0;
+        }
+      }
+
+      .protectionIcon-ie img {
+        height: 42px;
+      }
+
+      .gamstop.BIGLOTTERYOWIN_UK {
+        height: 14px;
+      }
+    }
+    .divider:nth-child(2) {
+      margin: 0;
+    }
+    .menu-footer:not(.text-xs-center) {
+      border-bottom: 1px solid #dcdcdc;
+    }
+
+    .case {
+      max-height: 0;
+      overflow: hidden;
+      transition: all .5s ease;
+    }
+
+    // Different max-height for correct animation of height
+    #menu-footer-1:checked ~ .case-1 {
+      max-height: 225px;
+    }
+
+    #menu-footer-2:checked ~ .case-2 {
+      max-height: 225px;
+    }
+
+    #menu-footer-3:checked ~ .case-3 {
+      max-height: 176px;
+    }
+
+    #menu-footer-4:checked ~ .case-4 {
+      max-height: 225px;
+    }
+
+    #menu-footer-1:checked ~ label img,
+    #menu-footer-2:checked ~ label img,
+    #menu-footer-3:checked ~ label img,
+    #menu-footer-4:checked ~ label img {
+      transform: rotate(-180deg);
+    }
+
+    .payment-systems {
+      margin: 2rem 0;
+    }
+  }
+
+  @media (min-width: 414px) and (max-width: 767px) {
+    .logo-partners {
+
+    }
+  }
+
+  @media (max-width: 360px) {
+    .gamble-care.BIGLOTTERYOWIN_UK {
+      min-width: 19%;
+      text-align: right;
+    }
+
+    .logo-partners {
+
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1200px) {
+    .payment-systems img {
+      margin: 0 3px;
+      height: 23px;
+      width: auto;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .menu-footer label {
+      min-height: 96px;
+    }
+
+    .payment-systems img {
+      height: 21px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .menu-footer {
+      &.last-list {
+        max-width: 160px;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,35 @@
+@import '../../../../scss/vars';
+
+.floating-button {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  bottom: 2rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 100rem;
+  width: 2.5rem;
+  height: 2.5rem;
+
+  img {
+    transform: rotate(-180deg);
+    width: 70%;
+    margin-bottom: 0.2rem;
+  }
+
+  &.visible {
+    display: block;
+    animation: fade-in-up-big .3s ease forwards;
+  }
+
+  @keyframes fade-in-up-big {
+    0% {
+      opacity: 0;
+      transform: translate(0, 50%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+}

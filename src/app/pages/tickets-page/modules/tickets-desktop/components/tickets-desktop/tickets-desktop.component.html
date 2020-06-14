@@ -1,0 +1,157 @@
+<div class="container tickets-desktop-component">
+  <div class="row">
+    <div class="col-xs-9 col-md-8 col-lg-9">
+      <div class="row overall-control">
+        <div class="col-xs-6 display-flex flex-items-xs-middle flex-items-xs-left">
+          <div class="title">
+            <span class="lottery-name">{{lottery.name}}</span>: {{'TicketsDesktopComponent.TEXT_PICK_NUMS' | translate}}
+            <ng-container *ngIf="rules && rules.min_lines !==1">
+              <div class="min-lines">({{'TicketsDesktopComponent.TEXT_AT_LEAST' | translate}} {{rules.min_lines}} {rules.min_lines, plural, =1 {line} other {lines}})</div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="col-xs-6 display-flex flex-items-xs-middle flex-items-xs-right">
+          <button class="bt heart display-flex flex-items-xs-middle flex-items-xs-around"
+                  *ngIf="isLoggedIn"
+                  (click)="pickLuckyNumbersEvent.emit()"
+                  [ngClass]="{haveLucky: luckyNumbers.length}">
+            <i class="biglotteryowin-heart-empty"></i> <i class="biglotteryowin-heart"></i>{{'TicketsDesktopComponent.TEXT_LUCKY_NUMS' | translate}}
+          </button>
+          <button type="button" class="bt blue" (click)="autoselectAllEvent.emit({lines: lines, rules: rules})">
+            {{'TicketsDesktopComponent.TEXT_QUICKPICK' | translate}}
+          </button>
+          <button type="button" class="bt clear" (click)="clearAllEvent.emit({lines: lines})">
+            <svg viewBox="0 0 58.85 77.35">
+              <defs>
+                <style>.cls-1 {
+                  fill: #bdbdbd;
+                }</style>
+              </defs>
+              <g>
+                <path class="cls-1"
+                      d="M65.37,21.52H10.58l3.3,57.25a66.81,66.81,0,0,0,22.7,3.85,93.49,93.49,0,0,0,25.5-3.85l3.3-57.25m-44.2,9.3a2.79,2.79,0,0,1,1.8.6,1.75,1.75,0,0,1,.85,1.35l2.7,37.15a1.58,1.58,0,0,1-.65,1.4,2.75,2.75,0,0,1-1.75.55,3,3,0,0,1-1.8-.55,1.81,1.81,0,0,1-.8-1.4l-2.7-37.15a1.56,1.56,0,0,1,.6-1.35,2.59,2.59,0,0,1,1.75-.6m16.8,0a2.79,2.79,0,0,1,1.8.6,1.66,1.66,0,0,1,.7,1.35V69.92a1.71,1.71,0,0,1-.7,1.4,3,3,0,0,1-1.8.55,2.75,2.75,0,0,1-1.75-.55,1.67,1.67,0,0,1-.75-1.4V32.77a1.63,1.63,0,0,1,.75-1.35,2.59,2.59,0,0,1,1.75-.6M53,31.42a2.79,2.79,0,0,1,1.8-.6,2.59,2.59,0,0,1,1.75.6,1.56,1.56,0,0,1,.6,1.35l-2.7,37.15a1.81,1.81,0,0,1-.8,1.4,3,3,0,0,1-1.8.55,2.75,2.75,0,0,1-1.75-.55,1.58,1.58,0,0,1-.65-1.4l2.7-37.15A1.75,1.75,0,0,1,53,31.42M32.48,5.27A1.54,1.54,0,0,0,31,6.77v4.6q-1.65.15-3.25,0.35a82.71,82.71,0,0,0-19.15,4.8l0.2,3.1h58.5l0.15-3.1a83.88,83.88,0,0,0-22.5-5.15V6.77a1.54,1.54,0,0,0-1.5-1.5H32.48m1.5,5.9V8.27h7.95v2.9Q40,11.07,38,11.07T34,11.17Z"
+                      transform="translate(-8.58 -5.27)"/>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <app-super-numbers
+            *ngIf="rules.perticket_numbers"
+            [rules]="rules"
+            [perTicketNumbers]="perTicketNumbers"
+            (togglePerTicketNumbers)="togglePerTicketNumbers.emit($event)"
+          ></app-super-numbers>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row margin-bottom-10">
+    <div class="col-xs-9 col-md-8 col-lg-9">
+      <div class="row">
+        <div class="col-xs">
+          <ng-container *ngFor="let line of lines; trackBy: trackByLineId; let lineIndex = index;">
+            <app-ticket-desktop
+              *ngIf="!line.isFree; else freeLineTpl"
+
+              [lineIndex]="lineIndex + 1"
+              [line]="line"
+              [rules]="rules"
+              [autoselectAnimateCommand$]="getAutoselectAnimateLineCommand$(line.id)"
+              [autoselectAnimateIterations]="autoselectAnimateIterations"
+              [autoselectIterationTime]="autoselectIterationTime"
+              [isLoggedIn]="isLoggedIn"
+
+              (autoselectLineEvent)="autoselectLineEvent.emit($event)"
+              (clearLineEvent)="clearLineEvent.emit($event)"
+              (toggleMainEvent)="toggleMainEvent.emit($event)"
+              (toggleExtraEvent)="toggleExtraEvent.emit($event)"
+              (changeStatusLuckyNumbersEvent)="changeStatusLuckyNumbersEvent.emit($event)"
+            ></app-ticket-desktop>
+            <ng-template #freeLineTpl>
+              <app-ticket-free-desktop
+                [lineIndex]="lineIndex + 1"
+                [line]="line"
+                [rules]="rules"
+                [lottery]="lottery"
+                [autoselectAnimateCommand$]="getAutoselectAnimateLineCommand$(line.id)"
+                [autoselectAnimateIterations]="autoselectAnimateIterations"
+                [autoselectIterationTime]="autoselectIterationTime"
+
+                [isOpenedFreeLine]="isOpenedFreeLine(line.id)"
+                [freeLinesOfferDisplayProperties]="freeLinesOfferDisplayProperties"
+                [freeLinesOffer]="freeLinesOffer"
+
+                (autoselectLineEvent)="autoselectLineEvent.emit($event)"
+                (clearLineEvent)="clearLineEvent.emit($event)"
+                (toggleMainEvent)="toggleMainEvent.emit($event)"
+                (toggleExtraEvent)="toggleExtraEvent.emit($event)"
+                (changeStatusLuckyNumbersEvent)="changeStatusLuckyNumbersEvent.emit($event)"
+
+                (autoselectForFreeLineIdEvent)="autoselectForFreeLineIdEvent.emit($event)"
+                (addToCartFromRibbonEvent)="addToCartFromRibbonEvent.emit($event)"
+              ></app-ticket-free-desktop>
+            </ng-template>
+          </ng-container>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs display-flex flex-items-xs-right flex-items-xs-middle">
+          <a class="bt add-line" (click)="addLinesEvent.emit()">
+            <span>{{'TicketsDesktopComponent.REF_ADD_LINES' | translate}}</span><span class="plus">+</span>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <app-lottery-info-container
+            [lotteryId]="lottery.id"
+            *ngIf="(device$|async) === 'desktop' && !showCmsBasedLotteryInfo && cms">
+          </app-lottery-info-container>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-3 col-md-4 col-lg-3 aside">
+      <app-tickets-aside-desktop
+        [freeLinesOfferDisplayProperties]="freeLinesOfferDisplayProperties"
+        [freeLinesOffer]="freeLinesOffer"
+        [lottery]="lottery"
+        [upcomingDraw]="upcomingDraw"
+        [openedFreeLinesNumber]="openedFreeLineIds.length"
+        [priceTotal]="priceTotal"
+        [discountTotal]="discountTotal"
+        [priceOriginal]="priceOriginal"
+        [siteCurrencyId]="siteCurrencyId"
+        [renewPeriods]="renewPeriods"
+        [selectedRenewPeriod]="selectedRenewPeriod"
+        (changeRenewPeriodEvent)="changeRenewPeriodEvent.emit($event)"
+        (saveToCartEvent)="saveToCartEvent.emit()"
+        (addToCartFromRibbonEvent)="addToCartFromRibbonEvent.emit($event)"
+      ></app-tickets-aside-desktop>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <app-lottery-info-cms-based-container
+        *ngIf="showCmsBasedLotteryInfo && cms"
+        [lotteryId]="lottery.id"
+      ></app-lottery-info-cms-based-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-other-lotteries-container
+        [lotteryId]="lottery.id"
+      ></app-other-lotteries-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-9 col-md-8 col-lg-9">
+      <app-faq-cms-container
+        [lotteryId]="lottery.id"
+      ></app-faq-cms-container>
+    </div>
+  </div>
+</div>

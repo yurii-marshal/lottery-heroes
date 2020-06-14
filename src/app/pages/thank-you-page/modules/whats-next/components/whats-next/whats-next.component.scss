@@ -1,0 +1,76 @@
+@import '../../../../../../../scss/vars';
+
+.whats-next {
+  margin-bottom: 15px;
+
+  .desc {
+    color: $primary;
+    font-size: $MEDIUM;
+    font-family: $headline;
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    vertical-align: baseline;
+    text-align: center;
+    position: relative;
+  }
+
+  .ico {
+    text-align: center;
+    padding-bottom: 24px;
+  }
+
+  .step {
+    &:first-child {
+      img {
+        width: 55px;
+      }
+    }
+
+    &:nth-child(2) {
+      img {
+        width: 70px;
+      }
+    }
+
+    &:nth-child(3) {
+      img {
+        width: 60px;
+      }
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .list {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .step {
+      margin-top: 3rem;
+
+      .desc {
+        font-size: 16px;
+      }
+    }
+
+    .ico {
+      padding-bottom: 15px;
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    border-bottom: 1px solid $GRAY-LIGHTER;
+    padding-bottom: 40px;
+
+    .title {
+      font-size: $LARGE;
+    }
+
+    .ico {
+      min-height: 132px;
+    }
+  }
+}

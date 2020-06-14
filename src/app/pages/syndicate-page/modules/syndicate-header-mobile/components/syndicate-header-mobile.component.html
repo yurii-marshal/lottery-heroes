@@ -1,0 +1,30 @@
+<div class="container-fluid header syndicate-header-mobile-component">
+  <div class="row">
+    <div class="col-xs display-flex flex-items-xs-middle">
+      <div class="header-body display-flex flex-items-xs-left flex-items-xs-middle">
+        <div class="logo">
+          <img src="{{syndicateModel?.lotteryLogo}}" alt="{{syndicateModel?.lotteryName}}">
+        </div>
+        <div class="right">
+          <span class="lottery-name">{{syndicateModel?.lotteryName}}:</span>
+          <span class="jackpot">
+            <ng-container *ngIf="syndicateModel?.jackpot; else noJackpot">
+              <span [innerHtml]="syndicateModel?.jackpot | jackpotRound | currency:syndicateModel?.currencyId:'symbol':'1.0-0'"></span>
+            </ng-container>
+            <ng-template #noJackpot>
+              <span [innerHtml]="syndicateModel?.minJackpot | jackpotRound | currency:syndicateModel?.currencyId:'symbol':'1.0-0'"></span>
+              <span class="no-jackpot">*</span>
+            </ng-template>
+          </span>
+          <div class="countdown">
+            <app-simple-countdown [date]="syndicateModel?.stopSellTime"></app-simple-countdown>
+          </div>
+          <div class="no-jackpot-remark display-flex flex-items-xs-middle flex-items-xs-left" *ngIf="!syndicateModel?.jackpot">
+            {{'SyndicateHeaderMobileComponent.TEXT_JACKPOT_EXPECT' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

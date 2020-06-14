@@ -1,0 +1,82 @@
+@import '../../../../../scss/vars';
+
+.lottery-info-cms-based {
+
+  .last-results-cover {
+    padding: 1rem 5px;
+    background: #f3f3f3;
+    margin: 1rem 0;
+    border-radius: 5px;
+
+    .winning-numbers {
+      padding: 1rem;
+
+      .number {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 100rem;
+        border: 2px solid #c6c6c6;
+        background: #fff;
+        overflow: hidden;
+        font-size: 1.7rem;
+        margin-right: 0.6rem;
+
+      }
+      .ball {
+        background: $BLUE;
+        border-color: $BLUE;
+        color: #fff;
+      }
+    }
+  }
+
+  .additional-headline {
+    border: 1px solid #e3e3e3;
+    padding: 2rem 10px;
+    border-radius: 5px;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .boxes-wrapper {
+
+      &.centered {
+        justify-content: center;
+      }
+
+      &.centered > * {
+        margin: 0 10px;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    margin: 0 15px;
+
+    .boxes-wrapper {
+      flex-direction: column;
+
+      & > * {
+        margin-top: 16px;
+      }
+    }
+
+    .last-results-cover {
+
+      .winning-numbers {
+        justify-content: space-between;
+
+        .number {
+          width: 2.5rem;
+          height: 2.5rem;
+          font-size: 1.5rem;
+          border-radius: 50%;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

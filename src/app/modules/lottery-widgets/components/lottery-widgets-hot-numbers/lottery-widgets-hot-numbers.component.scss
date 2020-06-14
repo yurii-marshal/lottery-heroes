@@ -1,0 +1,92 @@
+@import '../../../../../scss/vars';
+
+.lottery-widgets-hot-numbers-component {
+  .title-numbers {
+    color: $primary;
+    font-family: $headline;
+    font-size: 1.2rem;
+    margin: 1rem 0 0;
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+
+  .post-title {
+    color: $primary;
+    font-family: $headline;
+    font-size: 1.1rem;
+    font-weight: normal;
+  }
+
+  .number {
+    font-family: $headline;
+    font-weight: normal;
+  }
+
+  .line-hot {
+    margin-top: 2rem;
+    padding: 0.7rem;
+
+    .number {
+      color: $RED;
+      font-size: 1.3rem;
+    }
+  }
+
+  .line-cold {
+    padding: 0.7rem;
+
+    .number {
+      color: $BLUE;
+      font-size: 1.2rem;
+    }
+  }
+
+  .line-hot {
+    img {
+      width: 28px;
+    }
+  }
+
+  .line-cold {
+    img {
+      width: 30px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .title-numbers {
+      font-size: 1rem;
+      margin: 0.5rem 0 0;
+    }
+
+    .post-title {
+      font-size: 0.8rem;
+    }
+
+    .line-hot {
+      margin-top: 1rem;
+      padding: 0.5rem;
+
+      .number {
+        font-size: 1.2rem;
+      }
+
+      img {
+        width: 1.2rem;
+      }
+    }
+
+    .line-cold {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+
+      .number {
+        font-size: 1.1rem;
+      }
+
+      img {
+        width: 1.2rem;
+      }
+    }
+  }
+}

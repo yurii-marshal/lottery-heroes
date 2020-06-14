@@ -1,0 +1,61 @@
+<div class="row lottery-widgets-draw-results-component">
+  <input type="checkbox" id="toggleDraws">
+  <div class="col-xs-12">
+    <div class="title-latest-results" *ngIf="config.defaultHeading">
+      {{'LotteryWidgetsDrawResultsComponent.TEXT_LATEST_RESULTS' | translate}}:
+    </div>
+    <div class="title-latest-results" *ngIf="!config.defaultHeading">
+      {{lottery.name}} {{'LotteryWidgetsDrawResultsComponent.TEXT_RESULTS_HISTORY' | translate}}:
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <div class="row single-draw"
+         *ngFor="let singleDraw of lastDraws; let indx = index;" [ngClass]="{'hidden':indx > visibleLines}">
+      <div class="col-sm-4 col-xs-3 display-flex flex-items-xs-middle flex-items-xs-left">
+        <a class="date"
+           [routerLink]="[singleDraw.date_local]"
+           title="{{'LotteryWidgetsDrawResultsComponent.TITLE_SEE_INFO' | translate}}">
+          <span class="hidden-sm-down">{{singleDraw.date_local | date : config.drawDateFormat}} {{config.drawDateText}}</span>
+          <span class="hidden-sm-up">{{singleDraw.date_local | date}}</span>
+        </a>
+      </div>
+      <div class="col-sm-6 col-xs-7 display-flex flex-items-xs-middle flex-items-xs-left">
+        <span class="line display-flex flex-items-xs-center flex-items-xs-middle"
+           [routerLink]="[singleDraw.date_local]"
+           title="{{'LotteryWidgetsDrawResultsComponent.TITLE_SEE_INFO' | translate}}">
+          <span class="number main display-flex flex-items-xs-middle flex-items-xs-center"
+                *ngFor="let main of singleDraw.winning_main_numbers">
+            {{main}}
+          </span>
+          <ng-container *ngIf="singleDraw.winning_extra_numbers">
+            <span class="number extra display-flex flex-items-xs-middle flex-items-xs-center"
+                  *ngFor="let extra of singleDraw.winning_extra_numbers">
+              {{extra}}
+            </span>
+          </ng-container>
+          <ng-container *ngIf="singleDraw.winning_perticket_numbers">
+            <span class="number extra display-flex flex-items-xs-middle flex-items-xs-center"
+                  *ngFor="let perTicket of singleDraw.winning_perticket_numbers">
+              {{perTicket}}
+            </span>
+          </ng-container>
+        </span>
+      </div>
+      <div class="col-xs-2 display-flex">
+        <span class="in-draw display-flex flex-items-xs-middle flex-items-xs-right"
+           [routerLink]="[singleDraw.date_local]"
+           title="{{'LotteryWidgetsDrawResultsComponent.TITLE_SEE_INFO' | translate}}">
+          <img src="assets/images/svg/arrow-gray.svg" alt="Check {{lottery.name}} Prize Breakdown">
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 text-xs-center">
+    <label for="toggleDraws" class="link more">
+      {{'LotteryWidgetsDrawResultsComponent.LABEL_MORE_RES' | translate}}
+    </label>
+    <label for="toggleDraws" class="link less">
+      {{'LotteryWidgetsDrawResultsComponent.LABEL_LESS_RES' | translate}}
+    </label>
+  </div>
+</div>

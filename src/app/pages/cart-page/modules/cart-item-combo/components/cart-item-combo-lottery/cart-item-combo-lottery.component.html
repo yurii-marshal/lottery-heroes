@@ -1,0 +1,28 @@
+<div class="cart-item-combo-lottery-component">
+	<div class="col-xs-12 display-flex direction-column">
+		<div class="row lottery-item">
+			<div class="col-xs-12 col-lg-2 display-flex flex-items-xs-center lottery-logo">
+				<img class="hidden-sm-down logo" [src]="lottery.logo" alt="{{lottery.name}}">
+				<img class="logo hidden-md-up" src="/assets/images/lottery-logos/lottery-logos-line/{{lottery.id}}.svg" alt="{{lottery.name}}">
+			</div>
+			<div class="col-xs-12 col-lg-10 display-flex flex-items-xs-center direction-column lines">
+				<div class="line display-flex flex-items-xs-middle flex-items-xs-between direction-row"
+						 [ngClass]="{'margin-top' : (lotteryLines.length === 1)}"
+						 *ngFor="let line of lotteryLines; trackBy: trackByLineId">
+					<div class="line-index">
+						{{'CartItemComboLotteryComponent.TEXT_LINE' | translate}} {{getLineIndex(item, line)}}
+					</div>
+					<div class="flex-items-xs-middle flex-items-xs-between main-numbers" (click)="editLineEvent.emit({item: item, editedLine: line})">
+						<span class="number main" *ngFor="let num of line.main_numbers">{{num | number:'2.0-0'}}</span>
+						<span class="number extra" *ngFor="let num of line.extra_numbers">{{num | number:'2.0-0'}}</span>
+					</div>
+					<div class="display-flex flex-items-xs-left flex-items-xs-middle col-xs-1 no-padding">
+						<button class="bt edit hidden-sm-down" (click)="editLineEvent.emit({item: item, editedLine: line})">
+							<i class="biglotteryowin-pencil"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

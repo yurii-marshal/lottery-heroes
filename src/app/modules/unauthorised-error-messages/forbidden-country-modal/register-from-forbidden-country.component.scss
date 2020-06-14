@@ -1,0 +1,29 @@
+@import '../../../../scss/vars';
+
+.register-from-forbidden-country-component {
+  .modal-body {
+    padding: 15px 19px;
+
+    .link {
+      font-size: $BASIC;
+    }
+  }
+
+  .modal-title {
+    text-transform: uppercase;
+  }
+
+  .icon {
+    width: 70px;
+    margin: 0 auto 20px;
+    display: block;
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 767px) {
+    .modal-body .link {
+      font-size: $small;
+    }
+  }
+}

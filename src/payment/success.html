@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script>
+  // parent.window.dispatchEvent(new CustomEvent('payment-success'));
+  top.postMessage('payment-success', '*');
+</script>
+</body>
+</html>

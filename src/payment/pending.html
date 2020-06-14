@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script>
+  // parent.window.dispatchEvent(new CustomEvent('payment-pending'));
+  top.postMessage('payment-pending', '*');
+</script>
+</body>
+</html>

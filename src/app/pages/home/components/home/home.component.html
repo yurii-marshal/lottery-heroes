@@ -1,0 +1,102 @@
+<div class="home-component">
+  <!----- MAIN JACKPOT ----->
+  <section class="main-section" [ngClass]="brandId">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-6">
+          <app-main-jackpot-container
+            [brandId]="brandId"
+            (setMainJackpotLottery)="setMainJackpotLottery($event)"
+          ></app-main-jackpot-container>
+        </div>
+      </div>
+    </div>
+
+    <!-- BANNER --->
+    <ng-container *ngIf="brandId === 'BIGLOTTERYOWIN_UK'">
+      <img src="assets/images/home/promo_m_uk.jpg"
+           class="world-biggest-jackpot-img"
+           alt="Play Lottery Online"
+           title="{{'HomeComponent.TITLE_PLAY_ONLINE' | translate}}">
+    </ng-container>
+    <ng-container *ngIf="brandId === 'BIGLOTTERYOWIN_IE'">
+      <img src="assets/images/home/promo_m_ie_desktop.jpg"
+           class="hidden-sm-down world-biggest-jackpot-img"
+           alt="Play Lottery Online"
+           title="{{'HomeComponent.TITLE_PLAY_ONLINE' | translate}}">
+      <img src="assets/images/home/promo_m_ie_mobile.jpg"
+           class="hidden-md-up world-biggest-jackpot-img"
+           alt="Play Lottery Online"
+           title="{{'HomeComponent.TITLE_PLAY_ONLINE' | translate}}">
+    </ng-container>
+    <ng-container *ngIf="brandId === 'BIGLOTTERYOWIN_COM'">
+      <img src="assets/images/home/promo_m_com_desktop.png"
+           class="hidden-sm-down world-biggest-jackpot-img"
+           alt="Play Lottery Online"
+           title="{{'HomeComponent.TITLE_PLAY_ONLINE' | translate}}">
+      <img src="assets/images/home/promo_m_com_mobile.png"
+           class="hidden-md-up world-biggest-jackpot-img"
+           alt="Play Lottery Online"
+           title="{{'HomeComponent.TITLE_PLAY_ONLINE' | translate}}">
+    </ng-container>
+  </section>
+
+  <!----- POPULAR SLIDER ----->
+  <section class="list-of-popular" [ngClass]="brandId">
+    <div class="container">
+      <app-list-of-popular-container
+        [mainJackpotLottery]="mainJackpotLotterySubject$.asObservable()"
+      ></app-list-of-popular-container>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+
+      <!----- RESULTS ----->
+      <div class="col-xs-12 col-md-7">
+        <app-lottery-widget-results-container></app-lottery-widget-results-container>
+      </div>
+
+      <!----- CHECK YOUR NUMBERS ----->
+      <div class="col-xs-12 col-md-5">
+        <app-check-your-numbers-container></app-check-your-numbers-container>
+      </div>
+    </div>
+  </div>
+
+  <!----- HOW TO PLAY ----->
+  <section class="how-to-play-steps">
+    <div class="container">
+      <app-how-to-play-steps></app-how-to-play-steps>
+    </div>
+  </section>
+
+  <!----- WORLDS BIGGEST JACKPOT ----->
+  <section class="worlds-biggest-jackpot">
+    <div class="container">
+      <app-lottery-widget-world-biggest-jackpots-container></app-lottery-widget-world-biggest-jackpots-container>
+    </div>
+  </section>
+
+  <!----- PROTECTION ----->
+  <!--<section class="protection">-->
+    <!--<div class="container">-->
+      <!--<app-protection></app-protection>-->
+    <!--</div>-->
+  <!--</section>-->
+
+  <!----- STORIES ----->
+  <!--<section class="stories">-->
+    <!--<div class="container">-->
+      <!--<div class="row">-->
+        <!--<div class="col-xs-12">-->
+          <!--<div class="title-stories">-->
+            <!--{{'HomeComponent.TEXT_TOP_STORIES' | translate}}-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<app-lottery-widgets-stories-container></app-lottery-widgets-stories-container>-->
+  <!--</section>-->
+</div>

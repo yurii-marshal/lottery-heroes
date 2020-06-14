@@ -1,0 +1,140 @@
+@import '../../../../../scss/vars';
+
+.signup-component {
+  .modal-header {
+    display: none;
+  }
+
+  form {
+    max-width: 331px;
+  }
+
+  .logo-container {
+    img {
+      max-width: 200px;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
+  .modal-body p + form {
+    margin: 0 auto;
+  }
+
+  .bt {
+    font-size: $LARGE;
+    &.disabled {
+      background-color: #9b9b9b;
+    }
+  }
+
+  .modal-body {
+    padding-bottom: 20px;
+  }
+
+  .modal-body p {
+    font-size: $small;
+
+    a {
+      font-size: $small;
+    }
+  }
+
+  .plain-modal-inner.modal-body {
+
+    + .agreement {
+      border: 1px solid $GRAY-LIGHTER;
+      border-top: 0;
+      border-radius: 0 0 2px 2px;
+    }
+  }
+
+  .agreement {
+    padding: 0 20px 15px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 22px;
+    font-size: $small;
+    color: $primary;
+
+    .link {
+      font-size: $small;
+    }
+  }
+
+  .form-group + .link,
+  .form-row + .link {
+    margin-top: 5px;
+  }
+
+  .date {
+    .input-wr label {
+      display: none;
+    }
+  }
+
+  .find_address {
+    font-size: $BASIC;
+    width: 100%;
+    font-weight: 400;
+    font-family: $CONTENT;
+  }
+
+  .daily-limit label,
+  .daily-limit .label {
+    font-size: $small;
+  }
+
+  .link + .daily-limit {
+    margin-top: 10px;
+  }
+
+  .form-row label {
+    display: none;
+  }
+
+  .year-of-birth {
+    max-width: 85px;
+  }
+
+  .day-of-birth {
+    max-width: 65px;
+  }
+
+  #signup-password ~ .icon-tooltip {
+    right: 35px;
+  }
+
+  .accept-checkers {
+    margin: 22px;
+    .check-field {
+      display: flex;
+      input {
+        margin-top: 2px;
+      }
+      label {
+        margin-left: 5px;
+        //text-align: justify;
+      }
+    }
+    .terms-and-conditions {
+    }
+    .accept-offers {
+    }
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 320px) {
+    .link {
+      font-size: $small;
+    }
+  }
+
+  @media (min-width: 768px) {
+    #signup-password ~ .icon-tooltip:hover ~ .tooltip-container .tooltip-body {
+      right: -1%;
+    }
+  }
+
+}

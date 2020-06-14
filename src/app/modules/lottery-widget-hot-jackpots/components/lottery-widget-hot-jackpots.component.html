@@ -1,0 +1,41 @@
+<div class="lottery-widget-hot-jackpots-component">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="title-hot-jackpots text-xs-center">
+        {{'LotteryWidgetHotJackpotsComponent.TEXT_HOTTEST_JACKPOT' | translate}}:
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngFor="let item of items">
+    <div class="col-xs-5 display-flex flex-items-xs-center flex-items-xs-middle no-gutter">
+      <a class="lotteries-logo" [routerLink]="['/', item.slug]">
+        <img src="{{item.logo}}" alt="{{item.name}}">
+        <div *ngIf="item.type === 'syndicate'"
+             class="syndicate-icon">
+          <img src="assets/images/syndicates/syndicate_icon.svg" alt="syndicate_icon">
+        </div>
+      </a>
+    </div>
+    <div class="col-xs-7 display-flex flex-items-xs-middle flex-items-xs-center no-gutter">
+      <div class="lottery-hot-info display-flex flex-items-xs-center direction-column text-xs-center">
+        <div class="time-left">
+          <app-simple-countdown [date]="item.time"></app-simple-countdown>
+        </div>
+        <div class="jackpot display-flex flex-items-xs-center">
+          <ng-container *ngIf="item.jackpot; else noJackpot">
+            <div [innerHtml]="item.jackpot | jackpotFormat:item.currencyId:'M'"></div>
+          </ng-container>
+          <ng-template #noJackpot>
+            <div [innerHtml]="item.minJackpot | jackpotFormat:item.currencyId:'M'"></div>
+            <span class="no-jackpot">*</span>
+          </ng-template>
+        </div>
+        <div class="col-xs-12" *ngIf="!item.jackpot">
+          <div class="no-jackpot-remark text-xs-center">
+            {{'LotteryWidgetHotJackpotsComponent.TEXT_JACKPOT_EXPECT' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

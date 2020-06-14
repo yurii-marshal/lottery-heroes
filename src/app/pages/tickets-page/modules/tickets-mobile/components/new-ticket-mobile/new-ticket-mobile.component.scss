@@ -1,0 +1,80 @@
+@import '../../../../../../../scss/vars';
+
+.new-ticket-mobile-component {
+  .new-line {
+    border: 1px solid #d2d2d2;
+    border-radius: 6px;
+    padding: 0.63rem;
+    position: relative;
+    width: 100%;
+    max-width: 345px;
+    margin-top: .5rem;
+
+    span {
+      margin: 0 10px;
+    }
+    a {
+      cursor: pointer;
+      color: $BLUE;
+      text-decoration: underline;
+      font-family: $headline;
+      font-size: 0.9rem;
+      text-transform: capitalize;
+    }
+  }
+
+  .line-number {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    color: #b4b4b4;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    background: #fff;
+    padding: 0 3px;
+  }
+
+  .bt.blue {
+    width: 120px;
+    min-height: 40px; // height
+  }
+
+  .new-line {
+    .bt, a {
+      font-size: 0.875rem;
+    }
+  }
+
+  .new-line-container {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-top: .5rem;
+  }
+
+  .visible {
+    animation: new-line .5s linear .7s forwards;
+  }
+
+  @keyframes new-line {
+    0% {
+      max-height: 0;
+      opacity: 0;
+      margin-top: -1rem;
+    }
+    33% {
+      opacity: 0;
+      margin-top: -0.5rem
+    }
+
+    66% {
+      opacity: 1;
+      margin-top: .7rem
+    }
+    100% {
+      max-height: 77px;
+      opacity: 1;
+      margin-top: .5rem;
+    }
+  }
+}

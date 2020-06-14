@@ -1,0 +1,24 @@
+<div class="row results-menu-list-item-component">
+  <div class="col-xs result-line-wrapper indents flex-items-xs-between flex-items-xs-middle display-flex">
+    <a class="lotteries-logo"
+       (click)="oTrackMegaMenuClicked(lottery.name)"
+       [routerLink]="['/' + lotterySlug, 'results']"
+       title="{{'ResultsMenuListItemComponent.REF_CHECK_NOW' | translate}}">
+      <img [src]="lottery.logo" alt="{{lottery.name}}">
+    </a>
+    <div class="results-info">
+      <a class="results-line" [routerLink]="['/' + lotterySlug, 'results']"
+         title="{{'ResultsMenuListItemComponent.REF_CHECK_NOW' | translate}}">
+        <span class="number" *ngFor="let num of latestDraw.winning_main_numbers">{{num}}</span>
+        <span class="ball" *ngFor="let num of latestDraw.winning_extra_numbers">{{num}}</span>
+      </a>
+      <div class="results-date">{{latestDraw.date_local|date:'EEE. MMMM d'}}</div>
+    </div>
+    <a class="bt green"
+       (click)="oTrackMegaMenuClicked(lottery.name)"
+       [routerLink]="['/' + lotterySlug, 'results']"
+       title="{{'ResultsMenuListItemComponent.TITLE_CHECK_RES' | translate: {param: lottery.name} }}">
+      {{'ResultsMenuListItemComponent.REF_CHECK_NOW' | translate}}
+      <img src="assets/images/svg/arrow-white.svg"></a>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+[
+  {
+    "template_id": 1,
+    "lottery_id": "powerball",
+    "num_shares": 30,
+    "num_lines": 200,
+    "prices": [
+      {
+        "currency_id": "GBP",
+        "share_price": 10
+      }
+    ],
+    "num_shares_available": 28,
+    "cutoff_time": "2018-03-22T19:00:00.000Z",
+    "stop_sell_time": "2018-03-22T20:00:00.000Z",
+    "draw_id": 3183,
+    "draw_date": "2018-03-22T20:00:00.000Z",
+    "lines": [
+      {
+        "main_numbers": [34, 6, 1, 6, 48],
+        "extra_numbers": [8],
+        "perticket_numbers": []
+      }
+    ]
+  },
+  {
+    "template_id": 2,
+    "lottery_id": "euromillions",
+    "num_shares": 20,
+    "num_lines": 10,
+    "prices": [
+      {
+        "currency_id": "GBP",
+        "share_price": 5
+      },
+      {
+        "currency_id": "USD",
+        "share_price": 7.2
+      }
+    ],
+    "num_shares_available": 14,
+    "cutoff_time": "2018-03-24T18:00:00.000Z",
+    "stop_sell_time": "2018-03-24T19:35:00.000Z",
+    "draw_id": 3558,
+    "draw_date": "2018-03-24T19:35:00.000Z",
+    "lines": [
+      {
+        "main_numbers": [34, 6, 1, 6, 48],
+        "extra_numbers": [8],
+        "perticket_numbers": []
+      }
+    ]
+  }
+]

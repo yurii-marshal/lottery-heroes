@@ -1,0 +1,26 @@
+<div *ngIf="isShowlightbox" role="dialog" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" (click)="closeLightbox()">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-xs-center" [appTranslate]="data.title"></p>
+
+        <div>
+          <p class="text-xs-center" [appTranslate]="data.message"></p>
+        </div>
+        <div *ngIf="isShowButtons" class="row flex-items-xs-center form-row">
+          <div class="display-flex form-row-inner">
+            <button *ngFor="let button of data.buttons"
+                    type="button" class="bt green"
+                    [ngClass]="{'bordered cancel': button?.type === 'cancel', 'save': button?.type === 'save'}"
+                    (click)="clickBtn(button)"
+                    [appTranslate]="button?.text"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="closeLightbox()"></div>
+</div>

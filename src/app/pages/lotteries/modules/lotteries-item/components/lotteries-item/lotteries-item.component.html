@@ -1,0 +1,75 @@
+<div class="col-xs-12 item lotteries-item-component" [ngClass]="{'freeline-item': item.freeLinesOffer}">
+  <div class="lottry-anchor" id="{{item.lotteryId}}"></div>
+
+  <!--- Ribbon --->
+  <div *ngIf="item.type === 'lottery' && item.freeLinesOffer && item.freeLinesOffer.displayProperties.ribbonLotteriesPage" class="ribbon-wrapper small"
+       [ngClass]="item.freeLinesOffer.displayProperties.ribbonCssClass">
+    <p (click)="addToCartEvent.emit({lotteryId: item.lotteryId, linesNumber: item.freeLinesOffer.linesToQualify})" class="ribbon-text">
+      {{item.freeLinesOffer.displayProperties.shortText}}
+    </p>
+    <img src="assets/images/lottery-free-line/ribbon-small-shadow.svg" alt="{{item.freeLinesOffer.displayProperties.shortText}}" class="ribbon">
+  </div>
+
+  <div class="row">
+    <a class="col-xs-12 display-flex flex-items-xs-middle"
+       [routerLink]="['/', item.lotterySlug]"
+       [appProductLink]="item.lotteryId"
+       [listKey]="'lotteries'"
+       [position]="item.position"
+       title="{{item.lotteryName}}"
+       [attr.itemprop]="item.isSignificantLink ? 'significantLink' : null">
+      <div class="lotteries-logo">
+        <img [src]="item.lotteryLogo" alt="{{item.lotteryName}}" title="{{item.lotteryName}}" class="logo">
+        <div class="syndicate-icon" *ngIf="item.type === 'syndicate'">
+          <img src="assets/images/syndicates/syndicate_icon.svg" alt="">
+        </div>
+      </div>
+      <div>
+        <div class="name">{{item.lotteryName}}</div>
+        <ng-container *ngIf="item.jackpot; else noJackpot">
+          <div class="jackpot"
+               [innerHtml]="item.jackpot | jackpotFormat:item.currencyId"></div>
+        </ng-container>
+        <ng-template #noJackpot>
+          <div class="jackpot">
+            <span [innerHtml]="item.minJackpot | jackpotFormat:item.currencyId"></span>
+            <span class="no-jackpot">*</span>
+          </div>
+        </ng-template>
+
+        <div class="syndicate-info" *ngIf="item.type === 'syndicate'">
+          <div class="syndicate-description">
+            {{item.syndicateNumLines}} {{'LotteriesItemComponent.TEXT_LINES' | translate}} | {{item.syndicateNumShares}} {{'LotteriesItemComponent.TEXT_SHARES' | translate}}
+          </div>
+        </div>
+        <!--- Free line --->
+        <div *ngIf="item.type === 'lottery' && item.freeLinesOffer"
+             class="freeLine">{{item.freeLinesOffer.linesToQualify}} {{'LotteriesItemComponent.TEXT_LINES' | translate}} + <span class="green">{{item.freeLinesOffer.linesFree}} {{'LotteriesItemComponent.TEXT_FREE' | translate}}</span>
+          <img src="assets/images/lottery-free-line/gift.svg" alt="free line" class="gift">
+        </div>
+        <div class="col-xs-12 display-flex flex-items-xs-middle flex-items-xs-left" *ngIf="!item.jackpot">
+          <div class="no-jackpot-remark">
+            {{'LotteriesItemComponent.TEXT_JACKPOT_EXPECT' | translate}}
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="row">
+    <div class="display-flex flex-items-xs-middle flex-items-xs-between bottom"
+         [ngClass]="{'no-jackpot-countdown': !item.jackpot}">
+      <div class="timer">
+        <app-simple-countdown [date]="item.date"></app-simple-countdown>
+      </div>
+      <a class="bt green"
+         [routerLink]="['/', item.lotterySlug]"
+         [appProductLink]="item.lotteryId"
+         [listKey]="'lotteries'"
+         [position]="item.position"
+         title="'Play {{item.lotteryName}} Now"
+         [attr.itemprop]="item.isSignificantLink ? 'significantLink' : null"
+         [translate]="item.type === 'syndicate' ? 'LotteriesItemComponent.Join' : 'LotteriesItemComponent.Play Now'"
+      ></a>
+    </div>
+  </div>
+</div>

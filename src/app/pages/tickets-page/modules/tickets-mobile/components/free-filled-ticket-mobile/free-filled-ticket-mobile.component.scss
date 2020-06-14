@@ -1,0 +1,96 @@
+@import '../../../../../../../scss/vars';
+
+.free-filled-ticket-mobile-component {
+  .title {
+    font-family: $headline;
+    color: #4e4e4e;
+    max-width: 345px;
+  }
+
+  .main-numbers-container {
+    border: 1px solid #d2d2d2;
+    border-radius: 6px;
+    padding: 0.94rem 0.5rem 0.94rem 0.8rem;
+    position: relative;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 345px;
+  }
+
+  .main-numbers {
+    overflow: hidden;
+  }
+
+  .number {
+    width: 30px;
+    height: 30px;
+    border-radius: 100rem;
+    border: 1px solid;
+    font-size: 14px;
+    font-family: $headline;
+
+    transition: all .2s ease;
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  .number.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .number.existed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .number.main {
+    color: #929292;
+    border-color: #c8c8c8;
+    background: #fff;
+  }
+
+  .number.extra {
+    color: #fff;
+    border-color: transparent;
+    background: $BLUE;
+  }
+
+  .bt.clear {
+    padding-right: 0;
+
+    img {
+      height: 18px;
+    }
+  }
+
+  .bt.edit {
+    color: #bdbdbd;
+    padding: 0;
+    width: 25px;
+    margin-left: 5px;
+
+    &:active,
+    &:focus {
+      color: #e3e3e3;
+    }
+  }
+
+  .gift-wrapper {
+    .gift {
+      width: 22px;
+      margin-left: 5px;
+    }
+  }
+
+  .free-line-title {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 0.8em;
+    color: $purple;
+    padding: 0 3px;
+    background: #fff;
+    text-transform: capitalize;
+  }
+}

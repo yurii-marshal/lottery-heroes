@@ -1,0 +1,61 @@
+@import '../../../../../../../scss/vars';
+
+.ticket-edit-mobile-component {
+  padding-bottom: 150px;
+
+  .bt.close {
+    position: absolute;
+    top: 13px;
+    right: 14px;
+    z-index: 99;
+    min-height: 18px; // height
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: 26px;
+    line-height: 16px;
+    color: #bebcbd;
+  }
+
+  .overlay-control {
+    width: 100%;
+    max-width: 320px;
+    padding-top: 10px;
+  }
+
+  .line-number {
+    font-family: $headline;
+    font-size: 14px;
+    color: #9A9A9A;
+  }
+
+  .overlay {
+    padding: 0;
+  }
+
+  .ticket-popup {
+    background: #fff;
+    padding-bottom: 145px;
+  }
+
+  .animated {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 37px;
+    overflow: hidden;
+
+    transform: translateX(-100%);
+    animation: roll-right .4s ease forwards;
+  }
+
+  @keyframes roll-right {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}

@@ -1,0 +1,88 @@
+<div class="container ticket-mobile-component" [ngClass]="{filled: isFilledLine}">
+  <div class="row">
+    <div class="col-xs display-flex flex-items-xs-top flex-items-xs-center">
+      <div class="line">
+        <div class="row">
+          <div class="col-xs header display-flex flex-items-xs-between flex-items-xs-middle">
+            <div class="title">
+              {{'TicketMobileComponent.TEXT_PICK_NUMS' | translate}}
+              <div>
+                <ng-container *ngIf="rules.extra_numbers && !rules.extra_numbers.in_results_only; else noExtraCaption">
+                  <ng-container
+                    *ngIf="editedLine.main_numbers.length === 0 && editedLine.extra_numbers.length === 0; else partiallyFilledCaption">
+                    {{rules.main_numbers.picks}} + {{rules.extra_numbers.picks}} {{'TicketMobileComponent.TEXT_PICK_NUMS' | translate}}
+                  </ng-container>
+                  <ng-template #partiallyFilledCaption>
+                    Picked {{editedLine.main_numbers.length}}/{{rules.main_numbers.picks}}
+                    + {{editedLine.extra_numbers.length}}/{{rules.extra_numbers.picks}}
+                    {{'TicketMobileComponent.TEXT_EXTRA' | translate}}
+                  </ng-template>
+                </ng-container>
+                <ng-template #noExtraCaption>
+                  <ng-container *ngIf="editedLine.main_numbers.length === 0; else partiallyFilledNoExtraCaption">
+                    {{rules.main_numbers.picks}}
+                  </ng-container>
+                  <ng-template #partiallyFilledNoExtraCaption>
+                    {{'TicketMobileComponent.TEXT_PICKED' | translate}} {{editedLine.main_numbers.length}}/{{rules.main_numbers.picks}}
+                  </ng-template>
+                </ng-template>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="bt blue" (click)="onAutoselectClickEvent()">
+                {{'TicketMobileComponent.BUTTON_QP' | translate}}
+              </button>
+              <button class="bt clear" (click)="onClearClickEvent()">
+                <svg viewBox="0 0 58.85 77.35">
+                  <defs><style>.cls-1 {fill: #bdbdbd; }</style></defs>
+                  <g><path class="cls-1"
+                          d="M65.37,21.52H10.58l3.3,57.25a66.81,66.81,0,0,0,22.7,3.85,93.49,93.49,0,0,0,25.5-3.85l3.3-57.25m-44.2,9.3a2.79,2.79,0,0,1,1.8.6,1.75,1.75,0,0,1,.85,1.35l2.7,37.15a1.58,1.58,0,0,1-.65,1.4,2.75,2.75,0,0,1-1.75.55,3,3,0,0,1-1.8-.55,1.81,1.81,0,0,1-.8-1.4l-2.7-37.15a1.56,1.56,0,0,1,.6-1.35,2.59,2.59,0,0,1,1.75-.6m16.8,0a2.79,2.79,0,0,1,1.8.6,1.66,1.66,0,0,1,.7,1.35V69.92a1.71,1.71,0,0,1-.7,1.4,3,3,0,0,1-1.8.55,2.75,2.75,0,0,1-1.75-.55,1.67,1.67,0,0,1-.75-1.4V32.77a1.63,1.63,0,0,1,.75-1.35,2.59,2.59,0,0,1,1.75-.6M53,31.42a2.79,2.79,0,0,1,1.8-.6,2.59,2.59,0,0,1,1.75.6,1.56,1.56,0,0,1,.6,1.35l-2.7,37.15a1.81,1.81,0,0,1-.8,1.4,3,3,0,0,1-1.8.55,2.75,2.75,0,0,1-1.75-.55,1.58,1.58,0,0,1-.65-1.4l2.7-37.15A1.75,1.75,0,0,1,53,31.42M32.48,5.27A1.54,1.54,0,0,0,31,6.77v4.6q-1.65.15-3.25,0.35a82.71,82.71,0,0,0-19.15,4.8l0.2,3.1h58.5l0.15-3.1a83.88,83.88,0,0,0-22.5-5.15V6.77a1.54,1.54,0,0,0-1.5-1.5H32.48m1.5,5.9V8.27h7.95v2.9Q40,11.07,38,11.07T34,11.17Z"
+                          transform="translate(-8.58 -5.27)"/>
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs main-numbers display-flex">
+            <div class="numbers display-flex flex-items-xs-left flex-items-xs-middle">
+              <span class="number main display-flex flex-items-xs-center flex-items-xs-middle"
+                    *ngFor="let num of rules.main_numbers.lowest|rangeTo:rules.main_numbers.highest"
+                    [ngClass]="{picked: isPickedMain(num)}"
+                    (click)="toggleMain(num)"
+              >{{num}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs extra-numbers" *ngIf="rules.extra_numbers && !rules.extra_numbers.in_results_only">
+            <div class="col-xs-12 display-flex pick-extra-text">
+              <ng-container *ngIf="editedLine.extra_numbers.length === 0; else elseTplExtraCaption">
+                {{'TicketMobileComponent.TEXT_PICK' | translate}} {{rules.extra_numbers.picks}}
+              </ng-container>
+              <ng-template #elseTplExtraCaption>
+                {{'TicketMobileComponent.TEXT_PICKED' | translate}} {{editedLine.extra_numbers.length}}/{{rules.extra_numbers.picks}}
+              </ng-template>
+            </div>
+            <div class="numbers display-flex flex-items-xs-left flex-items-xs-middle">
+              <span class="number extra display-flex flex-items-xs-center flex-items-xs-middle"
+                    *ngFor="let num of rules.extra_numbers.lowest|rangeTo:rules.extra_numbers.highest"
+                    [ngClass]="{picked: isPickedExtra(num)}"
+                    (click)="toggleExtra(num)"
+              >{{num}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-ticket-aside-mobile
+  [line]="editedLine"
+  [rules]="rules"
+  [isFilledLine]="isFilledLine"
+  (asideInitEvent)="asideInitEvent.emit()"
+  (asideDestroyEvent)="asideDestroyEvent.emit()"
+  (saveUpdatedLineEvent)="saveUpdatedLineEvent.emit($event)"
+></app-ticket-aside-mobile>

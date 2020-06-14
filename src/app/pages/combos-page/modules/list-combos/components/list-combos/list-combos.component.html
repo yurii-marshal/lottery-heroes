@@ -1,0 +1,15 @@
+<section class="list-combos-component" *ngIf="combosList !== null && combosList.length !== 0">
+  <div class="container">
+    <div class="row flex-items-xs-left list"
+         [ngClass]="combosList.length < 6 ? 'flex-items-md-center' : 'flex-items-md-left'">
+      <div class="col-xs-6 col-lg flex-items-xs-center text-xs-center item"
+           *ngFor="let combo of combosList">
+        <app-list-combos-item
+          [combo]="combo"
+          [device]="device"
+          (addToCart)="addToCart.emit($event)"
+        ></app-list-combos-item>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+@import '../../../../../../scss/vars';
+
+.list-of-options {
+  .swiper-container {
+    padding-bottom: 50px;
+  }
+
+  .swiper-slide {
+    max-width: 300px;
+  }
+
+  .swiper-pagination {
+    bottom: 0;
+    width: 100%;
+  }
+
+  .swiper-pagination-bullet {
+    width: 15px;
+    height: 15px;
+    margin: 7px;
+    opacity: 1;
+    background: $GRAY-LIGHT;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: $GREEN;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @media (min-width: 990px) {
+    .swiper-wrapper {
+      width: 620px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 990px) {
+    .swiper-container {
+      width: 300px;
+      overflow: visible;
+    }
+  }
+}

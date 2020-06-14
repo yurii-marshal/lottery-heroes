@@ -1,0 +1,94 @@
+@import '../../../../../../../scss/vars';
+
+.ticket-subscriptions-mobile-component {
+
+  .ticket-subscriptions {
+    border: 1px solid #d2d2d2;
+    border-radius: 6px;
+    padding: 0 0.63rem;
+    position: relative;
+    width: 100%;
+    max-width: 345px;
+    margin-top: 1rem;
+    overflow: hidden;
+  }
+
+  input[type=radio],
+  input[type=checkbox] {
+    display: none;
+  }
+
+  .subscriptions-subscription,
+  .subscriptions-unsubscription {
+    margin-left: -11px;
+    margin-right: -11px;
+    margin-bottom: 0;
+    padding: 0 8px 0;
+    font-size: $BASIC;
+    position: relative;
+
+
+    //mobile safari issue fix for the label
+    label {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+    }
+  }
+
+  .subscriptions-subscription {
+    position: relative;
+    padding-bottom: 10px;
+    background: #c8ebcc;
+
+    .subscriptions-description {
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      font-size: $small;
+      color: #929292;
+      padding-bottom: 1px;
+
+      .discount-percent {
+        font-weight: bold;
+        color: $GREEN;
+      }
+    }
+  }
+
+  .subscriptions-custom-radio {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid $GRAY-LIGHT;
+    cursor: pointer;
+    margin: 12px 8px 12px 0;
+  }
+
+  .subscriptions-tooltip-holder {
+    position: absolute;
+    z-index: 2;
+    right: 10px;
+    top: 10px;
+  }
+
+  #subscribe-mobile:checked ~ .subscriptions-subscription {
+    .subscriptions-custom-radio {
+      background: #fff url("/assets/images/svg/checkmark.svg") no-repeat 1px 2px;
+      background-size: 10px;
+    }
+  }
+
+  #unsubscribe-mobile:checked ~ .subscriptions-unsubscription {
+    background: #c8ebcc;
+
+    .subscriptions-custom-radio {
+      background: $GREEN;
+    }
+  }
+}

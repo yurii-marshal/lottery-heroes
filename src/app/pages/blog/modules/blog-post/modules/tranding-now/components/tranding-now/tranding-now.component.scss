@@ -1,0 +1,23 @@
+@import '../../../../../../../../../scss/vars';
+
+.tranding-now {
+
+  a, a:hover {
+    color: #262626;
+    text-decoration: none;
+  }
+
+  h4 {
+    color: #262626;
+    font-size: $MEDIUM;
+    line-height: 1.3;
+    margin: 10px 0 30px 0;
+  }
+
+  h3 {
+    color: #262626;
+    font-size: $small;
+    margin: 5px 0 15px 0;
+    font-weight: normal;
+  }
+}

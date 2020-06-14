@@ -1,0 +1,325 @@
+@import '../../../../../scss/vars';
+
+.home-component {
+  .main-section {
+    margin: 0 0 2rem;
+    position: relative;
+    overflow: hidden;
+
+    .container {
+      z-index: 1;
+      position: relative;
+      padding-top: 1rem;
+      height: 100%;
+    }
+
+    &.BIGLOTTERYOWIN_UK {
+      background: #e51b1b;
+    }
+
+    &.BIGLOTTERYOWIN_IE {
+      background: #124700;
+    }
+
+    &.BIGLOTTERYOWIN_COM {
+      background: #e51b1b;
+    }
+  }
+
+  .world-biggest-jackpot-img {
+    position: absolute;
+    top: 0;
+  }
+
+  .how-to-play-steps {
+    .container {
+      padding: 1.5rem 0 2.5rem;
+    }
+  }
+
+  .worlds-biggest-jackpot {
+    .container {
+      padding: 1.5rem 0 0;
+    }
+  }
+
+  .protection {
+    background: #f8f8f8;
+    padding: 1rem 0;
+
+    .container {
+      background: #f8f8f8;
+    }
+  }
+
+  .stories {
+    background: linear-gradient(#f8f8f8 175px, #fff 0);
+  }
+
+  .list-of-popular {
+    margin-top: -119px;
+  }
+
+  .title-stories {
+    color: $primary;
+    font-size: $LARGE;
+    font-family: $headline;
+    text-align: center;
+  }
+
+  .BIGLOTTERYOWIN_COM {
+    .world-biggest-jackpot-img {
+      top: auto;
+      bottom: 0;
+      left: -30%;
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .BIGLOTTERYOWIN_UK {
+      .world-biggest-jackpot-img {
+        left: -116%;
+        bottom: -90px;
+        top: auto;
+      }
+    }
+
+    .BIGLOTTERYOWIN_IE {
+      .world-biggest-jackpot-img {
+        width: 100%;
+      }
+    }
+
+    .BIGLOTTERYOWIN_COM {
+      .world-biggest-jackpot-img {
+        width: 100%;
+        top: -44%;
+        //top: -58%;
+        bottom: auto;
+        left: 0;
+      }
+    }
+
+    .title-stories {
+      font-size: 16px;
+    }
+
+    .list-of-popular {
+      margin-top: -75px;
+
+      &.BIGLOTTERYOWIN_IE {
+        margin-top: -90px;
+      }
+    }
+  }
+
+  @media (max-width: 415px) {
+    .BIGLOTTERYOWIN_UK {
+      .world-biggest-jackpot-img {
+        left: -180%;
+      }
+    }
+  }
+
+  @media (max-width: 376px) {
+    .BIGLOTTERYOWIN_UK {
+      .world-biggest-jackpot-img {
+        left: -200%;
+        bottom: -95px;
+        top: auto;
+      }
+    }
+  }
+
+  @media (min-width: 375px) and (max-width: 414px) {
+    .BIGLOTTERYOWIN_IE {
+      .world-biggest-jackpot-img {
+        top: 0;
+      }
+    }
+  }
+
+  @media (min-width: 414px) and (max-width: 767px) {
+    .BIGLOTTERYOWIN_IE {
+      .world-biggest-jackpot-img {
+        top: -25px;
+      }
+    }
+  }
+
+  @media (max-width: 360px) {
+    .BIGLOTTERYOWIN_UK {
+      .world-biggest-jackpot-img {
+        left: -210%;
+      }
+    }
+
+    .BIGLOTTERYOWIN_IE {
+      .world-biggest-jackpot-img {
+        top: 12px;
+      }
+
+      &.main-section::before {
+        content: '';
+        height: 30px;
+        position: absolute;;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #e51b1b;
+      }
+    }
+  }
+
+  @media (max-width: 320px) {
+    .BIGLOTTERYOWIN_UK {
+      .world-biggest-jackpot-img {
+        left: -243%;
+        bottom: -105px;
+        top: auto;
+      }
+    }
+
+    .list-of-popular {
+      margin-top: -62px;
+
+      &.BIGLOTTERYOWIN_IE {
+        margin-top: -85px;
+      }
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    .main-section {
+      //margin-top: -27px;
+      height: 410px;
+    }
+
+    .how-to-play-steps {
+      .container {
+        border-top: 1px solid $GRAY-LIGHTER;
+      }
+    }
+
+    .worlds-biggest-jackpot {
+      .container {
+        border-top: 1px solid $GRAY-LIGHTER;
+      }
+    }
+
+    .title-stories {
+      margin: 1.5rem 0 0;
+    }
+
+    .BIGLOTTERYOWIN_UK {
+      .world-biggest-jackpot-img {
+        right: -40%;
+        top: -5px;
+      }
+    }
+
+    .BIGLOTTERYOWIN_IE {
+      .world-biggest-jackpot-img {
+        right: -70%;
+      }
+    }
+
+    .BIGLOTTERYOWIN_COM {
+      .world-biggest-jackpot-img {
+        right: -67%;
+      }
+    }
+  }
+
+  @media (min-width: 996px) {
+    .title-stories {
+      font-size: $LARGE;
+      margin: 3rem 0 0;
+    }
+
+    .BIGLOTTERYOWIN_UK {
+      .world-biggest-jackpot-img {
+        right: -20%;
+      }
+    }
+
+    .BIGLOTTERYOWIN_IE {
+      .world-biggest-jackpot-img {
+        right: -35%;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .BIGLOTTERYOWIN_UK {
+      .world-biggest-jackpot-img {
+        right: -10%;
+      }
+    }
+
+    .BIGLOTTERYOWIN_COM {
+      .world-biggest-jackpot-img {
+        right: -42%;
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .BIGLOTTERYOWIN_UK {
+      .world-biggest-jackpot-img {
+        right: -3%;
+      }
+    }
+
+    .BIGLOTTERYOWIN_IE {
+      .world-biggest-jackpot-img {
+        right: -25%;
+      }
+    }
+
+    .BIGLOTTERYOWIN_COM {
+      .world-biggest-jackpot-img {
+        right: -250px;
+      }
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .world-biggest-jackpot-img {
+      right: 0;
+      margin: auto;
+    }
+
+    .BIGLOTTERYOWIN_UK {
+      .world-biggest-jackpot-img {
+        left: 0;
+      }
+    }
+
+    .BIGLOTTERYOWIN_IE {
+      .world-biggest-jackpot-img {
+        left: -70px;
+        right: 0;
+      }
+    }
+
+    .BIGLOTTERYOWIN_COM {
+      .world-biggest-jackpot-img {
+        right: -100px;
+        left: -23%;
+      }
+    }
+  }
+
+  @media (min-width: 1900px) {
+    .BIGLOTTERYOWIN_COM {
+      .world-biggest-jackpot-img {
+        right: -100px;
+        left: -3%;
+      }
+    }
+  }
+}
+

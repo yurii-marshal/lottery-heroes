@@ -1,0 +1,54 @@
+<section class="winning-results">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <ng-container *ngIf="customerWinningStatus; else noWin">
+          <div class="text-xs-center name">{{'WinningResultsComponent.TEXT_HEY' | translate}} {{customer?.first_name}},</div>
+          <div class="text-xs-center winning-status">
+            {{'WinningResultsComponent.TEXT_NUMS_WORKING' | translate}}
+          </div>
+          <div class="text-xs-center winning-amount">{{customerAmountWon | currency:lottery.currency_id:'symbol':'1.2-2'}}</div>
+        </ng-container>
+        <ng-template #noWin>
+          <div class="text-xs-center name">{{'WinningResultsComponent.TEXT_HEY' | translate}} {{customer?.first_name}},</div>
+          <div class="text-xs-center winning-status">{{'WinningResultsComponent.TEXT_RES_IN' | translate}}</div>
+        </ng-template>
+
+        <div class="last-results">
+          <div class="text-xs-center last-result-date">
+            {{lottery.name}} {{draw.date_local | date}} {{'WinningResultsComponent.TEXT_RESULTS' | translate}}
+          </div>
+          <div class="display-flex flex-items-xs-center flex-items-xs-middle settled-numbers"
+               @ball-animation
+               [ngClass]="{'large': draw.winning_extra_numbers?.length >= 2 || draw.winning_perticket_numbers?.length >= 2 }">
+            <div class="display-flex main-group">
+              <span class="display-flex flex-items-xs-center flex-items-xs-middle number main"
+                    *ngFor="let mainNum of draw.winning_main_numbers"
+              >{{mainNum}}</span>
+            </div>
+            <div class="display-flex extra-group">
+              <span class="display-flex flex-items-xs-center flex-items-xs-middle number extra"
+                    *ngFor="let extraNum of draw.winning_extra_numbers"
+              >{{extraNum}}</span>
+              <span class="display-flex flex-items-xs-center flex-items-xs-middle number extra"
+                    *ngFor="let perTicket of draw.winning_perticket_numbers"
+              >{{perTicket}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="customer-lines"
+             *ngIf="customerLines.length"
+             #customerLinesContainer>
+          <button class="display-flex flex-items-xs-center see-lines"
+                  (click)="toggleCustomerLines.emit({container: customerLinesContainer, list: customerLinesList})">
+            {{'WinningResultsComponent.TEXT_SEE_RES' | translate}} <span class="biglotteryowin-down-open"></span>
+          </button>
+
+          <div class="row customer-lines-list" #customerLinesList></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

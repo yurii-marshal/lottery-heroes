@@ -1,0 +1,70 @@
+<div class="add-to-cart-offers-item">
+  <!--- Ribbon --->
+  <div *ngIf="addToCartOffersModel.freeLineOffer" class="ribbon-wrapper small" [ngClass]="freeLineOfferClass">
+    <p (click)="addToCartFromRibbon($event, [addToCartOffersModel.lotteryId, linesToQualify])" class="ribbon-text">{{ribbonText}}</p>
+    <img class="ribbon" src="assets/images/lottery-free-line/ribbon-small-shadow.svg">
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 display-flex flex-items-xs-middle">
+      <a class="lotteries-logo" [routerLink]="['/', addToCartOffersModel.lotterySlug]" [appProductLink]="addToCartOffersModel.lotteryId"
+         [listKey]="'cartOffersCarousel'" [position]="addToCartOffersModel.position">
+        <img class="logo" src="{{addToCartOffersModel.lotteryLogoUrl}}">
+        <div class="syndicate-icon" *ngIf="addToCartOffersModel.isSyndicate">
+          <img src="assets/images/syndicates/syndicate_icon.svg" alt="syndicate_icon">
+        </div>
+      </a>
+      <div>
+        <a class="name" [routerLink]="['/', addToCartOffersModel.lotterySlug]" [appProductLink]="addToCartOffersModel.lotteryId" [listKey]="'cartOffersCarousel'"
+           [position]="addToCartOffersModel.position">
+          {{addToCartOffersModel.lotteryName}}
+        </a>
+        <div class="jackpot">
+          <ng-container *ngIf="addToCartOffersModel.jackpot; else noJackpot">
+            <span [innerHtml]="addToCartOffersModel.jackpot | jackpotFormat:addToCartOffersModel.currencyId">
+            </span>
+          </ng-container>
+          <ng-template #noJackpot>
+            <span [innerHtml]="addToCartOffersModel.minJackpot | jackpotFormat:addToCartOffersModel.currencyId">
+            </span>
+            <span class="no-jackpot">*</span>
+          </ng-template>
+        </div>
+
+        <!--- Free line --->
+        <div *ngIf="addToCartOffersModel.freeLineOffer"
+             class="freeLine">{{linesToQualify}} Lines + <span class="green">{{linesFree}} free</span>
+          <img src="assets/images/lottery-free-line/gift.svg" alt="free line" class="gift">
+        </div>
+        <!--Syndicate shares-->
+        <div class="syndicate-description" *ngIf="addToCartOffersModel.isSyndicate">
+          {{addToCartOffersModel.syndicateLineNumber}}
+          {{'AddToCartOffersItemComponent.TEXT_LINES' | translate}} | {{addToCartOffersModel.syndicateShareNumber}}
+          {{'AddToCartOffersItemComponent.TEXT_SHARES' | translate}}
+        </div>
+        <div class="no-jackpot-remark" *ngIf="!addToCartOffersModel.jackpot">
+          {{'AddToCartOffersItemComponent.TEXT_JACKPOT_EXPECT' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="display-flex flex-items-xs-middle flex-items-xs-between bottom">
+      <div class="timer">
+        <div class="time text-xs-left">
+          <app-simple-countdown
+            [date]="addToCartOffersModel.countdownTime"
+          ></app-simple-countdown>
+        </div>
+      </div>
+      <button class="bt green add-to-cart"
+         [appProductLink]="addToCartOffersModel.lotteryId"
+         [listKey]="'cart'"
+         [position]="addToCartOffersModel.position"
+         title="{{'AddToCartOffersItemComponent.BUTTON_ADD' | translate}}"
+         (click)="addToCart(addToCartOffersModel)">
+        {{'AddToCartOffersItemComponent.BUTTON_ADD' | translate}}
+      </button>
+    </div>
+  </div>
+</div>

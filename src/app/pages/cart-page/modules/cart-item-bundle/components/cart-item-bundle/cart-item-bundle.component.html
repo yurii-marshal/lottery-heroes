@@ -1,0 +1,123 @@
+<div class="cart-item-combo-component col-xs" [ngClass]="{animated: item.animate}">
+  <div class="row flex-items-xs-left flex-items-xs-middle item-summary">
+    <div class="col-xs-9 col-md-4 lottery">
+      <div class="row flex-items-xs-middle flex-items-xs-between">
+        <div class="logo-wrapper">
+          <div class="lotteries-logo display-flex flex-items-xs-middle flex-items-xs-center">
+            <img class="logo" *ngIf="bundle.logo_path" [src]="bundle.logo_path" [alt]="bundle.name">
+          </div>
+        </div>
+        <div class="col-xs-8 col-sm-9 description">
+          <div class="name">{{bundle.name}}</div>
+          <div class="combo-info-container">
+            <span class="combo-link">
+              {{'CartItemBundleComponent.TEXT_BUNDLE' | translate}}
+            </span>
+            <div class="combo-info">
+              <div class="combo-info-inner">
+                <div class="display-flex" *ngFor="let lineLotteryId of item.getLotteryIds()">
+                  <span class="lname">{{lotteriesMap[lineLotteryId].name}}</span>
+                  <ng-container *ngIf="upcomingDrawsMap[lineLotteryId].jackpot; else noJackpot">
+                    <span class="green"
+                          [innerHtml]="upcomingDrawsMap[lineLotteryId].jackpot |
+                          jackpotFormat:upcomingDrawsMap[lineLotteryId].currency_id:'M'">
+                    </span>
+                  </ng-container>
+                  <ng-template #noJackpot>
+                    <span class="green"
+                          [innerHtml]="upcomingDrawsMap[lineLotteryId].min_jackpot |
+                          jackpotFormat:upcomingDrawsMap[lineLotteryId].currency_id:'M'">
+                    </span>
+                  </ng-template>
+                </div>
+                <div class="display-flex" *ngFor="let share of item.shares">
+                  <span class="lname">{{getSyndicateByTemplateId(share.template_id)?.lotteryName}}</span>
+                  <ng-container *ngIf="getSyndicateByTemplateId(share.template_id)?.jackpot; else noJackpot">
+                    <span class="green"
+                          [innerHtml]="getSyndicateByTemplateId(share.template_id)?.jackpot |
+                          jackpotFormat:getSyndicateByTemplateId(share.template_id)?.currencyId:'M'">
+                    </span>
+                  </ng-container>
+                  <ng-template #noJackpot>
+                    <span class="green"
+                          [innerHtml]="getSyndicateByTemplateId(share.template_id)?.minJackpot |
+                          jackpotFormat:getSyndicateByTemplateId(share.template_id)?.currencyId:'M'">
+                    </span>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden-md-up lines-length">
+            <span class="combo-description" *ngIf="bundle.linesTotal > 0">
+              {{bundle.linesTotal}} {bundle.linesTotal, plural, =1 {Line} other {Lines}}</span>
+            <span class="combo-description" *ngIf="bundle.sharesTotal > 0">
+              {{bundle.sharesTotal}} {bundle.sharesTotal, plural, =1 {Share} other {Shares}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 display-flex flex-items-xs-middle flex-items-xs-center hidden-sm-down jackpot">
+      <div class="jackpot-val" [innerHtml]="bundle.jackpotTotal | jackpotFormat:bundle.currencyId"></div>
+    </div>
+    <div class="col-md-4 display-flex flex-items-xs-middle flex-items-xs-center hidden-sm-down draws">
+      <div class="input-wr display-flex flex-items-xs-middle flex-items-xs-center hidden-sm-down">
+        <span class="combo-description" *ngIf="bundle.linesTotal > 0">
+          {{bundle.linesTotal}} {bundle.linesTotal, plural, =1 {Line} other {Lines}}</span>
+        <span class="combo-description" *ngIf="bundle.sharesTotal > 0">
+          {{bundle.sharesTotal}} {bundle.sharesTotal, plural, =1 {Share} other {Shares}}</span>
+      </div>
+    </div>
+
+
+    <div class="col-xs-2 col-md-1 display-flex flex-items-xs-middle flex-items-xs-right" *ngIf="itemPrice">
+      <div class="price">
+        {{itemPrice.priceWithDiscount|currency:siteCurrencyId:'symbol':'1.2-2'}}
+        <div class="old text-xs-right hidden-md-up">{{itemPrice.price|currency:siteCurrencyId:'symbol':'1.2-2'}}</div>
+      </div>
+    </div>
+
+    <div class="col-xs-1 col-sm-1 col-md-1 line-toggle-wrapper  display-flex flex-items-xs-middle flex-items-xs-right">
+      <button class="bt clear hidden-sm-down" (click)="deleteItemEvent.emit(item)"><i class="biglotteryowin-trash"></i></button>
+      <button class="bt line-toggle hidden-md-up" #buttonLineToggleMobile (click)="toggleLines()"><i
+        class="biglotteryowin-down-open"></i></button>
+    </div>
+    <button class="bt clear hidden-md-up" (click)="deleteItemEvent.emit(item)"><i class="biglotteryowin-trash"></i></button>
+    <button class="bt line-toggle hidden-sm-down" #buttonLineToggle (click)="toggleLines()"><i
+      class="biglotteryowin-down-open"></i></button>
+  </div>
+
+  <!-- Lotteries list -->
+  <div class="row">
+    <div class="lines-list-wrapper display-flex flex-items-xs-bottom" #linesListWrapper>
+      <div class="lines-list">
+        <div class="col-xs-12 lines-list-body" #linesListBody>
+          <div class="row">
+            <div class="col-xs-12 list-columns">
+              <app-cart-item-bundle-lottery
+                *ngFor="let lotteryId of item.getLotteryIds()"
+                [item]="item"
+                [lottery]="lotteriesMap[lotteryId]"
+                [lotteryLines]="item.getLotteryLinesMap()[lotteryId]"
+                (editLineEvent)="editLineEvent.emit($event)"
+              ></app-cart-item-bundle-lottery>
+              <app-cart-item-bundle-syndicate
+                *ngFor="let share of item.shares"
+                [syndicate]="getSyndicateByTemplateId(share.template_id)"
+                [share]="share"
+              ></app-cart-item-bundle-syndicate>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 display-flex flex-items-xs-center flex-items-xs-middle hidden-sm-down">
+              <button class="bt hide" (click)="toggleLines()">
+                <i class="biglotteryowin-up-open"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

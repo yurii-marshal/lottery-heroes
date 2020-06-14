@@ -1,0 +1,51 @@
+@import '../../../../../../../scss/vars';
+
+.how-to-play-box {
+  width: 330px;
+  height: 400px;
+  border: 1px solid #e3e3e3;
+  padding: 2rem 10px;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .thumbnail-wrapper {
+    margin-bottom: 30px;
+
+    .logo-wrapper {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 15px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .title-text {
+      font-weight: bold;
+      color: $BLUE;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .summary {
+      font-size: 16px;
+      height: 120px;
+      overflow: hidden;
+      margin: 0;
+
+      /deep/ * {
+        font-size: inherit;
+      }
+    }
+  }
+
+  a {
+    text-decoration: underline;
+    font-size: 16px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}

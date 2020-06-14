@@ -1,0 +1,22 @@
+<div class="container free-filled-ticket-mobile-component">
+  <div class="row">
+    <div class="col-xs display-flex flex-items-xs-bottom flex-items-xs-center">
+      <div class="main-numbers-container">
+        <span class="free-line-title">{{'TicketMobileComponent.TEXT_FREE_LINE' | translate}}</span>
+        <div class="main-numbers display-flex flex-items-xs-between flex-items-xs-center">
+          <span (click)="editFilledLineEvent.emit({lineIndex: lineIndex, line: line})"
+                  class="number main display-flex flex-items-xs-middle flex-items-xs-center"
+                  *ngFor="let num of line.main_numbers">{{num}}</span>
+          <span (click)="editFilledLineEvent.emit({lineIndex: lineIndex, line: line})"
+                class="number extra display-flex flex-items-xs-middle flex-items-xs-center"
+                *ngFor="let num of line.extra_numbers">{{num}}</span>
+          <button class="bt edit"
+                  (click)="editFilledLineEvent.emit({lineIndex: lineIndex, line: line})">
+            <i class="biglotteryowin-pencil"></i>
+          </button>
+          <div class="gift-wrapper"><img src="assets/images/lottery-free-line/gift.svg" alt="free line" class="gift"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

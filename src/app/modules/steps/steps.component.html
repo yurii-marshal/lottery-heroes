@@ -1,0 +1,20 @@
+<div class="container steps-component">
+  <div class="row">
+    <div class="col-xs">
+      <div class="display-flex flex-items-xs-middle ticket-room-steps">
+        <div class="col-xs step-number display-flex flex-items-xs-middle flex-items-xs-center" [ngClass]="{active: activeStep === 1}">
+          <span class="display-flex flex-items-xs-center flex-items-xs-middle">1</span>
+          {{firstStepText || ('BuyingTicketsStepsComponent.step1' | translate)}}
+        </div>
+        <div class="col-xs step-number display-flex flex-items-xs-middle flex-items-xs-center" [ngClass]="{active: activeStep === 2}">
+          <span class="display-flex flex-items-xs-center flex-items-xs-middle">2</span>
+          {{secondStepText || ('BuyingTicketsStepsComponent.step2' | translate)}}
+        </div>
+        <div class="col-xs step-number display-flex flex-items-xs-middle flex-items-xs-center" [ngClass]="{active: activeStep === 3}">
+          <span class="display-flex flex-items-xs-center flex-items-xs-middle">3</span>
+          {{thirdStepText || ('BuyingTicketsStepsComponent.step3' | translate)}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

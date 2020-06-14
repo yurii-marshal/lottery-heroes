@@ -1,0 +1,13 @@
+<div class="row my-lucky-numbers-saved-component">
+  <div class="resulted-data">
+    <p>{{'MyLuckyNumbersSavedComponent.TEXT_RESULT_HEADER' | translate}}</p>
+    <div class="row flex-items-xs-between line" *ngFor="let group of editLuckyNumbers">
+      <div class="col-xs-12 display-flex">
+        <span class="number display-flex flex-items-xs-middle flex-items-xs-center"
+              *ngFor="let number of group.numbers">
+          {{number}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

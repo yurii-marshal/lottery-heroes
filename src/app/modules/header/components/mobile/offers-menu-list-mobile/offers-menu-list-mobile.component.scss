@@ -1,0 +1,17 @@
+@import '../../../../../../scss/vars';
+
+.app-offers-menu-list-mobile {
+  overflow: hidden;
+
+  .all-lotteries {
+    color: #fff;
+    font-size: 1rem;
+    text-transform: capitalize;
+    padding-top: 0.5rem;
+    padding-bottom: 0.3rem;
+
+    i {
+      font-size: 20px;
+    }
+  }
+}

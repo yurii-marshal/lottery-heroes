@@ -1,0 +1,35 @@
+<div class="offer-combo-box display-flex direction-column flex-items-xs-between">
+  <div class="title">
+    {{'OfferBestOddsComboBoxComponent.' | translate}}
+  </div>
+  <div class="content">
+    <div class="display-flex flex-items-xs-middle">
+      <img class="logo" src="{{ bestOddsCombo?.logo_path }}" alt="best-odds-combo">
+      <div class="text-xs-left content-text-wrapper">
+        <div class="content-title">
+          <b>{{ bestOddsCombo?.name }} {{'OfferBestOddsComboBoxComponent.TEXT_COMBO' | translate}}</b>
+        </div>
+        <div class="text-xs-left content-text">
+          {{ bestOddsCombo?.lotteriesTotal }} {{'OfferBestOddsComboBoxComponent.TEXT_LOTTO_INCLUDED' | translate}}
+          <div *ngIf="!showMore">
+            {{ comboLotteryNames[0] }} <a (click)="showMore = true">{{'OfferBestOddsComboBoxComponent.TEXT_MORE' | translate}}</a>
+          </div>
+          <div *ngIf="showMore">{{ comboLotteryNames?.join(', ') }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sub-content">
+    <button class="bt green navigation-btn" (click)="navigateToCart()">
+      {{'OfferBestOddsComboBoxComponent.BUTTON_DELICIOUS' | translate}}
+    </button>
+    <div class="sub-content-text">
+      <div class="old-price" *ngIf="bestOddsCombo?.formerPrice">
+        <s>{{'OfferBestOddsComboBoxComponent.TEXT_ONLY' | translate}} {{ bestOddsCombo?.formerPrice | currency:bestOddsCombo?.currencyId:'symbol':'1.2-2'}}</s>
+      </div>
+      <div class="price">
+        {{'OfferBestOddsComboBoxComponent.TEXT_ONLY' | translate}} {{ bestOddsCombo?.price | currency:bestOddsCombo?.currencyId:'symbol':'1.2-2'}}
+      </div>
+    </div>
+  </div>
+</div>

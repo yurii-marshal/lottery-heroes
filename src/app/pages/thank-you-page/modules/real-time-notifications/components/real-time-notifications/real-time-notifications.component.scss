@@ -1,0 +1,157 @@
+@import '../../../../../../../scss/vars';
+
+.real-time-notification {
+  height: 390px;
+  width: 300px;
+  padding: 25px 12px;
+  border-radius: 6px;
+  border: 1px solid $GRAY-LIGHTER;
+  position: relative;
+  background: #fff;
+  margin: 0 auto;
+
+  .ribbon-wrapper {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    overflow: hidden;
+    width: 65px;
+    z-index: 1;
+
+    .ribbon-text {
+      cursor: pointer;
+      color: #fff;
+      font-family: $CONTENT;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 61px;
+      margin: 0;
+      text-align: center;
+      transform: rotate(45deg);
+      position: absolute;
+      left: 10px;
+      top: 13px;
+    }
+  }
+
+  .content-wrapper {
+    h4 {
+      margin: 15px 0 20px;
+    }
+
+    h4, p {
+      color: $primary;
+    }
+
+    img {
+      height: 40px;
+      width: 40px;
+    }
+
+    .select-wrapper {
+      padding: 0 5px;
+      margin-top: 50px;
+
+      input {
+        margin-left: 5px;
+      }
+
+      ::placeholder {
+        color: #ababab;
+      }
+
+      input, select {
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+  }
+
+  .bt {
+    min-height: 42px; // height
+    width: 234px;
+  }
+
+  .sale-box-sub-content-text,
+  .sale-box-content-text {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+
+    .input-wr .icon-tooltip {
+      height: 30px;
+    }
+
+    .content-wrapper {
+      .has-error p {
+        color: $RED;
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
+.sale-boxes :host .real-time-notification {
+  height: 340px;
+  border-radius: 0;
+  padding: 45px 15px 0 15px;
+
+  .widget-icon-wrapper {
+    margin-bottom: 5px;
+  }
+
+  .title {
+    margin-bottom: 10px;
+  }
+
+  .bt {
+    padding: 11px;
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .sale-box-sub-content-text {
+    display: block;
+    font-size: 14px;
+    line-height: 40px;
+    margin-bottom: 18px;
+    color: $GREEN;
+    width: 100%;
+    text-align: center;
+  }
+
+  .sale-box-content-text {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 0;
+  }
+
+  .select-wrapper.input-wr {
+    margin-top: 0;
+
+    input {
+      margin-left: 0;
+    }
+  }
+
+  .sub-content {
+    width: 100%;
+  }
+
+  .content-text {
+    display: none;
+  }
+}

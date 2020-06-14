@@ -1,0 +1,83 @@
+<div role="dialog" class="modal lottery-widgets-before-cutoff-component">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="container">
+				<div class="row flex-items-lg-between flex-items-xs-center flex-items-lg-left">
+					<div class="col-xs-12 col-lg-8 text-xs-center text-lg-left description">
+						<h2>
+							{{'LotteryWidgetsBeforeCutoffComponent.TEXT_TIME_ALMOST_UP' | translate}}
+						</h2>
+						<p>
+							{{'LotteryWidgetsBeforeCutoffComponent.TEXT_DONT_MISS' | translate}}
+						</p>
+						<div class="lottery-jackpot">
+                          <ng-container *ngIf="upcomingDraw.jackpot; else noJackpot">
+                            <span [innerHtml]="upcomingDraw.jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+                          </ng-container>
+                          <ng-template #noJackpot>
+                            <span [innerHtml]="upcomingDraw.min_jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+                            <span class="no-jackpot">*</span>
+                            <div class="no-jackpot-remark display-flex flex-items-xs-middle">
+								{{'LotteryWidgetsBeforeCutoffComponent.TEXT_JACKPOT_EXPECT' | translate}}
+							</div>
+                           </ng-template>
+						</div>
+					</div>
+					<div class="col-xs-12 col-lg-4 lottery-logo">
+						<img [src]="lottery.logo" alt="{{lottery.name}}">
+					</div>
+
+					<div class="col-xs-12 text-xs-center flex-items-xs-center flipped-timer">
+						<p class="text-xs-center text-lg-left">
+							{{'LotteryWidgetsBeforeCutoffComponent.TEXT_DRAW_CLOSES' | translate}}
+						</p>
+						<div class="timer">
+							<app-flipped-countdown [date]="upcomingDraw.last_ticket_time"></app-flipped-countdown>
+						</div>
+					</div>
+
+					<button class="bt green"
+									(click)="addDefiniteItemsToCartEvent.emit(linesAmount)">
+						<ng-container *ngIf="isFreeLine; else QuickPicksTpl">
+							<span class="quick-picks">{{lineToQualify}}
+								{{'LotteryWidgetsBeforeCutoffComponent.TEXT_QUICKPICKS' | translate}}
+							</span>
+							<span class="freeline">
+									+{{ linesFree }} {linesFree, plural, =1 {Line} other {Lines}}
+								{{'LotteryWidgetsBeforeCutoffComponent.TEXT_FREE' | translate}}
+								</span>
+						</ng-container>
+						<ng-template #QuickPicksTpl>
+							<span class="quick-picks">
+								{{ defaultNumberOfLines }} {{'LotteryWidgetsBeforeCutoffComponent.TEXT_QUICKPICKS' | translate}}
+							</span>
+						</ng-template>
+
+						<ng-container *ngIf="isFreeLine; else defaultLines">
+								<span class="cost">
+									{{'LotteryWidgetsBeforeCutoffComponent.TEXT_ONLY' | translate}} {{ lotteryLinePrice * lineToQualify | currency:upcomingDraw.currency_id:'symbol':'1.2-2' }}
+									<span class="arrows biglotteryowin-right-open"></span>
+									<span class="arrows biglotteryowin-right-open"></span>
+								</span>
+						</ng-container>
+						<ng-template #defaultLines>
+								<span class="cost" [ngClass]="{yellow:!isFreeLine}">
+									{{'LotteryWidgetsBeforeCutoffComponent.TEXT_ONLY' | translate}} {{ lotteryLinePrice * defaultNumberOfLines | currency:upcomingDraw.currency_id:'symbol':'1.2-2' }}
+									<span class="arrows biglotteryowin-right-open"></span>
+									<span class="arrows biglotteryowin-right-open"></span>
+								</span>
+						</ng-template>
+					</button>
+
+					<div class="col-xs-12 text-xs-center link-wrapper">
+						<button class="link" (click)="closeCutoffLightBox.emit()">
+							{{'LotteryWidgetsBeforeCutoffComponent.BUTTON_HAND_PICK_NUMS' | translate}}
+							<span class="arrows biglotteryowin-right-open"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="blackout" (click)="closeCutoffLightBox.emit()"></div>
+</div>

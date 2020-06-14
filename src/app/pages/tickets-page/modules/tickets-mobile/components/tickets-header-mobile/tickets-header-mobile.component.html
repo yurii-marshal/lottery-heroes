@@ -1,0 +1,40 @@
+<div class="container-fluid header tickets-header-mobile-component">
+    <div class="row">
+        <div class="col-xs-12 display-flex flex-items-xs-middle">
+            <div class="header-body display-flex flex-items-xs-left flex-items-xs-middle">
+                <div class="logo">
+                    <img [src]="lottery.logo" alt="{{lottery.name}}">
+                </div>
+                <div class="right">
+                  <span class="lottery-name">{{lottery.name}}:</span>
+                  <span class="jackpot">
+                    <ng-container *ngIf="upcomingDraw.jackpot; else noJackpot">
+                      <span [innerHtml]="upcomingDraw.jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+                    </ng-container>
+                    <ng-template #noJackpot>
+                      <span><span [innerHtml]="upcomingDraw.min_jackpot | jackpotFormat:upcomingDraw.currency_id"></span>
+                        <span class="no-jackpot">*</span></span>
+                    </ng-template>
+                  </span>
+                  <div class="no-jackpot-remark display-flex flex-items-xs-middle flex-items-xs-left" *ngIf="!upcomingDraw.jackpot">
+                    {{'TicketMobileComponent.TEXT_JACKPOT_EXPECT' | translate}}
+                  </div>
+                  <div class="countdown">
+                    <app-simple-countdown [date]="upcomingDraw.date"></app-simple-countdown>
+                  </div>
+                </div>
+
+                <!--- Ribbon --->
+                <div *ngIf="freeLinesOffers" class="ribbon-wrapper" [ngClass]="freeLinesOffers.display_properties.ribbon_css_class">
+                  <div class="ribbon-stars display-flex flex-items-xs-center flex-items-xs-bottom">
+                    <img alt="free line" class="star" src="assets/images/lottery-free-line/star.svg">
+                  </div>
+                  <p class="ribbon-text" (click)="addToCartFromRibbon($event, [lottery.id, freeLinesOffers.details.lines_to_qualify])">
+                    {{freeLinesOffers.display_properties.long_text}}
+                  </p>
+                  <img class="ribbon" src="assets/images/lottery-free-line/ribbon-big.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

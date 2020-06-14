@@ -1,0 +1,81 @@
+<div class="free-line-wrapper ticket-free-desktop-component" [ngClass]="{backside: isOpenedFreeLine, filled: isFilledLine}">
+  <div class="free-line">
+    <div class="line-backside">
+      <div class="ribbon-wrapper" [ngClass]="freeLinesOfferDisplayProperties.ribbon_css_class">
+        <p class="ribbon-text"
+           (click)="addToCartFromRibbon($event, [lottery.id, freeLinesOffer.details.lines_to_qualify])">
+          {{freeLinesOfferDisplayProperties.short_text}}
+        </p>
+        <img src="assets/images/lottery-free-line/ribbon-small-star.svg" alt="free line" class="ribbon">
+      </div>
+      <div class="header">
+        <div class="actions display-flex flex-items-xs-middle flex-items-xs-between">
+          <button type="button" class="bt blue" (click)="autoselectLineEvent.emit({line: line, rules: rules, track: true})">
+            {{'TicketFreeDesktopComponent.BUTTON_QUICKPICK' | translate}}
+          </button>
+          <button type="button" class="bt clear" (click)="clearLineEvent.emit({line: line})">
+            <svg viewBox="0 0 58.85 77.35">
+              <defs><style>.cls-1 {fill: #bdbdbd;}</style></defs>
+              <g><path class="cls-1"
+                      d="M65.37,21.52H10.58l3.3,57.25a66.81,66.81,0,0,0,22.7,3.85,93.49,93.49,0,0,0,25.5-3.85l3.3-57.25m-44.2,9.3a2.79,2.79,0,0,1,1.8.6,1.75,1.75,0,0,1,.85,1.35l2.7,37.15a1.58,1.58,0,0,1-.65,1.4,2.75,2.75,0,0,1-1.75.55,3,3,0,0,1-1.8-.55,1.81,1.81,0,0,1-.8-1.4l-2.7-37.15a1.56,1.56,0,0,1,.6-1.35,2.59,2.59,0,0,1,1.75-.6m16.8,0a2.79,2.79,0,0,1,1.8.6,1.66,1.66,0,0,1,.7,1.35V69.92a1.71,1.71,0,0,1-.7,1.4,3,3,0,0,1-1.8.55,2.75,2.75,0,0,1-1.75-.55,1.67,1.67,0,0,1-.75-1.4V32.77a1.63,1.63,0,0,1,.75-1.35,2.59,2.59,0,0,1,1.75-.6M53,31.42a2.79,2.79,0,0,1,1.8-.6,2.59,2.59,0,0,1,1.75.6,1.56,1.56,0,0,1,.6,1.35l-2.7,37.15a1.81,1.81,0,0,1-.8,1.4,3,3,0,0,1-1.8.55,2.75,2.75,0,0,1-1.75-.55,1.58,1.58,0,0,1-.65-1.4l2.7-37.15A1.75,1.75,0,0,1,53,31.42M32.48,5.27A1.54,1.54,0,0,0,31,6.77v4.6q-1.65.15-3.25,0.35a82.71,82.71,0,0,0-19.15,4.8l0.2,3.1h58.5l0.15-3.1a83.88,83.88,0,0,0-22.5-5.15V6.77a1.54,1.54,0,0,0-1.5-1.5H32.48m1.5,5.9V8.27h7.95v2.9Q40,11.07,38,11.07T34,11.17Z"
+                      transform="translate(-8.58 -5.27)"/>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <div class="ticket-title text-xs-center">{{'TicketFreeDesktopComponent.TEXT_LINE' | translate}} {{lineIndex}} <ng-container *ngIf="isOpenedFreeLine"></ng-container>
+          <span class="tag tag-success display-flex flex-items-xs-middle flex-items-xs-center">
+        <img src="assets/images/svg/checkmark.svg">
+      </span>
+        </div>
+      </div>
+      <div class="main-numbers">
+        <div class="caption display-flex flex-items-xs-middle flex-items-xs-center">
+          <ng-container *ngIf="line.main_numbers.length === 0; else elseTplMainCaption">
+            {{'TicketFreeDesktopComponent.TEXT_PICK' | translate}} {{rules.main_numbers.picks}}
+          </ng-container>
+          <ng-template #elseTplMainCaption>
+            {{'TicketFreeDesktopComponent.TEXT_PICKED' | translate}} {{line.main_numbers.length}}/{{rules.main_numbers.picks}}
+          </ng-template>
+        </div>
+        <div class="numbers display-flex">
+      <span class="number main display-flex flex-items-xs-middle flex-items-xs-center"
+            *ngFor="let num of rules.main_numbers.lowest|rangeTo:rules.main_numbers.highest"
+            [ngClass]="{picked: isPickedMain(num)}"
+            (click)="toggleMainEvent.emit({line: line, rules: rules, value: num})"
+      >{{num}}</span>
+        </div>
+      </div>
+      <div class="extra-numbers" *ngIf="rules.extra_numbers && !rules.extra_numbers.in_results_only">
+        <div class="caption display-flex flex-items-xs-middle flex-items-xs-center">
+          <ng-container *ngIf="line.extra_numbers.length === 0; else elseTplExtraCaption">
+            {{'TicketFreeDesktopComponent.TEXT_PICK' | translate}} {{rules.extra_numbers.picks}}
+          </ng-container>
+          <ng-template #elseTplExtraCaption>
+            {{'TicketFreeDesktopComponent.TEXT_PICKED' | translate}} {{line.extra_numbers.length}}/{{rules.extra_numbers.picks}}
+          </ng-template>
+        </div>
+        <div class="numbers display-flex">
+      <span class="number extra display-flex flex-items-xs-middle flex-items-xs-center"
+            *ngFor="let num of rules.extra_numbers.lowest|rangeTo:rules.extra_numbers.highest"
+            [ngClass]="{picked: isPickedExtra(num)}"
+            (click)="toggleExtraEvent.emit({line: line, rules: rules, value: num})"
+      >{{num}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="line-front display-flex direction-column flex-items-xs-middle">
+      <div class="ribbon-wrapper small" [ngClass]="freeLinesOfferDisplayProperties.ribbon_css_class">
+        <p class="ribbon-text" (click)="addToCartFromRibbon($event, [lottery.id, freeLinesOffer.details.lines_to_qualify])">
+          {{freeLinesOfferDisplayProperties.short_text}}
+        </p>
+        <img src="assets/images/lottery-free-line/ribbon-small-shadow.svg" alt="free line" class="ribbon">
+      </div>
+      <div class="gift-wrapper"><img src="assets/images/lottery-free-line/gift.svg" alt="free line" class="gift"></div>
+      <button class="bt green get-free-line" (click)="autoselectForFreeLineIdEvent.emit(line.id)">
+        {{'TicketFreeDesktopComponent.BUTTON_FREE_LINE' | translate}}
+      </button>
+      <p class="text-xs-center">{{freeLinesOfferDisplayProperties.long_text}}</p>
+    </div>
+  </div>
+</div>

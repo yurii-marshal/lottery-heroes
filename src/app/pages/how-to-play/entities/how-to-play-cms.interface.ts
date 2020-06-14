@@ -1,0 +1,45 @@
+export interface HowToPlayCmsInterface {
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
+  h1: string;
+  youtube_video_url: string;
+  play_button1_text: string;
+  // alt_on_1st_"play"_button: string;
+  section_1_title: string;
+  section_1_text: string;
+  section_1_image: any;
+  section_1_image_alt: string;
+  section_2_title: string;
+  section_2_text: string;
+  section_2_image: any;
+  section_2_image_alt: string;
+  section_3_title: string;
+  section_3_text: string;
+  section_3_image: any;
+  section_3_image_alt: string;
+  text_on_2_button: string;
+  // alt_on_2nd_"play"_button: string
+  h2: string;
+  special_offers_box_image: any;
+  special_offers_box_image_alt: string;
+  special_offers_box_text: string;
+  special_offers_box_text_on_button: string;
+  special_offers_box_alt_on_button: string;
+  combo_box_image: any;
+  combo_box_image_alt: string;
+  combo_box_text: string;
+  combo_box_text_on_button: string;
+  combo_box_alt_on_button: string;
+  bundle_box_image: any;
+  bundle_box_image_alt: string;
+  bundle_box_text: string;
+  bundle_box_text_on_button: string;
+  bundle_box_alt_on_button: string;
+  subscription_box_image: any;
+  subscription_box_image_alt: string;
+  subscription_box_text: string;
+  subscription_box_text_on_button: string;
+  subscription_box_alt_on_button: string;
+  bottom_paragraph: string;
+}

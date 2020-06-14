@@ -1,0 +1,15 @@
+<div class="list-of-options">
+  <div class="swiper">
+    <div class="swiper-container">
+      <div class="swiper-wrapper" [ngClass]="{'flex-items-xs-center': !(isShownSubscriptionWidget$ | async)}">
+        <div class="swiper-slide" *ngIf="!customer?.mobile">
+          <app-real-time-notifications-container></app-real-time-notifications-container>
+        </div>
+        <div class="swiper-slide" *ngIf="isShownSubscriptionWidget$ | async">
+          <app-subscription-discount-container></app-subscription-discount-container>
+        </div>
+      </div>
+      <div class="swiper-pagination hidden-lg-up" [ngClass]="{'hidden': !(isShownSubscriptionWidget$ | async)}"></div>
+    </div>
+  </div>
+</div>

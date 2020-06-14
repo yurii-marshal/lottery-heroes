@@ -1,0 +1,38 @@
+@import '../../../../../scss/vars';
+
+:host {
+  .sorting {
+    background: #FBFBFB;
+    padding: 10px 8%;
+
+    select {
+      width: 64%;
+      background-color: #fff;
+    }
+
+    label {
+      font-size: 15px;
+    }
+  }
+
+  .sort-arrow {
+   cursor: pointer;
+    font-size: 22px;
+    color: #BDBDBD;
+    position: relative;
+    top: 2px;
+  }
+
+  .biglotteryowin-up-open {
+    &:before {
+      transition: all .3s ease;
+      transform: rotate(0deg);
+    }
+
+    &.open {
+      &:before {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

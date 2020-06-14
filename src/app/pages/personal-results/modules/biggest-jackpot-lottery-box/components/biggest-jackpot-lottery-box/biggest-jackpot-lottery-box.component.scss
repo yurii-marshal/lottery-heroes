@@ -1,0 +1,70 @@
+@import '../../../../../../../scss/vars';
+
+.biggest-jackpot-lottery-box {
+  width: 300px;
+  height: 340px;
+  border: 1px solid #e3e3e3;
+  padding: 45px 15px 0 15px;
+  text-align: center;
+
+  .logo-wrapper {
+    width: 60px;
+    height: 56px;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .content {
+
+    .jackpot {
+      color: $GREEN;
+      font-size: 40px;
+    }
+
+    .no-jackpot-remark {
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      color: $BLUE;
+      font-weight: bold;
+    }
+
+    .no-jackpot {
+      font-family: "Open Sans", sans-serif;
+      font-size: $small;
+      color: $BLUE;
+      font-weight: bold;
+      font-size: 40px;
+    }
+
+    .offer {
+      font-size: 18px;
+    }
+  }
+
+  .sub-content {
+
+    .navigation-btn {
+      padding: 11px;
+      border-radius: 0;
+      width: 100%;
+    }
+
+    .sub-content-text {
+      font-size: 14px;
+      line-height: 40px;
+      margin-bottom: 18px;
+    }
+  }
+
+  .color-green {
+    color: $GREEN;
+  }
+}

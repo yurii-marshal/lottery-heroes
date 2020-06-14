@@ -1,0 +1,70 @@
+<div class="contacts-form-component">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit($event)" *ngIf="!submitted">
+
+    <div class="form-row">
+      <div class="input-wr"
+           [ngClass]="{'has-error': (contactForm.controls['email'].touched && contactForm.controls['email'].invalid)}">
+        <label for="form-email"></label>
+        <input formControlName="email"
+               type="email"
+               class="form-control"
+               placeholder="{{'FormComponent.PLACEHOLDER_EMAIL' | translate}}*"
+               id="form-email">
+        <div class="icon-tooltip icon-error" *ngIf="contactForm.controls['email'].invalid && contactForm.controls['email'].touched">
+          <span>!</span></div>
+        <div class="tooltip-container error" *ngIf="contactForm.controls['email'].invalid && contactForm.controls['email'].touched">
+          <div class="tooltip-body" *ngIf="contactForm.controls['email'].errors.required">
+            <p>{{'FormComponent.TEXT_REQUIRED_FIELD' | translate}}</p>
+          </div>
+          <div class="tooltip-body" *ngIf="contactForm.controls['email'].errors.wrongFormat">
+            <p>{{'FormComponent.TEXT_EMAIL_INVALID' | translate}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="input-wr"
+           [ngClass]="{'has-error': (contactForm.controls['subject'].touched && contactForm.controls['subject'].invalid)}">
+        <label for="subject"></label>
+        <input formControlName="subject"
+               type="text"
+               class="form-control"
+               placeholder="{{'FormComponent.PLACEHOLDER_SUBJECT' | translate}}*"
+               id="subject">
+        <div class="icon-tooltip icon-error" *ngIf="contactForm.controls['subject'].invalid && contactForm.controls['subject'].touched">
+          <span>!</span></div>
+        <div class="tooltip-container error" *ngIf="contactForm.controls['subject'].invalid && contactForm.controls['subject'].touched">
+          <div class="tooltip-body">
+            <p>{{'FormComponent.TEXT_REQUIRED_FIELD' | translate}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="input-wr"
+           [ngClass]="{'has-error': (contactForm.controls['message'].touched && contactForm.controls['message'].invalid)}">
+        <label for="message"></label>
+        <textarea formControlName="message"
+                  type="text"
+                  class="form-control"
+                  placeholder="{{'FormComponent.PLACEHOLDER_MESSAGE' | translate}}"
+                  id="message"></textarea>
+        <div class="icon-tooltip icon-error" *ngIf="contactForm.controls['message'].invalid && contactForm.controls['message'].touched">
+          <span>!</span></div>
+        <div class="tooltip-container error" *ngIf="contactForm.controls['message'].invalid && contactForm.controls['message'].touched">
+          <div class="tooltip-body">
+            <p>{{'FormComponent.TEXT_REQUIRED_FIELD' | translate}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="display-flex flex-items-xs-right">
+      <button type="submit" class="bt green">{{'FormComponent.BUTTON_SEND' | translate}}</button>
+    </div>
+  </form>
+
+  <div class="submitted-msg text-xs-center" *ngIf="submitted">
+    <p [ngClass]="statusCode === 'error' ? 'error' : 'success'">{{submitMsg}}</p>
+  </div>
+</div>

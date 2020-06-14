@@ -1,0 +1,20 @@
+<section id="account-details" class="details-component">
+  <div class="row hidden-md-up">
+    <div class="col-xs-4">
+      <div class="link back" (click)="onBackToMenu()" [routerLink]="['/myaccount']">
+        <svg viewBox="0 0 46.01 27.74">
+          <title>{{'DetailsComponent.TEXT_BACK' | translate}}</title>
+          <path d="M12.36,7.11L30.54,25.23A4.81,4.81,0,0,1,23.72,32L5.54,13.91A4.81,4.81,0,0,1,12.36,7.11Z"
+                transform="translate(-4.13 -5.7)"/>
+          <path d="M48.73,7.11a4.8,4.8,0,0,1,0,6.8L30.54,32a4.81,4.81,0,0,1-6.82-6.8L41.91,7.11A4.83,4.83,0,0,1,48.73,7.11Z"
+                transform="translate(-4.13 -5.7)"/>
+        </svg>
+        <span>{{'DetailsComponent.TEXT_BACK' | translate}}</span>
+      </div>
+    </div>
+  </div>
+
+  <app-customer-details [customer]="customer$"></app-customer-details>
+  <app-subscription-preferences [customer]="customer$"></app-subscription-preferences>
+  <!--<app-responsible-gaming></app-responsible-gaming>-->
+</section>

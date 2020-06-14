@@ -1,0 +1,65 @@
+@import '../../../../scss/vars';
+
+.cookie-container {
+  z-index: 10000;
+  background: #F9EDB8;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.container {
+  height: 30px;
+  background: #F9EDB8;
+  font-size: 12px;
+  padding-top: 4px;
+  position: relative;
+
+  span {
+    padding-right: 18px;
+  }
+}
+
+.close {
+  cursor: pointer;
+  color: $primary;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 15px;
+  top: 7px;
+}
+
+.link {
+  font-size: 13px;
+}
+
+p {
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .close {
+    right: 5px;
+  }
+
+  .container {
+    div > span:first-child {
+      width: 92%;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    height: 46px;
+  }
+}
+
+@media (max-width: 306px) {
+  .container {
+    height: 65px;
+  }
+}

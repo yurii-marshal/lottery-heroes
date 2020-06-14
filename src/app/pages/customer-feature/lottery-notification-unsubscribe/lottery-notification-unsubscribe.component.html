@@ -1,0 +1,18 @@
+<div class="container lottery-notification-unsubscribe-component" *ngIf="isShowContent">
+  <div class="row">
+    <div class="col-xs-12 col-md-9">
+      <h1 class="h1">
+        {{'LotteryNotificationUnsubscribeComponent.TEXT_HEADER' | translate}}
+      </h1>
+      <p [innerHTML]="'LotteryNotificationUnsubscribeComponent.TEMPLATE_RESTRICT_RECEIVE' | translate: {param: lotteryName}"></p>
+      <p>
+        <a [routerLink]="['/' + (lotterySlug$ | async)]">{{lotteryName}}
+          {{'LotteryNotificationUnsubscribeComponent.TEXT_RESULTS' | translate}}
+        </a>
+      </p>
+    </div>
+    <div class="col-xs-12 col-md-9 text-xs-center">
+      <img src="assets/images/lottery-notification/lottery-notification-img.png">
+    </div>
+  </div>
+</div>

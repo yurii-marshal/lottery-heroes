@@ -1,0 +1,85 @@
+@import '../../../../../../scss/vars';
+
+.results-draw-prizes-component {
+  &.prize-table {
+    padding: 0 0 1rem;
+  }
+
+  .title-table {
+    color: $primary;
+    font-family: $headline;
+    font-size: 1.1rem;
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+
+  .prize,
+  .winners {
+    font-family: $CONTENT;
+    color: $primary;
+    font-size: $BASIC;
+  }
+
+  .number {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 100rem;
+    margin-right: 0.2rem;
+  }
+
+  .number.main {
+    background: #e8e8e8;
+  }
+
+  .number.extra {
+    background: #aed6f5;
+  }
+
+  .numbers-quantity {
+    font-family: $headline;
+    color: $primary;
+    margin-right: 0.2rem;
+    font-size: 1rem;
+  }
+
+  .spacer {
+    color: #a1a1a1;
+    font-size: 0.9rem;
+    margin-right: 0.2rem;
+
+    &.or {
+      margin: 0 7px 0 4px;
+    }
+  }
+
+  .prize-line {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    background: #fff;
+    &:nth-child(2n) {
+      background: #fafafa;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .title-table {
+      font-size: 1rem;
+    }
+    .prize-line {
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+    }
+    .number {
+      width: 1rem;
+      height: 1rem;
+    }
+    .spacer {
+      font-size: 0.7rem;
+      color: $primary;
+    }
+    .prize,
+    .winners {
+      font-size: 0.95rem;
+    }
+  }
+}

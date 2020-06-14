@@ -1,0 +1,774 @@
+@import '../../../../../../../scss/vars';
+
+.cart-item-lottery-component {
+  border-top: 1px solid $GRAY-LIGHTER;
+  position: relative;
+  background: #fff;
+
+  @keyframes lottery-height-animation-outer {
+    0% {
+      margin-top: 0;
+      height: 0;
+    }
+    50% {
+      margin-top: -10px;
+    }
+    100% {
+      margin-top: 0;
+    }
+  }
+
+  @keyframes lottery-height-animation-inner {
+    0% {
+      transform: translateY(30px);
+      height: 0;
+    }
+    100% {
+      transform: translateY(0);
+      height: 122px;
+    }
+  }
+
+  &.animated {
+    animation: lottery-height-animation-outer 0.25s ease-in-out 0s;
+
+    .item-summary {
+      animation: lottery-height-animation-inner 0.5s ease-in-out 0s;
+    }
+  }
+
+  &.skip-first-draw {
+    padding-bottom: 18px;
+  }
+
+  .item-summary {
+    height: 122px;
+    position: relative;
+
+    .buttons-wrapper {
+      margin-top: -11px;
+    }
+
+    .bt {
+      &.line-toggle {
+        font-size: $LARGE;
+        color: $GRAY-LIGHT;
+        position: absolute;
+        top: inherit;
+        right: 0;
+        bottom: 0;
+        margin: 10px 0;
+        transition: none;
+
+        &.star {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          margin: 0;
+          min-height: 40px; // height
+          width: 40px;
+        }
+      }
+      &.clear {
+        font-size: $XBASIC;
+        color: $GRAY-LIGHT;
+        min-width: 38px;
+      }
+      &.lines-increase,
+      &.lines-decries {
+        color: $primary;
+        font-size: $LARGE;
+        height: 19px;
+        overflow: hidden;
+
+        &:active {
+          color: $GREEN-LIGHT;
+        }
+
+        &.disabled,
+        &[disabled] {
+          color: $GRAY-LIGHTER;
+        }
+      }
+
+      &:hover {
+        color: $GRAY-LIGHTER;
+      }
+
+      &:active {
+        color: $GRAY-LIGHTER;
+      }
+    }
+  }
+
+  .logo-wrapper {
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+
+  .description {
+    color: $primary;
+    font-family: $CONTENT;
+    font-size: $small;
+
+    .name {
+      font-size: $BASIC;
+      text-decoration: none;
+      color: $primary;
+    }
+  }
+
+  .jackpot-val {
+    font-family: "Montserrat", sans-serif;
+    color: $primary;
+    font-size: $LARGE;
+    text-align: center;
+    position: relative;
+  }
+
+  .draws {
+    .input-wr {
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      max-width: 40px;
+      height: 27px;
+      line-height: inherit;
+      padding: 0 2px;
+      font-size: $small;
+      margin-left: 10px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      /* display: none; <- Crashes Chrome on hover */
+      -webkit-appearance: none;
+      margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+
+    select {
+      width: 100%;
+      height: 27px;
+      max-width: 130px;
+      padding-right: 24px;
+      line-height: 25px;
+      font-size: $small;
+    }
+  }
+
+  .price {
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+
+    &.free {
+      text-transform: uppercase;
+      color: $GREEN;
+    }
+
+    .old {
+      position: absolute;
+      text-decoration: line-through;
+      color: #929292;
+      font-size: 12px;
+      top: 100%;
+      right: 0;
+      left: 0;
+    }
+  }
+
+  .lines-list-wrapper {
+    width: 100%;
+    background: #f2f3f8;
+    overflow: hidden;
+    display: none;
+
+    @media (max-width: 767px) {
+      .lines-list-body {
+        overflow: hidden;
+        display: none;
+      }
+    }
+
+    .lines-list {
+      width: 100%;
+      padding-top: 25px;
+      padding-bottom: 5px;
+    }
+
+    .lines {
+      width: 80%;
+      margin: 20px;
+    }
+
+    .line {
+      width: 100%;
+      margin-bottom: 10px;
+
+      &.free {
+        .line-index, .main-numbers {
+          color: $GREEN;
+        }
+      }
+    }
+
+    .add-line {
+      width: 80%;
+      margin-top: 10px;
+    }
+
+    .line-index {
+      text-transform: uppercase;
+      color: #949494;
+      width: 60px;
+    }
+
+    .main-numbers {
+      color: $primary;
+      font-size: $BASIC;
+    }
+
+    .number {
+      padding: 0 3px;
+    }
+
+    .extra {
+      padding-left: 10px;
+
+      + .extra {
+        padding-left: 5px;
+      }
+    }
+
+    .bt.clear, .bt.edit {
+      font-size: $XBASIC;
+      color: $GRAY-LIGHT;
+    }
+
+    .gift {
+      width: 18px;
+      margin: 0 10px;
+    }
+  }
+
+  .lotteries-logo {
+    width: 70px;
+    height: 60px;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .line-toggle-wrapper {
+    padding: 0;
+  }
+
+  .bt {
+    &.orange {
+      border: 2px solid #fff;
+      background: #febd0a;
+      margin: 40px;
+      border-radius: 4px;
+      width: 210px;
+      min-height: 45px; // height
+
+      .gift {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -42px;
+        margin: auto;
+        width: 44px;
+      }
+    }
+
+    &.hide {
+      color: $GRAY-LIGHT;
+    }
+
+    &.line-toggle {
+      margin-right: 15px;
+      img {
+        width: 13px;
+        height: auto;
+      }
+    }
+  }
+
+  .offer-info {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 150px;
+    color: $GREEN;
+    font-size: $small;
+    text-transform: capitalize;
+    padding-top: 5px;
+
+    img {
+      margin: 2px 5px;
+      width: 17px;
+      height: 17px;
+    }
+  }
+
+  .tooltip-wrapper {
+    position: relative;
+
+    &:hover .tooltip-offer {
+      display: block;
+    }
+  }
+
+  .tooltip-offer {
+    position: absolute;
+    background: #fff;
+    color: $primary;
+    padding: 10px;
+    box-shadow: 0 1px 5px grey;
+    border-radius: 3px;
+    width: 100%;
+    min-width: 170px;
+    max-width: 300px;
+    bottom: 100%;
+    margin: 5px 0 0;
+    text-transform: none;
+    display: none;
+
+    .num {
+      color: $GREEN;
+      text-transform: uppercase;
+    }
+
+    &:before {
+      border-top: 4px solid rgba(0, 0, 0, 0.1);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      right: 0;
+      width: 7px;
+      margin: auto;
+      display: block;
+    }
+
+    &:after {
+      content: "";
+      border-top: 4px solid #FFFFFF;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      right: 0;
+      width: 7px;
+      margin: auto;
+      display: block;
+    }
+  }
+
+  .add-line .link:active,
+  .add-line .link:hover {
+    text-decoration: underline;
+  }
+
+  .no-jackpot-remark, .no-jackpot {
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    line-height: 14px;
+    font-weight: bold;
+    color: $BLUE;
+  }
+
+  .controls-wrapper {
+    min-width: 76px;
+  }
+
+  @media (max-width: 1023px) {
+    .lines-list-wrapper {
+      .lines, .add-line {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    &.shop-item {
+      .ribbon-wrapper {
+        z-index: 1;
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        overflow: hidden;
+        width: 65px;
+        transform: rotate(-90deg);
+
+        .ribbon-text {
+          color: #fff;
+          font-family: $CONTENT;
+          font-size: 12px;
+          font-weight: 700;
+          text-transform: uppercase;
+          white-space: nowrap;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 61px;
+          margin: 0;
+          text-align: center;
+          transform: rotate(45deg);
+          position: absolute;
+          left: 8px;
+          top: 12px;
+        }
+      }
+
+      .jackpot-val {
+        font-size: 17px;
+      }
+
+      .description-wr {
+        padding-left: 5px;
+      }
+
+      .description .name,
+      .lines-length {
+        font-size: $small;
+      }
+
+      .line-toggle-wrapper {
+        height: 100%;
+        padding-top: 65px;
+      }
+
+      .draws .input-wr {
+        margin-top: 3px;
+      }
+
+      .price {
+        color: $GREEN;
+        font-size: $small;
+        position: absolute;
+        top: -51px;
+        right: -19px;
+      }
+
+      .lotteries-logo {
+        width: 62px;
+        height: 62px;
+      }
+
+      .item-summary {
+        min-height: 117px; // height
+
+        .bt {
+          &.line-toggle {
+            font-size: $MEDIUM;
+            position: relative;
+            margin: 0;
+
+            &.star {
+              position: absolute;
+              margin: 0;
+            }
+          }
+          &.clear {
+            font-size: $small;
+            position: absolute;
+            top: 49px;
+            right: 0;
+            bottom: inherit;
+          }
+        }
+      }
+
+      .logo-wrapper {
+        padding-left: 10px;
+      }
+    }
+
+    .lines-list-wrapper {
+      .lines-list {
+        padding-top: 25px;
+        padding-bottom: 25px;
+
+        .lines-title {
+          margin-right: 10px;
+          position: absolute;
+          right: 100%;
+        }
+
+        .bt {
+          &.lines-increase {
+            color: #fff;
+            font-weight: bold;
+            background: $GREEN;
+            border-radius: 0;
+            width: 30px;
+            min-height: 30px; // height
+
+            &:active {
+              background: $GREEN-LIGHT;
+            }
+
+            &.disabled,
+            &[disabled] {
+              background: $GRAY-LIGHTER;
+            }
+          }
+
+          &.lines-decries {
+            color: #fff;
+            font-weight: bold;
+            background: $GRAY-LIGHT;
+            border-radius: 0;
+            width: 30px;
+            height: 30px;
+
+            &:active {
+              background: $GRAY-LIGHTER;
+            }
+
+            &.disabled {
+              background: $GRAY-LIGHTER;
+            }
+          }
+        }
+
+      }
+
+      .line-index {
+        text-transform: capitalize;
+      }
+
+      .bt .clear {
+        font-size: $small;
+      }
+
+      .add-line {
+        margin-top: 0;
+        .link {
+          text-transform: uppercase;
+        }
+      }
+
+      .draws {
+        .input-wr {
+          padding: 20px 0 24px;
+        }
+
+        input {
+          width: 100%;
+          max-width: 50px;
+          height: 32px;
+          padding: 0 2px;
+          font-size: $small;
+          margin: 0 10px;
+        }
+      }
+
+      .price {
+        margin-right: 10px;
+      }
+    }
+
+    .offer-info {
+      top: inherit;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: auto;
+    }
+
+    .bt.orange {
+      width: 270px;
+      min-height: 50px; // height
+      padding: 0 10px;
+      font-size: $BASIC;
+      border-radius: 7px;
+      margin: 15px 0 5px;
+
+      .gift {
+        position: static;
+        margin: 0 0 0 10px;
+        width: 25px;
+      }
+    }
+
+    .controls-wrapper {
+      min-width: 38px;
+    }
+  }
+
+  //SUBSCRIPTION
+  .cart-subscriptions {
+    .cart-subscribed {
+      img {
+        height: 8px;
+        width: 11px;
+        margin-left: 5px;
+      }
+    }
+
+    .cart-subscribe {
+      .link {
+        font-size: $small;
+      }
+
+      input[type=checkbox] {
+        display: none;
+      }
+
+      .custom-checkbox {
+        width: 14px;
+        height: 14px;
+        border-radius: 3px;
+        margin-right: 7px;
+        display: inline-block;
+        background: #fff;
+        border: 1px solid $GRAY-LIGHT;
+        cursor: pointer;
+      }
+
+      .label-subscription-holder {
+        margin-left: -6px;
+        margin-bottom: 0;
+        font-size: $small;
+        position: relative;
+        background: #D6F5D8;
+        padding: 2px 7px 2px 6px;
+        min-width: 180px;
+
+        //mobile safari issue fix for the label
+        label {
+          z-index: 1;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
+
+        .subscriptions-description {
+          font-size: $small;
+          color: #929292;
+          margin-left: 22px;
+          margin-top: -3px;
+
+          .discount-percent {
+            font-weight: bold;
+            color: $GREEN;
+          }
+        }
+      }
+
+      .subscription-tooltip {
+        display: none;
+        z-index: 100;
+        position: absolute;
+        padding: 8px;
+        font-size: $small;
+        background: #f6f6ff;
+        border-radius: 10px;
+        box-shadow: 0 0 0 1px #9e9da2, 0 0 10px rgba(0, 0, 0, .3);
+        width: 200px;
+        color: $primary;
+        left: 120%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &:before {
+          content: "";
+          position: absolute;
+          right: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 0;
+          border-top: 9px solid transparent;
+          border-bottom: 9px solid transparent;
+          border-right: 8px solid #9e9da2;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          right: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 0;
+          border-top: 8px solid transparent;
+          border-bottom: 8px solid transparent;
+          border-right: 7px solid #f6f6ff;
+        }
+      }
+
+      .subscription-tooltip-holder {
+        z-index: 2;
+        position: absolute;
+        right: 5px;
+        top: 2px;
+        cursor: pointer;
+        font-size: $small;
+        color: #bdbdbd;
+
+        i::before {
+          margin: 0;
+        }
+
+        &:hover .subscription-tooltip {
+          display: block;
+        }
+      }
+
+      input:checked ~ .label-subscription-holder {
+        .custom-checkbox {
+          background: #fff url("/assets/images/svg/checkmark.svg") no-repeat 1px 2px;
+          background-size: 10px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .custom-checkbox {
+          margin-right: 5px;
+        }
+
+        .label-subscription-holder {
+          width: 200px;
+          margin-top: 15px;
+          position: absolute;
+          font-size: 16px;
+          .custom-checkbox {
+            width: 18px;
+            height: 18px;
+            background-size: 14px!important;
+          }
+        }
+      }
+
+      @media (max-width: 320px) {
+        .label-subscription {
+          width: 175px;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  .excluding-current-draw {
+    color: $GREEN;
+    background: #f4f4f4;
+    font-size: $small;
+    position: absolute;
+    bottom: -18px;
+    right: 0;
+    left: 0;
+    padding: 3px 0;
+  }
+}

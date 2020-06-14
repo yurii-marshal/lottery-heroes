@@ -1,0 +1,155 @@
+<div role="dialog" *ngIf="activeAuthComponent" class="modal">
+  <div class="modal-dialog" [ngClass]="activeAuthComponent">
+    <div class="modal-content"
+         [ngClass]="{'scroll': winHeight < 940}"
+         #scrollContainer>
+      <div [ngClass]="{'container-scrolable': winHeight < 940}">
+        <ng-container [ngSwitch]="activeAuthComponent">
+
+          <!--- SIGNIN --->
+          <ng-container *ngSwitchCase="'signin'">
+            <div class="modal-header needsclick">
+              <div class="modal-title needsclick">{{'AuthLightboxContainerComponent.TEXT_SIGN_IN' | translate}}</div>
+              <button type="button" class="close needsclick" (click)="onCloseLightbox()">×</button>
+            </div>
+            <div class="lightbox-modal">
+              <app-signin
+                (successSignin)="onSuccessSignin($event)"
+                (showAnotherComponent)="showComponent($event)"
+                (placeEmail)="placeEmail($event)"></app-signin>
+            </div>
+            <div class="modal-footer">
+              <div appTranslate="AuthLightboxContainerComponent.TEMPLATE_HELP_SIGNING"></div>
+            </div>
+          </ng-container>
+
+          <!--- SIGNUP --->
+          <ng-container *ngSwitchCase="'signup'">
+            <div class="outer">
+              <div class="modal-header needsclick">
+                <!--<div class="modal-title needsclick">{{'AuthLightboxContainerComponent.TEXT_REG_BIGLOTTERYOWIN' | translate}}</div>-->
+                <button type="button"
+                        class="close needsclick"
+                        (click)="onTrackCloseRegistration()"
+                        (click)="onCloseLightbox()">×</button>
+              </div>
+              <div class="lightbox-modal">
+                <app-signup
+                  [label]="'external'"
+                  [btnSubmitText]="'AuthLightboxContainerComponent.TEXT_CREATE_ACC' | translate"
+                  (successSignin)="onSuccessSignin($event)"
+                  (showAnotherComponent)="showComponent($event)"
+                  (checkIsAccountUnverified)="onCheckIsAccountUnverified()"></app-signup>
+              </div>
+              <div class="agreement">
+                <div appTranslate="AuthLightboxContainerComponent.TEMPLATE_CREATE_ACC"></div>
+              </div>
+              <div class="modal-footer">
+                <div appTranslate="AuthLightboxContainerComponent.TEMPLATE_GETTING_STARTED"></div>
+              </div>
+            </div>
+          </ng-container>
+
+          <!--- FORGOT PASSWORD --->
+          <ng-container *ngSwitchCase="'forgot-password'">
+            <div class="modal-header needsclick">
+              <div class="modal-title needsclick">
+                {{"AuthLightboxContainerComponent.TEXT_FORGOT_PASS" | translate}}
+              </div>
+              <button type="button" class="close needsclick" (click)="onCloseLightbox()">×</button>
+            </div>
+            <app-forgot-password
+              (saveEmail)="onSaveEmail($event)"
+              (showAnotherComponent)="showComponent($event)"
+              [placeEmailValue]="savedEmail$"></app-forgot-password>
+            <div class="modal-footer">
+              <div appTranslate="AuthLightboxContainerComponent.TEMPLATE_FOOTER"></div>
+            </div>
+          </ng-container>
+
+
+          <!--- EMAIL SENT SUCCESSFULLY --->
+          <ng-container *ngSwitchCase="'email-sent-success'">
+            <div class="modal-header needsclick">
+              <div class="modal-title needsclick">
+                {{'AuthLightboxContainerComponent.TEXT_HELP_ON_WAY' | translate}}
+              </div>
+              <button type="button" class="close needsclick" (click)="onCloseLightbox()">×</button>
+            </div>
+            <app-email-sent-successfully
+              [emailForReset]="emailForReset"></app-email-sent-successfully>
+            <div class="modal-footer">
+              <div appTranslate="AuthLightboxContainerComponent.TEMPLATE_NEED_HELP"></div>
+            </div>
+          </ng-container>
+
+
+          <!--- USER STATUS SELF-EXCLUDED --->
+          <ng-container *ngSwitchCase="'status-self-excluded'">
+            <div class="modal-header needsclick">
+              <div class="modal-ico"><img src="assets/images/svg/lock_icon.svg"></div>
+              <div class="modal-title">
+                {{'AuthLightboxContainerComponent.TEXT_ACC_SELF_INCLUDED' | translate}}
+              </div>
+              <button type="button" class="close needsclick" (click)="onCloseLightbox()">×</button>
+            </div>
+            <app-user-status-self-excluded
+              (showAnotherComponent)="showComponent($event)"></app-user-status-self-excluded>
+          </ng-container>
+
+
+          <!--- USER STATUS BLOCKED --->
+          <ng-container *ngSwitchCase="'status-blocked'">
+            <div class="modal-header needsclick">
+              <div class="modal-ico"><img src="assets/images/svg/lock_icon.svg"></div>
+              <div class="modal-title">
+                {{'AuthLightboxContainerComponent.TEXT_ACC_BLOCKED' | translate}}
+              </div>
+              <button type="button" class="close needsclick" (click)="onCloseLightbox()">×</button>
+            </div>
+            <app-user-status-blocked
+              (showAnotherComponent)="showComponent($event)"></app-user-status-blocked>
+          </ng-container>
+
+
+          <!--- USER STATUS CLOSED --->
+          <ng-container *ngSwitchCase="'status-closed'">
+            <div class="modal-header needsclick">
+              <div class="modal-ico"><img src="assets/images/svg/lock_icon.svg"></div>
+              <div class="modal-title">
+                {{'AuthLightboxContainerComponent.TEXT_ACC_CLOSED' | translate}}
+              </div>
+              <button type="button" class="close needsclick" (click)="onCloseLightbox()">×</button>
+            </div>
+            <app-user-status-closed
+              (showAnotherComponent)="showComponent($event)"></app-user-status-closed>
+          </ng-container>
+
+
+          <!--- REGISTER FROM BLOCKED COUNTRY --->
+          <ng-container *ngSwitchCase="'register-forbidden-country'">
+            <div class="modal-header needsclick">
+              <button type="button" class="close needsclick" (click)="onCloseLightbox()">×</button>
+            </div>
+            <app-register-from-forbidden-country
+              (showAnotherComponent)="showComponent($event)"></app-register-from-forbidden-country>
+          </ng-container>
+
+
+          <!--- LOGIN FROM BLOCKED COUNTRY --->
+          <ng-container *ngSwitchCase="'login-forbidden-country'">
+            <div class="modal-header needsclick">
+              <button type="button" class="close needsclick" (click)="onCloseLightbox()">×</button>
+            </div>
+            <app-signin-from-forbidden-country
+              (showAnotherComponent)="showComponent($event)"></app-signin-from-forbidden-country>
+          </ng-container>
+
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="blackout" (click)="onCloseLightbox()"></div>
+</div>
+
+

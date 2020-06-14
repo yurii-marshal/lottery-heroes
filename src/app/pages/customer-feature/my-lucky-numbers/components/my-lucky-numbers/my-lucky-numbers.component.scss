@@ -1,0 +1,36 @@
+@import '../../../../../../scss/_vars';
+
+.my-lucky-numbers-component {
+  .container {
+    max-width: 480px;
+    margin: 0;
+  }
+
+  .line {
+    & + .line {
+      margin-top: 1rem;
+    }
+
+    .number {
+      width: 25px;
+      height: 25px;
+      margin: 1px;
+      border: 1px solid $GRAY-LIGHT;
+      font-family: "Open Sans", sans-serif;
+      font-size: 0.8rem;
+      color: #000;
+      text-align: center;
+      border-radius: 50%;
+
+      &:focus {
+        border-color: $GREEN;
+        outline: none;
+      }
+    }
+  }
+
+  .biglotteryowin-heart {
+    font-size: 13px;
+    color: #E51E12;
+  }
+}

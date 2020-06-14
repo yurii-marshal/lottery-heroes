@@ -1,0 +1,6 @@
+<div class="lottery-with-greates-jackpot-component" *ngIf="lottery">
+	<a class="display-flex flex-items-xs-middle flex-items-xs-center" [routerLink]="['/', lotterySlug]"
+  (click)="oTrackSuperJackpotLotteryClicked.emit(lottery.name)">
+		{{lottery.name}}
+	</a>
+</div>

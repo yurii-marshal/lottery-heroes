@@ -1,0 +1,30 @@
+<div class="cart-item-combo-syndicate-component">
+  <div class="col-xs-12 display-flex direction-column">
+    <div class="row lottery-item">
+      <div class="col-xs-12 col-lg-2 display-flex flex-items-xs-center lottery-logo">
+        <div class="logo">
+          <img class="hidden-sm-down" [src]="syndicate.lotteryLogo" alt="{{syndicate.lotteryName}}">
+          <div class="syndicate-icon">
+            <img src="assets/images/syndicates/syndicate_icon.svg" alt="syndicate_icon">
+          </div>
+          <img class="logo hidden-md-up" src="/assets/images/lottery-logos/lottery-logos-line/{{syndicate.lotteryId}}.svg"
+               alt="{{syndicate.lotteryName}}">
+        </div>
+      </div>
+      <div class="col-xs-12 col-lg-10 display-flex flex-items-xs-center direction-column lines">
+        <div class="num-shares">{{ share.num_shares }} {{'CartItemBundleSyndicateComponent.TEXT_SHARES' | translate}}</div>
+        <div class="line display-flex flex-items-xs-middle flex-items-xs-between direction-row"
+             [ngClass]="{'margin-top' : (syndicate.lines.length === 1)}"
+             *ngFor="let line of syndicate.lines; let i = index">
+          <div class="line-index">
+            {{'CartItemBundleSyndicateComponent.TEXT_LINE' | translate}} {{ i + 1 }}
+          </div>
+          <div class="flex-items-xs-middle flex-items-xs-between main-numbers">
+            <span class="number main" *ngFor="let num of line.mainNumbers">{{num | number:'2.0-0'}}</span>
+            <span class="number extra" *ngFor="let num of line.extraNumbers">{{num | number:'2.0-0'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
